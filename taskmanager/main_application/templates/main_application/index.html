@@ -1,0 +1,20 @@
+{% extends 'main_application/base.html' %}
+{%  block title %}
+{{ title }}
+{% endblock %}
+
+{% block text_title %}
+  <h2 class="pb-2 border-bottom">welcome on my main page  ...</h2>
+  {% if tasks %}
+  {% for el in tasks %}
+    <div class =' alert alert-warning mt-2'>
+      <h3> {{ el.title }}</h3>
+      <p> {{ el.task }} </p>
+    </div>
+  {% endfor %}
+  {% else %}
+  <p> the task sheet is now empty</p>
+  {% endif %}
+{% endblock %}
+
+
