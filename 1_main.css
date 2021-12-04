@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    /*сброс пробелов и отступов  */
+}
+
+#header_block_body {
+    /* #== указание id */
+    width: 1000px;
+    margin: auto;
+    /* отступ сверху 5px +авто чтоб блок по центру */
+    height: auto;
+}
+
+header {
+    /* для хедера не нужна . */
+    width: 1000px;
+    height: 75px;
+    background-color: black;
+}
+
+.gif_night_theme {
+    width: 100px;
+    height: 75px;
+}
+
+.logo {
+    width: 75px;
+}
+
+.night_theme_gif_block {
+    width: 150px;
+    height: 75px;
+}
+
+.top_menu_buttons {
+    width: 200px;
+    float: left;
+    /* в ряд а не в столбик */
+    height: 80px;
+}
+
+.top_menu_buttons {
+    width: 600px;
+    height: 80px;
+    float: left;
+}
+
+.gif_smile_tea {
+    height: 80px;
+}
