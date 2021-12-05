@@ -1,3 +1,5 @@
+<!-- юзай live server -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,30 +12,44 @@
 </head>
 
 <body>
-    <div id='header_block_body'>
-        <header>
+    <div class='wrapper'>
+        <div id='header_block_body'>
 
-            <div class='night_theme_gif_block'>
-                <img class='gif_night_theme' src='pic,gif,another/b5f079ae83712e5d5ee48aff7f78ab09.gif' alt="night_theme_fail">
-            </div>
-            <div class='logo'>
-                <img class='logo' src='pic,gif,another/default-logo.png' alt="logo_fail">
-            </div>
-            <div class='top_menu_buttons'>
-                <ul>
-                    <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Main</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">about me</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">contacts</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">posts</a></li>
-                </ul>
-            </div>
-            <div class='tea_gif'>
-                <img class='gif_smile_tea' src='pic,gif,another/646d44e4cfb4a3e9d57cc2c479a9e27a.gif' alt='gif_smile_tea_fail'>
-            </div>
+            <header>
+                <div class='header_body' _container>
+                    <div class='night_theme_gif_block'>
+                        <img class='gif_night_theme' src='pic,gif,another/b5f079ae83712e5d5ee48aff7f78ab09.gif' alt="night_theme_fail">
+                    </div>
+                    <div class='logo'>
+                        <img class='logo_img' src='pic,gif,another/default-logo.png' alt="logo_fail">
+                    </div>
+                    <div class='header_right_menu'>
+                        <div class='top_menu_buttons'>
+                            <ul>
+                                <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link">Main</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link">about me</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link">contacts</a></li>
+                                <li class="nav-item"><a href="#" class="nav-link">posts</a></li>
+                            </ul>
+                        </div>
+                        <div class='tea_gif_div'>
+                            <img class='gif_smile_tea' src='pic,gif,another/646d44e4cfb4a3e9d57cc2c479a9e27a.gif' alt='gif_smile_tea_fail'>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
 
-        </header>
+        <section id='section_1'>
+            <div class='hello_user_block'>
+                <h1 class='hello_user'>hello wrld</h1>
+
+                <p class='hello_user_text'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis debitis, tempore explicabo reiciendis minima repudiandae non nam at dolor ut vitae consequuntur consectetur facilis aliquam maiores molestiae dolorem reprehenderit incidunt!</p>
+            </div>
+        </section>
     </div>
+    <!-- <script src='js/script.js'></script>  в конец файла а не в хедер ,что сначала загрузилась картинка,а потом скрипты и пр обработка -->
 </body>
 
 </html>

@@ -1,13 +1,27 @@
 * {
     margin: 0;
     padding: 0;
-    /*сброс пробелов и отступов  */
+    /*сброс пробелов и отступов  *{} == для всех элементов*/
+    box-sizing: border-box;
 }
+
+.wrapper {
+    min-height: 100%;
+    overflow: hidden;
+    /* общая оболочка для отсутсвия гориз скролла(боди не подходит(дефолтный скролл уйдёт)  overflow: hidden; == скрыть каку*/
+}
+
+._containter {
+    max-width: 1046px;
+    margin: 0px auto;
+    /* выставит блок по центру + ограничивает дивы по ширине*/
+}
+
+
+/* ------------------------------------------------------------------------------------------------------------------- */
 
 #header_block_body {
     /* #== указание id */
-    width: 1000px;
-    margin: auto;
     /* отступ сверху 5px +авто чтоб блок по центру */
     height: auto;
 }
@@ -16,7 +30,21 @@ header {
     /* для хедера не нужна . */
     width: 1000px;
     height: 75px;
+    margin: auto;
     background-color: black;
+}
+
+.header_body {
+    width: 1000px;
+    height: 75px;
+    background-color: black;
+}
+
+.night_theme_gif_block {
+    height: 75px;
+    width: 120px;
+    margin-left: auto;
+    float: left;
 }
 
 .gif_night_theme {
@@ -25,27 +53,77 @@ header {
 }
 
 .logo {
-    width: 75px;
+    height: 75px;
+    width: 150px;
+    /* margin - внешний padding -внутренний */
+    padding: 5px;
+    float: left;
 }
 
-.night_theme_gif_block {
-    width: 150px;
+.logo_img {
+    margin: 10px;
+}
+
+.header_right_menu {
+    float: right;
+    width: 700px;
     height: 75px;
 }
 
 .top_menu_buttons {
-    width: 200px;
+    width: 600px;
+    height: 75px;
     float: left;
     /* в ряд а не в столбикr */
-    height: 80px;
 }
 
-.top_menu_buttons {
-    width: 600px;
-    height: 80px;
-    float: left;
+.top_menu_buttons ul li {
+    list-style: none;
+    /* list style =none == -убрать точки(или в случау ol  каунтер)  */
+    float: right;
+    text-align: center;
+}
+
+.top_menu_buttons ul li a {
+    display: block;
+    width: 100px;
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 17px;
+    color: white;
+    height: 55px;
+    padding-top: 25px;
+    cursor: pointer;
+}
+
+.div.tea_gif_div {
+    width: 100px;
+    float: right;
 }
 
 .gif_smile_tea {
-    height: 80px;
+    height: 75px;
+    float: right;
+}
+
+
+/* ------------------------------------------------------------------------------------------------------------------- */
+
+#section_1 {
+    width: auto;
+    height: 1000px;
+    background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('pic,gif,another/Animated-Samurai-Fox-Live-Wallpaper\ -good\ giff.gif');
+    background-position: center
+}
+
+.hello_user_block {
+    width: 1000px;
+    max-height: 400px;
+    color: white;
+    position: absolute;
+    top: 50%;
+}
+
+.hello_user {
+    padding: 5px;
 }
