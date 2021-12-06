@@ -1,129 +1,255 @@
-* {
-    margin: 0;
+*,
+*::before,
+*::after {
     padding: 0;
-    /*сброс пробелов и отступов  *{} == для всех элементов*/
+    margin: 0;
+    border: 0;
     box-sizing: border-box;
 }
+
+a {
+    text-decoration: none;
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+}
+
+img {
+    vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+
+/* обнуляем + очищаем все стили*/
+
+html,
+body {
+    height: 100%;
+    line-height: 1;
+    background: #fefdfe;
+    font-size: 14px;
+    color: #252b42;
+    font-weight: 500;
+    font-family: Montserrat;
+    /* настркой дефолт настроек:фон,шрифты */
+}
+
+
+/* ---------------------------------------------------------------------------- */
 
 .wrapper {
     min-height: 100%;
     overflow: hidden;
     /* общая оболочка для отсутсвия гориз скролла(боди не подходит(дефолтный скролл уйдёт)  overflow: hidden; == скрыть каку*/
+    display: flex;
+    flex-direction: column;
+    /* flex-direction: column; Направление, в котором блоки будут располагаться вертикально(column-reverse == прибить к потолку например) */
+    /* флекс футер 1:17:36 делаем флекс бокс для мэйн дива */
 }
 
-._containter {
+
+/* ---------------------------------------------------------------------------- */
+
+._container {
     max-width: 1046px;
+    padding: 0px 15px;
     margin: 0px auto;
+    box-sizing: content-box;
+    /* box-sizing 1:05:20(избавленрие от прилипания)(отступы безопасности) */
     /* выставит блок по центру + ограничивает дивы по ширине*/
 }
 
-
-/* ------------------------------------------------------------------------------------------------------------------- */
-
-#header_block_body {
-    /* #== указание id */
-    /* отступ сверху 5px +авто чтоб блок по центру */
-    height: auto;
+._ibg_g {
+    position: relative;
 }
 
-header {
-    /* для хедера не нужна . */
-    width: 1000px;
-    height: 75px;
-    margin: auto;
-    background-color: black;
-}
-
-.header_body {
-    width: 1000px;
-    height: 75px;
-    background-color: black;
-}
-
-.night_theme_gif_block {
-    height: 75px;
-    width: 120px;
-    margin-left: auto;
-    float: left;
-}
-
-.gif_night_theme {
-    width: 100px;
-    height: 75px;
-}
-
-.logo {
-    height: 75px;
-    width: 150px;
-    /* margin - внешний padding -внутренний */
-    padding: 5px;
-    float: left;
-}
-
-.logo_img {
-    margin: 10px;
-}
-
-.header_right_menu {
-    float: right;
-    width: 700px;
-    height: 75px;
-}
-
-.top_menu_buttons {
-    width: 600px;
-    height: 75px;
-    float: left;
-    /* в ряд а не в столбикr */
-}
-
-.top_menu_buttons ul li {
-    list-style: none;
-    /* list style =none == -убрать точки(или в случау ol  каунтер)  */
-    float: right;
-    text-align: center;
-}
-
-.top_menu_buttons ul li a {
-    display: block;
-    width: 100px;
-    text-decoration: none;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 17px;
-    color: white;
-    height: 55px;
-    padding-top: 25px;
-    cursor: pointer;
-}
-
-.div.tea_gif_div {
-    width: 100px;
-    float: right;
-}
-
-.gif_smile_tea {
-    height: 75px;
-    float: right;
-}
-
-
-/* ------------------------------------------------------------------------------------------------------------------- */
-
-#section_1 {
-    width: auto;
-    height: 1000px;
-    background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('pic,gif,another/Animated-Samurai-Fox-Live-Wallpaper\ -good\ giff.gif');
-    background-position: center
-}
-
-.hello_user_block {
-    width: 1000px;
-    max-height: 400px;
-    color: white;
+._ibg img {
+    margin-top: 100px;
     position: absolute;
-    top: 50%;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    /* object-fit: scale-down; */
+    /* object-position: 0 0; */
 }
 
-.hello_user {
-    padding: 5px;
+
+/* ------------ Header---------------------------------------------------------------- */
+
+
+/* мб убрать  flex: 0 1 33.333%; и переделать? хотя вроде так прикольно */
+
+.header_main {
+    position: absolute;
+    /*не делаем фиксированной(чтоб дигалась за нами),чтоб было делаем абсолютной(статик?) 55:10  */
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 50;
+    /* большой z-Index чтоб была на первом плане */
+}
+
+.header_container {
+    display: flex;
+    /* т.к флекс контейнер */
+    min-height: 104px;
+    align-items: center;
+    /* align-items centr == выравнивание обьекта по центру */
+}
+
+.switch_theme {
+    flex: 0 1 25%;
+}
+
+.switch_theme img {
+    height: 95px;
+}
+
+@media(max-width:1024px) {
+    .switch_theme img {
+        height: 75px;
+    }
+}
+
+@media(max-width:430px) {
+    .switch_theme img {
+        height: 50px;
+    }
+}
+
+.header_menu {
+    height: 100%;
+    align-items: center;
+}
+
+.header_menu_list {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 0 1 50%;
+}
+
+.menu__item {
+    /* .menu__item:not(:last-child) { */
+    /* not(:last-child) ==  для всех обьектов кроме последнего 1:03:47 */
+    margin: 0px 21px 0px 0px;
+}
+
+.menu_link {
+    color: #737373;
+    font-weight: 600;
+    line-height: calc(24/14*100%);
+}
+
+.menu_link:hover {
+    text-decoration: underline;
+    /* подчёркивание для интерактива */
+}
+
+.gif_smile_tea {}
+
+.Qq_tea {
+    flex: 0 1 25%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    float: right;
+    margin: 0px 0px 0px 75px;
+}
+
+@media(max-width:767px) {
+    .Qq_tea {
+        margin: 0px 0px 0px 25px;
+    }
+}
+
+@media(max-width:22px) {
+    .Qq_tea {
+        margin: 0px 0px 0px 0px;
+    }
+}
+
+.gif_smile_tea img {
+    height: 70px;
+}
+
+.header_logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: inherit;
+}
+
+@media(max-width:430px) {
+    .gif_smile_tea img {
+        height: 50px;
+    }
+    .header_logo {
+        font-size: 20px;
+        font-weight: 700;
+    }
+}
+
+
+/* ---------Selection_1---------------------------------------------------------------------------------------------------------- */
+
+.selection_1 {
+    margin-top: 100px;
+}
+
+.main_hello_container {
+    margin-top: 300px;
+    color: aqua;
+    z-index: 55;
+    background-color: aquamarine;
+}
+
+.hello_title {
+    font-size: 200px;
+    line-height: 150%;
+}
+
+.main_hello_image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.main_hello_image img {
+    filter: brightness(45%);
+    z-index: -1;
+}
+
+@media(max-width: 558px) {
+    .main_hello_image img {
+        height: 70%;
+    }
+}
+
+@media(max-width: 350px) {
+    .main_hello_image img {
+        height: 60%;
+    }
+}
+
+@media(max-width: 300px) {
+    .main_hello_image img {
+        height: 50%;
+    }
 }
