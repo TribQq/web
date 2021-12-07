@@ -71,6 +71,12 @@ body {
     /* выставит блок по центру + ограничивает дивы по ширине*/
 }
 
+@media(max-width:540px) {
+    ._container {
+        padding: 0px 5px;
+    }
+}
+
 ._ibg_g {
     position: relative;
 }
@@ -87,6 +93,18 @@ body {
     /* object-position: 0 0; */
 }
 
+@media(max-width:768px) {
+    ._ibg img {
+        margin-top: 75px;
+    }
+}
+
+@media(max-width:540px) {
+    ._ibg img {
+        margin-top: 60px
+    }
+}
+
 
 /* ------------ Header---------------------------------------------------------------- */
 
@@ -99,7 +117,6 @@ body {
     width: 100%;
     left: 0;
     top: 0;
-    z-index: 50;
     /* большой z-Index чтоб была на первом плане */
 }
 
@@ -111,8 +128,20 @@ body {
     /* align-items centr == выравнивание обьекта по центру */
 }
 
+@media(max-width:768px) {
+    .header_container {
+        min-height: 70px
+    }
+}
+
+@media(max-width:540px) {
+    .header_container {
+        min-height: 40px
+    }
+}
+
 .switch_theme {
-    flex: 0 1 25%;
+    flex: 0 1 20%;
 }
 
 .switch_theme img {
@@ -131,7 +160,14 @@ body {
     }
 }
 
+@media(max-width:300px) {
+    .switch_theme img {
+        height: 32px;
+    }
+}
+
 .header_menu {
+    flex: 0 1 80%;
     height: 100%;
     align-items: center;
 }
@@ -139,7 +175,6 @@ body {
 .header_menu_list {
     display: flex;
     flex-wrap: wrap;
-    flex: 0 1 50%;
 }
 
 .menu__item {
@@ -148,10 +183,23 @@ body {
     margin: 0px 21px 0px 0px;
 }
 
+@media(max-width:570px) {
+    .menu__item {
+        margin: 0px 10px 0px 0px;
+    }
+}
+
 .menu_link {
     color: #737373;
     font-weight: 600;
     line-height: calc(24/14*100%);
+}
+
+@media(max-width:342px) {
+    .menu_link {
+        font-size: 10px;
+        font-weight: 700;
+    }
 }
 
 .menu_link:hover {
@@ -162,7 +210,7 @@ body {
 .gif_smile_tea {}
 
 .Qq_tea {
-    flex: 0 1 25%;
+    flex: 0 1 20%;
     height: 100%;
     display: flex;
     align-items: center;
@@ -176,7 +224,7 @@ body {
     }
 }
 
-@media(max-width:22px) {
+@media(max-width:320px) {
     .Qq_tea {
         margin: 0px 0px 0px 0px;
     }
@@ -192,6 +240,17 @@ body {
     color: inherit;
 }
 
+@media(max-width:540px) {
+    .gif_smile_tea img {
+        height: 55px;
+        margin-bottom: 10px;
+    }
+    .header_logo {
+        font-size: 22px;
+        font-weight: 700;
+    }
+}
+
 @media(max-width:430px) {
     .gif_smile_tea img {
         height: 50px;
@@ -202,23 +261,103 @@ body {
     }
 }
 
+@media(max-width:210px) {
+    .gif_smile_tea img {
+        height: 40px;
+    }
+    .header_logo {
+        font-size: 18px;
+        font-weight: 700;
+    }
+}
 
-/* ---------Selection_1---------------------------------------------------------------------------------------------------------- */
 
-.selection_1 {
+/* ---------Section_1---------------------------------------------------------------------------------------------------------- */
+
+.section_1 {
     margin-top: 100px;
 }
 
+@media(max-width:768px) {
+    .section_1 {
+        margin-top: 75px;
+    }
+}
+
 .main_hello_container {
-    margin-top: 300px;
-    color: aqua;
-    z-index: 55;
-    background-color: aquamarine;
+    position: absolute;
+    /* Poastiton:absolute == выставление обьекта в обьект, важно! можешь вспомнить что каво тут(https://www.youtube.com/watch?v=gEmVpPpRjcE)*/
+    top: 40%;
+    /* отступ сверху */
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    letter-spacing: 0.2px;
+    /* авто отступы + центрирование */
+    color: #fefdfe;
+    opacity: 70%;
+}
+
+@media(max-width:350px) {
+    .main_hello_container {
+        top: 35%;
+    }
+}
+
+@media(max-width:310px) {
+    .main_hello_container {
+        top: 30%;
+    }
 }
 
 .hello_title {
-    font-size: 200px;
-    line-height: 150%;
+    font-size: 75px;
+    line-height: 137%;
+}
+
+.hello_text {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 18px
+}
+
+@media(min-width:1024px) {
+    .hello_title {
+        font-size: 90px;
+    }
+    .hello_text {
+        font-size: 22px
+    }
+}
+
+@media(max-width:610px) {
+    .hello_title {
+        font-size: 50px;
+    }
+    .hello_text {
+        font-size: 18px;
+    }
+}
+
+@media(max-width:425px) {
+    .hello_title {
+        font-size: 30px;
+    }
+    .hello_text {
+        font-size: 16px;
+    }
+}
+
+@media(max-width:300px) {
+    .hello_title {
+        font-size: 18px;
+    }
+    .hello_text {
+        font-size: 12px;
+    }
 }
 
 .main_hello_image {
@@ -228,12 +367,10 @@ body {
     top: 0;
     left: 0;
     object-fit: cover;
-    z-index: 1;
 }
 
 .main_hello_image img {
     filter: brightness(45%);
-    z-index: -1;
 }
 
 @media(max-width: 558px) {
@@ -253,3 +390,6 @@ body {
         height: 50%;
     }
 }
+
+
+/* ------------ Section_2---------------------------------------------------------------- */
