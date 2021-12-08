@@ -77,39 +77,60 @@ body {
     }
 }
 
-._ibg_g {
+._ibg {
     position: relative;
+    margin-top: 100px;
 }
 
+.kek_compensation {
+    min-height: 100px;
+}
+
+
+/* юзаем как костыль, а шо поделать... */
+
 ._ibg img {
-    margin-top: 100px;
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
     object-fit: cover;
-    /* object-fit: scale-down; */
-    /* object-position: 0 0; */
 }
 
 @media(max-width:768px) {
-    ._ibg img {
-        margin-top: 75px;
+    ._ibg {
+        margin-top: 76px;
+    }
+    .kek_compensation {
+        min-height: 76px;
     }
 }
 
 @media(max-width:540px) {
-    ._ibg img {
-        margin-top: 60px
+    ._ibg {
+        margin-top: 60px;
+    }
+    .kek_compensation {
+        min-height: 60px;
     }
 }
 
 
-/* ------------ Header---------------------------------------------------------------- */
+/* ------------ section_header---------------------------------------------------------------- */
 
 
 /* мб убрать  flex: 0 1 33.333%; и переделать? хотя вроде так прикольно */
+
+.section_header {
+    position: absolute;
+    /*не делаем фиксированной(чтоб дигалась за нами),чтоб было делаем абсолютной(статик?) 55:10  */
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 50;
+    /* большой z-Index чтоб была на первом плане */
+}
 
 .header_main {
     position: absolute;
@@ -154,7 +175,7 @@ body {
     }
 }
 
-@media(max-width:430px) {
+@media(max-width:540px) {
     .switch_theme img {
         height: 50px;
     }
@@ -272,124 +293,248 @@ body {
 }
 
 
-/* ---------Section_1---------------------------------------------------------------------------------------------------------- */
+/* ---------Section_main---------------------------------------------------------------------------------------------------------- */
 
-.section_1 {
-    margin-top: 100px;
+.page {
+    flex: 1 1 auto;
 }
 
-@media(max-width:768px) {
-    .section_1 {
-        margin-top: 75px;
+.page_main-block {}
+
+
+/* ---------page_main-block---------------------------------------------------------------------------------------------------------- */
+
+.main-block {
+    position: relative;
+}
+
+.main-block_container {}
+
+.main-block_hello-user {
+    padding: 50% 0px 40% 0px;
+    position: relative;
+    z-index: 2;
+    max-width: 100%;
+}
+
+@media (max-width: 780px) {
+    .main-block_hello-user {
+        padding: 55% 0px 30% 0px;
     }
 }
 
-.main_hello_container {
-    position: absolute;
-    /* Poastiton:absolute == выставление обьекта в обьект, важно! можешь вспомнить что каво тут(https://www.youtube.com/watch?v=gEmVpPpRjcE)*/
-    top: 40%;
-    /* отступ сверху */
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    text-align: center;
-    letter-spacing: 0.2px;
-    /* авто отступы + центрирование */
-    color: #fefdfe;
-    opacity: 70%;
-}
-
-@media(max-width:350px) {
-    .main_hello_container {
-        top: 35%;
+@media (max-width: 600px) {
+    .main-block_hello-user {
+        padding: 65% 0px 30% 0px;
     }
 }
 
-@media(max-width:310px) {
-    .main_hello_container {
-        top: 30%;
+@media (max-width: 620px) {
+    .main-block_hello-user {
+        padding: 65% 0px 30% 0px;
     }
 }
 
-.hello_title {
-    font-size: 75px;
+@media (max-width: 310px) {
+    .main-block_hello-user {
+        padding: 50% 0px 50% 0px;
+    }
+}
+
+.main-block_hello-user>*:not(:last-child) {
+    margin: 0px 0px 35px 0px;
+}
+
+.main-block_hello-title {
+    font-size: 58px;
     line-height: 137%;
+    letter-spacing: 0.2px;
+    font-weight: 800;
+    color: white;
+    opacity: 70%;
+    text-align: center;
 }
 
-.hello_text {
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 18px
+.main-block_text {
+    color: #e2d5d5;
+    font-size: 20px;
+    line-height: 150%;
+    opacity: 70%;
+    text-align: center;
+    /* padding: 0px 30px; */
 }
 
-@media(min-width:1024px) {
-    .hello_title {
-        font-size: 90px;
-    }
-    .hello_text {
-        font-size: 22px
-    }
-}
-
-@media(max-width:610px) {
-    .hello_title {
+@media (max-width: 620px) {
+    .main-block_hello-title {
         font-size: 50px;
     }
-    .hello_text {
-        font-size: 18px;
+    .main-block_text {
+        font-size: 24px;
+    }
+    .main-block_hello-user>*:not(:last-child) {
+        margin: 0px 0px 20px 0px;
     }
 }
 
-@media(max-width:425px) {
-    .hello_title {
+@media (max-width: 520px) {
+    .main-block_hello-title {
+        font-size: 40px;
+    }
+    .main-block_text {
+        font-size: 18px;
+    }
+    .main-block_hello-user>*:not(:last-child) {
+        margin: 0px 0px 15px 0px;
+    }
+}
+
+@media (max-width: 420px) {
+    .main-block_hello-title {
         font-size: 30px;
     }
-    .hello_text {
-        font-size: 16px;
+    .main-block_text {
+        font-size: 14px;
+    }
+    .main-block_hello-user>*:not(:last-child) {
+        margin: 0px 0px 10px 0px;
     }
 }
 
-@media(max-width:300px) {
-    .hello_title {
-        font-size: 18px;
+@media (max-width: 320px) {
+    .main-block_hello-title {
+        font-size: 25px;
     }
-    .hello_text {
+    .main-block_text {
         font-size: 12px;
     }
+    .main-block_hello-user>*:not(:last-child) {
+        margin: 0px 0px 5px 0px;
+    }
 }
 
-.main_hello_image {
+@media (max-width: 270px) {
+    .main-block_hello-title {
+        font-size: 20px;
+    }
+    .main-block_text {
+        font-size: 10px;
+    }
+    .main-block_hello-user>*:not(:last-child) {
+        margin: 0px 0px 2.5px 0px;
+    }
+}
+
+.main_hello_button_border {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 310px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 70px;
+    /* padding: 0.4% 0.1%;
+    background-color: white; */
+    border: 3px solid #f5f4f2;
+    opacity: 60%;
+    /* margin: -10px 0; */
+}
+
+.main_hello_button {
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    /* padding: 3.0% 0%; */
+    z-index: 1;
+    opacity: 90%;
+    padding: 5px;
+}
+
+.main_hello_button_text {
+    font-size: 40px;
+    color: rgb(247, 247, 247);
+    /* -webkit-text-stroke: 1px orange; */
+}
+
+@media (max-width: 479px) {
+    .main_hello_button_border {
+        max-width: 50%;
+        margin-top: 35px;
+    }
+    ;
+    .main_hello_button {
+        max-width: 50%;
+    }
+    .main_hello_button_text {
+        font-size: 20px;
+        color: rgb(247, 247, 247);
+    }
+}
+
+@media (max-width: 340px) {
+    .main_hello_button_border {
+        max-width: None;
+        margin-top: 15px;
+    }
+    ;
+    .main_hello_button {
+        flex: 1 1 100%;
+        max-width: None;
+    }
+    .main_hello_button_text {
+        font-size: 15px;
+    }
+}
+
+.main_hello_button_border:hover {
+    opacity: 80%;
+    border: 3px solid #f5f4f2;
+}
+
+.main-block_image {
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    object-fit: cover;
 }
 
-.main_hello_image img {
-    filter: brightness(45%);
+.main-block_image img {
+    filter: brightness(50%);
 }
 
-@media(max-width: 558px) {
-    .main_hello_image img {
+@media(max-width: 607px) {
+    .main-block_image img {
+        object-position: 55% 50%;
+    }
+}
+
+@media(max-width: 500px) {
+    .main-block_image img {
+        height: 95%;
+    }
+}
+
+@media(max-width: 400px) {
+    .main-block_image img {
+        height: 80%;
+    }
+}
+
+@media(max-width: 325px) {
+    .main-block_image img {
         height: 70%;
     }
 }
 
-@media(max-width: 350px) {
-    .main_hello_image img {
+@media(max-width: 300px) {
+    .main-block_image img {
         height: 60%;
     }
 }
 
-@media(max-width: 300px) {
-    .main_hello_image img {
-        height: 50%;
-    }
-}
+
+/* ------------ section_about-me_1 ---------------------------------------------------------------- */
 
 
-/* ------------ Section_2---------------------------------------------------------------- */
+/* ------------ Section_footer---------------------------------------------------------------- */
+
+.Section_footer {}
