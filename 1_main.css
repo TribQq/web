@@ -734,20 +734,23 @@ body {
 
 .about-me_1_sroll_icon {
     /* flex: 0 1 10%; */
-    max-width: 150%;
+    max-width: 100%;
 }
 
 .scroll-bar {
     /* display: flex;
     flex: 0 1 50%; */
     max-width: 5%;
-    padding: 15px;
+    /* padding: 15px; */
+    padding-top: 1.5%;
 }
 
-.left_scroll-bar {}
+.left_scroll-bar {
+    padding-right: 1%;
+}
 
 .right_scroll-bar {
-    padding-right: ;
+    padding-left: 1%;
 }
 
 
