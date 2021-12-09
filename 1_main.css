@@ -71,6 +71,9 @@ body {
     /* выставит блок по центру + ограничивает дивы по ширине*/
 }
 
+
+/* решил пока отказаться от контейнера.. */
+
 @media(max-width:540px) {
     ._container {
         padding: 0px 5px;
@@ -196,6 +199,7 @@ body {
 .header_menu_list {
     display: flex;
     flex-wrap: wrap;
+    float: right;
 }
 
 .menu__item {
@@ -214,12 +218,32 @@ body {
     color: #737373;
     font-weight: 600;
     line-height: calc(24/14*100%);
+    font-size: 20px;
+}
+
+@media(max-width:1024px) {
+    .menu_link {
+        font-size: 18px;
+    }
+}
+
+@media(max-width:769px) {
+    .menu_link {
+        font-size: 15px;
+    }
 }
 
 @media(max-width:342px) {
     .menu_link {
-        font-size: 10px;
+        font-size: 12px;
         font-weight: 700;
+    }
+}
+
+@media(max-width:242px) {
+    .menu_link {
+        font-size: 10px;
+        font-weight: 600;
     }
 }
 
@@ -230,7 +254,10 @@ body {
 
 .gif_smile_tea {}
 
+.right_block_header_Qq_tea {}
+
 .Qq_tea {
+    padding-right: 40px;
     flex: 0 1 20%;
     height: 100%;
     display: flex;
@@ -239,15 +266,17 @@ body {
     margin: 0px 0px 0px 75px;
 }
 
-@media(max-width:767px) {
+@media(max-width:769px) {
     .Qq_tea {
         margin: 0px 0px 0px 25px;
+        padding-right: 20px;
     }
 }
 
 @media(max-width:320px) {
     .Qq_tea {
         margin: 0px 0px 0px 0px;
+        padding-right: 5px;
     }
 }
 
@@ -259,6 +288,7 @@ body {
     font-size: 24px;
     font-weight: 700;
     color: inherit;
+    float: right;
 }
 
 @media(max-width:540px) {
@@ -346,7 +376,7 @@ body {
 }
 
 .main-block_hello-title {
-    font-size: 58px;
+    font-size: 75px;
     line-height: 137%;
     letter-spacing: 0.2px;
     font-weight: 800;
@@ -357,11 +387,23 @@ body {
 
 .main-block_text {
     color: #e2d5d5;
-    font-size: 20px;
+    font-size: 28px;
     line-height: 150%;
     opacity: 70%;
     text-align: center;
     /* padding: 0px 30px; */
+}
+
+@media (max-width: 1025px) {
+    .main-block_hello-title {
+        font-size: 58px;
+    }
+    .main-block_text {
+        font-size: 22px;
+    }
+    .main-block_hello-user>*:not(:last-child) {
+        margin: 0px 0px 20px 0px;
+    }
 }
 
 @media (max-width: 620px) {
@@ -369,7 +411,7 @@ body {
         font-size: 50px;
     }
     .main-block_text {
-        font-size: 24px;
+        font-size: 20px;
     }
     .main-block_hello-user>*:not(:last-child) {
         margin: 0px 0px 20px 0px;
@@ -400,7 +442,7 @@ body {
     }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 325px) {
     .main-block_hello-title {
         font-size: 25px;
     }
@@ -533,6 +575,180 @@ body {
 
 
 /* ------------ section_about-me_1 ---------------------------------------------------------------- */
+
+.section_about-me_1 {
+    position: relative;
+}
+
+.about-me_1_body {
+    display: flex;
+}
+
+.about-me_1_body_left_side {
+    flex: 0 1 50%;
+    padding: 0% 2% 0% 8%;
+}
+
+.about-me_1_block_text {
+    height: 100%;
+    padding: 15% 8% 0% 2%;
+    letter-spacing: 0.2px;
+    text-align: center;
+}
+
+
+/* .about-me_1_block_text>*:not(:last-child) {
+    padding-top: 12px;
+} */
+
+.about-me_1_block_text>*:not(:last-child) {
+    padding-top: 15px;
+}
+
+.block_text_title {
+    padding-top: 15%;
+}
+
+.h3_title {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.h2_title {
+    font-size: 50px;
+    font-weight: 1000;
+}
+
+.about-me_1-text {
+    font-size: 15px;
+    line-height: 140%;
+}
+
+.link_word {
+    color: #1f1f1d;
+    font-weight: 600;
+}
+
+.link_word:hover {
+    text-decoration: overline #f1c50e;
+    text-decoration-thickness: 2px;
+}
+
+.about-me_1_block_text_button_border {
+    padding: 10% 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-me_1_block_text_button {
+    /* min-height: 40px;
+    min-width: 60%; */
+    padding: 1% 3%;
+    margin-left: auto;
+    margin-right: auto;
+    /* background-color: #f1c50e; */
+    border-radius: 10%;
+    /* border: 2px dashed rgb(221, 147, 10); */
+    border: 2px dashed #f1c50e;
+    /* line-height: 250%; */
+    font-size: 35px;
+    /* color: orange; */
+    color: #f1c50e;
+    -webkit-text-stroke: 0.7px black;
+}
+
+
+/* .about-me_1_block_button_text {
+    font-size: 35px;
+    color: orange;
+    -webkit-text-stroke: 0.7px black;
+} */
+
+.about-me_1_block_text_button:hover {
+    /* background-color: orange; */
+    background-color: #f1c50e;
+    color: white;
+    border: 2px solid rgb(181, 121, 12);
+    -webkit-text-stroke: 0.7px black;
+}
+
+.about-me_1_body_right_side {
+    flex: 0 1 50%;
+    background-color: #f1c50e;
+}
+
+.about-me_1_body_main_png {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5% 0%;
+    margin-left: auto;
+    margin-right: auto;
+    flex-wrap: wrap;
+}
+
+.about-me_1_body_main_png_doggy_1 {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-me_1_body_main_png_doggy_1 img {
+    max-width: 50%;
+}
+
+.about-me_1_sroll-bar_gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 40%;
+    padding: 7.5% 5% 0% 5%;
+    flex-wrap: wrap;
+}
+
+.about-me_1_body_main_png_doggy_2 {
+    /* flex: 0 1 75%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-me_1_body_main_png_doggy_2 img {
+    max-width: 80%;
+}
+
+.about-me_1_sroll-bar_s {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 300%;
+}
+
+.about-me_1_sroll_icon {
+    /* flex: 0 1 10%; */
+    max-width: 150%;
+}
+
+.scroll-bar {
+    /* display: flex;
+    flex: 0 1 50%; */
+    max-width: 5%;
+    padding: 15px;
+}
+
+.left_scroll-bar {}
+
+.right_scroll-bar {
+    padding-right: ;
+}
 
 
 /* ------------ Section_footer---------------------------------------------------------------- */
