@@ -1,5 +1,5 @@
 <!-- юзай live server -->
-
+<!-- data-lazy == ленивая загрузка -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -97,36 +97,48 @@
                                         <img src='pic,gif,another/photoshop_me_0-1_ez_Doogy_main.png' alt="main_doggy">
                                     </div>
                                     <!-- width="500px" -->
-                                    <div class='about-me_1_sroll-bar_gallery'>
+                                </div>
+                                <div class='about-me_1_slider'>
+                                    <div class='slider position_center'>
 
-                                        <div class='about-me_1_body_main_png_doggy_2'>
-                                            <img src='pic,gif,another/0ba9db721027d53a0d96b0f4109f15d5.jpg' alt="srollbar_doggy">
+                                        <div class="slider__item filter">
+                                            <img data-lazy='pic,gif,another/slider_pic/0.jpg' alt=''>
                                         </div>
-                                        <div class='about-me_1_sroll-bar_s'>
-                                            <div class='left_scroll-bar scroll-bar'>
-                                                <img class='about-me_1_sroll_icon' src='pic,gif,another/free-icon-angle-double-left-3916751.png' alt='scroll_icon'>
-                                            </div>
+                                        <div class="slider__item filter">
+                                            <img data-lazy='pic,gif,another/slider_pic/1.jpg' alt=''>
+                                        </div>
+                                        <div class="slider__item filter">
+                                            <img data-lazy='pic,gif,another/slider_pic/2.jpg' alt=''>
+                                        </div>
+                                        <div class="slider__item filter">
+                                            <img data-lazy='pic,gif,another/slider_pic/3.jpg' alt=''>
+                                        </div>
+                                        <div class="slider__item filter">
+                                            <img data-lazy='pic,gif,another/slider_pic/4.png' alt=''>
+                                        </div>
 
-                                            <div class='right_scroll-bar scroll-bar'>
-                                                <img class='about-me_1_sroll_icon' src='pic,gif,another/free-icon-angle-double-right-3916755.png' alt='scroll_icon'>
-                                            </div>
-                                        </div>
 
                                     </div>
-                                </div>
 
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
+                    </div>
+
+                </div>
+            </section>
+        </main>
+        <footer class="section_footer ">
+            i am footer
+        </footer>
     </div>
-    </section>
-    </main>
-    <footer class="section_footer ">
-        i am footer
-    </footer>
-    </div>
+    <!-- Подключаем jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Подключаем слайдер Slick -->
+    <script src="js/slick.min.js"></script>
+    <!-- Подключаем файл скриптов -->
+    <script src="js/script.js"></script>
     <!-- <script src='js/script.js'></script>  в конец файла а не в хедер ,что сначала загрузилась картинка,а потом скрипты и пр обработка -->
 </body>
 
