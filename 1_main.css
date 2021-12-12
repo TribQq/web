@@ -1004,9 +1004,14 @@ body {
 }
 
 .slider__item img {
-    height: 600px;
+    height: 550px;
     /* адаптивное ограничение */
 }
+
+
+/* .wide_doggy img {
+    height: 550px;
+} */
 
 .slider__item.slick-center {}
 
@@ -1351,7 +1356,7 @@ body {
     text-align: center;
 }
 
-.about-me_2_main_about>*:not(:last-child) {
+._about-me_not-lats_margin>*:not(:last-child) {
     margin: 0px 0px 45px 0px;
 }
 
@@ -1361,11 +1366,14 @@ body {
 
 ._h4 {
     font-size: 35px;
-    font-weight: 505;
+    font-weight: 500;
+    font-style: italic;
 }
 
-.about-me_2_text {
-    font-size: 20px;
+.about-me_2_text {}
+
+._just_p_text {
+    font-size: 19px;
     letter-spacing: 0.2px;
     line-height: 150%;
 }
@@ -1387,10 +1395,6 @@ body {
     text-align: center;
 }
 
-.about-me_2_main_details>*:not(:last-child) {
-    margin: 0px 0px 45px 0px;
-}
-
 .about-me_2_main_details_title {}
 
 .about-me_2_main_detaiL {}
@@ -1409,7 +1413,7 @@ body {
     ._h4 {
         font-size: 35px;
     }
-    .about-me_2_text {
+    ._just_p_text {
         font-size: 18px;
     }
     .detaiL_title {
@@ -1426,13 +1430,10 @@ body {
     ._h4 {
         font-size: 30px;
     }
-    .about-me_2_text {
+    ._just_p_text {
         font-size: 15px;
     }
-    .about-me_2_main_about>*:not(:last-child) {
-        margin: 0px 0px 35px 0px;
-    }
-    .about-me_2_main_details>*:not(:last-child) {
+    ._about-me_not-lats_margin>*:not(:last-child) {
         margin: 0px 0px 35px 0px;
     }
     .detaiL_title {
@@ -1453,17 +1454,14 @@ body {
     ._h4 {
         font-size: 25px;
     }
-    .about-me_2_text {
+    ._just_p_text {
         font-size: 14px;
         letter-spacing: 0.1px;
     }
     .about-me_2_main_img img {
         max-height: 300px;
     }
-    .about-me_2_main_about>*:not(:last-child) {
-        margin: 0px 0px 30px 0px;
-    }
-    .about-me_2_main_details>*:not(:last-child) {
+    ._about-me_not-lats_margin>*:not(:last-child) {
         margin: 0px 0px 30px 0px;
     }
     .detaiL_title {
@@ -1479,17 +1477,14 @@ body {
     ._h4 {
         font-size: 20px;
     }
-    .about-me_2_text {
+    ._just_p_text {
         font-size: 13px;
         letter-spacing: 0.1px;
     }
     .about-me_2_main_img img {
         max-height: 250px;
     }
-    .about-me_2_main_about>*:not(:last-child) {
-        margin: 0px 0px 20px 0px;
-    }
-    .about-me_2_main_details>*:not(:last-child) {
+    ._about-me_not-lats_margin>*:not(:last-child) {
         margin: 0px 0px 20px 0px;
     }
     .detaiL_title {
@@ -1531,14 +1526,11 @@ body {
     ._h4 {
         font-size: 18px;
     }
-    .about-me_2_text {
+    ._just_p_text {
         font-size: 12px;
         letter-spacing: 0.1px;
     }
-    .about-me_2_main_about>*:not(:last-child) {
-        margin: 0px 0px 10px 0px;
-    }
-    .about-me_2_main_details>*:not(:last-child) {
+    ._about-me_not-lats_margin>*:not(:last-child) {
         margin: 0px 0px 10px 0px;
     }
     .about-me_2_main_img img {
@@ -1559,7 +1551,7 @@ body {
         max-height: 150px;
         margin: 10px auto;
     }
-    .about-me_2_text {
+    ._just_p_text {
         line-height: 120%;
     }
 }
@@ -1576,6 +1568,181 @@ body {
 }
 
 
+/* ----------- section_about-me_3 ------------------------------------------------------------------------ */
+
+.section_about-me_3 {
+    margin-top: 20px;
+    background-color: black;
+    color: white;
+}
+
+.section_about-me_3_container {
+    display: flex;
+}
+
+.section_about-me_left_side {
+    /* flex: 0 1 50%;
+    margin: 5% 0px; */
+}
+
+._side {
+    flex: 0 1 50%;
+    margin: 5% 0px;
+}
+
+
+/* .section_about-me_left_side>* {
+    margin: 0px 0px;
+} */
+
+.section_about-me_3_circle {}
+
+._big_circle_icon {
+    width: 75px;
+    height: 75px;
+    display: inline-flex;
+}
+
+._big_circle_icon img {
+    max-width: 75px;
+    border-radius: 50%;
+}
+
+._hiden_icon {
+    float: right;
+    visibility: hidden;
+}
+
+.section_about-me_3_text {
+    font-style: italic;
+}
+
+._white {
+    color: white
+}
+
+.about-me_3_soc {}
+
+.section_about-me_right_side {
+    flex: 0 1 50%;
+    margin-top: 10%;
+}
+
+.section_about-me_right_side_img {
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section_about-me_right_side_img img {
+    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translate(0%, -7.5%);
+    position: absolute;
+}
+
+.section_about-me_3_circle_right {
+    /* margin-left: auto; */
+    float: right;
+}
+
+@media (max-width: 600px) {
+    .section_about-me_right_side_img {
+        height: 250px;
+        width: 250px;
+    }
+    .section_about-me_right_side_img img {
+        height: 320px;
+        transform: translate(0%, -7.5%);
+    }
+    ._big_circle_icon {
+        width: 55px;
+        height: 55px;
+    }
+    ._big_circle_icon img {
+        max-width: 55px;
+    }
+}
+
+.section_about-me_3_text {}
+
+@media (max-width: 425px) {
+    .section_about-me_3_container {
+        flex-wrap: wrap-reverse;
+    }
+    ._side {
+        flex: 0 1 100%;
+    }
+    .section_about-me_right_side_img {
+        /* height: 150px;
+        width: 150px; */
+        margin: 2.5% auto;
+    }
+    .section_about-me_left_side {
+        margin-top: -75px;
+    }
+    ._hiden_icon {
+        visibility: visible;
+    }
+    .section_about-me_3_circle_right {
+        visibility: hidden;
+    }
+}
+
+@media (max-width: 325px) {
+    .section_about-me_right_side_img {
+        /* height: 150px;
+        width: 150px; */
+        margin: 0% auto;
+    }
+    .section_about-me_left_side {
+        margin-top: -72.5px;
+    }
+    ._big_circle_icon {
+        width: 35px;
+        height: 35px;
+    }
+    ._big_circle_icon img {
+        max-width: 35px;
+    }
+}
+
+@media (max-width: 280px) {
+    .section_about-me_right_side_img {
+        height: 150px;
+        width: 150px;
+    }
+    .section_about-me_right_side_img img {
+        height: 200px;
+        transform: translate(0%, -7.5%);
+    }
+    ._side {
+        margin: 2.5% 0px;
+    }
+    .section_about-me_left_side {
+        margin-top: -65.5px;
+    }
+    ._big_circle_icon {
+        width: 25px;
+        height: 25px;
+    }
+    ._big_circle_icon img {
+        max-width: 25px;
+    }
+}
+
+
 /* ------------ Section_footer---------------------------------------------------------------- */
 
-.Section_footer {}
+.section_footer {
+    background-color: #4c3f26;
+}
+
+.footer_conetnt {
+    height: 30px;
+}
