@@ -4,3 +4,7 @@ pic,gif,another
 .idea
 .git
 __pycache__
+.gitignore
+python
+/htmlsripts/assets
+save file
