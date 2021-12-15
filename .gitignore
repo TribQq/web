@@ -5,6 +5,8 @@ pic,gif,another
 .git
 __pycache__
 .gitignore
-python
+python_tests
 /htmlsripts/assets
 save file
+2_test.css
+2_test.html

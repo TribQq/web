@@ -1,69 +1,103 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="ru">
 
 <head>
     <meta charset="utf-8">
-    <title>try_try</title>
+    <title>try_try_2</title>
+
 </head>
 
 <body>
-    <canvas id="my_canvas"></canvas>
+    <canvas id='screen' style='width: 640px; height: 640px;' />
+
     <script>
-        (function() {
-            var canvas = document.getElementById('my_canvas');
-            canvas.width = 384;
-            canvas.height = 384;
-            var context = canvas.getContext('2d');
-            var sprite_sheet = new Image();
-            sprite_sheet.src = "assets/sprite_sheet.png";
+        /**
+                                 Ne podsmatrivai
 
-            var map = [
-                [11, 11, 11, 0, 0, 1],
-                [8, 9, 10, 0, 2, 0],
-                [0, 0, 5, 0, 1, 3],
-                [1, 0, 5, 0, 0, 1],
-                [6, 6, 5, 6, 6, 6],
-                [5, 7, 5, 7, 5, 7]
-            ];
-            var car_x = -128;
+                                 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+                                ░░▄▀░░░▄░░░▄▀▀▄▀▄░░░░░░░░░░░░░
+                                ░█░░░░▐▐░░█░░▐▐░░▐░░░░░░▄▄░░░░
+                                ░█░░░░░▀░░░▀▄░▀░░▐░░░░░▐░░▐░░░
+                                ░█░░░░░░░▄░░▐░░░░▐░░░▄▄▐░░▐▄▄░
+                                ░░▀▄░░░░▄░▀▀░▄░░▄▀░░▐░░▐░░▐░▐░
+                                ░░░░▀░░░░▀▀▀▀░░▀░░░░▐░░░░░░░▐░
+                                ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+                                 */
 
-            function background() {
-                for (var row = 0; row < 6; row++) {
-                    for (var column = 0; column < 6; column++) {
-                        context.drawImage(sprite_sheet,
-                            map[row][column] * 64, 0, 64, 64,
-                            column * 64, row * 64, 64, 64);
-                    }
+        function Scene(screen, controls) {
+            this.canvas = screen.canvas;
+            this.ctx = this.canvas.getContext('2d');
+            this.controls = controls;
+            this.imgs = screen.imgs;
+
+        }
+
+
+        function Lib(screen, controls) {
+            Scene.apply(this, arguments);
+            this.assets = [{
+                name: 'tyan',
+                path: 'assets/tyan.png'
+            }, {
+                name: 'player',
+                path: 'assets/player.png'
+            }, {
+                name: 'sceleton',
+                path: 'assets/sceleton.png'
+            }, {
+                name: 'bg',
+                path: 'assets/tiles.png'
+            }, {
+                name: 'title',
+                path: 'assets/title.jpg'
+            }];
+
+            this.total = this.assets.length;
+            this.loaded = 0;
+            this.status = "loading";
+
+
+            this.loaded_at = 0;
+
+            var self = this;
+            for (var i = 0; i < this.total; i++) {
+                var img = new Image();
+                img.onload = function() {
+                    self.loaded++;
+                };
+                img.src = self.assets[i].path;
+                screen.imgs[self.assets[i].name] = img;
+
+            }
+
+        }
+
+        Lib.prototype = Object.create(Scene.prototype);
+        Lib.prototype.constructor = Lib;
+
+        Lib.prototype.render = function(time) {
+            if (this.status == "loading") {
+                if (this.loaded == this.total) {
+                    this.status = "loaded";
+                    this.loaded_at = time;
                 }
-
+                this.ctx.fillStyle = '#000000';
+                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+                this.ctx.fillStyle = '#ffffff';
+                this.ctx.font = "22px Georgia";
+                this.ctx.fillText("Loading " + this.loaded + '/' + this.total, 50, 70);
+                return "lib";
             }
 
-            function trash() {
-                context.drawImage(sprite_sheet,
-                    12 * 64, 0, 64, 64,
-                    50, 190, 64, 64);
-
+            if (this.status == "loaded") {
+                if ((time - this.loaded_at) > 1000) {
+                    return "menu";
+                } else {
+                    return "lib";
+                }
             }
 
-            function car() {
-                car_x += 5;
-                if (car_x > 512) car_x = -128;
-                context.drawImage(sprite_sheet,
-                    13 * 64, 0, 128, 64,
-                    car_x, 5 * 64, 128, 64);
-            }
-
-            function loop() {
-                background();
-                trash();
-                car();
-            }
-
-            sprite_sheet.onload = function() {
-                setInterval(loop, 30);
-
-            };
-        })();
+        }
     </script>
 
 </body>
