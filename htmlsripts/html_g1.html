@@ -132,7 +132,7 @@
             Scene.apply(this, arguments);
 
             this.camera = new Camera(0, 0, this);
-            this.player = new Player(100, 64, this);
+            this.player = new Player(100, -64, this);
             this.monster = new Player(96, 128, this);
             this.monster.type = "monster";
             this.monster.status = "walking";
