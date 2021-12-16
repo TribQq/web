@@ -11,19 +11,6 @@
     <canvas id='screen' style='width: 640px; height: 640px;' />
 
     <script>
-        /**
-                                 Ne podsmatrivai
-
-                                 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-                                ░░▄▀░░░▄░░░▄▀▀▄▀▄░░░░░░░░░░░░░
-                                ░█░░░░▐▐░░█░░▐▐░░▐░░░░░░▄▄░░░░
-                                ░█░░░░░▀░░░▀▄░▀░░▐░░░░░▐░░▐░░░
-                                ░█░░░░░░░▄░░▐░░░░▐░░░▄▄▐░░▐▄▄░
-                                ░░▀▄░░░░▄░▀▀░▄░░▄▀░░▐░░▐░░▐░▐░
-                                ░░░░▀░░░░▀▀▀▀░░▀░░░░▐░░░░░░░▐░
-                                ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-                                 */
-
         function Scene(screen, controls) {
             this.canvas = screen.canvas;
             this.ctx = this.canvas.getContext('2d');
@@ -98,6 +85,62 @@
             }
 
         }
+
+        function Win(screen, controls) {
+            Scene.apply(this, arguments);
+        }
+
+        Win.prototype = Object.create(Scene.prototype);
+        Win.prototype.constructor = Win;
+
+
+        Win.prototype.render = function(time) {
+            this.ctx.fillStyle = '#000000';
+            this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+            this.ctx.fillStyle = '#ffffff';
+            this.ctx.font = "22px Georgia";
+            this.ctx.fillText("You won!Nice shot duDe!(￢_￢;)..", 50, 70);
+            return "win";
+        };
+
+        function Menu(screen, controls) {
+            Scene.apply(this, arguments);
+        }
+
+        Menu.prototype = Object.create(Scene.prototype);
+        Menu.prototype.constructor = Menu;
+
+
+        Menu.prototype.render = function(time) {
+
+            this.ctx.drawImage(this.imgs['title'],
+                0, 0, 600, 600,
+                0, 0, 600, 600);
+            <!-- тут фэйл в ориге -->
+
+            this.ctx.fillStyle = '#FFFFFF';
+            this.ctx.font = "22px Arial";
+            this.ctx.fillText("Нажмите пробел", 250, 500);
+            if (this.controls.states['fire']) {
+                return "game";
+            } else {
+                return "menu";
+            }
+        };
+
+
+        function Game(screen, controls) {
+            Scene.apply(this, arguments);
+
+            this.camera = new Camera(0, 0, this);
+            this.player = new Player(100, 64, this);
+            this.monster = new Player(96, 128, this);
+            this.monster.type = "monster";
+            this.monster.status = "walking";
+            this.sounds = {};
+            this.sounds['arrow'] = new Sound('assets/arrow.wav');
+            this.sounds['sword'] = new Sound('assets/sword.wav');
+            this.map = []
     </script>
 
 </body>
