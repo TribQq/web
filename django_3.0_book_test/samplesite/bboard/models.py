@@ -1,5 +1,7 @@
 from django.db import models
 
+# Модель - это класс, описывающий одну из таблиц в БД и инструменты для работы с ней
+
 class Rubric(models.Model):
     name = models.CharField(max_length=20, db_index=True, verbose_name='name')
 
@@ -10,7 +12,6 @@ class Rubric(models.Model):
         verbose_name_plural = 'Rubrics'
         verbose_name = 'Rubric'
         ordering = ['name']
-
 class Bb(models.Model):
     # создание модели(подкласс класса Model из модуля django.db.models)
     # артрибуты класса с различными экземплярами класса
@@ -20,7 +21,7 @@ class Bb(models.Model):
     published = models.DateTimeField(auto_now_add=True,db_index=True,verbose_name= 'published')
 
     rubric = models.ForeignKey('Rubric', null=True , on_delete=models.PROTECT,verbose_name='Rubric')
-
+    # установка связи 1-многие где рубрика==1 модели== многие стр 54
     class Meta:
         verbose_name_plural = 'Ad'
         verbose_name = 'Ads'

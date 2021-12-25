@@ -18,7 +18,7 @@ def index(request):
     context = {'bbs':bbs, 'rubrics':rubrics}
     return render(request,'bboard/index.html',context)
 
-def by_rubric(request,rubric_id):
+def by_rubric(request,rubric_id): #reques - указание дальнейшего маршрута
     bbs = Bb.objects.filter(rubric=rubric_id)
     rubrics = Rubric.objects.all()
     current_rubric = Rubric.objects.get(pk=rubric_id)
@@ -28,10 +28,11 @@ def by_rubric(request,rubric_id):
 def index_1(request):
     return HttpResponse('12345')
 
-class BBCreateView(CreateView):
+class BBCreateView(CreateView): # выскоуровневый контроллер-класс
+    #производный от базового класса который уже настроен в жанге из коробки
     template_name='bboard/create.html' # путь к файлу шаблона, создающего страницу с формой;
     form_class =BbForm #—ссылка на класс формы, связанной с моделью;
-    succes_url=reverse_lazy('index') # интернет-адрес для перенаправления после
+    succes_url=reverse_lazy('index') # интернет-адрес для перенаправления после(нэйм url pattern`a)
     #возможно ошибка!!!!!!!!!!!!!!!!!!
 
     def get_context_data(self,**kwargs):

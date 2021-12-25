@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.CreateModel(
+        migrations.CreateModel( # создаёт модель рубрик в бд
             name='Rubric',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
                 'ordering': ['name'],
             },
         ),
-        migrations.AlterModelOptions(
+        migrations.AlterModelOptions( # обновляет модель добавляет поле рубрик + vrb_name
             name='bb',
             options={'ordering': ['-published'], 'verbose_name': 'Ads', 'verbose_name_plural': 'Ad'},
         ),

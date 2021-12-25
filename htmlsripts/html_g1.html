@@ -320,6 +320,61 @@
             this.arrows = [];
 
         }
+        Game.prototype = Object.(Scene.prototype);
+
+        Game.prototype.constructor = Game;
+
+        Game.prototype.render_bg = function(time) {
+            var start_col = Math.floor(this.camera.x / 64);
+            var start_row = Math.floor(this.camera.y / 64);
+
+            for (var i = start_row; i < (start_row + 11); i++) {
+                for (var j = start_col; j < (start_col + 11); j++) {
+                    if ((j < 20) && (i < 20)) {
+                        var tile = this.tiles[this.map[i][j]];
+                        this.ctx.drawImage(this.imgs['bg'],
+                            tile.j * 64, tile.i * 64, 64, 64,
+                            (j * 64) - this.camera.x, (i * 64) - this.camera.y, 64, 64);
+                    }
+                }
+            }
+
+        };
+
+
+        Game.prototype.render_sprites = function(time) {
+
+
+            this.player.update(time);
+            this.monster.update(time);
+
+
+            //render monster
+            this.ctx.drawImage(this.imgs['tyan'],
+                this.monster.j * 64, this.monster.i * 64, 64, 64,
+                (this.monster.x) - this.camera.x, (this.monster.y) - this.camera.y, 64, 64);
+
+            //render player
+            this.ctx.drawImage(this.imgs['player'],
+                this.player.j * 64, this.player.i * 64, 64, 64,
+                (this.player.x) - this.camera.x, (this.player.y) - this.camera.y, 64, 64);
+
+
+
+            //render arows
+            for (var i = this.arrows.length; i > 0; i--) {
+                if (this.arrows[i - 1].active === false) this.arrows.splice(i - 1, 1);
+            }
+
+            for (var i = 0; i < this.arrows.length; i++) {
+                this.ctx.drawImage(this.imgs['player'],
+                    this.arrows[i].j * 64, this.arrows[i].i * 64, 64, 64,
+                    (this.arrows[i].x) - this.camera.x, (this.arrows[i].y) - this.camera.y, 64, 64);
+
+            }
+
+
+        };
     </script>
 
 </body>

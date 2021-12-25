@@ -12,6 +12,7 @@
 </header>
 <nav>
     <a href="{% url 'index' %}">Главная</a>
+<!--  перенаправление в функцию с имененм 'index' в файле urls этого приложения  -->
     <a href="{% url 'add' %}">Добавить</a>
     {% for rubric in rubrics %}
     <a href="{% url 'by_rubric' rubric.pk %}">
