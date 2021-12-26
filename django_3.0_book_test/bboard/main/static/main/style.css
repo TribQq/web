@@ -1,0 +1,20 @@
+header {
+    background: url('crol.gif') left / auto 50% no-repeat, url('crol.gif') right / auto 50% no-repeat;
+    background-image: border-radius 50%;
+}
+
+
+/* так у меня же выключены статик файлы крола и бэкраунда и не должно быть.... */
+
+
+/* .mb-4 {
+    background-color: black;
+}
+
+.display-1 {
+    background-color: green;
+} */
+
+.root {
+    font-size: larger;
+}
