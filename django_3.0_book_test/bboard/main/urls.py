@@ -3,6 +3,8 @@ from .views import *
 
 app_name = 'main'
 urlpatterns = [
+    path('accounts/register/done/',RegisterDoneView.as_view(),name='register_done'),
+    path('accounts/register/', RegisterUserView.as_view(),name='register'),
     path('accounts/profile/change/', ChangeUserInfoView.as_view(), name='profile_change'),
     path('accounts/profile/', profile, name='profile'), # передаёт функции из views нужные значения(+ чекает)
     path('accounts/logout/', BBLogoutView.as_view(), name='logout'),
