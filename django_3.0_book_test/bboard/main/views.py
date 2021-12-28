@@ -10,10 +10,12 @@ from django.views.generic.base import TemplateView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404
+from django.core.signing import BadSignature
+
 
 from .models import AdvUser
 from .forms import ChangeUserInfoForm,RegisterUserForm
-
+from .utilites import signer
 
 def index(request):
     return render(request,'main/index.html')
@@ -71,3 +73,19 @@ class RegisterUserView(CreateView): #контроллер-класс регис�
 
 class RegisterDoneView(TemplateView): # Контроллер, который выведет сообщение об успешной регистрации w и, в силу его исключительной простоты, станет производным от класса TemplateView
     template_name = 'main/register_done.html'
+
+
+def user_activate(request,sign):
+    try:
+        username = signer.unsign(sign) #Подписанный идентификатор пользователя, передаваемый в составе интернетадреса, получаем с параметром sign. Далее извлекаем из него имя пользователя,
+    except BadSignature:
+        return render(request,'main/bad_signature.html') # перенаправление в случае неудачи
+    user = get_object_or_404(AdvUser, username=username)
+    if user.is_actvated:
+        template = 'main/user_is_activated.html' # в случае уже активиров
+    else:
+        template='main/activation_done.html' # актив завершен
+        user.is_active = True #  делаем его активным, присвоив значения тrue
+        user.is_activated = True  #делаем его активным, присвоив значения тrue
+        user.save()
+    return render(request,template)

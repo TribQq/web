@@ -125,3 +125,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 AUTH_USER_MODEL = 'main.AdvUser' # переназначаем дефолтную модель юзера на модель из...
+
+EMAIL_PORT = 650
