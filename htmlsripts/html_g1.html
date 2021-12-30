@@ -320,7 +320,7 @@
             this.arrows = [];
 
         }
-        Game.prototype = Object.(Scene.prototype);
+        Game.prototype = Object.create(Scene.prototype);
 
         Game.prototype.constructor = Game;
 
@@ -347,6 +347,7 @@
 
             this.player.update(time);
             this.monster.update(time);
+            this.camera.update(time);
 
 
             //render monster
@@ -367,6 +368,7 @@
             }
 
             for (var i = 0; i < this.arrows.length; i++) {
+                this.arrows[i].update(time);
                 this.ctx.drawImage(this.imgs['player'],
                     this.arrows[i].j * 64, this.arrows[i].i * 64, 64, 64,
                     (this.arrows[i].x) - this.camera.x, (this.arrows[i].y) - this.camera.y, 64, 64);
@@ -375,6 +377,30 @@
 
 
         };
+        Game.prototype.render = function(time) {
+            this.ctx.fillStyle = '#ffffff';
+            this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+            this.render_bg(time);
+            this.render_sprites(time);
+
+            if ((this.monster.dead) &&
+                (this.player.x > 1152) &&
+                (this.player.y > 1100)) {
+                return "win";
+            } else {
+                return "game";
+            }
+        };
+
+
+        function Camera(x, y, scene) {
+            this.x = x;
+            this.y = y;
+            this.w = 640;
+            this.h = 640;
+            this.scene = scene;
+        }
     </script>
 
 </body>
