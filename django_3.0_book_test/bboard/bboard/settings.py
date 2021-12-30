@@ -128,4 +128,3 @@ AUTH_USER_MODEL = 'main.AdvUser' # переназначаем дефолтную
 
 EMAIL_PORT = 725
 
-

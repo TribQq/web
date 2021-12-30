@@ -15,7 +15,7 @@ from django.core.signing import BadSignature
 
 from .models import AdvUser
 from .forms import ChangeUserInfoForm,RegisterUserForm
-from .utilites import signer
+from .utilities import signer
 
 def index(request):
     return render(request,'main/index.html')
@@ -57,7 +57,7 @@ class ChangeUserInfoView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
         self.user_id = request.user.pk # онтроллера-класса и получает объект запроса в качестве одного из параметров. В переопределенном методе setup () мы извлечем ключ пользователя и сохраним его в атрибуте user _ id.
         return super().setup(request, *args, **kwargs)
         # стр 610
-    def get_object(self, queryset = None):# Извлечение исправляемой записи выполняем в методе get _ obj ect ( )
+    def get_object(self, queryset=None):# Извлечение исправляемой записи выполняем в методе get _ obj ect ( )
         # который контроллер-класс унаследовал от примеси S ingleObj ectMixin
         if not queryset: # В переопределенном методе сначала учитываем тот момент, что набор записей, из которого следует извлечь искомую запись, может быть передан методу с параметром queryset, а может
         #  быть и не передан - в этом случае набор записей следует получить вызовом метода get _ queryset ( ) .
@@ -75,17 +75,17 @@ class RegisterDoneView(TemplateView): # Контроллер, который в�
     template_name = 'main/register_done.html'
 
 
-def user_activate(request,sign):
+def user_activate(request, sign):
     try:
         username = signer.unsign(sign) #Подписанный идентификатор пользователя, передаваемый в составе интернетадреса, получаем с параметром sign. Далее извлекаем из него имя пользователя,
     except BadSignature:
-        return render(request,'main/bad_signature.html') # перенаправление в случае неудачи
+        return render(request, 'main/bad_signature.html') # перенаправление в случае неудачи
     user = get_object_or_404(AdvUser, username=username)
-    if user.is_actvated:
+    if user.is_activated:
         template = 'main/user_is_activated.html' # в случае уже активиров
     else:
-        template='main/activation_done.html' # актив завершен
+        template = 'main/activation_done.html' # актив завершен
         user.is_active = True #  делаем его активным, присвоив значения тrue
         user.is_activated = True  #делаем его активным, присвоив значения тrue
         user.save()
-    return render(request,template)
+    return render(request, template)
