@@ -1,12 +1,16 @@
+#A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+
 from django.shortcuts import render
 from django.http import Http404,HttpResponse
 from django.template import TemplateDoesNotExist
 from django.template.loader import get_template
+from django.contrib.auth import logout
 from django.contrib.auth.views import LoginView,LogoutView,PasswordChangeView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic.edit import UpdateView,CreateView
 from django.views.generic.base import TemplateView
+from django.views.generic.edit import UpdateView,CreateView,DeleteView
+from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404
@@ -89,3 +93,23 @@ def user_activate(request, sign):
         user.is_activated = True  #делаем его активным, присвоив значения тrue
         user.save()
     return render(request, template)
+
+
+class DeleteUserView(LoginRequiredMixin, DeleteView):
+    model = AdvUser
+    template_name = 'main/delete_user.html'
+    success_url = reverse_lazy('main:index')
+
+    def setup(self,request, *args, **kwargs):
+        self.user_id = request.user.pk #тоже что и в ChangeUserInfoView: взяли ключ юзера
+        return super().setup(request, *args, **kwargs) #  В переопределенном методе setup () сохранили ключ текущего пользователя
+
+    def post(self,request, *args, **kwargs): #Перед удалением текущего пользователя необходимо выполнить выход, что мы и сделали в переопределенном методе post () .
+        logout(request)
+        messages.add_message(request, messages.SUCCESS, 'Пользователь удален') # и префаером вывели сообщение об удалении
+        return super().post(request, *args, **kwargs)
+
+    def get_object(self, queryset=None): # а в переопределенном методе get_object ( ) отыскали по этому ключу пользователя, подлежащего удалению.
+        if not queryset:
+            queryset = self.get_queryset()
+        return get_object_or_404(queryset, pk=self.user_id)
