@@ -3,6 +3,8 @@
 from django.contrib import admin
 import datetime
 
+from django.contrib.auth.forms import ReadOnlyPasswordHashField
+from django.utils.safestring import mark_safe
 
 from .models import AdvUser
 from .utilities import send_activation_notification
@@ -50,20 +52,30 @@ class AdvUserAdmin(admin.ModelAdmin):
     search_fields = ('username', 'email', 'first_name', 'last_name')
     list_filter = (NonacitvatedFilter,)
 
+    password = ReadOnlyPasswordHashField(label=("Password"),
+                                         help_text=("Raw passwords are not stored, so there is no way to see "
+                                                    "this user's password, but you can change the password "
+                                                    "using <a href=\"../password/\">this form</a>."))
+    # def test_text(self):
+    #     return 'test_text'
+
     fields = (('username', 'email'),
               ('first_name', 'last_name'),
-              ('password'),
+              ('password'),'get_paswword',
               ('send_messages', 'is_active', 'is_activated'),
               ('is_staff', 'is_superuser'),
               'groups', 'user_permissions',
               ('last_login', 'date_joined'))
+
     # Мы явно указываем список полей, которые должны выводиться в формах для правки пользователей, чтобы выстроить их в удобном для работы порядке
-    readonly_fields = ('last_login', 'date_joined')  # делаем доступными только для чтения.
+    readonly_fields = ('last_login', 'date_joined','get_paswword')  # делаем доступными только для чтения.
     actions = (
     send_activation_notifications,)  # ц, регистрируем действие, которое разошлет пользователям письма с предписаниями выполнить активацию.
     # Это действие реализовано функцией send_activation _ notifications (). В ней мы перебираем всех выбранных пользователей
     # и для каждого, кто не выполнил активацию, вызываем функцию send_activation_notification (),
     # объявленную ранее в модуле uti lities.py и непосредственно производящую отправку писем.
-
+    def get_paswword(self, object):
+        if object.password:
+            return mark_safe(f'<p>Raw passwords are not stored, so there is no way to see this users password, but you can change the password using <a href="..">this form</a>.</p>')
 
 admin.site.register(AdvUser, AdvUserAdmin)

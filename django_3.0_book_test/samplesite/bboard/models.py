@@ -17,7 +17,7 @@ class Spare(models.Model):
 class Machine(models.Model):
     name = models.CharField(max_length=30)
     spares = models.ManyТoManyField(Spare)
-    #связывает машины и детали типом многие ко многим (стр 100)
+    # связывает машины и детали типом многие ко многим (стр 100)
 
 
 class Rubric(models.Model):

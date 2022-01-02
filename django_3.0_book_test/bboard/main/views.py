@@ -43,11 +43,6 @@ class BBLogoutView(LoginRequiredMixin, LogoutView): # LoginRequiredMixin - че�
     template_name = 'main/logout.html'
 
 
-class BBPasswordChangeView(SuccessMessageMixin, LoginRequiredMixin, PasswordChangeView):
-    template_name = 'main/password_change.html'
-    success_url = reverse_lazy('main:profile')
-    success_message = 'Пароль изменён'
-
 class ChangeUserInfoView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     # LoginRequiredМixin- запрещет доступ к контроллеру гостям, и примесь SuccessMessageMixin n,- для вывода всплывающих сообщений об успешном выполнении операции
     model = AdvUser  # использует модель..
@@ -68,6 +63,14 @@ class ChangeUserInfoView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
             queryset = self.get_queryset()
         return get_object_or_404(queryset, pk=self.user_id) # непосредственно ищем запись, представляющую текущего пользователя.
 
+
+class BBPasswordChangeView(SuccessMessageMixin, LoginRequiredMixin, PasswordChangeView):
+    template_name = 'main/password_change.html'
+    success_url = reverse_lazy('main:profile')
+    success_message = 'Пароль изменён'
+
+class BBPasswordChangeViewFromAdmin(PasswordChangeView):
+    pass
 
 class RegisterUserView(CreateView): #контроллер-класс регистр пользовател стр 615
     model = AdvUser
