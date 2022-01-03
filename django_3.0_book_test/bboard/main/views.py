@@ -39,6 +39,7 @@ class BBLoginView(LoginView): #контроллер-класс (подкласс
 def profile(request):
     return render(request, 'main/profile.html')
 
+
 class BBLogoutView(LoginRequiredMixin, LogoutView): # LoginRequiredMixin - чек регистрации + чек входа
     template_name = 'main/logout.html'
 
@@ -68,6 +69,7 @@ class BBPasswordChangeView(SuccessMessageMixin, LoginRequiredMixin, PasswordChan
     template_name = 'main/password_change.html'
     success_url = reverse_lazy('main:profile')
     success_message = 'Пароль изменён'
+
 
 class BBPasswordChangeViewFromAdmin(PasswordChangeView):
     pass
