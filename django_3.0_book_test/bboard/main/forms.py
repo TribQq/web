@@ -4,6 +4,8 @@ from django.contrib.auth import password_validation
 from django.core.exceptions import ValidationError
 from .apps import user_registered
 
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+
 
 class ChangeUserInfoForm(forms.ModelForm):
     email = forms.EmailField(required=True, label='Адресс электронной почты')
@@ -12,6 +14,21 @@ class ChangeUserInfoForm(forms.ModelForm):
         model = AdvUser
         fields = ('username', 'email', 'first_name', 'last_name',
                   'send_messages')  # быстрое обьявление неизменных полей (стр 609)
+
+class AdvUserCreationForm(UserCreationForm):
+    class Meta(UserCreationForm):
+        model = AdvUser
+        fields = ('username', 'email')
+
+
+class AdvUserChangeForm(UserChangeForm):
+    email = forms.EmailField(required=True, label='Адресс электронной почты')
+    class Meta:
+        model = AdvUser
+        fields = ('username', 'email', 'first_name', 'last_name',
+                  'send_messages')
+        # fields = ('username', 'email', 'first_name', 'last_name',
+        #           'send_messages','is_activated')
 
 
 class RegisterUserForm(forms.ModelForm):  # форма реги 614 стр...

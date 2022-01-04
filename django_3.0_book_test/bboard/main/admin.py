@@ -4,11 +4,11 @@
 from django.contrib import admin
 import datetime
 
-from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.utils.safestring import mark_safe
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.forms import UserCreationForm
 
-
-from .forms import SubRubricForm
+from .forms import SubRubricForm, AdvUserChangeForm
 from .models import AdvUser, SuperRubric, SubRubric
 from .utilities import send_activation_notification
 
@@ -50,7 +50,33 @@ class NonacitvatedFilter(admin.SimpleListFilter):  # стр 624
             return queryset.filter(is_active=False, is_activated=False, date_joined__date__lt=d)
 
 
-class AdvUserAdmin(admin.ModelAdmin):
+class AdvUserAdmin(UserAdmin):
+    add_form = UserCreationForm
+    form = AdvUserChangeForm
+    model = AdvUser
+    list_display = ['email','username','__str__', 'is_activated', 'date_joined',]
+    # search_fields = ('username', 'email', 'first_name', 'last_name')
+    list_filter = (NonacitvatedFilter,)
+    fieldsets = (
+        ('section_0', {
+            'fields': (('username', 'email'),
+              ('first_name', 'last_name'),
+              'password',
+              ('send_messages', 'is_active', 'is_activated'),
+              ('is_staff', 'is_superuser'),
+              'groups', 'user_permissions',
+              ('last_login', 'date_joined'))
+        }),
+    )
+
+
+    readonly_fields = ('last_login', 'date_joined', )
+    actions = (send_activation_notifications,)
+
+admin.site.register(AdvUser, AdvUserAdmin)
+
+
+class AdvUserNotAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'is_activated', 'date_joined')
     search_fields = ('username', 'email', 'first_name', 'last_name')
     list_filter = (NonacitvatedFilter,)
@@ -89,7 +115,7 @@ class AdvUserAdmin(admin.ModelAdmin):
     #     obj.save()
 
 
-admin.site.register(AdvUser, AdvUserAdmin)
+# admin.site.register(AdvUser, AdvUserNotAdmin)
 
 
 class SubRubricInline(admin.TabularInline):

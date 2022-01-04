@@ -9,7 +9,7 @@ class AdvUser(AbstractUser):  # грейдим встроенную модель
     is_activated = models.BooleanField(default=True, db_index=True, verbose_name='Активация пройдена')
     send_messages = models.BooleanField(default=True, verbose_name='Отправлять ли оповещения?')
 
-    class Meta:
+    class Meta(AbstractUser.Meta):
         pass
 
 
