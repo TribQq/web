@@ -1,4 +1,4 @@
-#gghhggdass55Z User0-User1 passwords
+# gghhggdass55Z User0-User1 passwords
 
 
 from django.contrib import admin
@@ -7,7 +7,9 @@ import datetime
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.utils.safestring import mark_safe
 
-from .models import AdvUser
+
+from .forms import SubRubricForm
+from .models import AdvUser, SuperRubric, SubRubric
 from .utilities import send_activation_notification
 
 
@@ -55,34 +57,55 @@ class AdvUserAdmin(admin.ModelAdmin):
 
     fields = (('username', 'email'),
               ('first_name', 'last_name'),
-              ('password'),'new_password_link',
+              ('password'), 'new_password_link',
               ('send_messages', 'is_active', 'is_activated'),
               ('is_staff', 'is_superuser'),
               'groups', 'user_permissions',
               ('last_login', 'date_joined'))
 
     # Мы явно указываем список полей, которые должны выводиться в формах для правки пользователей, чтобы выстроить их в удобном для работы порядке
-    readonly_fields = ('last_login', 'date_joined','new_password_link')  # делаем доступными только для чтения.
-    actions = (send_activation_notifications,)  # ц, регистрируем действие, которое разошлет пользователям письма с предписаниями выполнить активацию.
+    readonly_fields = ('last_login', 'date_joined', 'new_password_link')  # делаем доступными только для чтения.
+    actions = (
+        send_activation_notifications,)  # ц, регистрируем действие, которое разошлет пользователям письма с предписаниями выполнить активацию.
+
     # Это действие реализовано функцией send_activation _ notifications (). В ней мы перебираем всех выбранных пользователей
     # и для каждого, кто не выполнил активацию, вызываем функцию send_activation_notification (),
     # объявленную ранее в модуле uti lities.py и непосредственно производящую отправку писем.
 
     def new_password_link(self, object):
         if object.password:
-            return mark_safe(f'<p>Raw passwords are not stored, so there is no way to see this users password, but you can change the password using <a href="../password/">this form</a>.</p>')
+            return mark_safe(
+                f'<p>Raw passwords are not stored, so there is no way to see this users password, but you can change the password using <a href="../password/">this form</a>.</p>')
 
-
-# def save_model(self, request, obj, form, change):
-#     # Override this to set the password to the value in the field if it's
-#     # changed.
-#     if obj.pk:
-#         orig_obj = models.AdvUser.objects.get(pk=obj.pk)
-#         if obj.password != orig_obj.password:
-#             obj.set_password(obj.password)
-#     else:
-#         obj.set_password(obj.password)
-#     obj.save()
+    # def save_model(self, request, obj, form, change):
+    #     # Override this to set the password to the value in the field if it's
+    #     # changed.
+    #     if obj.pk:
+    #         orig_obj = models.AdvUser.objects.get(pk=obj.pk)
+    #         if obj.password != orig_obj.password:
+    #             obj.set_password(obj.password)
+    #     else:
+    #         obj.set_password(obj.password)
+    #     obj.save()
 
 
 admin.site.register(AdvUser, AdvUserAdmin)
+
+
+class SubRubricInline(admin.TabularInline):
+    model = SubRubric
+
+
+class SuperRubricAdmin(admin.ModelAdmin):
+    exclude = ('super_rubric',)
+    inlines = (SubRubricInline,)
+
+
+admin.site.register(SuperRubric, SuperRubricAdmin)
+
+
+class SubRubricAdmin(admin.ModelAdmin):
+    form = SubRubricForm
+
+
+admin.site.register(SubRubric,SubRubricAdmin)
