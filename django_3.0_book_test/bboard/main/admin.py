@@ -9,7 +9,7 @@ from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import UserCreationForm
 
 from .forms import SubRubricForm, AdvUserChangeForm
-from .models import AdvUser, SuperRubric, SubRubric
+from .models import AdvUser, SuperRubric, SubRubric, Bb, AdditionalImage
 from .utilities import send_activation_notification
 
 
@@ -54,24 +54,24 @@ class AdvUserAdmin(UserAdmin):
     add_form = UserCreationForm
     form = AdvUserChangeForm
     model = AdvUser
-    list_display = ['email','username','__str__', 'is_activated', 'date_joined',]
+    list_display = ['email', 'username', '__str__', 'is_activated', 'date_joined', ]
     # search_fields = ('username', 'email', 'first_name', 'last_name')
     list_filter = (NonacitvatedFilter,)
     fieldsets = (
         ('section_0', {
             'fields': (('username', 'email'),
-              ('first_name', 'last_name'),
-              'password',
-              ('send_messages', 'is_active', 'is_activated'),
-              ('is_staff', 'is_superuser'),
-              'groups', 'user_permissions',
-              ('last_login', 'date_joined'))
+                       ('first_name', 'last_name'),
+                       'password',
+                       ('send_messages', 'is_active', 'is_activated'),
+                       ('is_staff', 'is_superuser'),
+                       'groups', 'user_permissions',
+                       ('last_login', 'date_joined'))
         }),
     )
 
-
-    readonly_fields = ('last_login', 'date_joined', )
+    readonly_fields = ('last_login', 'date_joined',)
     actions = (send_activation_notifications,)
+
 
 admin.site.register(AdvUser, AdvUserAdmin)
 
@@ -134,4 +134,17 @@ class SubRubricAdmin(admin.ModelAdmin):
     form = SubRubricForm
 
 
-admin.site.register(SubRubric,SubRubricAdmin)
+admin.site.register(SubRubric, SubRubricAdmin)
+
+
+class AdditionalImageInline(admin.TabularInline): # встроенный редактор дополнительных иллюстраций Additionalimageinline
+    model = AdditionalImage
+
+
+class BbAdmin(admin.ModelAdmin):
+    list_display = ('rubric', 'title', 'content', 'author', 'created_at',)
+    fields = (('rubric', 'author'), 'title', 'content', 'price', 'contacts', 'image', 'is_active')
+    inlines = (AdditionalImageInline,)
+
+
+admin.site.register(Bb, BbAdmin)

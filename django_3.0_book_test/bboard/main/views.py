@@ -1,5 +1,4 @@
 #A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
-from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.shortcuts import render
 from django.http import Http404,HttpResponse
 from django.template import TemplateDoesNotExist
@@ -15,10 +14,11 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404
 from django.core.signing import BadSignature
+from django.core.paginator import Paginator
+from django.db.models import Q
 
-
-from .models import AdvUser
-from .forms import ChangeUserInfoForm,RegisterUserForm
+from .models import AdvUser,SubRubric, Bb
+from .forms import ChangeUserInfoForm, RegisterUserForm, SearchForm
 from .utilities import signer
 
 def index(request):
@@ -120,6 +120,24 @@ class DeleteUserView(LoginRequiredMixin, DeleteView):
         return get_object_or_404(queryset, pk=self.user_id)
 
 
-def by_rubric(request, pk):
-    pass
+def by_rubric(request, pk): # 639 стр
+    rubric = get_object_or_404(SubRubric, pk=pk) # Извлекаем выбранную посетителем рубрику  нам понадобится вывести на странице ее название.
+    bbs = Bb.objects.filter(is_active=True, rubric=pk) #  Затем выбираем объявления, относящиеся к этой рубрике и помеченные для вывода
+    if 'keyword' in request.GET: # о выполняем фильтрацию уже отобранных объявлений по введенному посетителем искомому слову, взятому из GЕТ-параметра keyword
+        keyword = request.GET['keyword'] # Ради простоты получаем искомое слово непосредственно из GЕТ-параметра
+        q = Q(title_icontains=keyword) | Q(content__icontains=keyword) #  формируем на основе полученного слова условие фильтрации, применив объект Q,
+        bbs = bbs.filter(q) # выполняем фильтрацию объявлений
+    else:
+        keyword = ''
+    form = SearchForm(initial={'keyword': keyword}) # создаем экземпляр формы SearchForm, чтобы вывести ее на экран
+    # Конструктору ее класса в параметре intial передаем полученное ранее искомое слово, чтобы оно присутствовало в выведенной на экран форме.
+    paginator = Paginator(bbs, 2) # пагинатор, указав у него количество записей в части равным 2
+    if 'page' in request.GET:
+        page_num = request.GET['page']
+    else:
+        page_num = 1
+    page = paginator.get_page(page_num)
+    contex = {'rubric':rubric, 'page':page, 'bbs':page.object_list, 'form':form}
+    return render(request, 'main/by_rubric.html', contex) # , выводим страницу со списком объявлений
+
 

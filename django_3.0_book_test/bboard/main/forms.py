@@ -1,5 +1,5 @@
 from django import forms
-from .models import AdvUser,SubRubric
+from .models import AdvUser, SubRubric
 from django.contrib.auth import password_validation
 from django.core.exceptions import ValidationError
 from .apps import user_registered
@@ -15,6 +15,7 @@ class ChangeUserInfoForm(forms.ModelForm):
         fields = ('username', 'email', 'first_name', 'last_name',
                   'send_messages')  # быстрое обьявление неизменных полей (стр 609)
 
+
 class AdvUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm):
         model = AdvUser
@@ -23,6 +24,7 @@ class AdvUserCreationForm(UserCreationForm):
 
 class AdvUserChangeForm(UserChangeForm):
     email = forms.EmailField(required=True, label='Адресс электронной почты')
+
     class Meta:
         model = AdvUser
         fields = ('username', 'email', 'first_name', 'last_name',
@@ -74,11 +76,18 @@ class RegisterUserForm(forms.ModelForm):  # форма реги 614 стр...
         fields = ('username', 'email', 'password1', 'password2', 'first_name', 'last_name', 'send_messages')
 
 
-class SubRubricForm(forms.ModelForm): # У подрубрик сделаем поле надрубрики (super_ruЬric) обязательным для заполнения. Для этого мы объявим форму SuЬRuЬricFor
-    super_rubric = forms.ModelChoiceField(queryset=SubRubric.object.all(), empty_label=None, label='Надрубрика', required=True)
+class SubRubricForm(
+    forms.ModelForm):  # У подрубрик сделаем поле надрубрики (super_ruЬric) обязательным для заполнения. Для этого мы объявим форму SuЬRuЬricFor
+    super_rubric = forms.ModelChoiceField(queryset=SubRubric.object.all(), empty_label=None, label='Надрубрика',
+                                          required=True)
 
     class Meta:
         model = SubRubric
         fields = '__all__'
 
 
+class SearchForm(forms.Form): #Код формы поиска
+    # искомое слово, введенное посетителем, будем пересылать  контроллеру методом GET в GЕТ-параметре keyword.
+    keyword = forms.CharField(required=False, max_length=20, label='') # посетитель может ввести в поле keyword искомое слово, а может и не
+    # ввести (чтобы отменить выполненный ранее поиск и вновь вывести все объявления из списка),мы пометили этj
+    # поле как необязательное для заполнения. А еще убрали у этого поля надпись, присвоив параметру label пустую строку

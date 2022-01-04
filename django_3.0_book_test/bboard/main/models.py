@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+from .utilities import get_timestamp_path
+
 
 # шаблогы для бд(нужн а миграция)
 
@@ -8,6 +10,12 @@ from django.contrib.auth.models import AbstractUser
 class AdvUser(AbstractUser):  # грейдим встроенную модель юзера
     is_activated = models.BooleanField(default=True, db_index=True, verbose_name='Активация пройдена')
     send_messages = models.BooleanField(default=True, verbose_name='Отправлять ли оповещения?')
+
+    def delete(self, *args,
+               **kwargs):  # сделаем так, чтобы при удалении пользователя удалялись оставленные им объявления:
+        for bb in self.bb_set.all():
+            bb.delete()
+        super().delete(*args, **kwargs)
 
     class Meta(AbstractUser.Meta):
         pass
@@ -48,17 +56,52 @@ class SuperRubric(Rubric):
 
 class SubRubricManager(models.Manager):
     def get_queryset(self):
-        return super().get_queryset().filter(super_rubric__isnull=False) # Диспетчер записей SuЬRuЬricManager будет отбирать лишь
+        return super().get_queryset().filter(
+            super_rubric__isnull=False)  # Диспетчер записей SuЬRuЬricManager будет отбирать лишь
         # записи с непустым полем super_ruЬric (т. е. подрубрики)
+
 
 class SubRubric(Rubric):
     object = SubRubricManager()
 
     def __str__(self):
-        return '%s - %s' % (self.super_rubric.name,self.name)
+        return '%s - %s' % (self.super_rubric.name, self.name)
 
     class Meta:
         proxy = True
         ordering = ('super_rubric__order', 'super_rubric__name', 'order', 'name')
         verbose_name = 'Подрубрика'
         verbose_name_plural = 'Подрубрики'
+
+
+class Bb(models.Model):
+    rubric = models.ForeignKey(SubRubric, on_delete=models.PROTECT, verbose_name='Рубрика')
+    title = models.CharField(max_length=40, verbose_name='Товар')
+    content = models.TextField(verbose_name='Описание')
+    price = models.FloatField(default=0, verbose_name='Цена')
+    contacts = models.ImageField(blank=True, upload_to=get_timestamp_path, verbose_name='Изображения')
+    author = models.ForeignKey(AdvUser, on_delete=models.CASCADE, verbose_name='Автор обьявления ')
+    image = models.ImageField(blank=True, upload_to=get_timestamp_path, verbose_name='Изображение')
+    is_active = models.BooleanField(default=True, db_index=True, verbose_name='Выводить в списке?')
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Опубликовано')
+
+    def delete(self, *args, **kwargs):
+        for ai in self.additionalimage_set.all():  # перед удалением текущей записи мы перебираем
+            ai.delete()  # и вызовом метода delete () удаляем все связанные дополнительные иллюстрации.
+        super().delete(*args,
+                       **kwargs)  # При вызове метода delete () возникает сигнал post _ delete, обрабатываемый приложением dj ango _ cleanup
+        # , которое в ответ удалит все файлы, хранящиесяв удаленной записи.
+
+    class Meta:
+        verbose_name_plural = 'Обьявления'
+        verbose_name = 'Обьявление'
+        ordering = ['-created_at']
+
+
+class AdditionalImage(models.Model):
+    bb = models.ForeignKey(Bb, on_delete=models.CASCADE, verbose_name='Обьявление')
+    image = models.ImageField(upload_to=get_timestamp_path, verbose_name='Изображение')
+
+    class Meta:
+        verbose_name_plural = 'Доп иллюстрации'
+        verbose_name = 'Доп иллюстрация'

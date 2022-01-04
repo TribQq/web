@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
     'bootstrap4', #програмное ядро библы django-bootstrap4
+    'django_cleanup.apps.CleanupConfig', # (удаляет выгруженные файлы после удаления хранящих их записеймоделей
+    'easy_thumbnails', # создает миниатюры
+
 
 ]
 
@@ -129,3 +132,8 @@ AUTH_USER_MODEL = 'main.AdvUser' # переназначаем дефолтную
 
 EMAIL_PORT = 725
 
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_URL = '/media/'
+
+THUMBNAIL_ALIASES = {'': {'default':{'size':(96,96),'crop':'scale'},},} #настройки плагин(ов)
+THUMBNAIL_BASEDIR = 'thumbnails'
