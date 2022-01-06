@@ -2,9 +2,11 @@ from django import forms
 from .models import AdvUser, SubRubric
 from django.contrib.auth import password_validation
 from django.core.exceptions import ValidationError
-from .apps import user_registered
-
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.forms import inlineformset_factory
+
+from .apps import user_registered
+from .models import Bb,AdditionalImage
 
 
 class ChangeUserInfoForm(forms.ModelForm):
@@ -91,3 +93,18 @@ class SearchForm(forms.Form): #Код формы поиска
     keyword = forms.CharField(required=False, max_length=20, label='') # посетитель может ввести в поле keyword искомое слово, а может и не
     # ввести (чтобы отменить выполненный ранее поиск и вновь вывести все объявления из списка),мы пометили этj
     # поле как необязательное для заполнения. А еще убрали у этого поля надпись, присвоив параметру label пустую строку
+
+
+
+class BbForm(forms.ModelForm): #Объявим форму , связанную с моделью Bb, для ввода самого объявления
+    class Meta:
+        model = Bb
+        fields = '__all__'
+        widgets = {'author': forms.HiddenInput} # Hiddeninput, т. е. скрытое поле
+
+
+AIFormSet = inlineformset_factory(Bb, AdditionalImage, fields='__all__') # встроенный набор форм AIFoпnSet,
+# связанный с моделью Additional lrnage, в которые будут заноситься дополнительные иллюстрации
+
+
+

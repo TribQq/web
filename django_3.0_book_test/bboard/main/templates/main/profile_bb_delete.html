@@ -1,0 +1,10 @@
+ {% extends 'layout/basic.html' %} {% block title %} Обьявление удалено {% endblock %}
+ {% block content %}
+<h2>
+    Профиль пользователя {{ user.username}}
+</h2>
+{% if user.first_name and user.last_name %}
+<p>{{ user.first_name }} {{ user.last_name }} </p>
+{% endif %}
+<h3>Ваше обьявление было успешно удалено</h3>
+{% endblock %}
