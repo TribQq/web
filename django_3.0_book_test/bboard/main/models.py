@@ -79,7 +79,7 @@ class Bb(models.Model):
     title = models.CharField(max_length=40, verbose_name='Товар')
     content = models.TextField(verbose_name='Описание')
     price = models.FloatField(default=0, verbose_name='Цена')
-    contacts = models.ImageField(blank=True, upload_to=get_timestamp_path, verbose_name='Изображения')
+    contacts = models.TextField(verbose_name='Контакты')
     author = models.ForeignKey(AdvUser, on_delete=models.CASCADE, verbose_name='Автор обьявления ')
     image = models.ImageField(blank=True, upload_to=get_timestamp_path, verbose_name='Изображение')
     is_active = models.BooleanField(default=True, db_index=True, verbose_name='Выводить в списке?')
@@ -98,7 +98,7 @@ class Bb(models.Model):
         ordering = ['-created_at']
 
 
-class AdditionalImage(models.Model):
+class AdditionalImage(models.Model): # модель доп иллюстраций
     bb = models.ForeignKey(Bb, on_delete=models.CASCADE, verbose_name='Обьявление')
     image = models.ImageField(upload_to=get_timestamp_path, verbose_name='Изображение')
 

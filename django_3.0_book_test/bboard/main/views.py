@@ -22,7 +22,9 @@ from .forms import ChangeUserInfoForm, RegisterUserForm, SearchForm
 from .utilities import signer
 
 def index(request):
-    return render(request,'main/index.html')
+    bbs = Bb.objects.filter(is_active=True)[:10] # фрагмент, выбирающий из базы последние 1О объявлений:
+    context = {'bbs': bbs}
+    return render(request, 'main/index.html', context)
 
 
 def other_page(request,page): # получает запрашиваему страницу от вызываеющего метода urls (тот что на уровне приложения)
@@ -86,7 +88,7 @@ class RegisterDoneView(TemplateView): # Контроллер, который в�
 
 def user_activate(request, sign):
     try:
-        username = signer.unsign(sign) #Подписанный идентификатор пользователя, передаваемый в составе интернетадреса, получаем с параметром sign. Далее извлекаем из него имя пользователя,
+        username = signer.unsign(sign) # Подписанный идентификатор пользователя, передаваемый в составе интернетадреса, получаем с параметром sign. Далее извлекаем из него имя пользователя,
     except BadSignature:
         return render(request, 'main/bad_signature.html') # перенаправление в случае неудачи
     user = get_object_or_404(AdvUser, username=username)
@@ -94,8 +96,8 @@ def user_activate(request, sign):
         template = 'main/user_is_activated.html' # в случае уже активиров
     else:
         template = 'main/activation_done.html' # актив завершен
-        user.is_active = True #  делаем его активным, присвоив значения тrue
-        user.is_activated = True  #делаем его активным, присвоив значения тrue
+        user.is_active = True # делаем его активным, присвоив значения тrue
+        user.is_activated = True  # делаем его активным, присвоив значения тrue
         user.save()
     return render(request, template)
 
@@ -106,10 +108,10 @@ class DeleteUserView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('main:index')
 
     def setup(self,request, *args, **kwargs):
-        self.user_id = request.user.pk #тоже что и в ChangeUserInfoView: взяли ключ юзера
-        return super().setup(request, *args, **kwargs) #  В переопределенном методе setup () сохранили ключ текущего пользователя
+        self.user_id = request.user.pk # тоже что и в ChangeUserInfoView: взяли ключ юзера
+        return super().setup(request, *args, **kwargs) # В переопределенном методе setup () сохранили ключ текущего пользователя
 
-    def post(self,request, *args, **kwargs): #Перед удалением текущего пользователя необходимо выполнить выход, что мы и сделали в переопределенном методе post () .
+    def post(self,request, *args, **kwargs): # Перед удалением текущего пользователя необходимо выполнить выход, что мы и сделали в переопределенном методе post () .
         logout(request)
         messages.add_message(request, messages.SUCCESS, 'Пользователь удален') # и префаером вывели сообщение об удалении
         return super().post(request, *args, **kwargs)
@@ -122,10 +124,10 @@ class DeleteUserView(LoginRequiredMixin, DeleteView):
 
 def by_rubric(request, pk): # 639 стр
     rubric = get_object_or_404(SubRubric, pk=pk) # Извлекаем выбранную посетителем рубрику  нам понадобится вывести на странице ее название.
-    bbs = Bb.objects.filter(is_active=True, rubric=pk) #  Затем выбираем объявления, относящиеся к этой рубрике и помеченные для вывода
+    bbs = Bb.objects.filter(is_active=True, rubric=pk) # Затем выбираем объявления, относящиеся к этой рубрике и помеченные для вывода
     if 'keyword' in request.GET: # о выполняем фильтрацию уже отобранных объявлений по введенному посетителем искомому слову, взятому из GЕТ-параметра keyword
         keyword = request.GET['keyword'] # Ради простоты получаем искомое слово непосредственно из GЕТ-параметра
-        q = Q(title_icontains=keyword) | Q(content__icontains=keyword) #  формируем на основе полученного слова условие фильтрации, применив объект Q,
+        q = Q(title_icontains=keyword) | Q(content__icontains=keyword) # формируем на основе полученного слова условие фильтрации, применив объект Q,
         bbs = bbs.filter(q) # выполняем фильтрацию объявлений
     else:
         keyword = ''
@@ -137,7 +139,15 @@ def by_rubric(request, pk): # 639 стр
     else:
         page_num = 1
     page = paginator.get_page(page_num)
-    contex = {'rubric':rubric, 'page':page, 'bbs':page.object_list, 'form':form}
+    contex = {'rubric': rubric, 'page': page, 'bbs': page.object_list, 'form': form}
     return render(request, 'main/by_rubric.html', contex) # , выводим страницу со списком объявлений
+
+
+def detail(request, rubric_pk, pk):
+    bb = get_object_or_404(Bb, pk=pk) # обьявлений
+    ais = bb.additionalimage_set.all() # пикчи
+    context = {'bb': bb, 'ais': ais}
+    return render(request, 'main/detail.html', context)
+
 
 

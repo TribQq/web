@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -37,10 +36,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
-    'bootstrap4', #програмное ядро библы django-bootstrap4
-    'django_cleanup.apps.CleanupConfig', # (удаляет выгруженные файлы после удаления хранящих их записеймоделей
-    'easy_thumbnails', # создает миниатюры
-
+    'bootstrap4',  # програмное ядро библы django-bootstrap4
+    'django_cleanup.apps.CleanupConfig',  # (удаляет выгруженные файлы после удаления хранящих их записеймоделей
+    'easy_thumbnails',  # создает миниатюры
 
 ]
 
@@ -116,7 +114,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
@@ -127,13 +124,14 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-AUTH_USER_MODEL = 'main.AdvUser' # переназначаем дефолтную модель юзера на модель из...
+AUTH_USER_MODEL = 'main.AdvUser'  # переназначаем дефолтную модель юзера на модель из...
 
 EMAIL_PORT = 725
 
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-THUMBNAIL_ALIASES = {'': {'default':{'size':(96,96),'crop':'scale'},},} #настройки плагин(ов)
+THUMBNAIL_ALIASES = {'': {
+    'default': {'size': (96, 96),
+                'crop': 'scale'}, }, }  # настройки плагин(ов)
 THUMBNAIL_BASEDIR = 'thumbnails'
