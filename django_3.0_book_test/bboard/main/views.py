@@ -173,7 +173,7 @@ def profile_bb_add(request):
     # самого объявления. Метод save () в качестве результата возвращает сохраненную запись, и эту запись мы должны передать через параметр instance конструктору
     # класса набора форм. Это нужно для того, чтобы все дополнительные иллюстрации после сохранения оказались связанными с объявлением
     if request.method == 'POST':
-        form = BbForm(request.POST, request.FILLES)
+        form = BbForm(request.POST, request.FILES)
         if form.is_valid():
             bb = form.save()
             formset = AIFormSet(request.POST, request.FILES, instance=bb)
@@ -191,9 +191,9 @@ def profile_bb_add(request):
 
 @login_required
 def profile_bb_change(request,pk):
-    bb = get_object_or_404(Bb,pk=pk)
+    bb = get_object_or_404(Bb, pk=pk)
     if request.method == 'POST':
-        form = BbForm(request.POST, request.FILLES)
+        form = BbForm(request.POST, request.FILES, instance=bb) # если убрат instance= bb то он будет креэтйтить новую форму а не изменять эту
         if form.is_valid():
             bb = form.save()
             formset = AIFormSet(request.POST, request.FILES, instance=bb)
@@ -207,14 +207,15 @@ def profile_bb_change(request,pk):
     context = {'form': form, 'formset': formset}
     return render(request, 'main/profile_bb_change.html', context)
 
+
 @login_required
 def profile_bb_delete(request, pk):
-
     bb = get_object_or_404(Bb, pk=pk)
     if request.method == 'POST':
         bb.delete()
-        messages.add_message(request, messages.SUCCESS, 'Обьявление удалено')
+        messages.add_message(request, messages.SUCCESS,
+                             'Объявление удалено')
         return redirect('main:profile')
     else:
-        context = { 'bb': bb}
+        context = {'bb': bb}
         return render(request, 'main/profile_bb_delete.html', context)
