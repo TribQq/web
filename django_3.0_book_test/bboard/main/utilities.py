@@ -37,3 +37,10 @@ def send_new_comment_notification(comment): # 659
     subject = render_to_string('email/new_comment_letter_subject.txt', context)
     body_text = render_to_string('email/new_comment_letter_body.txt', context)
     author.email_user(subject, body_text)
+
+
+def send_password_reset(user):
+    if ALLOWED_HOSTS:
+        host = 'http://'+ALLOWED_HOSTS[0]
+    else:
+        host = 'http://localhost:8000'

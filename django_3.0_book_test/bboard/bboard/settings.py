@@ -128,6 +128,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'main.AdvUser'  # переназначаем дефолтную модель юзера на модель из...
 
 EMAIL_PORT = 725
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # Параметр EMAIL_BACKEND указывает класс, используемый для отправки email-ов.
+
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
