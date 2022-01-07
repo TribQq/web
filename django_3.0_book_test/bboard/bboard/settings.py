@@ -37,8 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
     'bootstrap4',  # програмное ядро библы django-bootstrap4
-    'django_cleanup.apps.CleanupConfig',  # (удаляет выгруженные файлы после удаления хранящих их записеймоделей
+    'django_cleanup',  # (удаляет выгруженные файлы после удаления хранящих их записеймоделей mb need django_cleanup.apps.CleanupConfig'
     'easy_thumbnails',  # создает миниатюры
+    'captcha',
 
 ]
 

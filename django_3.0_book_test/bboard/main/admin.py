@@ -9,7 +9,7 @@ from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import UserCreationForm
 
 from .forms import SubRubricForm, AdvUserChangeForm
-from .models import AdvUser, SuperRubric, SubRubric, Bb, AdditionalImage
+from .models import AdvUser, SuperRubric, SubRubric, Bb, AdditionalImage, Comment
 from .utilities import send_activation_notification
 
 
@@ -141,10 +141,27 @@ class AdditionalImageInline(admin.TabularInline): # встроенный ред�
     model = AdditionalImage
 
 
+class CommentInBbAdmin(admin.StackedInline): # тоже что и TabularInline,just разная визуализация
+    model = Comment
+
+
 class BbAdmin(admin.ModelAdmin):
     list_display = ('rubric', 'title', 'content', 'author', 'created_at',)
-    fields = (('rubric', 'author'), 'title', 'content', 'price', 'contacts', 'image', 'is_active')
-    inlines = (AdditionalImageInline,)
+    fields = (('rubric', 'author'), 'title', 'content', 'price', 'contacts', 'image', 'is_active',)
+    inlines = (AdditionalImageInline, CommentInBbAdmin, )
 
 
 admin.site.register(Bb, BbAdmin)
+
+
+class CommentAdmin(admin.ModelAdmin): # список комментов
+    list_display = ('author', 'content', 'created_at', 'is_active')
+    list_display_links = ('author', 'content')
+    list_filter = ('is_active',)
+    search_fields = ('author', 'content',)
+    date_hierarchy = 'created_at'
+    fields = ('author', 'content', 'is_active', 'created_at')
+    readonly_fields = ('created_at',)
+
+
+admin.site.register(Comment, CommentAdmin)

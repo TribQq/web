@@ -3,10 +3,11 @@ from .models import AdvUser, SubRubric
 from django.contrib.auth import password_validation
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from django.forms import inlineformset_factory
+from django.forms import inlineformset_factory, Textarea
+from captcha.fields import CaptchaField
 
 from .apps import user_registered
-from .models import Bb,AdditionalImage
+from .models import Bb, AdditionalImage, Comment
 
 
 class ChangeUserInfoForm(forms.ModelForm):
@@ -95,16 +96,29 @@ class SearchForm(forms.Form): #Код формы поиска
     # поле как необязательное для заполнения. А еще убрали у этого поля надпись, присвоив параметру label пустую строку
 
 
-
 class BbForm(forms.ModelForm): #Объявим форму , связанную с моделью Bb, для ввода самого объявления
     class Meta:
         model = Bb
         fields = '__all__'
-        widgets = {'author': forms.HiddenInput} # Hiddeninput, т. е. скрытое поле
+        widgets = {'author': forms.HiddenInput , 'contacts': Textarea(attrs={'rows': 3})} # Hiddeninput, т. е. скрытое поле
 
 
 AIFormSet = inlineformset_factory(Bb, AdditionalImage, fields='__all__') # встроенный набор форм AIFoпnSet,
 # связанный с моделью Additional lrnage, в которые будут заноситься дополнительные иллюстрации
 
 
+class UserCommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        exclude = ('is_active',) # Поле is_act ive (признак, будет ли комментарий выводиться на странице) уберем из форм, поскольку оно требуется лишь администрации сайта
+        widgets = {'bb': forms.HiddenInput} # У поля ьь, хранящего ключ объявления, с которым связан комментарий, укажем в качестве элемента управления скрытое поле.
+
+
+class GuestCommentForm(forms.ModelForm):
+    captcha = CaptchaField(label='Введите текст с картинки', error_messages={'invalid': 'Неправильный текст'})
+
+    class Meta:
+        model = Comment
+        exclude = ('is_active',)
+        widgets = {'bb': forms.HiddenInput}
 

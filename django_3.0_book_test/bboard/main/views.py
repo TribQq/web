@@ -17,9 +17,10 @@ from django.core.signing import BadSignature
 from django.core.paginator import Paginator
 from django.db.models import Q
 
-from .models import AdvUser,SubRubric, Bb
-from .forms import ChangeUserInfoForm, RegisterUserForm, SearchForm, AIFormSet, BbForm
+from .models import AdvUser, SubRubric, Bb, Comment
+from .forms import ChangeUserInfoForm, RegisterUserForm, SearchForm, AIFormSet, BbForm, UserCommentForm, GuestCommentForm
 from .utilities import signer
+
 
 def index(request):
     bbs = Bb.objects.filter(is_active=True)[:10] # фрагмент, выбирающий из базы последние 1О объявлений:
@@ -34,8 +35,10 @@ def other_page(request,page): # получает запрашиваему стр
         raise Http404
     return HttpResponse(template.render(request=request))
 
+
 class BBLoginView(LoginView): #контроллер-класс (подкласс втроенного)
     template_name = 'main/login.html'
+
 
 @login_required    # декоратор - ограничитель(чекер регистрации юзера)
 def profile(request):
@@ -150,8 +153,25 @@ def by_rubric(request, pk): # 639 стр
 def detail(request, rubric_pk, pk):
     bb = get_object_or_404(Bb, pk=pk) # обьявлений
     ais = bb.additionalimage_set.all() # пикчи
-    context = {'bb': bb, 'ais': ais}
+    comments = Comment.objects.filter(bb=pk, is_active=True)
+    initial = {'bb': bb.pk} # В поле ьь создаваемой формы ввода комментария заносим ключ выводящегося на странице объявления - с ним будет связан добавляемый комментарий
+    if request.user.is_authenticated: # Если текущий пользователь выполнил вход на сайт, заносим его имя в поле author
+        initial['author'] = request.user.username
+        form_class = UserCommentForm
+    else:
+        form_class = GuestCommentForm # а если не выполнил - на основе класса GuestCoпmentuser.
+    form = form_class(initial=initial) # Объект формы сохраним в переменной с именем form. Форма из этой переменной впоследствии будет выведена на странице сведений об объявлении.
+    if request.method == 'POST': # далее, если полученный запрос был отправлен НТТР-методом POST, т. е. посетитель ввел комментарий и отправил его на сохранение
+        c_form = form_class(request.POST) # создаем еще один объектформы, передав конструктору полученные данные. Второй объект формы сохраняется в переменной с_form
+        if c_form.is_valid(): # Если валидация пропmа успешно, сохраняем введенный комментарий и выводим сообщение.
+            c_form.save()
+            messages.add_message(request,messages.SUCCESS, 'Комментарий добавлен')
+        else: # Если же валидация прошла неуспешно, переносим форму из переменной с_ foпn в переменную foп
+            form = c_form # та форма, хранящая некорректные данные и сообщения об ошибках ввода, впоследствии будет выведена на экран
+            messages.add_message(request,messages.WARNING, 'Комментарий не был добавлен') # Также выводим  сообщение
+    context = {'bb': bb, 'ais': ais, 'comments': comments, 'form': form}
     return render(request, 'main/detail.html', context)
+
 
 @login_required
 def profile_bb_detail(request, pk):
