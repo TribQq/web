@@ -83,7 +83,7 @@ class AdvUserNotAdmin(admin.ModelAdmin):
 
     fields = (('username', 'email'),
               ('first_name', 'last_name'),
-              ('password'), 'new_password_link',
+              ('password', 'new_password_link',),
               ('send_messages', 'is_active', 'is_activated'),
               ('is_staff', 'is_superuser'),
               'groups', 'user_permissions',

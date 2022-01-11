@@ -429,6 +429,66 @@
             if (this.y > 640) this.y = 640;
 
         };
+        function Arrow(x, y, direction, scene) {
+            this.active = true;
+            this.x = x;
+            this.y = y;
+            this.scene = scene;
+            this.speed = 10;
+            this.direction = direction;
+            this.sprites = {
+                right: [7, 0],
+                left: [8, 0],
+                up: [9, 0],
+                down: [10, 0]
+            };
+            this.j = this.sprites[direction][0];
+            this.i = this.sprites[direction][1];
+        }
+
+        Arrow.prototype.update = function(time) {
+            this.move();
+        };
+
+        Arrow.prototype.move = function() {
+            var new_x = this.x;
+            var new_y = this.y;
+            if (this.direction == "right") new_x += this.speed;
+            if (this.direction == "left") new_x -= this.speed;
+            if (this.direction == "up") new_y -= this.speed;
+            if (this.direction == "down") new_y += this.speed;
+
+
+            if (this.is_hit(new_x, new_y)) {
+                this.active = false;
+                return true;
+            } else {
+                this.x = new_x;
+                this.y = new_y;
+            }
+        }
+
+        Arrow.prototype.is_hit = function(x, y) {
+            var pos_x = x;
+            var pos_y = y;
+            if (this.direction == "right") {
+                pos_x += 64;
+                pos_y += 32;
+            };
+            if (this.direction == "left") {
+                pos_y += 32;
+            };
+            if (this.direction == "up") {
+                pos_x += 32;
+            };
+            if (this.direction == "down") {
+                pos_x += 32;
+                pos_y += 64;
+            };
+
+            if ((pos_x < 0) || (pos_x > 1280) || (pos_y < 0) || (pos_y > 1280)) {
+                return true;
+            }
     </script>
 
 </body>
