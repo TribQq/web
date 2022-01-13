@@ -1,1 +1,0 @@
-print('linux_pycharm')
