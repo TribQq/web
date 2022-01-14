@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, window } from 'rxjs';
 import { of } from 'rxjs'; 
 import { catchError } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
@@ -18,7 +18,7 @@ export class BbService {
     return this.http.get<Object[]>(this.url + '/api/bbs/');
   }
   handleError() {
-    return (error: any): Observable<Object> => {
+    return (error: any): Observable<Object>=> {
       window.alert(error.message);
       return of(null);
     }
