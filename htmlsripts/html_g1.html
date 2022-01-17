@@ -673,19 +673,19 @@
                     up: {
                         total: 13,
                         frames: [
-                            [0, 15],
-                            [1, 15],
-                            [2, 15],
-                            [3, 15],
-                            [4, 15],
-                            [5, 15],
-                            [6, 15],
-                            [7, 15],
-                            [8, 15],
-                            [9, 15],
-                            [10, 15],
-                            [11, 15],
-                            [12, 15]
+                            [0, 16],
+                            [1, 16],
+                            [2, 16],
+                            [3, 16],
+                            [4, 16],
+                            [5, 16],
+                            [6, 16],
+                            [7, 16],
+                            [8, 16],
+                            [9, 16],
+                            [10, 16],
+                            [11, 16],
+                            [12, 16]
                         ]
                     },
                     down: {
@@ -709,7 +709,7 @@
                 },
                 attack: {
                     right: {
-                        total: 5,
+                        total: 6,
                         frames: [
                             [0, 15],
                             [1, 15],
@@ -720,7 +720,7 @@
                         ]
                     },
                     left: {
-                        total: 5,
+                        total: 6,
                         frames: [
                             [0, 13],
                             [1, 13],
@@ -731,7 +731,7 @@
                         ]
                     },
                     up: {
-                        total: 5,
+                        total: 6,
                         frames: [
                             [0, 12],
                             [1, 12],
@@ -742,19 +742,71 @@
                         ]
                     },
                     down: {
-                        total: 5,
+                        total: 6,
                         frames: [
                             [0, 14],
                             [1, 14],
                             [2, 14],
                             [3, 14],
                             [4, 14],
-                            [6, 14]
+                            [5, 14]
                         ]
                     }
                 }
 
             };
+        };
+
+        Player.prototype.animate = function() {
+
+            var frame = this.sprites[this.status][this.direction];
+
+            if (this.dead) {
+                return true;
+            }
+
+            if (this.change_animation) {
+                this.change_animation = false;
+                this.current_animation_frame = 0;
+            } else {
+                if (frame.total > 1) {
+                    this.current_animation_frame++;
+                    if ((this.current_animation_frame + 1) == frame.total) {
+                        if ((this.status == "start") || (this.status == "walking") || (this.status == "attack")) {
+                            this.current_animation_frame = 0;
+                        }
+
+                        if (this.status == "dead") {
+                            this.current_animation_frame = 5;
+                            this.dead = true;
+                        }
+
+                        if (this.status == "fire") {
+                            this.current_animation_frame = 0;
+                            this.set_action(this.direction, "standing");
+                            this.scene.arrows.push(new Arrow(this.x, this.y, this.direction, this.scene));
+                            this.scene.sounds['arrow'].play();
+                        }
+                    }
+                }
+            }
+
+
+            this.j = frame.frames[this.current_animation_frame][0];
+            this.i = frame.frames[this.current_animation_frame][1];
+
+        };
+
+        Player.prototype.set_action = function(direction, status) {
+            if (this.direction != direction) {
+                this.direction = direction;
+                this.change_animation = true;
+            }
+
+            if (this.status != status) {
+                this.status = status;
+                this.change_animation = true;
+            }
         };
 
     </script>
