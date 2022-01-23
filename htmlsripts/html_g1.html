@@ -809,6 +809,48 @@
             }
         };
 
+        Player.prototype.is_walkable = function(x, y) {
+
+            if (x < 0) {
+                this.got_obstacle = true;
+                return false;
+            };
+            if (y < 0) {
+                this.got_obstacle = true;
+                return false;
+            };
+
+            var x1 = x;
+            var x2 = x + 62;
+            var y1 = y;
+            var y2 = y + 62;
+
+            x1 = x1 + 20;
+            x2 = x2 - 20;
+            y1 = y1 + 20;
+            y2 = y2 - 10;
+
+            var j1 = Math.floor((x1) / 62);
+            var j2 = Math.floor((x2) / 62);
+            var i1 = Math.floor((y1) / 62);
+            var i2 = Math.floor((y2) / 62);
+
+            var walkable = false;
+
+            for (var i = i1; i <= i2; i++) {
+                for (var j = j1; j <= j2; j+) {
+                    if (!this.scene.tiles[this.scene.map[i][j]].walk) {
+                        walkable = false;
+                    }
+                }
+            }
+
+            this.got_obstacle = !walkable;
+            return walkable;
+
+        };
+
+
     </script>
 
 </body>
