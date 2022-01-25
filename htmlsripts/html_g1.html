@@ -821,24 +821,24 @@
             };
 
             var x1 = x;
-            var x2 = x + 62;
+            var x2 = x + 64;
             var y1 = y;
-            var y2 = y + 62;
+            var y2 = y + 64;
 
             x1 = x1 + 20;
             x2 = x2 - 20;
             y1 = y1 + 20;
             y2 = y2 - 10;
 
-            var j1 = Math.floor((x1) / 62);
-            var j2 = Math.floor((x2) / 62);
-            var i1 = Math.floor((y1) / 62);
-            var i2 = Math.floor((y2) / 62);
+            var j1 = Math.floor((x1) / 64);
+            var j2 = Math.floor((x2) / 64);
+            var i1 = Math.floor((y1) / 64);
+            var i2 = Math.floor((y2) / 64);
 
-            var walkable = false;
+            var walkable = true;
 
             for (var i = i1; i <= i2; i++) {
-                for (var j = j1; j <= j2; j+) {
+                for (var j = j1; j <= j2; j++) {
                     if (!this.scene.tiles[this.scene.map[i][j]].walk) {
                         walkable = false;
                     }
@@ -848,6 +848,46 @@
             this.got_obstacle = !walkable;
             return walkable;
 
+        };
+        Player.prototype.move_left = function() {
+            this.set_action("left", "walking");
+
+            if (this.is_walkable(this.x - this.speed, this.y)) {
+                this.x = this.x - this.speed;
+                if (this.x < 0) {
+                    this.x = 0;
+                }
+            }
+        };
+
+        Player.prototype.move_right = function() {
+            this.set_action("right", "walking");
+            if (this.is_walkable(this.x + this.speed, this.y)) {
+                this.x = this.x + this.speed;
+                if (this.x > 1216) {
+                    this.x = 1216;
+                }
+            }
+        };
+
+        Player.prototype.move_up = function() {
+            this.set_action("up", "walking");
+            if (this.is_walkable(this.x, this.y - this.speed)) {
+                this.y = this.y - this.speed;
+                if (this.y < 0) {
+                    this.y = 0;
+                }
+            }
+        };
+
+        Player.prototype.move_down = function() {
+            this.set_action("down", "walking");
+            if (this.is_walkable(this.x, this.y + this.speed)) {
+                this.y = this.y + this.speed;
+                if (this.y > 1216) {
+                    this.y = 1216;
+                }
+            }
         };
 
 
