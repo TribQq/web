@@ -13,6 +13,9 @@ def book(request,book_id):
         'book': get_object_or_404(Book, id=book_id)
     })
 
+def plug(request):
+    return HttpResponse('hi')
+
 
 def page(request, book_id, page_id):
     return render(request, 'book0/page.html', context={

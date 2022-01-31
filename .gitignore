@@ -1,4 +1,5 @@
 taskmanager/settings.py
+practice_rooms
 win_venv
 venv
 0.sublime-workspace
@@ -7,8 +8,8 @@ pic,gif,another
 .git
 __pycache__
 .gitignore
-python_practice
-js_practice
+practice_rooms/python_practice
+practice_rooms/js_practice
 /htmlsripts/assets
 save file
 2_test.css

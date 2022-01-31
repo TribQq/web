@@ -5,8 +5,10 @@
     <title>Books</title>
 </head>
 <body>
+<ul>
 {% for book in books %}
 <li><a href ="book/{{ book.id }}"> {{ book.title }} </a></li>
 {% endfor %}
+</ul>
 </body>
 </html>
