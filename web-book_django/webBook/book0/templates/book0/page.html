@@ -5,9 +5,14 @@
     <title>{{page.title}}</title>
 </head>
 <body>
-<p>{{page.body}}</p>
+<p>{{ page.body }}</p>
 <p>page.html</p>
-
+<p>{{book}} == book</p>
+<ul>
+{% for link in page.pagelink_set.all  %}
+<li><a href =""> {{ link }} </a></li>
+    {% endfor %}
+</ul>
 
 </body>
 </html>
