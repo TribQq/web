@@ -7,6 +7,7 @@ from django.db import models
 class Book(models.Model):
     """interactive function ."""
     title = models.TextField(name='title', unique=True)
+    cover_img = models.ImageField(upload_to='uploads/', null=True)
 
     def __str__(self):
         return '{self.title} ({self.id})'.format(self=self) # Возвращаем имя для админки (и вообще)1:46/0
