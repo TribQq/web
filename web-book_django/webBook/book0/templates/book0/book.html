@@ -7,6 +7,8 @@
 <body>
 <h1>{{book.title}}</h1>
 <p>book.html</p>
+<p>{{book}} == book</p>
+<p>{{ book.bookpage_set.all }} == all</p>
 <p>z </p>
 <ul>
 {% for page in book.bookpage_set.all %}

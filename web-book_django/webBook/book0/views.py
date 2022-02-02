@@ -23,7 +23,7 @@ def book_page(request, book_id, page_id):
 
 def page(request, book_id, page_id):
     return render(request, 'book0/page.html', context={
-    'page': get_object_or_404(BookPage, book__id=book_id, id=page_id, ), # # __ = ppep идём в соседнюю табл
+    'page': get_object_or_404(BookPage, book__id=book_id, id=page_id ) # # __ = ppep идём в соседнюю табл
     })
 
 

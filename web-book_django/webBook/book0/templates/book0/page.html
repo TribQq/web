@@ -7,10 +7,11 @@
 <body>
 <p>{{ page.body }}</p>
 <p>page.html</p>
-<p>{{book}} == book</p>
+<p>{{page}} == book</p>
+<p>{{page.pagelink_set.all}} == pagelinkS</p>
 <ul>
 {% for link in page.pagelink_set.all  %}
-<li><a href =""> {{ link }} </a></li>
+<li><a href =""> {{ link.name }} </a></li>
     {% endfor %}
 </ul>
 
