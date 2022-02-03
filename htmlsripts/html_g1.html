@@ -889,6 +889,72 @@
                 }
             }
         };
+        Player.prototype.fire = function() {
+            this.set_action(this.direction, "fire");
+        }
+
+        Player.prototype.attack = function() {
+            this.set_action(this.direction, "attack");
+        }
+
+        Player.prototype.start = function() {
+            if (this.y < 10) {
+                this.y = this.y + this.speed;
+            } else {
+                this.set_action("down", "standing");
+            }
+
+        }
+
+        Player.prototype.update = function(time) {
+            this.animate();
+
+            if (this.status == "start") {
+                this.start();
+                return true;
+            }
+
+            if (this.status == "fire") {
+                return true;
+            }
+
+            if (this.status == "died") {
+                return true;
+            }
+
+            if (this.type == "monster") {
+                return this.monster_ai_controll(time);
+            }
+
+            if (this.scene.controls.states['fire']) {
+                this.fire();
+                return true;
+            }
+
+            if (this.scene.controls.states['left']) {
+                this.move_left();
+                return true;
+            }
+
+            if (this.scene.controls.states['right']) {
+                this.move_right();
+                return true;
+            }
+
+            if (this.scene.controls.states['forward']) {
+                this.move_up();
+                return true;
+            }
+
+            if (this.scene.controls.states['backward']) {
+                this.move_down();
+                return true;
+            }
+
+            this.set_action(this.direction, "stand");
+
+
+        }
 
 
     </script>
