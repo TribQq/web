@@ -104,9 +104,14 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # Параме
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-THUMBNAIL_ALIASES = {'': {
-    'default': {'size': (96, 96),
-                'crop': 'scale'}, }, }  # настройки плагин(ов)
+THUMBNAIL_ALIASES = {
+    '': {
+        'default': {
+            'size': (96, 96),
+            'crop': 'scale'}
+        , }
+    , }  # настройки плагин(ов)
+
 THUMBNAIL_BASEDIR = 'thumbnails'
 
 # и, настройки,разрешающие доступ к веб-службе с любого домена:

@@ -5,7 +5,7 @@ from .models import *
 
 
 def index(request):
-    return render(request, 'book0/base.html', context={'books': Book.objects.all()})
+    return render(request, 'book0/bookshelf.html', context={'books': Book.objects.all()})
 
 
 def book(request,book_id):
@@ -31,4 +31,9 @@ def page(request, book_id, page_id):
 def plug(request,book_id,page_id):
     return HttpResponse('hi, it is plug')
 
+
+def bb_img_test(request):
+    return render(request, 'book0/bb_img_tst.html', context={
+        'bbs':Bb.objects.all()
+    })
 

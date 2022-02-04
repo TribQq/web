@@ -1,0 +1,19 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+{% for bb in bbs %}
+ <li>
+     <p> {{ bb.title }}</p>
+     <img src="{% static 'uploads/book_cover/553.jpg' 'default' %}">
+ </li>
+{% endfor %}
+</ul>
+</body>
+</html>
