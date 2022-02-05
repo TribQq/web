@@ -8,8 +8,7 @@ urlpatterns = [
     # path('book/<int:book_id>/page/<int:page_id>', views.book),
     # path('book/<int:book_id>/page/<int:page_id>', views.book_page),
     path('book/<int:book_id>/page/<int:page_id>', views.page, name='page'),
-    path('plug', views.plug),
-    path('bb_img_test', views.bb_img_test),
+    path('plug', views.plug, name='plug'),
 ]
 
 

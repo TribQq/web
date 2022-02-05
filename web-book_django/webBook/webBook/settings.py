@@ -97,6 +97,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
+# STATIC_URL = '/uploads/'
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'uploads')]
+
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -105,9 +109,11 @@ MEDIA_URL = '/media/'
 THUMBNAIL_ALIASES = {
     '': {
         'default': {
-            'size': (96, 96),
+            'size': (75, 75),
             'crop': 'scale'}
         , }
-    , }  # настройки плагин(ов)
+    , }
 
+
+THUMBNAIL_PREFIX = 'thumbnail_'
 THUMBNAIL_BASEDIR = 'thumbnails'

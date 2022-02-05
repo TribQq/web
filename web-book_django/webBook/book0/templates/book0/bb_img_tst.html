@@ -1,3 +1,4 @@
+{% load thumbnail %}
 {% load static %}
 
 <!DOCTYPE html>
@@ -11,7 +12,7 @@
 {% for bb in bbs %}
  <li>
      <p> {{ bb.title }}</p>
-     <img src="{% static 'uploads/book_cover/553.jpg' 'default' %}">
+     <img src="{% thumbnail bb.image 'default' %}">
  </li>
 {% endfor %}
 </ul>

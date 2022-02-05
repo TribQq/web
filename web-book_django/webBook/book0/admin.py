@@ -5,7 +5,7 @@ admin.site.register(Book)
 admin.site.register(BookPage)
 admin.site.register(PageLink)
 
-admin.site.register(Bb)
+# admin.site.register(Bb)
 
 class AdditionalImageInline(admin.TabularInline):
     model = BookAdditionalImage

@@ -12,9 +12,9 @@
 <ul>
 {% for book in books %}
 <li>
-
     <a href ="book/{{ book.id }}"> {{ book.title }} </a>
     {% if book.cover_img %}
+        <img src="{% thumbnail book.cover_img 'default' %}">
         <p> pic here </p>
     {% else %}
     <p> no pic </p>
