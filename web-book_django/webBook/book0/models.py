@@ -72,6 +72,8 @@ class BookProgress(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE) # каскадное удаление прогресса в и пр в случае удаления книги/юзера
     book_page = models.ForeignKey(BookPage, on_delete=models.CASCADE)
 
+    items = models.ManyToManyField('book0.Item') # описание в джанго терминлогогии( book0 ==app(приложение) , Item ==model name)/поздняя динам запись 1:01(2)
+
     class Meta:
         unique_together = ('user', 'book')
 
@@ -80,3 +82,7 @@ class BookProgress(models.Model):
         progress = BookProgress(user=user, book=book, book_page=book.first_page) # создаём прогресс в случае остуствия, + сэйв в бд + return в контроллер
         progress.save()
         return progress
+
+
+class Item(models.Model):
+    name = models.TextField()

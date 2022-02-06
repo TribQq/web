@@ -30,12 +30,18 @@ def book(request, book_id):
 
 
 def page(request, book_id, page_id):
-    query = BookProgress.objects.filter(book=book_id, user=request.user,
-                                        book_page=page_id) # чек параметров валидности ныненей страницы от прогресса (защита от хацкеров) $42-10
-    if not query:
-        return redirect(reverse('book', kwargs={'book_id': book_id}))
+    try:
+        is_progress = BookProgress.objects.get(book=book_id, user=request.user)
+    except BookProgress.DoesNotExist:
+        is_progress = BookProgress.start_reading(user=request.user, book=book_id)
+
+    page = get_object_or_404(BookPage, book__id=book_id, id=page_id )
+    is_progress.book_page = page
+    BookProgress.objects.filter(book=book_id,
+                                user=request.user).update(book_page = page_id)
     return render(request, 'book0/page.html', context={
-    'page': get_object_or_404(BookPage, book__id=book_id, id=page_id ) # # __ = ppep идём в соседнюю табл
+    'page': page, # # __ = ppep идём в соседнюю табл
+    'items': is_progress.items.all(),
     })
 
 

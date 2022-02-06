@@ -12,6 +12,11 @@
     <li><a href ="{% url 'page' page.book.id link.to_page.id %}"> {{ link.name }} </a></li>
     {% endfor %}
 </ul>
+<ul>
+{% for item in items  %}
+    <li> {{ item.name }} </li>
+    {% endfor %}
+</ul>
 
 </body>
 </html>
