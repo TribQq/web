@@ -1,4 +1,4 @@
-
+import os
 from pathlib import Path
 
 
@@ -22,6 +22,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'book.apps.BookConfig',
+    'easy_thumbnails',
+
 ]
 
 MIDDLEWARE = [
@@ -94,8 +96,21 @@ USE_L10N = True
 USE_TZ = True
 
 
-
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+THUMBNAIL_ALIASES = {
+    '': {
+        'default': {
+            'size': (50, 50),
+            'crop': 'scale'}
+        , }
+    , }
+
+THUMBNAIL_BASEDIR = 'thumbnails'
+THUMBNAIL_PREFIX = 'thumbnail_'
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

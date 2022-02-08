@@ -6,9 +6,14 @@
 </head>
 <body>
 <p>Book title,id == {{ book.title }}, {{ book.id }}</p>
+{% if book.first_page  %}
+<h3>Начать приключение:</h3>
+ <p><a href="{% url 'book_page' book.id book.first_page.id %} "> {{ book.first_page }} </a></p>
+{% else %}
 <p>Book pages: </p>
 {% for page in book.bookpage_set.all %}
     <p><a href="{% url 'book_page' book.id page.id %} "> {{ page }} , {{ page.id }} </a></p>
 {% endfor %}
+{% endif %}
 </body>
 </html>

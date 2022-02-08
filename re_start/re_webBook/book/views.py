@@ -20,8 +20,6 @@ def book_titlePage(requst, book_id):
 
 
 def book_page(request, book_id, page_id):
-    book = get_object_or_404(Book.objects.filter(id=book_id))
     page = get_object_or_404(BookPage.objects.filter(id=page_id))
-    pageLinks = PageLink.objects.filter(from_page_id=page_id)
-    context = {'book': book, 'page': page , 'page_links':pageLinks}
+    context = {'page': page}
     return render(request, 'book/book_page.html', context)

@@ -5,10 +5,12 @@
     <title>Title</title>
 </head>
 <body>
+<p> url 'page' book_id=page.book_id page_id=path_link.to_page  </p>
 <h4>its just book_page</h4>
-<p> {{ page.title }} </p>
-{% for pageLink in page.pagelink_set.all %}
- <p><a href="">{{ pageLink }}</a></p>
+{% for path_link in page.pagelink_set.all %}
+<a href="{% url 'book_page' book_id=page.book_id page_id=path_link.to_page.id %}"> <p> {{ path_link }}</p> </a>
+<p>{{ page.book_id }}</p>
+<p>{{ path_link.to_page.id }}</p>
 {% endfor %}
 </body>
 </html>
