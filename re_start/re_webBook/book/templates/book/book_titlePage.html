@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>Book title,id == {{ book.title }}, {{ book.id }}</p>
+<p>Book pages: </p>
+{% for page in book.bookpage_set.all %}
+    <p><a href="{% url 'book_page' book.id page.id %} "> {{ page }} , {{ page.id }} </a></p>
+{% endfor %}
+</body>
+</html>

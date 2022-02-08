@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h4>its just book_page</h4>
+<p> {{ page.title }} </p>
+{% for pageLink in page.pagelink_set.all %}
+ <p><a href="">{{ pageLink }}</a></p>
+{% endfor %}
+</body>
+</html>
