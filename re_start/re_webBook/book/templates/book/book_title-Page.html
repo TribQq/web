@@ -15,5 +15,7 @@
     <p><a href="{% url 'book_page' book.id page.id %} "> {{ page }} , {{ page.id }} </a></p>
 {% endfor %}
 {% endif %}
+<p>Продолжить приключение:</p>
+<a href="{% url 'book_page' book.bookprogress_set.first.book.id  book.bookprogress_set.first.book_page.id %}">link_on_progress_page</a>
 </body>
 </html>

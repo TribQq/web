@@ -1,28 +1,28 @@
 from django.db import models
-from django.db.models import SET_NULL,CASCADE
 from django.contrib.auth.models import User
 
 
 from .utilities import get_timestamp_path
 
+
 class Book(models.Model):
     title = models.CharField(max_length=50, verbose_name='Название')
-    first_page = models.OneToOneField('BookPage', blank=True, null=True, related_name='first_page', verbose_name='Стартовая страница', on_delete=SET_NULL)
+    first_page = models.OneToOneField('BookPage', blank=True, null=True, related_name='first_page', verbose_name='Стартовая страница', on_delete=models.SET_NULL)
     cover_img = models.ImageField(blank=True, upload_to=get_timestamp_path, verbose_name='Обложка книги')
 
 
 class BookPage(models.Model):
-    book = models.ForeignKey(Book, on_delete=CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
     title = models.TextField(blank=True, null=True)
     text = models.TextField()
-    item = models.ForeignKey('Items', blank=True, null=True, on_delete=SET_NULL)
+    item = models.ForeignKey('Item', blank=True, null=True, on_delete=models.SET_NULL)
     def __str__(self):
         return self.title
 
 
 class PageLink(models.Model):
-    from_page = models.ForeignKey(BookPage, on_delete=CASCADE)
-    to_page = models.ForeignKey(BookPage, related_name='to_page', on_delete=CASCADE)
+    from_page = models.ForeignKey(BookPage, on_delete=models.CASCADE)
+    to_page = models.ForeignKey(BookPage, related_name='to_page', on_delete=models.CASCADE)
     name_path = models.CharField(null=True, blank=True, max_length=50)
 
     def __str__(self):
@@ -34,22 +34,25 @@ class PageLink(models.Model):
         unique_together = ['from_page', 'to_page']
 
 
-class BookProgress(models.Model):
+class BookProgress(models.Model): # трабла в автосоздании новой модельки под новою книгу+юзера (т.е если ручками создать поле в бд то ок инече краш)
     """idk"""
-    user = models.ForeignKey(User, on_delete=CASCADE)
-    book = models.ForeignKey(Book, on_delete=CASCADE)
-    page = models.ForeignKey(BookPage, on_delete=CASCADE)
-
-    @classmethod
-    def start_progress(cls):
-        """pass"""
-        progress_page = ''
-        return progress_page
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    book_page = models.ForeignKey(BookPage, on_delete=models.CASCADE)
 
     class Meta:
         unique_together = ['user', 'book']
 
+    @classmethod
+    def start_progress(cls, user, book, page):
+        progress = BookProgress(user=user, book=book, book_page=page)
+        progress.save()
+        return progress
 
-class Items(models.Model):
+
+class Item(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField()
+
+    def __str__(self):
+        return self.name
