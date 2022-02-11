@@ -5,7 +5,7 @@
     <title>{{page.title}}</title>
 </head>
 <body>
-<p>{{ links }}</p>
+<p>{{ link_status_tuples }}</p>
 <p>{{ page.title }}</p>
 {% if page_items %}
 <p>Вы видите:</p>
@@ -19,12 +19,14 @@
 {% endif %}
 <p>-----------------------</p>
 <ul>
-{% for link in links  %}
-    {% if link|last %}
-    <li><a href =""> {{ link|first }} </a></li>
+{% for link,status in link_status_tuples  %}
+    {% if status %}
+    <li><a href ="{% url 'page' page.book.id link.to_page.id %}"> {{ link }} </a></li>
     {% else %}
-    <li> <p>{{ link|first }}, вы понимаете ,что вам чего то не хватает, чтоб пройти</p> </li>
+    <li> <p>{{ link }}, вы понимаете ,что вам чего то не хватает, чтоб пройти</p> </li>
     {% endif %}
+    <p>{{ page.book.id }} == book.id</p>
+    <p>{{ link.to_page.id }} ==to_page.id</p>
     {% endfor %}
 </ul>
 <h3>Инвентарь: </h3>

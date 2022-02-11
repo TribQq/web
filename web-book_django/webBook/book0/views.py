@@ -12,7 +12,7 @@ def on_progress(view):
             progress = BookProgress.objects.get(book=book_id, user=request.user)
         except BookProgress.DoesNotExist:
             return redirect(reverse('book', kwargs={'book_id': book_id}))
-        return view(request=request, progress=progress, book_id=book_id, **kwargs)
+        return view(request=request, progress=progress, book_id=book_id, **kwargs) # генерируем прогресс для каждой функции с помощью декоратоа
 
     return inner
 
@@ -52,7 +52,7 @@ def page(request, progress, book_id, page_id):
     return render(request, 'book0/page.html', context={
         'page': page,  # # __ = ppep идём в соседнюю табл
         'progress': progress,
-        'links': links,
+        'link_status_tuples': links,
         'page_items': page.items.exclude(id__in=progress.items.only('id'))
     })
 

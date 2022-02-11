@@ -56,6 +56,7 @@ class PageLink(models.Model):
     name = models.TextField()
     items = models.ManyToManyField('book0.Item', blank=True) # итемы необходимы для прохода
     # проблема была в 2 related_name, нужно было как то указать, или удалить родительский
+
     def __str__(self):
         return ('{self.from_page.title} --> {self.to_page.title} ' \
                 '({self.id})'.format(
