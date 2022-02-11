@@ -5,18 +5,37 @@
     <title>{{page.title}}</title>
 </head>
 <body>
-<p>{{ page.body }}</p>
-<p>page.html</p>
+<p>{{ links }}</p>
+<p>{{ page.title }}</p>
+{% if page_items %}
+<p>Вы видите:</p>
 <ul>
-{% for link in page.pagelink_set.all  %}
-    <li><a href ="{% url 'page' page.book.id link.to_page.id %}"> {{ link.name }} </a></li>
+{% for p_item in page_items  %}
+    <li><a href="{% url 'take' page.book.id page.id p_item.id %}"> {{ p_item.name }} </a></li>
     {% endfor %}
 </ul>
+{% else %}
+<p>Вы не видите ничего интересного</p>
+{% endif %}
+<p>-----------------------</p>
 <ul>
-{% for item in items  %}
-    <li> {{ item.name }} </li>
+{% for link in links  %}
+    {% if link|last %}
+    <li><a href =""> {{ link|first }} </a></li>
+    {% else %}
+    <li> <p>{{ link|first }}, вы понимаете ,что вам чего то не хватает, чтоб пройти</p> </li>
+    {% endif %}
     {% endfor %}
 </ul>
-
+<h3>Инвентарь: </h3>
+{% if progress.items.all %}
+<ul>
+{% for item in progress.items.all  %}
+    <li>  {{ item.name }} </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>ваш инвентарь пуст</p>
+{% endif %}
 </body>
 </html>
