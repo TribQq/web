@@ -16,7 +16,7 @@
     <p><a href="{% url 'book_titlePage' book.id %}" > {{ book.title }} , {{ book.id }} </a></p>
     <img src="{% thumbnail book.cover_img 'default' %}">
     <p> продолжить приключение </p>
-    <a href ="{% url 'book_page' book.bookprogress_set.first.book.id  book.bookprogress_set.first.book_page.id %}">{{ book.bookprogress_set.first.book_page.id }}</a>
+    <a href ="{% url 'book_page' book.bookprogress_set.first.book.id  book.bookprogress_set.first.book_page.id %}">{{ book.bookprogress_set.first.book_page.id }} == link_on_progress_page</a>
     <p>-------------------------------------</p>
 {% endfor %}
 

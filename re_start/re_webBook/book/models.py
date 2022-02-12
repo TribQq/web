@@ -15,7 +15,8 @@ class BookPage(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     title = models.TextField(blank=True, null=True)
     text = models.TextField()
-    item = models.ForeignKey('Item', blank=True, null=True, on_delete=models.SET_NULL)
+    page_items = models.ManyToManyField('Item', blank=True)
+
     def __str__(self):
         return self.title
 
@@ -24,6 +25,7 @@ class PageLink(models.Model):
     from_page = models.ForeignKey(BookPage, on_delete=models.CASCADE)
     to_page = models.ForeignKey(BookPage, related_name='to_page', on_delete=models.CASCADE)
     name_path = models.CharField(null=True, blank=True, max_length=50)
+    key_items = models.ManyToManyField('Item', blank=True)
 
     def __str__(self):
         if self.name_path != None:
@@ -33,12 +35,20 @@ class PageLink(models.Model):
     class Meta:
         unique_together = ['from_page', 'to_page']
 
+    def check_key_items(self, inventory_items: list) -> bool:
+        check_result: bool = all(key in inventory_items for key in self.key_items.all())
+        return check_result
+
+
+
+
 
 class BookProgress(models.Model): # трабла в автосоздании новой модельки под новою книгу+юзера (т.е если ручками создать поле в бд то ок инече краш)
     """idk"""
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     book_page = models.ForeignKey(BookPage, on_delete=models.CASCADE)
+    inventory_items = models.ManyToManyField('Item', blank=True)
 
     class Meta:
         unique_together = ['user', 'book']

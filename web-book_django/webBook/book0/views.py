@@ -23,15 +23,15 @@ def index(request):
 
 @on_progress
 def book(request, progress, book_id):
-    b = get_object_or_404(Book, id=book_id)
-    if not b.first_page:
-        return render(request, 'book0/book.html', context={
-            'book': get_object_or_404(Book, id=book_id)
-        })
-    try:
-        progress = BookProgress.objects.get(book=b, user=request.user)
-    except BookProgress.DoesNotExist:
-        progress = BookProgress.start_reading(user=request.user, book=b)
+    # b = get_object_or_404(Book, id=book_id)
+    # if not b.first_page:
+    #     return render(request, 'book0/book.html', context={
+    #         'book': get_object_or_404(Book, id=book_id)
+    #     })
+    # try:
+    #     progress = BookProgress.objects.get(book=b, user=request.user)
+    # except BookProgress.DoesNotExist:
+    #     progress = BookProgress.start_reading(user=request.user, book=b)
     return redirect(reverse('page', kwargs={'book_id': book_id, 'page_id': progress.book_page.id, }))
     # return redirect(reverse(plug)) # в плаг нельзя передавать агрументы .С url траблы (копнуть глубже) return redirect(reverse('plug', kwargs={'text': 'randomText'}))
 
