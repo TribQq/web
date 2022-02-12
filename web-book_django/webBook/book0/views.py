@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, FileResponse
+
+from graphviz import Digraph
 
 from .models import *
 
@@ -66,3 +68,14 @@ def take(request, progress, book_id, page_id, item_id):
 
 def plug(request, text='text'):
     return HttpResponse(text)
+
+
+def view_book_map(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    graph = Digraph('Map', filename='map.gv', directory='tmp/') #, directory='/tmp'
+    for link in PageLink.objects.filter(from_page__book_id=book_id).all(): # фильтруем page link`и выбранной книги
+        graph.edge(link.from_page.title, link.to_page.title) # добавляем их в граф
+
+    # graph.edge('A', 'B') # test graph
+    graph.render(quiet=True, view=False, format='svg') # методы graphiviz`a
+    return FileResponse(open('tmp/map.gv.svg', 'rb')) # метод для открытыия файлов
