@@ -72,10 +72,34 @@ def plug(request, text='text'):
 
 def view_book_map(request, book_id):
     book = get_object_or_404(Book, id=book_id)
-    graph = Digraph('Map', filename='map.gv', directory='tmp/') #, directory='/tmp'
-    for link in PageLink.objects.filter(from_page__book_id=book_id).all(): # фильтруем page link`и выбранной книги
-        graph.edge(link.from_page.title, link.to_page.title) # добавляем их в граф
 
-    # graph.edge('A', 'B') # test graph
-    graph.render(quiet=True, view=False, format='svg') # методы graphiviz`a
-    return FileResponse(open('tmp/map.gv.svg', 'rb')) # метод для открытыия файлов
+    g = Digraph('Map', filename='map.gv', directory='/tmp')
+
+    def pid(page):
+        return 'page_{id}'.format(id=page.id)
+
+    for page in book.bookpage_set.all():
+        g.node(
+            pid(page),
+            label='\n'.join(
+                [str(page.id), page.title] + [
+                    i.name for i in page.items.all()
+                ]
+            ),
+            tooltip=page.body,
+            href='/admin/book0/bookpage/{}/change'.format(page.id),
+        )
+
+    for link in PageLink.objects.filter(
+        from_page__book_id=book_id,
+    ).all():
+        g.edge(pid(link.from_page), pid(link.to_page), label='\n'.join(
+            [str(link.id), link.name[:10]] + [
+                i.name for i in link.items.all()
+            ]),
+            labeltooltip=link.name,
+            labelhref='/admin/book0/pagelink/{}/change'.format(link.id),
+        )
+
+    g.render(quiet=True, view=False, format='svg')
+    return FileResponse(open('/tmp/map.gv.svg', 'rb'))
