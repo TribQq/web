@@ -955,6 +955,41 @@
 
 
         }
+        Player.prototype.monster_ai_controll = function(time) {
+
+            if ((this.scene.player.dead == false) &&
+                (this.scene.player.x < this.x + 60 &&
+                    this.scene.player.x + 60 > this.x &&
+                    this.scene.player.y < this.y + 60 &&
+                    60 + this.scene.player.y > this.y)) {
+                //тактический прыжок
+                if (this.x > this.scene.player.x) {
+                    this.direction = "left";
+                    this.y = this.scene.player.y;
+                    this.x = this.scene.player.x + 30;
+                } else {
+                    this.direction = "right";
+                    this.y = this.scene.player.y;
+                    this.x = this.scene.player.x - 30;
+                }
+                this.attack();
+                this.scene.sounds['sword'].play();
+                this.scene.player.set_action("down", "dead");
+                return true;
+            }
+
+
+            if ((this.got_obstacle) || ((time - this.lastTime) > 3000)) {
+                var actions = [this.move_left, this.move_right, this.move_up, this.move_down];
+                this.current_action = actions[Math.floor(Math.random() * actions.length)];
+                this.lastTime = time;
+
+            }
+
+            this.current_action();
+
+            return true;
+        };
 
 
     </script>

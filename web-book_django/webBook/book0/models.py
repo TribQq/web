@@ -41,7 +41,7 @@ class BookAdditionalImage(models.Model):
 class BookPage(models.Model):
     book = models.ForeignKey(Book,
                              on_delete=models.CASCADE)  # ForeginKey - нативная ссылка для базы(1:33)0ур # foreginkey-всегда отношение многие к одному(многие стр к одной книге)
-    title = models.TextField(name='title')
+    title = models.CharField(name='title')
     body = models.TextField(name='body')
     items = models.ManyToManyField('Item', blank=True)
     def __str__(self):
@@ -92,3 +92,10 @@ class Item(models.Model):
     name = models.TextField()
     def __str__(self):
         return self.name
+
+
+class BookSave(models.Model):
+    progress = models.ForeignKey(BookProgress, on_delete=models.CASCADE)
+    time = models.DateTimeField(auto_now=True)
+    book_page = models.ForeignKey(BookPage, on_delete=models.CASCADE) #зачем , если это уже в прогрессе?
+    items = models.ManyToManyField('book0.Item', blank=True)
