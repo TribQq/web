@@ -29,6 +29,7 @@
     <p>{{ link.to_page.id }} ==to_page.id</p>
     {% endfor %}
 </ul>
+<a href="{% url 'saves' page.book.id %}">saves</a>
 <h3>Инвентарь: </h3>
 {% if progress.items.all %}
 <ul>

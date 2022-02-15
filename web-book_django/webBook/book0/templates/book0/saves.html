@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{book.title}}: saves</title>
+</head>
+<body>
+<h3>saves</h3>
+<p>{{ book.title }}</p>
+<a href="{% url 'save_new' book.id  %}">New SAve</a>
+<ul>
+{% for save in saves  %}
+    <li> {{ save.updated_at }}: {{ save.book_page.title }} </li>
+    {% endfor %}
+</ul>
+<h3>Saves:</h3>
+<ul>
+    {% for
+</ul>
+</body>
+</html>

@@ -41,7 +41,7 @@ class BookAdditionalImage(models.Model):
 class BookPage(models.Model):
     book = models.ForeignKey(Book,
                              on_delete=models.CASCADE)  # ForeginKey - нативная ссылка для базы(1:33)0ур # foreginkey-всегда отношение многие к одному(многие стр к одной книге)
-    title = models.CharField(name='title')
+    title = models.CharField(name='title', max_length=70)
     body = models.TextField(name='body')
     items = models.ManyToManyField('Item', blank=True)
     def __str__(self):
@@ -87,6 +87,22 @@ class BookProgress(models.Model):
         progress.save()
         return progress
 
+    def save_to(self, save_id):
+        if save_id is None: #none t.k id can be 0
+            state = ProgressSave.objects.create(progress=self,
+                                        book_page=self.book_page,
+                                        ) #1 44 (4)
+            state.items.set(self.items.all())
+        else:
+            state = ProgressSave.objects.get(id=save_id)
+            state.update(book_page=self.book_page)
+            state.update(items=self.items_set.all())
+
+    def load_from(self, save_id):
+        state = ProgressSave.objects.get(id=save_id)
+        self.update(book_page=state.book_page,
+                    items=state.items_set.all())
+
 
 class Item(models.Model):
     name = models.TextField()
@@ -94,8 +110,8 @@ class Item(models.Model):
         return self.name
 
 
-class BookSave(models.Model):
+class ProgressSave(models.Model):
     progress = models.ForeignKey(BookProgress, on_delete=models.CASCADE)
-    time = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
     book_page = models.ForeignKey(BookPage, on_delete=models.CASCADE) #зачем , если это уже в прогрессе?
     items = models.ManyToManyField('book0.Item', blank=True)
