@@ -1,10 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<p> url 'page' book_id=page.book_id page_id=path_link.to_page  </p>
+<h4>its just go_to_bookPage</h4>
+<p></p>
+<p>{{ page.text }}</p>
+<p>{{ link_status_tuple }}</p>
+{% if page.page_items.all %}
+<h4>Рядом вы видите и можете взять: </h4>
+
+<ul>
+    {% for p_item in page.page_items.all %}
+    {% if p_item not in progress.inventory_items.all %}
+    <li> <a href="{% url 'go_take_item' page.book_id p_item.id  %}"> {{ p_item }} </a> </li>
+    {% endif %}
+     {% endfor %}
+</ul>
+{% endif %}
+
+{% for link,status in link_status_tuple %}
+{% if status %}
+<a href="{% url 'go_to' book_id=page.book_id link_id=link.id %}"> <p> {{ link.to_page }}</p> </a>
+{% else %}
+<p>{{ link }}, у вас нету ключа для этого.</p>
+{% endif %}
+{% endfor %}
+
+
+<h4>Инвентарь: </h4>
+{% if progress.inventory_items.all %}
+<ul>
+    {% for i_item in progress.inventory_items.all %}
+    <li>{{ i_item }}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>Ваш инвентарь пуст</p>
+{% endif %}
+
+<p>----------------------------</p>
+
+
 </body>
 </html>

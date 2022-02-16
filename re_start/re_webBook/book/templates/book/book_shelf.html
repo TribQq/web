@@ -19,6 +19,9 @@
     <a href ="{% url 'book_page' book.bookprogress_set.first.book.id  book.bookprogress_set.first.book_page.id %}">{{ book.bookprogress_set.first.book_page.id }} == link_on_progress_page</a>
     <p>-------------------------------------</p>
 {% endfor %}
-
+<p>======================= go to=================================</p>
+{% for book in books %}
+    <p><a href="{% url 'book_main' book.id %}">{{ book.title }} </a> </p>
+{% endfor %}
 </body>
 </html>

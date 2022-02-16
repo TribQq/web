@@ -28,9 +28,11 @@ class PageLink(models.Model):
     key_items = models.ManyToManyField('Item', blank=True)
 
     def __str__(self):
-        if self.name_path != None:
-            return self.name_path
-        return '%s --> %s' % (self.from_page.title, self.to_page.title)
+        return ('{self.from_page.title} --> {self.to_page.title} ' \
+                '({self.id})'.format(
+            self=self,
+        )
+        )
 
     class Meta:
         unique_together = ['from_page', 'to_page']
@@ -54,7 +56,8 @@ class BookProgress(models.Model): # трабла в автосоздании н�
         unique_together = ['user', 'book']
 
     @classmethod
-    def start_progress(cls, user, book, page):
+    def start_progress(cls, user, book):
+        page = book.first_page if book.first_page else BookPage.objects.filter(book_id=book.id)[0] #если страницы по умолчанию нет, то ,берём страницу с меньшим id у этой книжки
         progress = BookProgress(user=user, book=book, book_page=page)
         progress.save()
         return progress
