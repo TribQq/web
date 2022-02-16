@@ -74,6 +74,7 @@ def take(request, progress, book_id, item_id):
         progress.items.add(item)
     return _return_to(book_id=book_id)
 
+
 @on_progress
 def saves(request, progress, book_id):
     saves = progress.progresssave_set.all()
@@ -85,7 +86,7 @@ def saves(request, progress, book_id):
 
 
 @on_progress
-def save_to(request, progress, book_id, save_id=None):
+def save_to(request, progress, book_id, save_id=None): # None for new_save
     progress.save_to(save_id)
     return _return_to(book_id)
 
@@ -94,6 +95,7 @@ def save_to(request, progress, book_id, save_id=None):
 def load_from(request, progress, book_id, save_id):
     progress.save_to(save_id)
     return _return_to(book_id)
+
 
 def plug(request, text='text'):
     return HttpResponse(text)
