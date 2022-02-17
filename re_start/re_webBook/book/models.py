@@ -62,6 +62,21 @@ class BookProgress(models.Model): # трабла в автосоздании н�
         progress.save()
         return progress
 
+    def save_to(self, save_id):
+        if save_id is None:
+            state = ProgressSave.objects.create(progress=self,
+                                                book_page=self.book_page)
+            state.inventory.set(self.inventory_items.all()) # ? но по другому кряк, указвывет можноство итемов в porgressSave через множество итемов в progresse`e
+        else:
+            state = ProgressSave.get(id=save_id)
+            state.update(progress=self, book_page=self.book_page,
+                         inventory=self.inventory_items.all()) # upd т.к мы обновляем бд #_set Quertyset
+
+    def save_load(self, save_id):
+        state = ProgressSave.objects.get(id=save_id)
+        self.update(book_page=state.book_page,
+                    inventory_items=state.inventory)
+
 
 class Item(models.Model):
     name = models.CharField(max_length=50)
@@ -69,3 +84,10 @@ class Item(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ProgressSave(models.Model): # generate migration
+    progress = models.ForeignKey(BookProgress, on_delete=models.CASCADE)
+    save_time = models.DateTimeField(auto_now=True)
+    book_page = models.ForeignKey(BookPage, on_delete=models.CASCADE)
+    inventory = models.ManyToManyField(Item, blank=True)

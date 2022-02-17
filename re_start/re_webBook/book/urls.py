@@ -14,6 +14,11 @@ urlpatterns = [
    path('book_main/<int:book_id>/go_to/<int:link_id>', go_to, name='go_to'),
    path('book_main/<int:book_id>/item/<int:item_id>', go_take_item, name='go_take_item'),
 
+   path('book_main/<int:book_id>/saves', saves, name='saves'),
+   path('book_main/<int:book_id>/new_save/', save_to, name='new_save'),
+   path('book_main/<int:book_id>/save_to/<int:save_id>', save_to, name='save_to'),
+   path('book_main/<int:book_id>/load_from/<int:save_id>', load_from, name='load_from'),
+
 ]
 
 # {% url 'go_to' page.book_id link.to_page.id %}

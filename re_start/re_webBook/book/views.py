@@ -101,9 +101,32 @@ def go_to(request,progress, book_id, link_id): #реализовать прив�
 
 
 @on_progress_go
-def go_take_item(request,progress, book_id, item_id):
+def go_take_item(request, progress, book_id, item_id):
     item = get_object_or_404(Item, id=item_id)
     progress.inventory_items.add(item)
     context = {'book_id': book_id}
     return redirect(reverse('book_main', kwargs=context))
 
+
+@on_progress_go
+def saves(request, progress, book_id):
+    """save page"""
+    context = {'book': Book.objects.get(id=book_id),
+               'saves': progress.progresssave_set.all()}
+    return render(request, 'book/saves.html', context)
+
+
+@on_progress_go
+def save_to(request, progress, book_id, save_id=None):
+    """new/upd save"""
+    save = progress.save_to(save_id=save_id)
+    # upd/ save ?
+    context = {'book_id': book_id, }
+    return redirect(reverse('saves', kwargs=context))
+
+
+
+@on_progress_go
+def load_from(request, progress, book_id,):
+    """save load"""
+    return HttpResponse('plug')

@@ -11,17 +11,27 @@
 <p> url 'book' book.id </p>
 <h3>its bookshelf</h3>
 <a href=" "> its link </a>
-
+<ul>
 {% for book in books %}
-    <p><a href="{% url 'book_titlePage' book.id %}" > {{ book.title }} , {{ book.id }} </a></p>
-    <img src="{% thumbnail book.cover_img 'default' %}">
-    <p> продолжить приключение </p>
-    <a href ="{% url 'book_page' book.bookprogress_set.first.book.id  book.bookprogress_set.first.book_page.id %}">{{ book.bookprogress_set.first.book_page.id }} == link_on_progress_page</a>
-    <p>-------------------------------------</p>
+    <li>
+        <p><a href="{% url 'book_titlePage' book.id %}" > {{ book.title }} , {{ book.id }} </a></p>
+        <img src="{% thumbnail book.cover_img 'default' %}">
+        <a href="{% url 'saves' book.id %}">watch book saves</a>
+        <p> продолжить приключение </p>
+        <a href ="{% url 'book_page' book.bookprogress_set.first.book.id  book.bookprogress_set.first.book_page.id %}">{{ book.bookprogress_set.first.book_page.id }} == link_on_progress_page</a>
+        <p>-------------------------------------</p>
+    </li>
 {% endfor %}
-<p>======================= go to=================================</p>
+</ul>
+<p>============= go to====================</p>
+<ul>
 {% for book in books %}
+<li>
     <p><a href="{% url 'book_main' book.id %}">{{ book.title }} </a> </p>
+    <a href="{% url 'saves' book.id %}">watch book saves</a>
+    <p>- </p>
+</li>
 {% endfor %}
+</ul>
 </body>
 </html>
