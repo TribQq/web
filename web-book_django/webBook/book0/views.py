@@ -77,7 +77,7 @@ def take(request, progress, book_id, item_id):
 
 @on_progress
 def saves(request, progress, book_id):
-    saves = progress.progresssave_set.all()
+    saves = progress.progresssave_set.all().order_by('-updated_at')
     return render(request, 'book0/saves.html',
                   context={
                       'book': progress.book,
@@ -88,13 +88,19 @@ def saves(request, progress, book_id):
 @on_progress
 def save_to(request, progress, book_id, save_id=None): # None for new_save
     progress.save_to(save_id)
-    return _return_to(book_id)
+    return redirect(reverse('saves', kwargs={'book_id': book_id}))
 
 
 @on_progress
 def load_from(request, progress, book_id, save_id):
-    progress.save_to(save_id)
-    return _return_to(book_id)
+    progress.load_from(save_id)
+    return redirect(reverse('saves', kwargs={'book_id': book_id}))
+
+
+@on_progress
+def save_delete(request, progress, book_id, save_id):
+    ProgressSave.objects.get(id=save_id).delete()
+    return redirect(reverse('saves', kwargs={'book_id': book_id}))
 
 
 def plug(request, text='text'):
