@@ -23,7 +23,7 @@ def book_map(book):
             label='{link.id}:"{shortname}"\n{items}'.format(
                 link=link,
                 shortname=link.name[:10],
-                items='\n'.join('? {id}:"{name}"'.format(id=i.id, name=i.name[:10]) for i in link.items.all() # in for in give SyntaxError: Generator expression must be parenthesized
+                items='\n'.join('? {id}:"{name}"'.format(id=i.id, name=i.name[:10]) for i in link.items.all() # ',' in 'for in ,' give SyntaxError: Generator expression must be parenthesized
 
                 ),
             ),
