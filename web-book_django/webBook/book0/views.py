@@ -2,10 +2,10 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, FileResponse
 from django.urls import reverse
 
-
 from graphviz import Digraph
 
 from .models import *
+from book0 import book_map
 
 
 def _return_to(book_id):
@@ -31,7 +31,8 @@ def index(request):
 # @on_progress
 def book(request, book_id: int) -> render:
     book = get_object_or_404(Book, id=book_id)
-    assert book.first_page, 'cant_get_book_Error'
+    if not book.first_page:
+        raise ValueError('Book {0.id} has not a first page!')
     try:
         progress = BookProgress.objects.get(book=book, user=request.user)
     except BookProgress.DoesNotExist:
@@ -109,34 +110,5 @@ def plug(request, text='text'):
 
 def view_book_map(request, book_id):
     book = get_object_or_404(Book, id=book_id)
+    return FileResponse(book_map.book_map(book), filename='map.svg')
 
-    g = Digraph('Map', filename='map.gv', directory='/tmp')
-
-    def pid(page):
-        return 'page_{id}'.format(id=page.id)
-
-    for page in book.bookpage_set.all():
-        g.node(
-            pid(page),
-            label='\n'.join(
-                [str(page.id), page.title] + [
-                    i.name for i in page.items.all()
-                ]
-            ),
-            tooltip=page.body,
-            href='/admin/book0/bookpage/{}/change'.format(page.id),
-        )
-
-    for link in PageLink.objects.filter(
-            from_page__book_id=book_id,
-    ).all():
-        g.edge(pid(link.from_page), pid(link.to_page), label='\n'.join(
-            [str(link.id), link.name[:10]] + [
-                i.name for i in link.items.all()
-            ]),
-               labeltooltip=link.name,
-               labelhref='/admin/book0/pagelink/{}/change'.format(link.id),
-               )
-
-    g.render(quiet=True, view=False, format='svg')
-    return FileResponse(open('/tmp/map.gv.svg', 'rb'))
