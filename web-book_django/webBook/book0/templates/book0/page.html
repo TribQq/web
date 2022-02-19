@@ -5,13 +5,25 @@
     <title>{{page.title}}</title>
 </head>
 <body>
+<p>{{ dropped_items_t }} == dropped items </p>
+<p>{{ page_items_t }} == page_items_try_filter</p>
 <p>{{ link_status_tuples }}</p>
 <p>{{ page.title }}</p>
+{% if dropped_items %}
+<h4>Вы сбросили: </h4>
+<ul>
+    {% for d_item in dropped_items %}
+    <li>{{d_item.item.name}} <a href="{% url 'take_back' page.book.id d_item.id %}">[подобрать don`t work(check progress items in 'take')]</a></li>
+    {% endfor %}
+</ul>
+{% endif %}
 {% if page_items %}
 <p>Вы видите:</p>
 <ul>
 {% for p_item in page_items  %}
-    <li><a href="{% url 'take' page.book.id p_item.id %}"> {{ p_item.name }} </a></li>
+    <li>
+        <a href="{% url 'take' page.book.id p_item.id %}"> {{ p_item.name }} </a>
+    </li>
     {% endfor %}
 </ul>
 {% else %}
@@ -33,7 +45,7 @@
 {% if progress.items.all %}
 <ul>
 {% for item in progress.items.all  %}
-    <li>  {{ item.name }} </li>
+    <li>  {{ item.name }} <a href="{% url 'drop_item' page.book.id item.id %}">[Сбросить]</a> </li>
     {% endfor %}
 </ul>
 {% else %}

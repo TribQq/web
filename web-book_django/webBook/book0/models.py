@@ -83,6 +83,8 @@ class BookProgress(models.Model):
     items = models.ManyToManyField('book0.Item',
                                    blank=True)  # описание в джанго терминлогогии( book0 ==app(приложение) , Item ==model name)/поздняя динам запись 1:01(2)
 
+    # dropped_item = models.ManyToManyField('DroppedItem', blank=True)
+
     class Meta:
         unique_together = ('user', 'book')
 
@@ -126,3 +128,10 @@ class ProgressSave(models.Model):
         auto_now=True)  # auto_now - обновляет метку каждый раз при изменении в стр бд; auto_now_add- только при создании строки в бд
     book_page = models.ForeignKey(BookPage, on_delete=models.CASCADE)  # зачем , если это уже в прогрессе?
     items = models.ManyToManyField('book0.Item', blank=True)
+
+
+class DroppedItem(models.Model):
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    book_page = models.ForeignKey(BookPage, on_delete=models.CASCADE)
+    book_progress = models.ForeignKey(BookProgress, on_delete=models.CASCADE)
+

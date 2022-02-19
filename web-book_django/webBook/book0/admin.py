@@ -3,7 +3,8 @@ from .models import *
 
 
 admin.site.register(Item)
-
+admin.site.register(DroppedItem)
+admin.site.register(ProgressSave)
 
 
 class AdditionalImageInline(admin.TabularInline):
