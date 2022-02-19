@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.db import models
+from django.db import models,transaction
 
 from .utilities import *
 
@@ -95,23 +95,40 @@ class BookProgress(models.Model):
         progress.save()
         return progress
 
+    @transaction.atomic #транзакции
     def save_to(self, save_id):
         if save_id is None:  # none t.k id can be 0
             state = ProgressSave.objects.create(progress=self, # create new obj bd in tabl progressave +(and) add in variable(переменная)
                                                 book_page=self.book_page,
                                                 )  # 1 44 (4)
             state.items.set(self.items.all()) # ?) множеству итемов этого сохраниния присваивается множество итемов прогресса (пачке присвоить пачку)
+
         else:
             state = ProgressSave.objects.get(id=save_id) # берём по id
             state.book_page = self.book_page # upd page
             state.items.set=self.items.all() # upd items .set нужно писать из множества и связи мэйни ту мэни
             state.save()
+            state.droppeitem_set.all().delete()  # обнуление табл для загрузки
+        for d_i in self.droppeditem_set.all():
+            DroppedItemSave(
+                item=d_i.item,
+                book_page=d_i.book_page,
+                progress_save=state
+            ).save()
 
+    @transaction.atomic #транзакции
     def load_from(self, save_id):
         state = ProgressSave.objects.get(id=save_id) # get obj from bd
         self.book_page=state.book_page # upd progress # .update у себя не роб ит
         self.save()
         self.items.set(state.items.all())
+        self.droppeditem_set.all().delete() # обнуление табл для загрузки в неё новых знач
+        for d_i_s in state.droppeditemsave_set.all():
+            DroppedItem(
+                item=d_i_s.item,
+                book_page=d_i_s.book_page,
+                book_progress=self
+            ).save()
 
 
 class Item(models.Model):
@@ -134,4 +151,10 @@ class DroppedItem(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     book_page = models.ForeignKey(BookPage, on_delete=models.CASCADE)
     book_progress = models.ForeignKey(BookProgress, on_delete=models.CASCADE)
+
+
+class DroppedItemSave(models.Model): # переходная модльека для сейвов т.к из за many to many мини руин 1№40 (5)
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    book_page = models.ForeignKey(BookPage, on_delete=models.CASCADE)
+    progress_save = models.ForeignKey(ProgressSave, on_delete=models.CASCADE) # свяpка с сейвом
 
