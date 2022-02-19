@@ -47,7 +47,7 @@ def book(request, book_id: int) -> render:
     ]
     # dropped_items_t = progress.droppeditem_set.filter(book_page=page, ).values('item__id') # взять только значение item из dropped_item и у этого itam только его id
     page_items = page.items.exclude(id__in=progress.items.only('id')).exclude(
-        id__in=[i['item__id'] for i in progress.droppeditem_set.values_list('item__id', flat=True)] # без _list, flat=True тоже ок, но даст словарь , а с values_list =>возвращает кортежи, flat=True => example: [(1,),(2,),(3,)] => [1,2,3]  в конце 2№09(5)
+        id__in=progress.droppeditem_set.values_list('item__id', flat=True) # без _list, flat=True тоже ок, но даст словарь , а с values_list =>возвращает кортежи, flat=True => example: [(1,),(2,),(3,)] => [1,2,3]  в конце 2№09(5)
     ).all() # взять из page.items  все items id которых не в progress.items.id (онли это мы берём из бд только поле id)
     # а так же исключить все итемы из droppeditem( для этого мы лезем в dropped_item потом в его поле item и у этого тема берём только его VALUE(id) ,value отвечает за формат ретёрна инфы 1#31(5)
     # мы берём все item_id а не только item_id этой страницы т.к мы можем дропнуть итемы  на другой стр
@@ -101,7 +101,7 @@ def take_back_item(request, progress, book_id, dropped_item_id):
             and
             dropped_item.book_progress.id == progress.id):  # ?
         with transaction.atomic():  # транзакция
-            progress.items.add(dropped_item_id)  # в прогрессе нужен толкьо id(т.к many to many и => id == key on Item.obj), инче бы пришлось брать новый обьект из итемов?
+            progress.items.add(dropped_item.item)
             dropped_item.delete()
     return _return_to(book_id=book_id)
 
