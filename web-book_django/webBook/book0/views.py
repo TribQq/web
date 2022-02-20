@@ -58,6 +58,7 @@ def book(request, book_id: int) -> render:
                       'link_status_tuples': links,
                       'page_items': page_items,
                       'dropped_items': progress.droppeditem_set.filter(book_page=page, ).all(), # 2 раза хожу в бд , за items на этой стрнице.. можно оптимизировать
+                      'notes': progress.note_set.all(),
                   })
 
 
@@ -142,14 +143,21 @@ def view_book_map(request, book_id):
     book = get_object_or_404(Book, id=book_id)
     return FileResponse(book_map.book_map(book), filename='map.svg')
 
-# @on_progress
-# def drop_item(request, progress, book_id, item_id):
-#     item = progress.items.get(id=item_id)
-#     progress.items.remove(item)
-#     drop_item = DroppedItem.objects.create(
-#         item=item,
-#         book_page=progress.book_page
-#     )
-#     progress.dropped_item.add(drop_item)
-#     progress.save()
-#     return _return_to(book_id)
+
+@on_progress
+def add_note(request, progress, book_id): # обработка пост запроса поступающего в этот контроллер и создание обьекта в бд45(6)
+    page = progress.book_page if 'pin' in request.POST else None
+    Note.objects.create(
+        text=request.POST['text_note'], # text from form
+        progress=progress,
+        book_page=page,
+    )
+    return _return_to(book_id)
+
+
+@on_progress
+def remove_note(request, progress, book_id, note_id):
+    note = get_object_or_404(Note, id=note_id)
+    progress.notes.remove(note)
+    note.delete()
+    return _return_to(book_id)

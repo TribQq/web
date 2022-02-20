@@ -5,53 +5,80 @@
     <title>{{page.title}}</title>
 </head>
 <body>
-<p>{{ dropped_items_t }} == dropped items </p>
-<p>{{ page_items_t }} == page_items_try_filter</p>
-<p>{{ link_status_tuples }}</p>
-<p>{{ page.title }}</p>
-{% if dropped_items %}
-<h4>Вы сбросили: </h4>
-<ul>
-    {% for d_item in dropped_items %}
-    <li>{{d_item.item.name}} <a href="{% url 'take_back' page.book.id d_item.id %}">[подобрать]</a></li>
-    {% endfor %}
-</ul>
-{% endif %}
-{% if page_items %}
-<p>Вы видите:</p>
-<ul>
-{% for p_item in page_items  %}
-    <li>
-        <a href="{% url 'take' page.book.id p_item.id %}"> {{ p_item.name }} </a>
-    </li>
-    {% endfor %}
-</ul>
-{% else %}
-<p>Вы не видите ничего интересного</p>
-{% endif %}
-<p>-----------------------</p>
-<ul>
-{% for link,status in link_status_tuples  %}
-    {% if status %}
-    <li><a href ="{% url 'go_to' page.book.id link.id %}"> {{ link }} </a></li>
-    {% else %}
-    <li> <p>{{ link }}, вы понимаете ,что вам чего то не хватает, чтоб пройти</p> </li>
-    {% endif %}
-    <p>{{ page.book.id }} == book.id</p>
-    <p>{{ link.to_page.id }} ==to_page.id</p>
-    {% endfor %}
-</ul>
-<h3>Инвентарь: </h3>
-{% if progress.items.all %}
-<ul>
-{% for item in progress.items.all  %}
-    <li>  {{ item.name }} <a href="{% url 'drop_item' page.book.id item.id %}">[Сбросить]</a> </li>
-    {% endfor %}
-</ul>
-{% else %}
-<p>ваш инвентарь пуст</p>
-{% endif %}
-<hr/>
-<a href="{% url 'saves' page.book.id %}">Страничка сохранений</a>
+<div class="main" style="display:flex;">
+    <div class="content">
+
+        <p>{{ dropped_items_t }} == dropped items </p>
+        <p>{{ page_items_t }} == page_items_try_filter</p>
+        <p>{{ link_status_tuples }}</p>
+        <p>{{ page.title }}</p>
+        {% if dropped_items %}
+        <h4>Вы сбросили: </h4>
+        <ul>
+            {% for d_item in dropped_items %}
+            <li>{{d_item.item.name}} <a href="{% url 'take_back' page.book.id d_item.id %}">[подобрать]</a></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% if page_items %}
+        <p>Вы видите:</p>
+        <ul>
+        {% for p_item in page_items  %}
+            <li>
+                <a href="{% url 'take' page.book.id p_item.id %}"> {{ p_item.name }} </a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>Вы не видите ничего интересного</p>
+        {% endif %}
+        <p>-----------------------</p>
+        <ul>
+        {% for link,status in link_status_tuples  %}
+            {% if status %}
+            <li><a href ="{% url 'go_to' page.book.id link.id %}"> {{ link }} </a></li>
+            {% else %}
+            <li> <p>{{ link }}, вы понимаете ,что вам чего то не хватает, чтоб пройти</p> </li>
+            {% endif %}
+            <p>{{ page.book.id }} == book.id</p>
+            <p>{{ link.to_page.id }} ==to_page.id</p>
+            {% endfor %}
+        </ul>
+        <h3>Инвентарь: </h3>
+        {% if progress.items.all %}
+        <ul>
+        {% for item in progress.items.all  %}
+            <li>  {{ item.name }} <a href="{% url 'drop_item' page.book.id item.id %}">[Сбросить]</a> </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>ваш инвентарь пуст</p>
+        {% endif %}
+        <hr/>
+        <a href="{% url 'saves' page.book.id %}">Страничка сохранений</a>
+
+    </div>
+    <div class="sidebar">
+        <h5>0#25(6)</h5>
+        <h4>Написать заметку</h4>
+        <form method="POST" style="display: grid" action="{% url 'add_note' page.book.id %}">
+            {% csrf_token %}
+            <label for="memo-body">Заметка</label>
+            <textarea id="memo-body" name="text_note" ></textarea>
+            <label for="memo-pin">Для текущей локации</label>
+            <input id="memo-pin" type="checkbox">
+            <button type="submit">Добавить</button>
+        </form>
+        <h4>Заметки:</h4>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            {% for note in notes %}
+            <li>{{ note.text }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 </body>
 </html>

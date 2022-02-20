@@ -95,7 +95,7 @@ class BookProgress(models.Model):
         progress.save()
         return progress
 
-    @transaction.atomic #транзакции
+    @transaction.atomic # транзакции(одновременное выполнение блока , если нет 1 элементу== нет всему блоку)
     def save_to(self, save_id):
         if save_id is None:  # none t.k id can be 0
             state = ProgressSave.objects.create(progress=self, # create new obj bd in tabl progressave +(and) add in variable(переменная)
@@ -108,7 +108,7 @@ class BookProgress(models.Model):
             state.book_page = self.book_page # upd page
             state.items.set=self.items.all() # upd items .set нужно писать из множества и связи мэйни ту мэни
             state.save()
-            state.droppeitem_set.all().delete()  # обнуление табл для загрузки
+            state.droppeditemsave_set.all().delete()  # удаляем связанные с этим ProgressSave.object`ом итемы в droppeditemsave
         for d_i in self.droppeditem_set.all():
             DroppedItemSave(
                 item=d_i.item,
@@ -116,7 +116,7 @@ class BookProgress(models.Model):
                 progress_save=state
             ).save()
 
-    @transaction.atomic #транзакции
+    @transaction.atomic # транзакции
     def load_from(self, save_id):
         state = ProgressSave.objects.get(id=save_id) # get obj from bd
         self.book_page=state.book_page # upd progress # .update у себя не роб ит
@@ -147,14 +147,21 @@ class ProgressSave(models.Model):
     items = models.ManyToManyField('book0.Item', blank=True)
 
 
-class DroppedItem(models.Model):
+class DroppedItem(models.Model): # обновляемое поле
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     book_page = models.ForeignKey(BookPage, on_delete=models.CASCADE)
     book_progress = models.ForeignKey(BookProgress, on_delete=models.CASCADE)
 
 
-class DroppedItemSave(models.Model): # переходная модльека для сейвов т.к из за many to many мини руин 1№40 (5)
+class DroppedItemSave(models.Model): # статичное поле где хранятся все дропнутые итемы во всех сейвах # переходная модльека для сейвов т.к из за many to many мини руин 1№40 (5)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     book_page = models.ForeignKey(BookPage, on_delete=models.CASCADE)
     progress_save = models.ForeignKey(ProgressSave, on_delete=models.CASCADE) # свяpка с сейвом
 
+
+class Note(models.Model):
+    text = models.TextField()
+    progress = models.ForeignKey(BookProgress, on_delete=models.CASCADE) # makemigration conflict 0#37(6)
+    book_page = models.ForeignKey(BookPage, blank=True, null=True, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True) # только при создании
+    updated_at = models.DateTimeField(auto_now=True) # каждый раз при апдейте
