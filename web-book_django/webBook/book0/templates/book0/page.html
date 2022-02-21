@@ -65,17 +65,46 @@
             {% csrf_token %}
             <label for="memo-body">Заметка</label>
             <textarea id="memo-body" name="text_note" ></textarea>
-            <label for="memo-pin">Для текущей локации</label>
-            <input id="memo-pin" type="checkbox">
+            <label for="memo-pin">Для текущей локации  <input id="memo-pin" type="checkbox" name="page-pin"> </label>
             <button type="submit">Добавить</button>
         </form>
         <h4>Заметки:</h4>
         <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
+            {% for note in pinned_notes %}
+            <li>
+                <a href="{% url 'toggle_pin' page.book.id note.id %}">[📌]</a>
+                {{ note.text }}
+                {% if note.book_page %} ({{ note.book_page.title }}) {% endif %}
+                {% if note.page %} ({{note.progress.book_page.title}}) {% endif %}
+                <a href="{% url 'update_note' page.book.id note.id %}">[✍]</a>
+                <a href="{% url 'remove_note' page.book.id note.id %}">[🗑️]</a>
+
+
+            </li>
+            {% endfor %}
+            <hr>
+            {% for note in page_notes %}
+            <li>
+                <a href="{% url 'toggle_pin' page.book.id note.id %}">[📌]</a>
+                {{ note.text }}
+                {% if note.book_page %} ({{ note.book_page.title }}) {% endif %}
+                {% if note.page %} ({{note.progress.book_page.title}}) {% endif %}
+                <a href="{% url 'update_note' page.book.id note.id %}">[✍]</a>
+                <a href="{% url 'remove_note' page.book.id note.id %}">[🗑️]</a>
+
+            </li>
+            {% endfor %}
+            <hr>
             {% for note in notes %}
-            <li>{{ note.text }}</li>
+            <li>
+                <a href="{% url 'toggle_pin' page.book.id note.id %}">[📌]</a>
+                {{ note.text }}
+                {% if note.book_page %} ({{ note.book_page.title }}) {% endif %}
+                <a href="{% url 'update_note' page.book.id note.id %}">[✍]</a>
+                <a href="{% url 'remove_note' page.book.id note.id %}">[🗑️]</a>
+
+
+            </li>
             {% endfor %}
         </ul>
     </div>

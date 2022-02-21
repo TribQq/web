@@ -165,3 +165,4 @@ class Note(models.Model):
     book_page = models.ForeignKey(BookPage, blank=True, null=True, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True) # только при создании
     updated_at = models.DateTimeField(auto_now=True) # каждый раз при апдейте
+    pinned = models.BooleanField(default=False)

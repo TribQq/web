@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>change note form here</h2>
+
+
+<form action="{% url 'plug' %}" method="post">
+    {% csrf_token %}
+    {{ change_note_form }}
+    <input type="submit" value="Submit">
+</form>
+
+<a href="{% url 'book' page.book.id %}">return to read</a>
+</body>
+</html>

@@ -12,6 +12,9 @@ urlpatterns = [
 
     path('book/<int:book_id>/add_note/', views.add_note, name='add_note'),
     path('book/<int:book_id>/remove_note/<int:note_id>/', views.remove_note, name='remove_note'),
+    path('book/<int:book_id>/update_note/<int:note_id>/', views.update_note, name='update_note'),
+    path('book/<int:book_id>/toggle_pin/<int:note_id>/', views.toggle_pin, name='toggle_pin'),
+
 
     path('book/<int:book_id>/saves', views.saves, name='saves'),
     path('book/<int:book_id>/saves/saves/new', views.save_to, name='save_new'), #new save

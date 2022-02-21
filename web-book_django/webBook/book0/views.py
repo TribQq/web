@@ -5,6 +5,7 @@ from django.db import transaction
 
 from graphviz import Digraph
 
+from .forms import ChangeNoteForm
 from .models import *
 from book0 import book_map
 
@@ -47,8 +48,9 @@ def book(request, book_id: int) -> render:
     ]
     # dropped_items_t = progress.droppeditem_set.filter(book_page=page, ).values('item__id') # взять только значение item из dropped_item и у этого itam только его id
     page_items = page.items.exclude(id__in=progress.items.only('id')).exclude(
-        id__in=progress.droppeditem_set.values_list('item__id', flat=True) # без _list, flat=True тоже ок, но даст словарь , а с values_list =>возвращает кортежи, flat=True => example: [(1,),(2,),(3,)] => [1,2,3]  в конце 2№09(5)
-    ).all() # взять из page.items  все items id которых не в progress.items.id (онли это мы берём из бд только поле id)
+        id__in=progress.droppeditem_set.values_list('item__id', flat=True)
+        # без _list, flat=True тоже ок, но даст словарь , а с values_list =>возвращает кортежи, flat=True => example: [(1,),(2,),(3,)] => [1,2,3]  в конце 2№09(5)
+    ).all()  # взять из page.items  все items id которых не в progress.items.id (онли это мы берём из бд только поле id)
     # а так же исключить все итемы из droppeditem( для этого мы лезем в dropped_item потом в его поле item и у этого тема берём только его VALUE(id) ,value отвечает за формат ретёрна инфы 1#31(5)
     # мы берём все item_id а не только item_id этой страницы т.к мы можем дропнуть итемы  на другой стр
     return render(request, 'book0/page.html',
@@ -57,8 +59,14 @@ def book(request, book_id: int) -> render:
                       'progress': progress,
                       'link_status_tuples': links,
                       'page_items': page_items,
-                      'dropped_items': progress.droppeditem_set.filter(book_page=page, ).all(), # 2 раза хожу в бд , за items на этой стрнице.. можно оптимизировать
-                      'notes': progress.note_set.all(),
+                      'dropped_items': progress.droppeditem_set.filter(book_page=page, ).all(),
+                      # 2 раза хожу в бд , за items на этой стрнице.. можно оптимизировать
+
+                      'pinned_notes': progress.note_set.filter(pinned=True).order_by('-updated_at'),  # need optimize
+                      'page_notes': progress.note_set.filter(book_page=page).exclude(pinned=True).order_by(
+                          '-updated_at'),  # берём+ сортируем
+                      'notes': progress.note_set.exclude(book_page=page).exclude(pinned=True).order_by('-updated_at'),
+                      # .all()?
                   })
 
 
@@ -145,10 +153,12 @@ def view_book_map(request, book_id):
 
 
 @on_progress
-def add_note(request, progress, book_id): # обработка пост запроса поступающего в этот контроллер и создание обьекта в бд45(6)
-    page = progress.book_page if 'pin' in request.POST else None
+def add_note(request, progress,
+             book_id):  # обработка пост запроса поступающего в этот контроллер и создание обьекта в бд45(6)
+    # print(request.POST , '==post')
+    page = progress.book_page if 'page-pin' in request.POST.keys() else None  # ищем в ключах QueryDict чекбокс,(если галочка не проставлена , то его просто нет в пост запресе(особенность чебокса)) и добавляем страницу если чебокс есть
     Note.objects.create(
-        text=request.POST['text_note'], # text from form
+        text=request.POST['text_note'],  # text from form
         progress=progress,
         book_page=page,
     )
@@ -158,6 +168,34 @@ def add_note(request, progress, book_id): # обработка пост запр
 @on_progress
 def remove_note(request, progress, book_id, note_id):
     note = get_object_or_404(Note, id=note_id)
-    progress.notes.remove(note)
+    # progress.notes.remove(note)
     note.delete()
     return _return_to(book_id)
+
+
+def toggle_pin(request,book_id, note_id):
+    note = get_object_or_404(Note, id=note_id)
+    note.pinned = True if note.pinned == False else False
+    note.save()
+    return _return_to(book_id)
+
+
+@on_progress
+def update_note(request, progress, book_id, note_id):
+    note = get_object_or_404(Note, id=note_id)
+    print(request.method, '== request.method')
+    if request.method == 'GET':
+        return render(request, 'book0/change_note.html', context={
+            'page': progress.book_page,
+            'note': note,
+            'change_note_form': ChangeNoteForm()
+        })
+    elif request.method == 'POST':
+        note.text=request.POST['text']
+        note.page=request.POST['page']
+        note.pinned = True if 'pinned' in request.POST.keys() else False
+        note.save()
+    #pinned
+    return _return_to(book_id)
+
+
