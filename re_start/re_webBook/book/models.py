@@ -68,14 +68,19 @@ class BookProgress(models.Model): # трабла в автосоздании н�
                                                 book_page=self.book_page)
             state.inventory.set(self.inventory_items.all()) # ? но по другому кряк, указвывет можноство итемов в porgressSave через множество итемов в progresse`e
         else:
-            state = ProgressSave.get(id=save_id)
-            state.update(progress=self, book_page=self.book_page,
-                         inventory=self.inventory_items.all()) # upd т.к мы обновляем бд #_set Quertyset
+            state = ProgressSave.objects.get(id=save_id)
+            state.progress=self
+            state.book_page=self.book_page
+            state.inventory.set(self.inventory_items.all()) # upd т.к мы обновляем бд #_set Quertyset
+        state.save()
 
     def save_load(self, save_id):
         state = ProgressSave.objects.get(id=save_id)
-        self.update(book_page=state.book_page,
-                    inventory_items=state.inventory)
+        self.book_page = state.book_page
+        self.inventory_items.set(state.inventory.all())
+        self.save()
+        # self.update(book_page=state.book_page,
+        #             inventory_items=state.inventory)
 
 
 class Item(models.Model):
@@ -85,6 +90,10 @@ class Item(models.Model):
     def __str__(self):
         return self.name
 
+
+# class DroppedItem(models.Model):
+#     # item = models.
+#     pass
 
 class ProgressSave(models.Model): # generate migration
     progress = models.ForeignKey(BookProgress, on_delete=models.CASCADE)

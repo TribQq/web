@@ -5,12 +5,37 @@
     <title>saves</title>
 </head>
 <body>
-<a href="{% url 'new_save' book.id %}">add new save</a>
+<h4>progress now:</h4>
+<ul>
+    <li>location: {{ progress.book_page.title }}</li>
+    <li>items:
+        <ul>
+            {% if progress.inventory_items.all %}
+            {% for item in progress.inventory_items.all %}
+            <li>{{ item.name }}</li>
+            {% endfor %}
+            {% else %}
+            <li>*empty*</li>
+            {% endif %}
+        </ul>
+    </li>
+</ul>
+<p><a href="{% url 'book_main' book.id %}">[return to read]</a></p>
+<p><a href="{% url 'new_save' book.id %}">[add new save]</a></p>
 <h4>{{ book.title }} save list:</h4>
 <ul>
     {% for save in saves %}
     <li>
-        <p>{{ save.save_time }}</p>
+        {{ save.save_time|date:"H:i:s (d.m.Y)" }} => location: {{ save.book_page.title }}
+        inventory:
+        {% if save.inventory.all %}
+        {% for item in save.inventory.all %}{{ item.name }}, {% endfor %}
+        {% else %}
+        *your pockets are empty*
+        {% endif %}
+        <a href="{% url 'load_from' book_id=book.id save_id=save.id %}">[load]</a>
+        <a href="{% url 'save_to' book.id save.id %}">[update]</a>
+        <a href="{% url 'delete_save' book.id save.id %}">[delete]</a>
     </li>
     {% endfor %}
 </ul>

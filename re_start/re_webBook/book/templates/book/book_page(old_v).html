@@ -6,17 +6,16 @@
 </head>
 <body>
 <p> url 'page' book_id=page.book_id page_id=path_link.to_page  </p>
-<h4>its just go_to_bookPage</h4>
+<h4>its just book_page</h4>
 <p></p>
 <p>{{ page.text }}</p>
 <p>{{ link_status_tuple }}</p>
 {% if page.page_items.all %}
 <h4>Рядом вы видите и можете взять: </h4>
-
 <ul>
     {% for p_item in page.page_items.all %}
     {% if p_item not in progress.inventory_items.all %}
-    <li> <a href="{% url 'go_take_item' page.book_id p_item.id  %}"> {{ p_item }} </a> </li>
+    <li> <a href="{% url 'take_item' page.book_id page.id p_item.id  %}"> {{ p_item }} </a> </li>
     {% endif %}
      {% endfor %}
 </ul>
@@ -24,7 +23,7 @@
 
 {% for link,status in link_status_tuple %}
 {% if status %}
-<a href="{% url 'go_to' book_id=page.book_id link_id=link.id %}"> <p> {{ link.to_page }}</p> </a>
+<a href="{% url 'book_page' book_id=page.book_id page_id=link.to_page.id %}"> <p> {{ link }}</p> </a>
 {% else %}
 <p>{{ link }}, у вас нету ключа для этого.</p>
 {% endif %}
