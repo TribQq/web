@@ -5,56 +5,90 @@
     <title>Title</title>
 </head>
 <body>
-<p> {{ test }} == test  </p>
-<h4>its just go_to_bookPage</h4>
+<div class="main" style="display:flex">
+    <div class="book_block">
+    <p> {{ test }} == test  </p>
+    <h4>its just go_to_bookPage</h4>
 
-{% if dropped_items %}
-<h4>Брошено ранее: </h4>
-<ul>
-    {% for d_item in dropped_items %}
-    <li>
-        {{ d_item.item.name }}
-        <a href="{% url 'take_back_item' page.book_id d_item.id  %}"> [take back] </a>
-    </li>
+    {% if dropped_items %}
+    <h4>Брошено ранее: </h4>
+    <ul>
+        {% for d_item in dropped_items %}
+        <li>
+            {{ d_item.item.name }}
+            <a href="{% url 'take_back_item' page.book_id d_item.id  %}"> [take back] </a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if location_items %}
+    <h4>Рядом вы видите и можете взять: </h4>
+    <ul>
+        {% for item in location_items %}
+        <li> <a href="{% url 'take_item' page.book_id item.id  %}"> {{ item }} </a> </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% for link,status in link_status_tuple %}
+    {% if status %}
+    <a href="{% url 'go_to' book_id=page.book_id link_id=link.id %}"> <p> {{ link.to_page }}</p> </a>
+    {% else %}
+    <p>{{ link }}, у вас нету ключа для этого.</p>
+    {% endif %}
     {% endfor %}
-</ul>
-{% endif %}
-
-{% if location_items %}
-<h4>Рядом вы видите и можете взять: </h4>
-<ul>
-    {% for item in location_items %}
-    <li> <a href="{% url 'take_item' page.book_id item.id  %}"> {{ item }} </a> </li>
-    {% endfor %}
-</ul>
-{% endif %}
-
-{% for link,status in link_status_tuple %}
-{% if status %}
-<a href="{% url 'go_to' book_id=page.book_id link_id=link.id %}"> <p> {{ link.to_page }}</p> </a>
-{% else %}
-<p>{{ link }}, у вас нету ключа для этого.</p>
-{% endif %}
-{% endfor %}
 
 
-<h4>Инвентарь: </h4>
-{% if progress.inventory_items.all %}
-<ul>
-    {% for i_item in progress.inventory_items.all %}
-    <li>
-        {{ i_item }}
-        <a href="{% url 'drop_item' book.id i_item.id %}">[drop]</a>
-    </li>
-    {% endfor %}
-</ul>
-{% else %}
-<p>Ваш инвентарь пуст</p>
-{% endif %}
+    <h4>Инвентарь: </h4>
+    {% if progress.inventory_items.all %}
+    <ul>
+        {% for i_item in progress.inventory_items.all %}
+        <li>
+            {{ i_item }}
+            <a href="{% url 'drop_item' book.id i_item.id %}">[drop]</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>Ваш инвентарь пуст</p>
+    {% endif %}
 
-<hr>
-<a href="{% url 'saves' book.id %}">[saves]</a>
-
-
+    <hr>
+    <a href="{% url 'saves' book.id %}">[saves]</a>
+    </div>
+    <div class="notes_block" style="">
+        <form action="{% url 'add_note' book.id %}" method="POST">
+            {% csrf_token %}
+            <textarea id="note_input_text" name="note_text"></textarea>
+            <button id="note_submit_button" type="submit">submit</button>
+        </form>
+        <ul>
+            {% if pinned_notes %}
+                {% for note in pinned_notes %}
+                <li>
+                    <a href="{% url 'toggle_pin' book.id note.id %}">[📌]</a>
+                    {% if note.name %} {{ note.name }} {% endif %}
+                    {{ note.text }}
+                    <a href="">[🖊️]</a>
+                    <a href="{% url 'delete_note' book.id note.id %}">[🗑️]</a>
+                </li>
+                {% endfor %}
+            <hr>
+            {% endif %}
+            {% if notes %}
+                {% for note in notes %}
+                <li>
+                    <a href="{% url 'toggle_pin' book.id note.id %}">[📌]</a>
+                    {% if note.name %} {{ note.name }} {% endif %}
+                    {{ note.text }}
+                    <a href="">[🖊️]</a>
+                    <a href="{% url 'delete_note' book.id note.id %}">[🗑️]</a>
+                </li>
+                {% endfor %}
+            {% endif %}
+        </ul>
+    </div>
+</div>
 </body>
 </html>

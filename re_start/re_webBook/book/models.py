@@ -119,3 +119,10 @@ class DroppedItemSave(models.Model):
     book_page = models.ForeignKey(BookPage, on_delete=models.CASCADE)
     progress_save = models.ForeignKey(ProgressSave, on_delete=models.CASCADE)
 
+
+class Note(models.Model):
+    name = models.CharField(max_length=30, blank=True, null=True)
+    text = models.TextField(max_length=300)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    book_page = models.ForeignKey(BookPage, on_delete=models.CASCADE, blank=True, null=True)
+    pinned = models.BooleanField(default=False)

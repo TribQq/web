@@ -58,9 +58,15 @@ def book_main(request, book_id):
         id__in=progress.inventory_items.all().values_list('id', flat=True)).exclude(
         id__in=progress.droppeditem_set.filter(progress=progress).values_list('item__id', flat=True))
     dropped_items = DroppedItem.objects.filter(book_page=page.id)
+    pinned_notes = book.note_set.filter(pinned=True)
+    page_notes = book.note_set.filter(pinned=False, book_page=page)
+    notes = book.note_set.exclude(
+        id__in=[n.id for n in pinned_notes]).exclude(id__in=[n.id for n in page_notes]) # worked too btw pinned_notes.values_list('id', flat=True)
+    test = pinned_notes.values_list('id', flat=True)
     context = {'book': book, 'page': page,
                'link_status_tuple': links, 'progress': progress,
                'location_items': location_items, 'dropped_items': dropped_items,
+               'pinned_notes': pinned_notes, 'notes': notes, 'page_notes': page_notes,
                'test': test, }
     return render(request, 'book/book_page.html', context)
 
@@ -138,3 +144,27 @@ def delete_save(request, progress, book_id, save_id):
     save = get_object_or_404(ProgressSave, id=save_id)
     save.delete()
     return redirect(reverse('saves', kwargs={'book_id': book_id}))
+
+
+def add_note(request, book_id):
+    print(request.method)
+    if request.method == 'POST':
+        print(request.POST)
+        Note.objects.create(
+            text=request.POST['note_text'],
+            book=Book.objects.get(id=book_id)
+        )
+    return _return_to_main(book_id)
+
+
+def delete_note(request, book_id, note_id):
+    note = get_object_or_404(Note, id=note_id)
+    note.delete()
+    return _return_to_main(book_id)
+
+
+def toggle_pin(request, book_id, note_id):
+    note = get_object_or_404(Note, id=note_id)
+    note.pinned = True if note.pinned==False else False
+    note.save()
+    return _return_to_main(book_id)

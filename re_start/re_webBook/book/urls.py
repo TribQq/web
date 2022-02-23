@@ -14,6 +14,11 @@ urlpatterns = [
    path('book_main/<int:book_id>/drop_item/<int:item_id>', drop_item, name='drop_item'),
    path('book_main/<int:book_id>/take_back_item/<int:item_id>', take_back_item, name='take_back_item'),
 
+   path('book_main/<int:book_id>/add_note/', add_note, name='add_note'),
+   path('book_main/<int:book_id>/toggle_pin/<int:note_id>', toggle_pin, name='toggle_pin'),
+   path('book_main/<int:book_id>/delete_note/<int:note_id>', delete_note, name='delete_note'),
+
+
    path('book_main/<int:book_id>/saves', saves, name='saves'),
    path('book_main/<int:book_id>/new_save/', save_to, name='new_save'),
    path('book_main/<int:book_id>/save_to/<int:save_id>', save_to, name='save_to'),
