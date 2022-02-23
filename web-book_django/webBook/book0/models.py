@@ -101,7 +101,7 @@ class BookProgress(models.Model):
             state = ProgressSave.objects.create(progress=self, # create new obj bd in tabl progressave +(and) add in variable(переменная)
                                                 book_page=self.book_page,
                                                 )  # 1 44 (4)
-            state.items.set(self.items.all()) # ?) множеству итемов этого сохраниния присваивается множество итемов прогресса (пачке присвоить пачку)
+            state.items.set(self.items.all()) # ?) множеству итемов этого сохраниния присваивается множество итемов прогресса (пачке присвоить пачку)  # ? но по другому кряк, указвывет можноство итемов в porgressSave через множество итемов в progresse`e
 
         else:
             state = ProgressSave.objects.get(id=save_id) # берём по id
@@ -114,7 +114,9 @@ class BookProgress(models.Model):
                 item=d_i.item,
                 book_page=d_i.book_page,
                 progress_save=state
-            ).save()
+            ).save() # ==
+            # == DroppedItemSave.objects.create(item=di.item, book_page=di.book_page,
+            #                                 progress_save=state)
 
     @transaction.atomic # транзакции
     def load_from(self, save_id):

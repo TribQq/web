@@ -9,8 +9,8 @@ def plug(request):
     return HttpResponse('just plug')
 
 
-def _return_to(request, book_id):
-    return redirect(reverse('book_main', kwargs={'book_id':book_id}))
+def _return_to_main(book_id):
+    return redirect(reverse('book_main', kwargs={'book_id': book_id}))
 
 
 def books_shelf(request):
@@ -53,8 +53,17 @@ def book_main(request, book_id):
         (link, link.check_key_items(progress.inventory_items.all()))
         for link in page.pagelink_set.all()
     ]
-    context = {'book': book, 'page': page, 'link_status_tuple': links , 'progress': progress}
+    test = progress.droppeditem_set.filter(progress=progress).values_list('item__id', flat=True)
+    location_items = page.page_items.exclude(
+        id__in=progress.inventory_items.all().values_list('id', flat=True)).exclude(
+        id__in=progress.droppeditem_set.filter(progress=progress).values_list('item__id', flat=True))
+    dropped_items = DroppedItem.objects.filter(book_page=page.id)
+    context = {'book': book, 'page': page,
+               'link_status_tuple': links, 'progress': progress,
+               'location_items': location_items, 'dropped_items': dropped_items,
+               'test': test, }
     return render(request, 'book/book_page.html', context)
+
 
 
 @on_progress
@@ -64,7 +73,7 @@ def go_to(request,progress, book_id, link_id): #реализовать прив�
         progress.book_page.id == page_link.from_page.id
         and
         page_link.check_key_items(progress.inventory_items.all())
-    ): # обновление програсса если?
+    ):
         progress.book_page = page_link.to_page
         progress.save()
     context = {'book_id': book_id}
@@ -81,9 +90,22 @@ def take_item(request, progress, book_id, item_id):
 
 @on_progress
 def drop_item(request, progress, book_id, item_id):
+    item = get_object_or_404(Item, id=item_id)
+    progress.inventory_items.remove(item)
+    progress.save()
+    DroppedItem.objects.create(
+        item=item,
+        book_page=progress.book_page,
+        progress=progress
+    )
+    return _return_to_main(book_id)
 
-    return _return_to(book_id)
-
+@on_progress
+def take_back_item(request, progress, book_id, item_id): # TODO  need transaction btw
+    dropped_item = get_object_or_404(DroppedItem, id=item_id)
+    progress.inventory_items.add(dropped_item.item)
+    dropped_item.delete()
+    return redirect(reverse('book_main', kwargs={'book_id': book_id}))
 
 @on_progress
 def saves(request, progress, book_id):
@@ -109,7 +131,6 @@ def load_from(request, progress, book_id, save_id):
     progress.save_load(save_id)
     context = {'book_id': book_id}
     return redirect(reverse('saves', kwargs=context))
-    # return HttpResponse('plug')
 
 
 @on_progress

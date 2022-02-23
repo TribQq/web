@@ -1,4 +1,4 @@
-from django.db import models
+from django.db import models,transaction
 from django.contrib.auth.models import User
 
 
@@ -62,25 +62,35 @@ class BookProgress(models.Model): # трабла в автосоздании н�
         progress.save()
         return progress
 
+    @transaction.atomic
     def save_to(self, save_id):
         if save_id is None:
-            state = ProgressSave.objects.create(progress=self,
-                                                book_page=self.book_page)
-            state.inventory.set(self.inventory_items.all()) # ? но по другому кряк, указвывет можноство итемов в porgressSave через множество итемов в progresse`e
+            state = ProgressSave.objects.create(
+                progress=self, book_page=self.book_page)
         else:
             state = ProgressSave.objects.get(id=save_id)
             state.progress=self
             state.book_page=self.book_page
-            state.inventory.set(self.inventory_items.all()) # upd т.к мы обновляем бд #_set Quertyset
+            state.droppeditemsave.all().delete()
+        state.inventory_items.set(self.inventory_items.all())
+        for di in self.droppeditem_set.all():
+            DroppedItemSave.objects.create(item=di.item, book_page=di.book_page,
+                                            progress_save=state)
+            # ==
+            # DroppedItemSave(item=di.item, book_page=di.book_page,
+            #                 progress_save=state).save()
         state.save()
 
+    @transaction.atomic
     def save_load(self, save_id):
         state = ProgressSave.objects.get(id=save_id)
         self.book_page = state.book_page
-        self.inventory_items.set(state.inventory.all())
+        self.inventory_items.set(state.inventory_items.all())
+        self.droppeditem_set.all().delete()
+        for dis in state.droppeditemsave_set.all():
+            DroppedItem.objects.create(item=dis.item, book_page=dis.book_page,
+                        progress=state.progress)
         self.save()
-        # self.update(book_page=state.book_page,
-        #             inventory_items=state.inventory)
 
 
 class Item(models.Model):
@@ -91,12 +101,21 @@ class Item(models.Model):
         return self.name
 
 
-# class DroppedItem(models.Model):
-#     # item = models.
-#     pass
+class DroppedItem(models.Model):
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    book_page = models.ForeignKey(BookPage, on_delete=models.CASCADE)
+    progress = models.ForeignKey(BookProgress, on_delete=models.CASCADE)
+
 
 class ProgressSave(models.Model): # generate migration
     progress = models.ForeignKey(BookProgress, on_delete=models.CASCADE)
     save_time = models.DateTimeField(auto_now=True)
     book_page = models.ForeignKey(BookPage, on_delete=models.CASCADE)
-    inventory = models.ManyToManyField(Item, blank=True)
+    inventory_items = models.ManyToManyField(Item, blank=True)
+
+
+class DroppedItemSave(models.Model):
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    book_page = models.ForeignKey(BookPage, on_delete=models.CASCADE)
+    progress_save = models.ForeignKey(ProgressSave, on_delete=models.CASCADE)
+

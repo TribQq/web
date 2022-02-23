@@ -12,7 +12,7 @@ urlpatterns = [
    path('book_main/<int:book_id>/go_to/<int:link_id>', go_to, name='go_to'),
    path('book_main/<int:book_id>/take_item/<int:item_id>', take_item, name='take_item'),
    path('book_main/<int:book_id>/drop_item/<int:item_id>', drop_item, name='drop_item'),
-
+   path('book_main/<int:book_id>/take_back_item/<int:item_id>', take_back_item, name='take_back_item'),
 
    path('book_main/<int:book_id>/saves', saves, name='saves'),
    path('book_main/<int:book_id>/new_save/', save_to, name='new_save'),
