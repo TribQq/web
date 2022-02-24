@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.urls import reverse
 
 from .models import *
+from .forms import *
 
 
 def plug(request):
@@ -67,7 +68,8 @@ def book_main(request, book_id):
                'link_status_tuple': links, 'progress': progress,
                'location_items': location_items, 'dropped_items': dropped_items,
                'pinned_notes': pinned_notes, 'notes': notes, 'page_notes': page_notes,
-               'test': test, }
+               'NoteFrom': NoteForm,
+               'test': location_items, }
     return render(request, 'book/book_page.html', context)
 
 
@@ -102,7 +104,8 @@ def drop_item(request, progress, book_id, item_id):
     DroppedItem.objects.create(
         item=item,
         book_page=progress.book_page,
-        progress=progress
+        progress=progress,
+        book=progress.book
     )
     return _return_to_main(book_id)
 
@@ -151,7 +154,9 @@ def add_note(request, book_id):
     if request.method == 'POST':
         print(request.POST)
         Note.objects.create(
-            text=request.POST['note_text'],
+            name=None if 'name' not in request.POST.keys() else request.POST['name'],
+
+            text=request.POST['text'],
             book=Book.objects.get(id=book_id)
         )
     return _return_to_main(book_id)

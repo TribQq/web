@@ -4,7 +4,8 @@ from .models import *
 admin.site.register(Book)
 admin.site.register(PageLink)
 admin.site.register(Item)
-
+admin.site.register(WinCondition)
+admin.site.register(LoseCondition)
 
 class BookPageAdmin(admin.ModelAdmin):
     filter_horizontal = ('page_items',)

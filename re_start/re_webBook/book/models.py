@@ -1,4 +1,4 @@
-from django.db import models,transaction
+from django.db import models, transaction
 from django.contrib.auth.models import User
 
 
@@ -96,6 +96,7 @@ class BookProgress(models.Model): # трабла в автосоздании н�
 class Item(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField()
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -123,6 +124,28 @@ class DroppedItemSave(models.Model):
 class Note(models.Model):
     name = models.CharField(max_length=30, blank=True, null=True)
     text = models.TextField(max_length=300)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     book_page = models.ForeignKey(BookPage, on_delete=models.CASCADE, blank=True, null=True)
     pinned = models.BooleanField(default=False)
+
+
+class WinCondition(models.Model):
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    progress = models.ForeignKey(BookProgress, on_delete=models.CASCADE)
+    condition = models.ForeignKey('ProgressCondition', on_delete=models.CASCADE)
+
+
+class LoseCondition(models.Model):
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    progress = models.ForeignKey(BookProgress, on_delete=models.CASCADE)
+    condition = models.ForeignKey('ProgressCondition', on_delete=models.CASCADE)
+
+
+class ProgressCondition(models.Model):
+    condition_item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    condition_item_location = models.ForeignKey(BookPage, on_delete=models.CASCADE)
+
+
+# <QueryDict: {'csrfmiddlewaretoken': ['uZc3nRm3i1KGQRMHZyabHV6uULcAWfDVr0qq9kRpEww9eapDcnrxA7L4MoL0FMk2'], 'name': ['testname'], 'text': ['testtext'], 'book_page': ['1'], 'pinned': ['on']}>

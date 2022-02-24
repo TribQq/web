@@ -60,7 +60,7 @@
     <div class="notes_block" style="">
         <form action="{% url 'add_note' book.id %}" method="POST">
             {% csrf_token %}
-            <textarea id="note_input_text" name="note_text"></textarea>
+            {{ NoteFrom }}
             <button id="note_submit_button" type="submit">submit</button>
         </form>
         <ul>
