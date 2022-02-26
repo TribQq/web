@@ -898,7 +898,7 @@
         }
 
         Player.prototype.start = function() {
-            if (this.y < 10) {
+            if (this.y < 100) {
                 this.y = this.y + this.speed;
             } else {
                 this.set_action("down", "standing");
@@ -918,7 +918,7 @@
                 return true;
             }
 
-            if (this.status == "died") {
+            if (this.status == "dead") {
                 return true;
             }
 
@@ -951,26 +951,26 @@
                 return true;
             }
 
-            this.set_action(this.direction, "stand");
+            this.set_action(this.direction, "standing");
 
 
         }
         Player.prototype.monster_ai_controll = function(time) {
 
-            if ((this.scene.player.dead == false) &&
-                (this.scene.player.x < this.x + 60 &&
-                    this.scene.player.x + 60 > this.x &&
-                    this.scene.player.y < this.y + 60 &&
-                    60 + this.scene.player.y > this.y)) {
+            if ((this.scene.player.dead === false) &&
+                (this.scene.player.x < this.x + 64 &&
+                    this.scene.player.x + 64 > this.x &&
+                    this.scene.player.y < this.y + 64 &&
+                    64 + this.scene.player.y > this.y)) {
                 //тактический прыжок
                 if (this.x > this.scene.player.x) {
                     this.direction = "left";
                     this.y = this.scene.player.y;
-                    this.x = this.scene.player.x + 30;
+                    this.x = this.scene.player.x + 32;
                 } else {
                     this.direction = "right";
                     this.y = this.scene.player.y;
-                    this.x = this.scene.player.x - 30;
+                    this.x = this.scene.player.x - 32;
                 }
                 this.attack();
                 this.scene.sounds['sword'].play();
