@@ -990,6 +990,41 @@
 
             return true;
         };
+        function Sound(src) {
+            this.sound = document.createElement("audio");
+            this.sound.src = src;
+            this.sound.setAttribute("preload", "auto");
+            this.sound.setAttribute("controls", "none");
+            this.sound.style.display = "none";
+            document.body.appendChild(this.sound);
+        }
+
+        Sound.prototype.play = function() {
+            this.sound.play();
+        };
+
+        Sound.prototype.stop = function() {
+            this.sound.pause();
+        };
+
+        function Controls() {
+            this.codes = {
+                37: 'left'',
+                39: 'right',
+                38: 'forward',
+                40: 'backward',
+                32: 'fire'
+            };
+            this.states = {
+                'left': false,
+                'right': false,
+                'forward': false,
+                'backward': false,
+                'fire': false
+            };
+            document.addEventListener('keydown', this.onKey.bind(this, True), false);
+            document.addEventListener('keyup', this.onKey.bind(this, True), false);
+        }
 
 
     </script>
