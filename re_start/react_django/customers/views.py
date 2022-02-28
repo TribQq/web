@@ -1,5 +1,3 @@
-from django.shortcuts import render
-
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
@@ -9,15 +7,18 @@ from .models import Customer
 from .serializers import *
 
 
-@api_view
-def view_customers_list(request):
+@api_view(['GET', 'POST'])
+def customers_list(request):
+    """
+ List  customers, or create a new customer.
+ """
     if request.method == 'GET':
         data = []
         nextPage = 1
         previousPage = 1
         customers = Customer.objects.all()
         page = request.GET.get('page', 1)
-        paginator = Paginator(customers, 10) # Если это запрос GET, метод разбивает данные на страницы с помощью Django Paginator и возвращает первую страницу данных после сериализации, количество доступных клиентов, количество доступных страниц и ссылки на предыдущие и последующие страницы. Paginator — это встроенный класс Django, выполняющий разбивку списка данных на страницы и предоставляющий методы доступа к элементам на каждой странице.
+        paginator = Paginator(customers, 5)
         try:
             data = paginator.page(page)
         except PageNotAnInteger:
@@ -25,46 +26,42 @@ def view_customers_list(request):
         except EmptyPage:
             data = paginator.page(paginator.num_pages)
 
-        serializer = CustomerSerializer(data, context={'request': request}, many=True)
-        if data.has_next():  # custom pagination method (not cPython)
+        serializer = CustomerSerializer(data,context={'request': request} ,many=True)
+        if data.has_next():
             nextPage = data.next_page_number()
         if data.has_previous():
             previousPage = data.previous_page_number()
 
-        return Response({'data': serializer.data, 'count': paginator.count,
-                         'numpages': paginator.num_pages,
-                         'nextlink': '/api/customers/?page=' + str(nextPage),
-                         'prevlink': '/api/customers/?page=' + str(previousPage)})
+        return Response({'data': serializer.data , 'count': paginator.count, 'numpages' : paginator.num_pages, 'nextlink': '/api/customers/?page=' + str(nextPage), 'prevlink': '/api/customers/?page=' + str(previousPage)})
 
     elif request.method == 'POST':
         serializer = CustomerSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()  # сохраняем data сериалайзер`a если он валиден
+            serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)  # if not valid
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-@api_view(['GET', 'PUT', 'DELETE']) # API, который может принимать запросы GET, PUT и DELETE.
-def view_customers_detail(request, pk):
+@api_view(['GET', 'PUT', 'DELETE'])
+def customers_detail(request, pk):
+    """
+ Retrieve, update or delete a customer by id/pk.
+ """
     try:
         customer = Customer.objects.get(pk=pk)
-    except Customer.DoesNotExist: # ловим ошибку 'если не существет'
+    except Customer.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializer = CustomerSerializer(customer, context={'request': request}) #  сериализация данных клиента и их отправка
+        serializer = CustomerSerializer(customer,context={'request': request})
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        serializer = CustomerSerializer(customer, data=request.data, # need check data.request для понимания
-                                        context={'request': request}) # создает сериализатор для новых данных клиента
+        serializer = CustomerSerializer(customer, data=request.data,context={'request': request})
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data) # Response с обновленными данными клиента.
+            return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
         customer.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT) #? # объект Response, не содержащий никаких данных.
-
-
+        return Response(status=status.HTTP_204_NO_CONTENT)
