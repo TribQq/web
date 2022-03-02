@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import CustomersService from './CustomersService';
 
 const customersService = new CustomersService();
@@ -6,7 +7,8 @@ const customersService = new CustomersService();
 class CustomerCreateUpdate extends Component {
     constructor(props) {
         super(props);
-
+    
+        //this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
       }
 
@@ -34,7 +36,7 @@ class CustomerCreateUpdate extends Component {
             "phone": this.refs.phone.value,
             "address": this.refs.address.value,
             "description": this.refs.description.value
-        }
+        }          
         ).then((result)=>{
           alert("Customer created!");
         }).catch(()=>{
@@ -51,7 +53,7 @@ class CustomerCreateUpdate extends Component {
             "phone": this.refs.phone.value,
             "address": this.refs.address.value,
             "description": this.refs.description.value
-        }
+        }          
         ).then((result)=>{
           console.log(result);
           alert("Customer updated!");
@@ -72,7 +74,7 @@ class CustomerCreateUpdate extends Component {
 
         event.preventDefault();
       }
-
+    
       render() {
         return (
           <form onSubmit={this.handleSubmit}>
@@ -80,33 +82,33 @@ class CustomerCreateUpdate extends Component {
             <label>
               First Name:</label>
               <input className="form-control" type="text" ref='firstName' />
-
+            
             <label>
               Last Name:</label>
               <input className="form-control" type="text" ref='lastName'/>
-
+            
             <label>
               Phone:</label>
               <input className="form-control" type="text" ref='phone' />
-
+            
             <label>
               Email:</label>
               <input className="form-control" type="text" ref='email' />
-
+            
             <label>
               Address:</label>
               <input className="form-control" type="text" ref='address' />
-
+            
             <label>
               Description:</label>
               <textarea className="form-control" ref='description' ></textarea>
-
+              
 
             <input className="btn btn-primary" type="submit" value="Submit" />
             </div>
           </form>
         );
-      }
+      }  
 }
 
 export default CustomerCreateUpdate;
