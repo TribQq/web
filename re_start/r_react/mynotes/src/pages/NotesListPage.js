@@ -3,7 +3,8 @@ import notes from '../assets/data'
 import { ListItem } from '../components/ListItem'
 
 
-export const NotesListPage = () => {
+export const NotesListPage = (props) => {
+  console.log('props: ', props)
   return (
     <div>
       <div className='notes_list'>
@@ -18,3 +19,5 @@ export const NotesListPage = () => {
     </div>
   )
 }
+
+
