@@ -1,23 +1,31 @@
+import './App.css';
+
 
 import { Routes, Route, Link } from 'react-router-dom';
 
 import NotePage from './pages/NotePage';
 import TestList from './pages/TestList';
-import { NotesListPage } from './pages/NotesListPage';
+// import { NotesListPage } from './pages/NotesListPage';
+import { SinglePage } from './pages/SinglePage';
+import NotesListPage from './pages/NotesListPage';
 
 function App() {
   return (
-  <div>
-      <header>
-        <Link to="/">Home</Link> | {' '}
-        <Link to="/note/:id">Note</Link> | {' '}
-        <Link to="/listPage">list_page</Link> | {' '}
-      </header>
+  <div className='container dark'>
+
+    <div className='app'>
+      <Link to="/">Home</Link> | {' '}
+      <Link to="/note/1">Note</Link> | {' '}
+      <Link to="/NotesListPage/1">NotesListPage</Link> | {' '}
+      <Link to="/SinglePage/1/2">SinglePage</Link> | {' '}
+
       <Routes>
+        <Route path="/" element={<NotesListPage />} />
         <Route path="/note/:id" element={<NotePage />} />
-        <Route path="/listPage" element={<TestList />} />
         <Route path="/NotesListPage/:id" element={<NotesListPage />} />
+        <Route path="/SinglePage/:id/:category_id" element={<SinglePage />} />
       </Routes>
+    </div>
   </div>
   );
 }
