@@ -8,20 +8,23 @@ import TestList from './pages/TestList';
 // import { NotesListPage } from './pages/NotesListPage';
 import { SinglePage } from './pages/SinglePage';
 import NotesListPage from './pages/NotesListPage';
-
+import Header from './components/Header';
 function App() {
   return (
   <div className='container dark'>
 
     <div className='app'>
+      <div><Header/></div>
+      <div>
       <Link to="/">Home</Link> | {' '}
       <Link to="/note/1">Note</Link> | {' '}
       <Link to="/NotesListPage/1">NotesListPage</Link> | {' '}
       <Link to="/SinglePage/1/2">SinglePage</Link> | {' '}
+      </div>
 
       <Routes>
         <Route path="/" element={<NotesListPage />} />
-        <Route path="/note/:id" element={<NotePage />} />
+        <Route path="/note/:noteId" element={<NotePage />} />
         <Route path="/NotesListPage/:id" element={<NotesListPage />} />
         <Route path="/SinglePage/:id/:category_id" element={<SinglePage />} />
       </Routes>
