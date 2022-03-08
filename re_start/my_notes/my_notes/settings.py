@@ -29,7 +29,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     
-    "corsheaders.middleware.CorsMiddleware", # 1#11 (доступ к портам этого приложения)
+    "corsheaders.middleware.CorsMiddleware", 
     
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -108,10 +108,4 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-CORS_ALLOW_ALL_ORIGINS = True # 1#11 (доступ к портам этого приложения) (временно для всех)
-# CORS_ALLOWED_ORIGINS = [  
-#     "https://example.com",
-#     "https://sub.example.com",
-#     "http://localhost:8080",
-#     "http://127.0.0.1:9000",
-# ]
+CORS_ALLOW_ALL_ORIGINS = True 

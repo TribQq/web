@@ -16,7 +16,7 @@ const NotePage = () => {
    }, [note_id])
 
    let getNote = async () =>{
-      if (note_id==='note_create') return // 2//11 need stop this f if new note
+      if (note_id==='note_create') return 
       let response = await fetch(`/api/note/${note_id}`)
       let data = await response.json()
       setNote(data)
@@ -49,7 +49,7 @@ const NotePage = () => {
          headers:{
             'Content-Type': 'application/json'
          },
-         body:JSON.stringify(note) // мы передаём в бэк request.data // json(note)
+         body:JSON.stringify(note) 
       })
    }
 
@@ -60,7 +60,7 @@ const NotePage = () => {
 
       if (note_id !== 'note_create' && len_note === 0 ) deleteNote()
       else if (note_id !== 'note_create') updadteNote()
-      else if (note_id === 'note_create' && len_note !== 0) createNote() //redirect ? navigate? for blank(not input in textarea)
+      else if (note_id === 'note_create' && len_note !== 0) createNote() 
       navigate('../../notes')
    }
 
@@ -95,4 +95,3 @@ const NotePage = () => {
 
 export default NotePage
 
-//2//35 default value problem => value fix it upd problem

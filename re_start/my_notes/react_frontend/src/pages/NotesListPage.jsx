@@ -1,7 +1,5 @@
 import {React, useState, useEffect} from 'react'
 import ListItem from '../components/ListItem'
-import NotePage from './NotePage'
-import { Link } from 'react-router-dom'
 import AddButton from '../components/AddButton'
 
 

@@ -50,7 +50,6 @@ def get_Routes(request):
     ]
 
     return Response(routes)
-    # return JsonResponse(routes, safe=False)
 
 
 @api_view(['GET', 'POST'])

@@ -14,9 +14,6 @@ function App() {
           <Route path="/notes/" element={<NotesListPage />} />
           <Route path="/note/:note_id" element={<NotePage />} />
         </Routes>
-        
-
-
 
       </div>
     </div>

@@ -9,7 +9,7 @@ let getDateUpd = (note) => {
 
 let getTitle = (note) => {
   let title = note.body.split('\n')[0]
-  if(title.length > 30) return title.slice(0,30)   // +'...'
+  if(title.length > 30) return title.slice(0,30)  
   return title
 }
 

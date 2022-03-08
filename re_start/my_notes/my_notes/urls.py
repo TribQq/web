@@ -7,7 +7,7 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('my_api.urls')),
-    path('', TemplateView.as_view(template_name='index.html')),
-    # path('notes/',  TemplateView.as_view(template_name='index.html')), # example duplicate path for BrowerRouter in React
+    path('', TemplateView.as_view(template_name='index.html')), # /#/notes, /#/note/<:id>
+    
 
 ]
