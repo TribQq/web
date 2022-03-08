@@ -12,20 +12,19 @@ const NotePage = () => {
    let [note, setNote] = useState([])
 
    useEffect(()=>{
-      getNotes()
+      getNote()
    }, [note_id])
 
-   let getNotes = async () =>{
+   let getNote = async () =>{
       if (note_id==='note_create') return // 2//11 need stop this f if new note
       let response = await fetch(`/api/note/${note_id}`)
       let data = await response.json()
-      console.log('DATA: ', data)
       setNote(data)
    }
 
 
    let updadteNote = async () => {
-      fetch(`/api/note/${note_id}/update`, {
+      fetch(`/api/note/${note_id}/`, {
          method : "PUT",
          headers:{
             'Content-Type': 'application/json'
@@ -34,20 +33,8 @@ const NotePage = () => {
       })
    }
 
-
-   let handleSubmit = () =>{
-      console.log(`note: ${note},\nnote_body${note.body}`)
-      if (note_id !== 'note_create' && !note.body) deleteNote()
-      else if (note_id !== 'note_create') updadteNote()
-      else if (note_id === 'note_create' && note !== []) {
-         createNote()
-      }
-      navigate('../notes')
-   }
-
-
    let deleteNote = async () => {
-      await fetch(`/api/note/${note_id}/delete`, {
+      await fetch(`/api/note/${note_id}/`, {
          method : 'DELETE',
          headers:{
             'Content-Type': 'application/json'
@@ -57,13 +44,23 @@ const NotePage = () => {
    }
 
    let createNote = async () => {
-      fetch(`/api/note/note_create`, {
+      fetch(`/api/notes/`, {
          method : "POST",
          headers:{
             'Content-Type': 'application/json'
          },
          body:JSON.stringify(note) // мы передаём в бэк request.data // json(note)
       })
+   }
+
+
+   let handleSubmit = () =>{
+      let len_note = 0;
+      if (note.body) len_note = note.body.replace(/ /gi,'').replace(/\n/gi,'').length
+
+      if (note_id !== 'note_create' && len_note === 0 ) deleteNote()
+      else if (note_id !== 'note_create') updadteNote()
+      else if (note_id === 'note_create' && len_note !== 0) createNote() //redirect ? navigate? for blank(not input in textarea)
       navigate('../../notes')
    }
 
@@ -74,8 +71,11 @@ const NotePage = () => {
       return <button onClick={createNote}> Create </button>}
    }
 
-   console.log('userParams(): ', useParams())
-   console.log(note_id, 'note_id')
+   let handleChange = (value) => {
+      setNote(note => ({ ...note, 'body': value }))
+      console.log('Handle Change:', note)
+  }
+
    return (
     <div>
        <div className='note'>
@@ -86,7 +86,8 @@ const NotePage = () => {
                {myButton(note_id)}
                
             </div>
-            <textarea onChange={(e) => {setNote({...note, 'body':e.target.value})}} defaultValue={note.body}></textarea>
+            <textarea onChange={(e) => { handleChange(e.target.value) }} value={note.body}></textarea>
+      
       </div>
     </div>
   )
@@ -94,10 +95,4 @@ const NotePage = () => {
 
 export default NotePage
 
-
-// { note_id === 'new'?(
-//    <button> Create </button>
-// ):(
-// <button onClick={deleteNote}> Delete </button>
-// )
-// }
+//2//35 default value problem => value fix it upd problem

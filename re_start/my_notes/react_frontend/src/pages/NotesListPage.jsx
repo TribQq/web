@@ -6,7 +6,7 @@ import AddButton from '../components/AddButton'
 
 
 
-const NotesListPages = () => {
+const NotesListPage = () => {
    let [notes, setNotes] = useState([])
 
    useEffect(()=>{
@@ -41,4 +41,4 @@ const NotesListPages = () => {
   )
 }
 
-export default NotesListPages
+export default NotesListPage

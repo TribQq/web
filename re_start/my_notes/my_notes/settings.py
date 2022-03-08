@@ -43,7 +43,9 @@ ROOT_URLCONF = 'my_notes.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / 'react_frontend/build'
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -97,6 +99,10 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'react_frontend/build/static/'
+]
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
