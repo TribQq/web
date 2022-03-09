@@ -1,4 +1,4 @@
-require = (function (r, e, n) {
+{require = (function (r, e, n) {
   function t(n, o) {
     function i(r) {
       return t(i.resolve(r));
@@ -4637,3 +4637,4 @@ require = (function (r, e, n) {
   {},
   [5]
 );
+}

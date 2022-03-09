@@ -112,7 +112,7 @@
   width: 100%;
 }
 
-.right_info_bar {
+.left_info_bar {
   flex: 0 1 75%;
 }
 
@@ -125,23 +125,24 @@
   }
   .right_info_bar{
      flex: 0 1 100%;
+     margin-top: -50px;
   }
 }
 
 @media (max-width: 400px) {
-   .left_info_bar .container_card{
+   .right_info_bar .container_card{
       padding: 0px;
    }
 }
 
 @media (max-width: 310px) {
 
-   .left_info_bar .container_card .card{
+   .right_info_bar .container_card .card{
       width: 200px;
       padding: 5px;
       height: 165px;
    }
-   .left_info_bar .container_card .card .image{
+   .right_info_bar .container_card .card .image{
       width: 175px;
    }
    .container_card .card:hover {
