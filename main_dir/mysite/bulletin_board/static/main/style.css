@@ -1,0 +1,18 @@
+header {
+    background: url('crol.gif') left / auto 50% no-repeat, url('crol.gif') right / auto 50% no-repeat;
+}
+
+
+/* так у меня же выключены статик файлы крола и бэкраунда и не должно быть.... */
+
+.root {
+    font-size: larger;
+}
+
+img.main-image{
+    width: 300px
+    }
+
+img.additional-image{
+    width:180px;
+    }
