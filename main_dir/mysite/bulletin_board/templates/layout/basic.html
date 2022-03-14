@@ -21,17 +21,17 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Profile</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="">Moи объявления</a>
-                    <a class="dropdown-item" href="">Change profile</a>
+                    <a class="dropdown-item" href="{% url 'profile' %}">My ads</a>
+                    <a class="dropdown-item" href="{% url 'change_profile' %}">Change profile data</a>
                     <a class="dropdown-item" href="">Change password</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="">Log out</a>
+                    <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="">Delete</a>
                 </div>
             </li>
             {% else %}
-            <li class="nav-item"><a class="nav-link" href="">Log in</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Log in</a></li>
             {% endif %}
         </ul>
     </div>

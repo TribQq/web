@@ -13,7 +13,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+AUTH_USER_MODEL = 'bulletin_board.AdvUser'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -57,14 +57,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-#
 DATABASES = {
     'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -75,9 +67,6 @@ DATABASES = {
             'PORT': '5432',
     }
 }
-
-
-
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -96,8 +85,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -109,9 +96,10 @@ USE_L10N = True
 USE_TZ = True
 
 
-
 STATIC_URL = '/static/'
 
 
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
