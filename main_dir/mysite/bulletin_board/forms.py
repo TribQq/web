@@ -1,6 +1,7 @@
 from django import forms
 
-from .models import AdvUser
+# from .models import AdvUser
+from .models import *
 
 
 class ChangeUserInfoForm(forms.ModelForm):
@@ -9,3 +10,9 @@ class ChangeUserInfoForm(forms.ModelForm):
     class Meta:
         model = AdvUser
         fields = ('username', 'email', 'first_name', 'last_name', 'send_messages')
+
+
+class NoteForm(forms.ModelForm):
+    class Meta:
+        model = Note
+        fields = ('text',)

@@ -23,6 +23,8 @@ from .forms import ChangeUserInfoForm, RegisterUserForm, SearchForm, AIFormSet, 
 from .utilities import signer
 
 
+# через # пишу классы от корых завиият методы класса-контроллерав
+
 def index(request):
     bbs = Bb.objects.filter(is_active=True)[:10] # фрагмент, выбирающий из базы последние 1О объявлений:
     context = {'bbs': bbs}
@@ -57,15 +59,16 @@ class ChangeUserInfoView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = AdvUser  # использует модель..
     template_name = 'main/change_user_info.html' #адресс
     form_class = ChangeUserInfoForm # использует форму
-    success_url = reverse_lazy('main:profile') #после юза перенаправляет на
-    success_message = 'Данные изменены'
-    def setup(self, request, *args, **kwargs):
+    success_url = reverse_lazy('main:profile') # SuccessMessageMixin #после юза перенаправляет на
+    success_message = 'Данные изменены' # SuccessMessageMixin
+    def setup(self, request, *args, **kwargs): # UpdateView
         # наилучшее место для получения ключа текущего пользователя - метод setup ( ) , наследуемый всеми контроллерами-классами от их общего суперкласса
         # View. Этот метод выполняется в самом начале исполнения контроллера-класса и получает объект запроса в качестве одного из параметров.
         self.user_id = request.user.pk # онтроллера-класса и получает объект запроса в качестве одного из параметров. В переопределенном методе setup () мы извлечем ключ пользователя и сохраним его в атрибуте user _ id.
         return super().setup(request, *args, **kwargs)
         # стр 610
-    def get_object(self, queryset=None):# Извлечение исправляемой записи выполняем в методе get _ obj ect ( )
+    def get_object(self, queryset=None):# # UpdateView
+        # Извлечение исправляемой записи выполняем в методе get _ obj ect ( )
         # который контроллер-класс унаследовал от примеси S ingleObj ectMixin
         if not queryset: # В переопределенном методе сначала учитываем тот момент, что набор записей, из которого следует извлечь искомую запись, может быть передан методу с параметром queryset, а может
         #  быть и не передан - в этом случае набор записей следует получить вызовом метода get _ queryset ( ) .

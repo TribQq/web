@@ -10,8 +10,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404
 
-from .models import AdvUser
-from .forms import ChangeUserInfoForm
+# from .models import AdvUser
+# from .forms import ChangeUserInfoForm
+from .models import *
+from .forms import *
 
 
 def index1(request) -> render:
@@ -54,3 +56,14 @@ class ChangeUserInfoView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
         if not queryset:
             queryset = self.get_queryset()
         return get_object_or_404(queryset, pk=self.user_id)
+
+
+class NoteView(SuccessMessageMixin, UpdateView):
+    model = Note
+    form_class = NoteForm
+    template_name = 'main/test_template.html'
+    success_url = reverse_lazy('top10')
+    success_message = 'note updated'
+    def get_object(self, queryset=None):
+        return get_object_or_404(Note, id=6) # захардкоженная нота котрую берём и upd по запросу
+

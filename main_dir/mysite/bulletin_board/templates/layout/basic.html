@@ -37,16 +37,16 @@
     </div>
     <div class="row">
         <nav class="col-md-auto nav flex-column border">
-            <a class="nav-link root " href="">Main page</a>
+            <a class="nav-link root " href="{% url 'top10' %}">Main page</a>
             <span class="nav-link root font-weight-bold">Real estate</span>
             <a class="nav-link" href="#">Housing</a>
             <a class="nav-link" href="#">Warehouses</a>
             <a class="nav-link" href="#">Garages</a>
-            <a class="nav-link root" href="#">Main page</a>
             <span class="nav-link root font-weight-bold">Transport</span>
             <a class="nav-link" href="#">Passenger</a>
             <a class="nav-link" href="#">Freight </a>
             <a class="nav-link root" href="{% url 'other' page='about' %}">Bb description</a>
+             <a class="nav-link root" href="{% url 'Note'  %}">Note</a>
         </nav>
         <section class="col border ру-2 ">
             {% bootstrap_messages %} {% block content %} {% endblock %}
