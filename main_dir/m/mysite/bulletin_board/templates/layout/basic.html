@@ -1,0 +1,69 @@
+{% load bootstrap4 %} {% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UFT-8">
+    <meta name="viewport" content="width=device-width, initial-scale=l, shrink-to-fit=no">
+    <!--    мета тэг для бутс трапа-->
+    <title> {% block title %} Главная {% endblock %} - Доска объявлений</title>
+    {% bootstrap_css %}
+    <link rel=" stylesheet " type=" text/css" href=" {% static 'main/style.css' %}"> {% bootstrap_javascript jquery='slim' %}
+</head>
+
+<body class="container-fluid">
+    <!--К телу страницы (тегу <body>) привязываем стилевой класс container-fluid,требует Bootstrap; -->
+    <header class="mb-4">
+        <h1 class="display-1 text-center">Объявления</h1>
+    </header>
+    <div class=" row">
+        <ul class="col nav justify-content-end border">
+            <li class="nav-item"><a class="nav-link" href="{% url 'bulletin_board:register' %}"> Регистрация </a></li>
+            {% if user.is_authenticated %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Пpoфиль</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'bulletin_board:profile' %}">Moи объявления</a>
+                    <a class="dropdown-item" href="{% url 'bulletin_board:profile_change' %}">Изменить личные данные</a>
+                    <a class="dropdown-item" href="{% url 'bulletin_board:password_change' %}">Изменить пароль </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'bulletin_board:logout' %}">Выйти</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'bulletin_board:profile_delete' %}">Удалить</a>
+                </div>
+            </li>
+            {% else %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'bulletin_board:login' %}">Вход</a></li>
+            {% endif %}
+        </ul>
+    </div>
+    <div class="row">
+        <nav class="col-md-auto nav flex-column border">
+            <a class="nav-link root " href=" {% url 'bulletin_board:index' %}">Главная</a>
+            <span class="nav-link root font-weight-bold">Недвижимость</span>
+            <a class="nav-link" href="#">Жилье</a>
+            <a class="nav-link" href="#">Склады</a>
+            <a class="nav-link" href="#">Гаражи</a>
+            <a class="nav-link root" href="{% url 'bulletin_board:index' %}">Главная</a>
+            {% for rubric in rubrics %}
+<!--            <p>s</p>-->
+            {% ifchanged rubric.super_rubric.pk %}
+            <span class="nav-link root font-weight-bold">
+                {{ rubric.super_rubric.name }}</span>
+                {% endifchanged %}
+                <a class="nav-link" href="{% url 'bulletin_board:by_rubric' pk=rubric.pk %}">
+                    {{ rubric.name }}
+                </a>
+            {% endfor %}
+            <a class='nav-link root' href='{% url "bulletin_board:other" page="about" %}'>О сайте</a>
+        </nav>
+        <section class="col border ру-2 ">
+            {% bootstrap_messages %} {% block content %} {% endblock %}
+        </section>
+    </div>
+    <footer class="mt-3">
+        <p class=" text-right font-italic">&#8984; <!--&#9885;--> TribQq</p>
+    </footer>
+</body>
+
+</html>

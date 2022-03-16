@@ -1,4 +1,6 @@
-django_3.0_book_test
+
+main_dir/bboard
+main_dir/.idea
 
 re_start/re_webBook/todo
 taskmanager/settings.py
@@ -14,7 +16,7 @@ __pycache__
 practice_rooms/python_practice
 practice_rooms/js_practice
 /htmlsripts/assets
-save file
+save_file
 
 re_start/r_react/mynotes/node_modules
 re_start//my_notes/react_frontend/node_modules
