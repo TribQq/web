@@ -16,6 +16,7 @@ def _return_to_main(book_id):
 
 def books_shelf(request):
     books = Book.objects.all()
+    print(books)
     context = {'books': books}
     return render(request, 'book/book_shelf.html', context)
 
@@ -170,6 +171,6 @@ def delete_note(request, book_id, note_id):
 
 def toggle_pin(request, book_id, note_id):
     note = get_object_or_404(Note, id=note_id)
-    note.pinned = True if note.pinned==False else False
+    note.pinned = True if note.pinned == False else False
     note.save()
     return _return_to_main(book_id)

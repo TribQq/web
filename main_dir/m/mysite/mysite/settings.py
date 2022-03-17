@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'captcha',  # каптча комментов
     'rest_framework',
     'corsheaders',
+    'bookshelf.apps.BookshelfConfig',
     # 'api.apps.ApiConfig', # приложение
 
 ]

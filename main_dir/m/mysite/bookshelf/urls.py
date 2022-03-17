@@ -5,7 +5,7 @@ from .views import *
 
 urlpatterns = [
    path('plug/', plug, name='plug'),
-   path('booksShelf/', books_shelf, name='book_shelf'),
+   path('', books_shelf, name='book_shelf'),
    path('book/<int:book_id>/', book_titlePage, name='book_titlePage'), #/<int:book_id>
 
    path('book_main/<int:book_id>/', book_main, name='book_main'),
@@ -26,5 +26,3 @@ urlpatterns = [
    path('book_main/<int:book_id>/delete_save/<int:save_id>', delete_save, name='delete_save'),
 
 ]
-
-# {% url 'go_to' page.book_id link.to_page.id %}

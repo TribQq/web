@@ -1,6 +1,6 @@
 from django.db import models, transaction
-from django.contrib.auth.models import User
-
+# from django.contrib.auth.models import User
+from bulletin_board.models import AdvUser as User
 
 from .utilities import get_timestamp_path
 
@@ -76,9 +76,6 @@ class BookProgress(models.Model): # трабла в автосоздании н�
         for di in self.droppeditem_set.all():
             DroppedItemSave.objects.create(item=di.item, book_page=di.book_page,
                                             progress_save=state)
-            # ==
-            # DroppedItemSave(item=di.item, book_page=di.book_page,
-            #                 progress_save=state).save()
         state.save()
 
     @transaction.atomic
@@ -108,7 +105,7 @@ class DroppedItem(models.Model):
     progress = models.ForeignKey(BookProgress, on_delete=models.CASCADE)
 
 
-class ProgressSave(models.Model): # generate migration
+class ProgressSave(models.Model):
     progress = models.ForeignKey(BookProgress, on_delete=models.CASCADE)
     save_time = models.DateTimeField(auto_now=True)
     book_page = models.ForeignKey(BookPage, on_delete=models.CASCADE)
@@ -147,5 +144,3 @@ class ProgressCondition(models.Model):
     condition_item = models.ForeignKey(Item, on_delete=models.CASCADE)
     condition_item_location = models.ForeignKey(BookPage, on_delete=models.CASCADE)
 
-
-# <QueryDict: {'csrfmiddlewaretoken': ['uZc3nRm3i1KGQRMHZyabHV6uULcAWfDVr0qq9kRpEww9eapDcnrxA7L4MoL0FMk2'], 'name': ['testname'], 'text': ['testtext'], 'book_page': ['1'], 'pinned': ['on']}>

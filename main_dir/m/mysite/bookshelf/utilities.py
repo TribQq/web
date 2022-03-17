@@ -3,4 +3,4 @@ from datetime import datetime
 
 
 def get_timestamp_path(instance,filename):
-    return '%s%s' % (datetime.now().timestamp(), splitext(filename)[1])
+    return 'bs_%s%s' % (datetime.now().timestamp(), splitext(filename)[1])

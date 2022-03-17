@@ -9,6 +9,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('captcha/', include('captcha.urls')),
     path('bb/', include('bulletin_board.urls')),
+    path('bookShelf/', include('bookshelf.urls')),
 ]
 
 if settings.DEBUG:
