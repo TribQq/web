@@ -10,6 +10,7 @@ urlpatterns = [
     path('captcha/', include('captcha.urls')),
     path('bb/', include('bulletin_board.urls')),
     path('bookShelf/', include('bookshelf.urls')),
+    path('', include('test_template.urls')),
 ]
 
 if settings.DEBUG:
