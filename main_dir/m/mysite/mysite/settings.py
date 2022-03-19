@@ -25,7 +25,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'bookshelf.apps.BookshelfConfig',
     'about_me.apps.AboutMeConfig',
-    # 'api.apps.ApiConfig', # приложение
+    'api_notesApp.apps.ApiNotesappConfig',
+    'react_notesApp.apps.ReactNotesappConfig',
 
 ]
 
@@ -45,7 +46,9 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,3 +126,4 @@ THUMBNAIL_BASEDIR = 'thumbnails'
 # доступ к веб-службе с любого домена
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_URL_REGEX = r'^/api/.*$'
+

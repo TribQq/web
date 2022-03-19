@@ -2,13 +2,10 @@ todo
 
 description.txt
 
-description.txt
-
 main_dir/bboard
 main_dir/.idea
 main_dir/m/mysite/about_me/static/media
 
-re_start/re_webBook/todo
 taskmanager/settings.py
 practice_rooms
 win_venv
@@ -23,8 +20,5 @@ practice_rooms/python_practice
 practice_rooms/js_practice
 /htmlsripts/assets
 save_file
-
-re_start/r_react/mynotes/node_modules
-re_start//my_notes/react_frontend/node_modules
 
 template_in_process

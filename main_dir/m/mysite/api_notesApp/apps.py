@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class MyApiConfig(AppConfig):
+class ApiNotesappConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'my_api'
+    name = 'api_notesApp'
