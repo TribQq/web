@@ -2,7 +2,7 @@
 * {margin: 0; padding: 0;}
 
 body {
-	background-image: url(../media/paper_scroll_main/body.jpg);
+	background-image: url(../../media/paper_scroll_main/body.jpg);
 	font-family: Georgia, "Times New Roman", Times, serif;
 	font-size: 62.5%;
 }
@@ -14,28 +14,30 @@ body {
 }
 
 .left_block{
-
 }
 
 .right_block{
 }
 
 
-#container {
+.scroll_container {
 	width: 885px;
 	font-size: 1.2em;
-	background-image: url(../media/paper_scroll_main/container.jpg);
+	background-image: url(../../media/paper_scroll_main/container.jpg);
 	background-repeat: repeat-y;
 }
 
-#header {
-	background-image: url(../media/paper_scroll_main/header.jpg);
+.scroll_header {
+	background-image: url(../../media/paper_scroll_main/header.jpg);
 	height: 288px;
 	margin-top: 0px;
 }
+.scroll_footer{
+	/* visibility: hidden; */
+}
 
-#sideheader {
-	background-image: url(../media/paper_scroll_main/sideheader.jpg);
+.scroll_blockheader {
+	background-image: url(../../media/paper_scroll_main/sideheader.jpg);
 	height: 576px;
 	width: 145px;
 	position: absolute;
@@ -43,11 +45,11 @@ body {
 	top: 0px;
 }
 
-#left_column {
+.left_column {
 	width: 180px;
 	margin-top: 0px;
 	float: left;
-	background-image: url(../media/paper_scroll_main/left_column.jpg);
+	background-image: url(../../media/paper_scroll_main/left_column.jpg);
 	background-repeat: no-repeat;
 	margin-left: 70px!important;
 	margin-left: 35px;
@@ -60,30 +62,28 @@ body {
 	margin-bottom: 20px;
 }
 
-#content {
+.scroll_text_block {
+	min-height: 700px;
 	padding-right: 150px;
 	margin-left: 295px;
 }
+
 			
-#footer {
-	padding: 20px;
-	clear: both;
-}
 			
 /*-----------TEXT FORMATTING------------- */
 
-p {
+.scroll_text {
 	padding-top: 15px;
 	padding-bottom: 15px;
 	color: #814F2C;
 }
    
-p.center {
+.scroll_text.center {
 	text-align: center;
 	font-size: 0.8em;
 }
 
-h1 {
+.scroll_title {
 	float: right;
 	margin-right: 163px!important;
 	margin-right: 80px;
@@ -93,7 +93,7 @@ h1 {
 }
 
    
-h3 {
+.scroll_subtitle {
 	font-family: "Times New Roman", Times, serif;
 	font-size: 1.6em;
 	font-style: italic;
@@ -101,10 +101,10 @@ h3 {
 	text-align: center;
 }
 
-h4 {color: #926B4A;
-margin-bottom: 15px;
-}
 
+.scroll_info_subtitle {color: #926B4A;
+	margin-bottom: 15px;
+	}
 
 
 
@@ -137,14 +137,15 @@ a:hover {color: #805D3F}
 
 /*-------------- Navigation --------------*/
 
-#navcontainer {  
+.navcontainer {  
+
 }
 
-#navcontainer ul {
+.navcontainer ul {
 	list-style-type: none;
 }
 
-#navcontainer a {
+.navcontainer a {
 	display: block;
 	padding: 3px;
 	border-bottom: 1px solid #A47F52;
@@ -152,33 +153,35 @@ a:hover {color: #805D3F}
 	height: 1.5em;
 }
 
-#navcontainer a:link, #navlist a:visited {
+.navcontainer a:link, .navlist a:visited {
 	color: #65391E;
 	text-decoration: none;
 	font-style: italic;
 }
 
-#navcontainer a:hover {
+.navcontainer a:hover {
 	color: #fff;
 	font-style: normal;
-	background-image: url(../media/paper_scroll_main/menu_hover.png)!important;
+	background-image: url(../../media/paper_scroll_main/menu_hover.png)!important;
 	background: none;	
 }
 
 /*------------ Contact form -----------------*/
 
-label {
+
+.form1_subtitle{
 	font-style: italic;
+	color: #814F2C
 }
 
-form.contact_us {
+form.contact_me {
 	width: 170px;
 }
 
-input.fields_contact_us {
+input.fields_contact_me {
         display: block;
         width: 170px;
-        background: url(../media/paper_scroll_main/menu_hover.png)!important;
+        background: url(../../media/paper_scroll_main/menu_hover.png)!important;
 		background: none;
 		border-top: 1px solid #C0935C;
 		border-left: 1px solid #C0935C;
@@ -190,7 +193,7 @@ input.fields_contact_us {
 
 textarea {
           width: 170px;
-          background: url(../media/paper_scroll_main/menu_hover.png)!important;
+          background: url(../../media/paper_scroll_main/menu_hover.png)!important;
 		  background: none;
 		  border-top: 1px solid #C0935C;
 		  border-left: 1px solid #C0935C;
@@ -212,4 +215,20 @@ textarea {
 	font-weight: bold;
 	font-family: "Times New Roman", Times, serif;
 	font-style: italic;
+}
+
+/*------------ Adaptive -----------------*/
+
+@media (max-width: 1000px) {
+	.content_block{
+		flex-wrap: wrap;
+	}
+	.scroll_footer{
+		background-image: url(../../media/paper_scroll_main/scroll_footer.png);
+		/* clear: both; */
+		height: 100px;
+		margin-top: 10px;
+		margin-left: -65px;
+		/* visibility: visible; */
+	}
 }
