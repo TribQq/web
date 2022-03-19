@@ -174,3 +174,13 @@ def toggle_pin(request, book_id, note_id):
     note.pinned = True if note.pinned == False else False
     note.save()
     return _return_to_main(book_id)
+
+
+def onlyScroll(request):
+    return render(request, 'layout/scroll_basic.html')
+
+def bookshelf(request):
+    return render(request, 'bookshelf.html')
+
+def book_pages(request):
+    return render(request, 'book_pages.html')

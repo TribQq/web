@@ -5,7 +5,7 @@ from .views import *
 
 urlpatterns = [
    path('plug/', plug, name='plug'),
-   path('', books_shelf, name='book_shelf'),
+   path('', books_shelf, name='books_shelf'),
    path('book/<int:book_id>/', book_titlePage, name='book_titlePage'), #/<int:book_id>
 
    path('book_main/<int:book_id>/', book_main, name='book_main'),
@@ -24,5 +24,10 @@ urlpatterns = [
    path('book_main/<int:book_id>/save_to/<int:save_id>', save_to, name='save_to'),
    path('book_main/<int:book_id>/load_from/<int:save_id>', load_from, name='load_from'),
    path('book_main/<int:book_id>/delete_save/<int:save_id>', delete_save, name='delete_save'),
+
+
+   path('onlyScroll/', onlyScroll, name='onlyScroll'),
+   path('b', bookshelf, name='bookshelf'),
+   path('book_pages', book_pages, name='book_pages'),
 
 ]
