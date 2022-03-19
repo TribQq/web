@@ -1,5 +1,4 @@
 {% load static %}
-<!-- {% static 'main/style.css' %} -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -249,7 +248,11 @@
             </section>
         </main>
 
-        <a href='' class='fixed_button'><img href='' class='fixed_button_img'src="{% static 'media/about_me_main/icons/Robot_1.gif' %}"  alt='fixed_button'></a>
+        <a href='' class='fixed_button'>
+            <div class="robot_dancer">
+            <img href='' class='fixed_button_img'src="{% static 'media/about_me_main/icons/Robot_1.gif' %}"  alt='fixed_button'>
+        </div>
+        </a>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="{% static 'js/about_me_main/slick.min.js' %}" ></script>
         <script src="{% static 'js/about_me_main/script.js' %}" ></script>
@@ -270,10 +273,6 @@
         {% endblock %}
 
     </div>
-    <!-- Подключаем jQuery -->
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="js/slick.min.js"></script>
-        <script src="js/script.js"></script> -->
 
 </body>
 

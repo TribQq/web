@@ -9,8 +9,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('captcha/', include('captcha.urls')),
     path('bb/', include('bulletin_board.urls')),
-    path('bookShelf/', include('bookshelf.urls')),
-    path('AboutMe/', include('about_me.urls')),
+    path('bookshelf/', include('bookshelf.urls')),
+    path('aboutMe/', include('about_me.urls')),
 ]
 
 if settings.DEBUG:
