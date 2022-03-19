@@ -24,7 +24,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'bookshelf.apps.BookshelfConfig',
-    'test_template.apps.TestTemplateConfig',
+    'about_me.apps.AboutMeConfig',
     # 'api.apps.ApiConfig', # приложение
 
 ]
