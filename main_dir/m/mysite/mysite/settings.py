@@ -46,9 +46,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-
-        ],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -117,10 +115,13 @@ THUMBNAIL_ALIASES = {
     '': {
         'default': {
             'size': (96, 96),
+            'crop': 'scale'},
+        'book': {
+            'size': (80, 80),
             'crop': 'scale'}
         , }
     , }  # настройка thumbnail`s
-
+THUMBNAIL_PREFIX = 'thumbnail_'
 THUMBNAIL_BASEDIR = 'thumbnails'
 
 # доступ к веб-службе с любого домена

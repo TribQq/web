@@ -2,7 +2,7 @@
 * {margin: 0; padding: 0;}
 
 body {
-	background-image: url(../../media/paper_scroll_main/body.jpg);
+	background-image: url(../../media/paper_scroll/body.jpg);
 	font-family: Georgia, "Times New Roman", Times, serif;
 	font-size: 62.5%;
 }
@@ -23,12 +23,12 @@ body {
 .scroll_container {
 	width: 885px;
 	font-size: 1.2em;
-	background-image: url(../../media/paper_scroll_main/container.jpg);
+	background-image: url(../../media/paper_scroll/container.jpg);
 	background-repeat: repeat-y;
 }
 
 .scroll_header {
-	background-image: url(../../media/paper_scroll_main/header.jpg);
+	background-image: url(../../media/paper_scroll/header.jpg);
 	height: 288px;
 	margin-top: 0px;
 }
@@ -37,7 +37,7 @@ body {
 }
 
 .scroll_blockheader {
-	background-image: url(../../media/paper_scroll_main/sideheader.jpg);
+	background-image: url(../../media/paper_scroll/sideheader.jpg);
 	height: 576px;
 	width: 145px;
 	position: absolute;
@@ -49,7 +49,7 @@ body {
 	width: 180px;
 	margin-top: 0px;
 	float: left;
-	background-image: url(../../media/paper_scroll_main/left_column.jpg);
+	background-image: url(../../media/paper_scroll/left_column.jpg);
 	background-repeat: no-repeat;
 	margin-left: 70px!important;
 	margin-left: 35px;
@@ -85,7 +85,7 @@ body {
 
 .scroll_title {
 	float: right;
-	margin-right: 163px!important;
+	margin-right: 20%!important;
 	margin-right: 80px;
 	margin-top: 180px;
 	font-size: 44px;
@@ -162,7 +162,7 @@ a:hover {color: #805D3F}
 .navcontainer a:hover {
 	color: #fff;
 	font-style: normal;
-	background-image: url(../../media/paper_scroll_main/menu_hover.png)!important;
+	background-image: url(../../media/paper_scroll/menu_hover.png)!important;
 	background: none;	
 }
 
@@ -179,9 +179,9 @@ form.contact_me {
 }
 
 input.fields_contact_me {
-        display: block;
-        width: 170px;
-        background: url(../../media/paper_scroll_main/menu_hover.png)!important;
+      display: block;
+      width: 170px;
+      background: url(../../media/paper_scroll/menu_hover.png)!important;
 		background: none;
 		border-top: 1px solid #C0935C;
 		border-left: 1px solid #C0935C;
@@ -193,7 +193,7 @@ input.fields_contact_me {
 
 textarea {
           width: 170px;
-          background: url(../../media/paper_scroll_main/menu_hover.png)!important;
+          background: url(../../media/paper_scroll/menu_hover.png)!important;
 		  background: none;
 		  border-top: 1px solid #C0935C;
 		  border-left: 1px solid #C0935C;
@@ -224,7 +224,7 @@ textarea {
 		flex-wrap: wrap;
 	}
 	.scroll_footer{
-		background-image: url(../../media/paper_scroll_main/scroll_footer.png);
+		background-image: url(../../media/paper_scroll/scroll_footer.png);
 		/* clear: both; */
 		height: 100px;
 		margin-top: 10px;

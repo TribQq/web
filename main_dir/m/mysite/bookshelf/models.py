@@ -1,20 +1,30 @@
 from django.db import models, transaction
-# from django.contrib.auth.models import User
 from bulletin_board.models import AdvUser as User
 
 from .utilities import get_timestamp_path
 
 
 class Book(models.Model):
-    title = models.CharField(max_length=50, verbose_name='Название')
-    first_page = models.OneToOneField('BookPage', blank=True, null=True, related_name='first_page', verbose_name='Стартовая страница', on_delete=models.SET_NULL)
-    cover_img = models.ImageField(blank=True, upload_to=get_timestamp_path, verbose_name='Обложка книги')
+    title = models.CharField(max_length=10, default='Book', verbose_name='Title')
+    subtitle = models.CharField(max_length=15, default='Name', verbose_name='Subtitle')
+    desc_title = models.CharField(max_length=10, null=True, blank=True, verbose_name='Title description')
+    desc_subtitle = models.CharField(max_length=15, null=True, blank=True, verbose_name='Subtitle description')
+    desc_text = models.TextField(max_length=300, default='Lorem ispum description', verbose_name='Description')
+    first_page = models.OneToOneField('BookPage', blank=True, null=True, related_name='first_page', verbose_name='Start stage', on_delete=models.SET_NULL)
+    cover_img = models.ImageField(blank=True, null=True,
+                                  upload_to=get_timestamp_path, verbose_name='Image on book cover')
+
+    class Meta:
+        verbose_name_plural = 'Books'
+        verbose_name = 'Book'
 
 
 class BookPage(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     title = models.TextField(blank=True, null=True)
     text = models.TextField()
+    image = models.ImageField(blank=True, null=True,
+                              upload_to=get_timestamp_path, verbose_name='Page image')
     page_items = models.ManyToManyField('Item', blank=True)
 
     def __str__(self):
@@ -42,11 +52,7 @@ class PageLink(models.Model):
         return check_result
 
 
-
-
-
 class BookProgress(models.Model): # трабла в автосоздании новой модельки под новою книгу+юзера (т.е если ручками создать поле в бд то ок инече краш)
-    """idk"""
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     book_page = models.ForeignKey(BookPage, on_delete=models.CASCADE)
@@ -119,7 +125,7 @@ class DroppedItemSave(models.Model):
 
 
 class Note(models.Model):
-    name = models.CharField(max_length=30, blank=True, null=True)
+    title = models.TextField(max_length=30)
     text = models.TextField(max_length=300)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -143,4 +149,5 @@ class LoseCondition(models.Model):
 class ProgressCondition(models.Model):
     condition_item = models.ForeignKey(Item, on_delete=models.CASCADE)
     condition_item_location = models.ForeignKey(BookPage, on_delete=models.CASCADE)
+
 

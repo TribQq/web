@@ -1,13 +1,23 @@
 from django import forms
-from .models import Note
+from django.forms import Form
+
+from .models import Book, BookPage, Note
 
 
 class NoteForm(forms.ModelForm):
-
+    
+    required_css_class = "form1_subtitle"
+    error_css_class = "error"
+    book_page = forms.ModelChoiceField(queryset=BookPage.objects.all())
+    pinned = forms.BooleanField(widget=forms.CheckboxInput(attrs={"class":"note_pin_checkbox" ,'id': 'pin_checkbox'}))
+    
+    
     class Meta:
         model = Note
-        fields = ('name', 'text', 'book_page', 'pinned')
+        fields = ('title', 'text', 'book_page', 'pinned')
         widgets = {
-            'name': forms.Textarea(attrs={'cols':10, 'rows':1}),
-            'text': forms.Textarea(attrs={'cols': 30, 'rows': 3})
+            'title': forms.TextInput(attrs={'cols': 10, 'rows': 1, 'class': 'fields_contact_me'}),
+            'text': forms.Textarea(attrs={'cols': 30, 'rows': 3, 'class': 'note_text'}),
+
         }
+

@@ -54,7 +54,7 @@
       hsla(30,40%,20%,.9),
       hsla(30,40%,50%,.4) 90%
       ),
-    url('../../media/book_pages/old_paper_3.jpg');
+    url('../../media/book_stage/old_paper_3.jpg');
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
   margin: auto;
@@ -80,7 +80,7 @@
     width: 100%;
     position: absolute;
     background-color: hsl(30,40%,70%);
-    background-image: url('../../media/book_pages/old_paper_3.jpg');
+    background-image: url('../../media/book_stage/old_paper_3.jpg');
     background-size: 100% 100%;
     backface-visibility: hidden;
     /* overflow: auto; */

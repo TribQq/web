@@ -16,8 +16,7 @@ urlpatterns = [
     path('aboutMe/', include('about_me.urls')),
 
     path('api_notesApp/', include('api_notesApp.urls')),
-    path('notes/', include('react_notesApp.urls'))
-    # path('', TemplateView.as_view(template_name='react_frontend/notesApp_build_react/index.html')), # /#/notes, /#/note/<:id>
+    path('notesApp/', include('react_notesApp.urls'))
 
 ]
 

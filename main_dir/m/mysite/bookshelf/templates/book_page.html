@@ -1,0 +1,191 @@
+{% extends "layout/scroll_basic.html" %}
+{% block title %}  Pages {% endblock %}
+{% load static %}
+
+<!--<html lang="en" class=" -webkit-"><head>-->
+
+<!--  <meta charset="UTF-8">-->
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/book_page/font.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/book_page/book_main.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/book_page/read_book.css' %}"/>
+
+{% endblock %}
+
+{% block scroll_title %} INVENTROY {% endblock %}
+
+
+{% block scroll_left_colum %}
+<div class="left_column_boxes">
+<div class="saves_block">
+  <img class="saves_image" src="{% static 'media/paper_scroll/saves_sand_clock.png' %}">
+<a class="saves_button activ_button " href="{% url 'saves' book.id %}">[saves]</a>
+</div>
+</div>
+
+<div class="left_column_boxes">
+<div class="notes_block" >
+  <h4 class="scroll_info_subtitle">Add note</h4>
+  <form action="{% url 'add_note' book.id %}" method="POST">
+      {% csrf_token %}
+      {{ NoteFrom }}
+      <button id="note_submit_button" class="submit_button_contact" type="submit"> [submit] </button>
+  </form>
+</div>
+</div>
+
+{% endblock %}
+
+
+{% block scroll_text %}
+<div class="inventory_block" >
+<img class="ivnentory_image" src="{% static 'media/paper_scroll/Backpack_no_bg.png' %}">
+<div class="inventory_content">
+<ul class="inventory_list">
+{% if progress.inventory_items.all %}
+
+    {% for i_item in progress.inventory_items.all %}
+    <li class="inventory_item" >
+        {{ i_item }}
+        <a href="{% url 'drop_item' book.id i_item.id %}">[drop]</a>
+    </li>
+    {% endfor %}
+
+{% else %}<p class="inventory_item">Ваш инвентарь пуст</p>
+{% endif %}
+</ul>
+</div>
+</div>
+
+<div id="notes_block" class="scroll_notes_block">
+  <div class="rolled_notes">
+  <ul>
+    <h2>Notes:</h2>
+      {% if pinned_notes %}
+          {% for note in pinned_notes %}
+          <li class="rolled_note">
+            <a class="pin" href="{% url 'toggle_pin' book.id note.id %}">[📌]</a>
+            <img class="img_note_rolled" src="{% static 'media/paper_scroll/rolled_scroll_note.png' %}">
+            <div class="content">
+              <p>{{ note.title }}</p>
+             </div>
+             <!-- <a class="change" href="">[🖊️]</a> -->
+             <a class ="scroll_button" href=""><img src="{% static 'media/paper_scroll/unrolled_scroll_note.png' %}"> </a>
+             <a class="delete" href="{% url 'delete_note' book.id note.id %}">[🗑️]</a>
+          </li>
+          {% endfor %}
+      <hr class="unpin_hr">
+      {% endif %}
+      {% if notes %}
+          {% for note in notes %}
+          <li class="rolled_note">
+            <a class="pin" href="{% url 'toggle_pin' book.id note.id %}">[📌]</a>
+            <img class="img_note_rolled" src="{% static 'media/paper_scroll/rolled_scroll_note.png' %}">
+            <div class="content">
+              <p>{{ note.title }}</p>
+             </div>
+             <!-- <a class="change" href="">[🖊️]</a> -->
+             <a class ="scroll_button" href=""><img src="{% static 'media/paper_scroll/unrolled_scroll_note.png' %}"> </a>
+             <a class="delete" href="{% url 'delete_note' book.id note.id %}">[🗑️]</a>
+          </li>
+          {% endfor %}
+      {% endif %}
+  </ul>
+  </div>
+  <div class="unrolled_note">
+    <div class="content">
+      <a href="">
+      <img src="{% static 'media/paper_scroll/unrolled_scroll_note.png' %}">
+      <div class="text_content">
+        <p class="title">upd note text</p>
+        <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium commodi magnam unde hic ratione velit, accusantium necessitatibus aliquam laborum reprehenderit mollitia, cum explicabo repudiandae nihil! Quaerat nostrum fugit quos iste!</p>
+      </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="selected_note">
+  <p class="title">test title</p>
+  <p class="text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore soluta voluptate, ut libero nisi blanditiis. Quaerat, dicta totam assumenda modi eius minus vel consequatur saepe officiis impedit quibusdam temporibus sint!</p>
+</div>
+
+
+
+{% endblock %}
+
+
+
+{% block right_block %}
+  <div class="book">  
+    <div id="page-1" class="page flipped" style="z-index: 1;">        
+      <div class="side-2" id="p2">      
+        <div class="content">
+          <h2>The Fields of Kummu: Shrine of Humility</h2>
+          <p class="book_page_text">
+            Here Lord Vivec met a poor farmer whose guar had died. The farmer could not harvest his muck without his guar, and he could not provide for his family or his village. So the Lord Vivec removed his fine clothes and toiled in the fields like a beast of burden until the crop was harvested. It is at the Fields of Kummu we go to pray for the same humility Lord Vivec showed on that day.
+          </p>
+          <p class="book_page_text">
+  The Fields of Kummu are west of Suran on the north shore of Lake Amaya as you head towards Pelagiad. The shrine is between two rocks, and most easily noticed while traveling east along the road. Alof's farm nearby has a small dock on the north bank of Lake Amaya. This is the only dock nearby which Alof kindly allows servants of the Temple to use. It is customary to leave a portion of muck at the shrine to represent Vivec's humility.
+          </p>
+        </div><!-- .content -->
+      </div><!-- .side-2 -->
+    </div><!-- .page -->
+    
+    <div id="page-2" class="page" style="z-index: 4;">    
+      <div class="side-1" id="p3">
+        <div class="content">
+          <h2 class="book_page_subtitle">Оглядевшись вы видите:</h2>
+
+          {% if dropped_items %}
+          <h4>Брошенные ранее предметы: </h4>
+          <ul>
+              {% for d_item in dropped_items %}
+              <li>
+                  {{ d_item.item.name }}
+                  <a href="{% url 'take_back_item' page.book_id d_item.id  %}"> [take back] </a>
+              </li>
+              {% endfor %}
+          </ul>
+          {% endif %}
+
+          {% if location_items %}
+          <h4>Некоторые предметы: </h4>
+          <ul>
+              {% for item in location_items %}
+              <li> <a href="{% url 'take_item' page.book_id item.id  %}"> {{ item }} </a> </li>
+              {% endfor %}
+          </ul>
+          {% endif %}
+
+          <ul><h3>Несколько направлений:</h3>
+            {% for link,status in link_status_tuple %}
+            {% if status %}
+            <a href="{% url 'go_to' book_id=page.book_id link_id=link.id %}"> <p> {{ link.to_page }}</p> </a>
+            {% else %}
+            <p>{{ link }}, у вас нету ключа для этого.</p>
+            {% endif %}
+          {% endfor %}</ul>
+      
+        </div>
+      </div>  
+      <!-- todo animation -->
+      <div class="side-2" id="p4">      
+        <div class="content">
+          <h2>loding...</h2>
+          <p class="book_page_text"></p>
+          <p class="book_page_text"></p>
+        </div>
+      </div>
+      <!--  -->
+
+    </div>
+    
+  
+  
+  
+  
+  </div>
+ 
+
+ {% endblock %}

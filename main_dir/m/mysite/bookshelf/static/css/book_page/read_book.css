@@ -1,0 +1,192 @@
+.inventory_block {
+  position: relative;
+}
+
+.ivnentory_image {
+}
+
+.inventory_content {
+  position: absolute;
+  top: 4%;
+  left: 20%;
+}
+
+
+.inventory_list {
+  margin-top: 3%;
+}
+.inventory_item {
+   font-size: 25px;
+}
+
+
+.scroll_title {
+	margin-right: 25%!important;
+}
+
+
+.submit_button_contact{
+   margin-top: 0px;
+   margin-bottom: 10px;
+}
+
+.error{
+   font-weight:bold;
+   color:red;}
+
+.note_pin_checkbox{
+  margin-right: 5px ;
+}
+
+.note_text{
+  margin-bottom: 10px;
+}
+
+.saves_block{
+  position: relative;
+}
+
+.saves_image{
+  width: 125px;
+  margin: 20px;
+}
+
+.saves_button{
+  position: absolute;
+  left: 25%;
+}
+
+.activ_button{
+  font-size: 25px;
+}
+
+.notes_block{
+
+}
+.scroll_notes_block{
+  display: flex;
+}
+.rolled_note{
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  position: relative;
+  font-size: 15px;
+}
+
+.img_note_rolled{
+  width: 180px;
+}
+
+.img_note_rolled:hover{
+  transition: 0.1s;
+  transform: rotate(-8deg);
+}
+
+.img_note_rolled:hover ~ .content{
+  transform: rotate(-7deg);
+  color:white;
+  text-shadow: rgb(4, 3, 3) 1px 1px 0, rgb(7, 7, 7) -1px -1px 0, 
+  rgb(17, 17, 17) -1px 1px 0, rgb(12, 12, 12) 1px -1px 0;
+}
+
+.rolled_note .content{
+  font-size: 18px;
+  position: absolute;
+  top: 9px;
+  left: 100px;
+  font-weight: bold;
+  transform: rotate(7deg);
+  
+}
+
+.rolled_note .pin{
+  padding-bottom: 3%;
+}
+
+.unrolled_note .content{
+  transform: rotate(8deg);
+}
+
+.unrolled_note .text_content{
+  position: absolute;
+  top: 10%;
+  left: 20%;
+}
+.unrolled_note .text_content{
+  position: absolute;
+  top: 10%;
+  left: 20%;
+}
+
+.unrolled_note .text_content{
+  position: absolute;
+  top: 10%;
+  left: 17%;
+  width: 50%;
+  height: 50%;
+  overflow: hidden;
+}
+.unrolled_note .text_content .title{
+  font-size: 18px;
+  font-weight: bolder;
+}
+.unrolled_note .text_content .text{
+  font-size: 15px;
+}
+
+.selected_note{
+  
+}
+.selected_note .title{
+  font-size: 40px;
+  font-weight: bolder;
+  text-align: center;
+  
+}
+.selected_note .text{
+  font-size: 20px;
+}
+
+.selected_note:hover {
+  background-color:rgba(0,0,0,0.3);
+  color: #e8e0d9
+}
+
+.scroll_button img{
+  width: 30px;
+  transform: rotate(16deg);
+  
+}
+
+.scroll_button:hover img{
+  transform: rotate(-16deg);
+  transition: 1s;
+}
+
+.selected_note{
+  margin-top: -5%;
+  padding-bottom: 3%;
+}
+.unrolled_note a{
+  text-decoration: none;
+}
+
+.unpin_hr {
+  overflow: visible; /* For IE */
+  height: 20px;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px 0 0 0;
+  border-radius: 20px;
+}
+.unpin_hr:after {
+  display: block;
+  content: "";
+  height: 30px;
+  margin-top: -31px;
+  border-style: solid;
+  border-color: black;
+  border-width: 0 0 1px 0;
+  border-radius: 20px;
+}

@@ -1,0 +1,120 @@
+{% extends "layout/scroll_basic.html" %}
+{% block title %}  SavePage {% endblock %}
+{% load static %}
+
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/book_page/font.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/book_page/book_main.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/book_page/read_book.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/book_page/save_page.css' %}"/>
+
+{% endblock %}
+
+{% block scroll_title %} INVENTROY {% endblock %}
+
+
+{% block scroll_left_colum %}
+<div class="left_column_boxes">
+<div class="saves_block">
+  <img class="saves_image" src="{% static 'media/paper_scroll/saves_sand_clock.png' %}">
+<a class="saves_button activ_button " href="{% url 'read_book' book.id %}">[back to read]</a>
+</div>
+</div>
+{% endblock %}
+
+
+{% block scroll_text %}
+<div class="inventory_block" >
+<img class="ivnentory_image" src="{% static 'media/paper_scroll/Backpack_no_bg.png' %}">
+<div class="inventory_content">
+<ul class="inventory_list">
+{% if progress.inventory_items.all %}
+
+    {% for i_item in progress.inventory_items.all %}
+    <li class="inventory_item" >
+        {{ i_item }}
+        <a href="{% url 'drop_item' book.id i_item.id %}">[drop]</a>
+    </li>
+    {% endfor %}
+
+{% else %}<p class="inventory_item">Ваш инвентарь пуст</p>
+{% endif %}
+</ul>
+</div>
+</div>
+
+
+{% endblock %}
+
+
+
+{% block right_block %}
+  <div class="book">  
+    <div id="page-1" class="page flipped" style="z-index: 1;">        
+      <div class="side-2" id="p2">      
+        <div class="content">
+          <h2 class="book_page_subtitle">Your saves:</h2>
+          <ul>
+            {% for save in saves %}
+            <li>
+                {{ save.save_time|date:"H:i:s (d.m.Y)" }} => location: {{ save.book_page.title }}
+                inventory:
+                {% if save.inventory.all %}
+                {% for item in save.inventory.all %}{{ item.name }}, {% endfor %}
+                {% else %}
+                *your pockets are empty*
+                {% endif %}
+                <a href="{% url 'load_from' book_id=book.id save_id=save.id %}">[load]</a>
+                <a href="{% url 'save_to' book.id save.id %}">[update]</a>
+                <a href="{% url 'delete_save' book.id save.id %}">[delete]</a>
+            </li>
+            {% endfor %}
+        </ul>
+
+
+        </div><!-- .content -->
+      </div><!-- .side-2 -->
+    </div><!-- .page -->
+    
+    <div id="page-2" class="page" style="z-index: 4;">    
+      <div class="side-1" id="p3">
+        <div class="content">
+          <img src="{% static 'media/book/TravelLightPerk.png' %}">
+          <h2 class="book_page_subtitle">Progress now:</h2>
+          <ul>
+            <li>location: {{ progress.book_page.title }}</li>
+            <li>items:
+                <ul>
+                    {% if progress.inventory_items.all %}
+                    {% for item in progress.inventory_items.all %}
+                    <li>{{ item.name }}</li>
+                    {% endfor %}
+                    {% else %}
+                    <li>*empty*</li>
+                    {% endif %}
+                </ul>
+            </li>
+        </ul>
+        <p><a href="{% url 'read_book' book.id %}">[return to read]</a></p>
+        <p><a href="{% url 'new_save' book.id %}">[add new save]</a></p>
+      
+        </div>
+      </div>  
+      <!-- todo animation -->
+      <div class="side-2" id="p4">      
+        <div class="content">
+          <h2>loding...</h2>
+          <p class="book_page_text"></p>
+          <p class="book_page_text"></p>
+        </div>
+      </div>
+      <!--  -->
+
+    </div>
+    
+  
+  </div>
+
+
+ {% endblock %}

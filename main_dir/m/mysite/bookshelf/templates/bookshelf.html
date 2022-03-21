@@ -1,5 +1,7 @@
 {% extends "layout/scroll_basic.html" %}
 {% load static %}
+{% load thumbnail %}
+
 {% block title %}  The book {% endblock %}
 {% block styles %}
 <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/bookshelf/bookshelf.css' %}" />
@@ -21,9 +23,9 @@
 
 
 {% block right_block %}
-  <div class="ul_block">
-    <ul class="align">
-      <li>
+  <div class="bookshelf_block">
+    <ul class="books_list">
+      <li class="book_block">
         <figure class='book'>
 
           <!-- Front -->
@@ -71,36 +73,39 @@
           </figcaption>
         </figure>
       </li>
-
+      {% for book in books %}
       <li>
         <figure class='book'>
-
-          <!-- Front -->
-
           <ul class='hardcover_front'>
             <li>
               <div class="coverDesign cream">
-                <h2>CSS</h2>
-                <p>BOOK</p>
+                {% if book.cover_img %}
+                <div class="book_cover">
+                <img class="cover_img" src="{% thumbnail book.cover_img 'book' %}">
+                <div class="book_titles">
+                  <h2>{{book.title}}</h2>
+                  <p>{{book.subtitle}}</p>
+                </div>
+              </div>
+                {% else %}
+                <div class="book_titles">
+                <h2>{{book.title}}</h2>
+                <p>{{book.subtitle}}</p>
+              </div>
+                {% endif %}
               </div>
             </li>
             <li></li>
           </ul>
-
-          <!-- Pages -->
-
           <ul class='page'>
             <li></li>
             <li>
-              <a class="btn" href="#">Download</a>
+              <a class="btn" href="{% url 'read_book' book.id %}">Download</a>
             </li>
             <li></li>
             <li></li>
             <li></li>
           </ul>
-
-          <!-- Back -->
-
           <ul class='hardcover_back'>
             <li></li>
             <li></li>
@@ -112,14 +117,16 @@
           <figcaption>
             <div class="book_description">
               <div class="indent">
-                <h2>BookTitle</h2>
-                <span>SubTitle </span>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit molestiae totam accusamus a odio itaque voluptatem velit pariatur iure maiores voluptatibus dolores exercitationem nisi incidunt, cupiditate officia provident neque minima.</p>
+                <h2>{{book.desc_title}}</h2>
+                <span>{{book.desc_subtitle}} </span>
+                <p>{{book.desc_text}}</p>
+                <a class="book_link" href="{% url 'saves' book.id %}"><h2>[watch book saves]</h2></a>
             </div>
           </div>
           </figcaption>
         </figure>
       </li>
+      {% endfor %}
       
 
     </ul>

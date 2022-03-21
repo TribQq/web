@@ -9,11 +9,13 @@
 </head>
 <body>
 
+  
+
 <div class="content_block">
   <div class="left_block">
     <div class="scroll_container">
-      <div class="scroll_header">
-        <h1 class="scroll_title">THE BOOKSHELF</h1>
+      <div id="scroll_header" class="scroll_header">
+        <h1  class="scroll_title"> {% block scroll_title %}  THE BOOKSHELF  {% endblock %} </h1> 
       </div>
       <div class="scroll_blockheader"></div>
 
@@ -31,6 +33,7 @@
             </ul>
           </div>
         </div>
+        {% block scroll_left_colum %}
         <div class="left_column_boxes">
           <h4 class="scroll_info_subtitle">News</h4>
           <dl>
@@ -40,6 +43,7 @@
             <dd>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed quam.  Nullam gravida aliquet odio. Phasellus ullamcorper tincidunt orci.  Praesent vel purus. Sed porttitor. Proin porttitor suscipit urna. Morbi  rhoncus posuere orci.</dd>
           </dl>
         </div>
+
         <div class="left_column_boxes">
           <h4 class="scroll_info_subtitle">Contact me</h4>
           <form id="form1" method="post" class="contact_me" action="">
@@ -60,6 +64,7 @@
             </p>
           </form>
         </div>
+        {% endblock %}
       </div>
 
       <div class="scroll_text_block">

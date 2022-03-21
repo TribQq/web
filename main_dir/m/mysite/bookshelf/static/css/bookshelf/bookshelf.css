@@ -47,7 +47,7 @@ a {
 
 /* basic grid, only for this demo */
 
-.align {
+.books_list {
 	clear: both;
 	margin: 90px auto 20px;
 	width: 100%;
@@ -55,7 +55,7 @@ a {
 	text-align: center;
 }
 
-.align > li {
+.books_list > li {
 	width: 500px;
 	min-height: 300px;
 	display: inline-block;
@@ -570,7 +570,7 @@ Table of Contents
 	font-size: 2.2em;
 	letter-spacing: 0.05em;
 	text-align: center;
-	margin: 54% 0 0 0;
+	margin: 66% 0 0 0;
 	text-shadow: -1px -1px 0 rgba(0,0,0,0.1);
 }
 
@@ -581,6 +581,20 @@ Table of Contents
 	text-align: center;
 	text-shadow: -1px -1px 0 rgba(0,0,0,0.1);
 }
+
+.book_cover{
+	position: relative;
+	text-align: center;
+}
+.cover_img{
+	margin-top: 20%;
+}
+.book_titles{
+	position	: absolute;
+	top: 20%;
+	/* right: 40%; */
+}
+
 
 .blackText{
    color: #000;
@@ -703,7 +717,7 @@ figcaption p {
 
 /* Media Queries */
 @media screen and (max-width: 37.8125em) {
-	.align > li {
+	.books_list > li {
 		width: 100%;
 		min-height: 440px;
 		height: auto;

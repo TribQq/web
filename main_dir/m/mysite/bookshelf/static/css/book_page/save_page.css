@@ -1,0 +1,17 @@
+.saves_image{
+   width:180px;
+   margin: 0px;
+}
+
+.saves_button{
+   /* top: 5%; */
+   left: 8%;
+}
+
+.scroll_footer{
+   background-image: url(../../media/paper_scroll/scroll_footer.png);
+   height: 100px;
+   margin-top: 10px;
+   margin-left: -65px;
+   visibility: visible;
+}

@@ -2,8 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save
 
-from .utilities import get_timestamp_path,send_new_comment_notification
-
+from .utilities import get_timestamp_path, send_new_comment_notification
 
 
 
@@ -32,7 +31,6 @@ class Rubric(models.Model):
 class SuperRubricManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(super_rubric__isnull=True)
-
 
 
 class SuperRubric(Rubric):
