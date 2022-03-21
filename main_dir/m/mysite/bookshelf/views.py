@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.urls import reverse
@@ -7,11 +8,11 @@ from .models import *
 from .forms import *
 
 
-def plug(request):
+def view_plug(request):
     return HttpResponse('just plug')
 
 
-def onlyScroll(request):
+def view_onlyScroll(request):
     return render(request, 'layout/scroll_basic.html')
 
 
@@ -36,27 +37,19 @@ def on_progress(view):
     return inner
 
 
-def bookshelf(request):
+def view_bookshelf(request):
     max_book = 11
     books = Book.objects.all()[:max_book]
     context = {'books': books, }
     return render(request, 'bookshelf.html', context=context)
 
 
-def read_book(request, book_id, anchor=None):
-    book = get_object_or_404(Book, id=book_id)
-    try:
-        progress = BookProgress.objects.get(book=book, user=request.user)
-    except BookProgress.DoesNotExist:
-        progress = BookProgress.start_progress(user=request.user, book=book)
-
-    book = get_object_or_404(Book, id=book_id)
+def get_read_book_context(progress, book) : #-> dict[any,any, ...]
     page = progress.book_page
     links: list[tuple[any, bool], ...] = [
         (link, link.check_key_items(progress.inventory_items.all()))
         for link in page.pagelink_set.all()
     ]
-    test = progress.droppeditem_set.filter(progress=progress).values_list('item__id', flat=True)
     location_items = page.page_items.exclude(
         id__in=progress.inventory_items.all().values_list('id', flat=True)).exclude(
         id__in=progress.droppeditem_set.filter(progress=progress).values_list('item__id', flat=True))
@@ -64,134 +57,24 @@ def read_book(request, book_id, anchor=None):
     pinned_notes = book.note_set.filter(pinned=True)
     page_notes = book.note_set.filter(pinned=False, book_page=page)
     notes = book.note_set.exclude(
-        id__in=[n.id for n in pinned_notes]).exclude(id__in=[n.id for n in page_notes]) # worked too btw pinned_notes.values_list('id', flat=True)
-    test = pinned_notes.values_list('id', flat=True)
+        id__in=[n.id for n in pinned_notes]).exclude(id__in=[n.id for n in page_notes])
     context = {'book': book, 'page': page,
                'link_status_tuple': links, 'progress': progress,
                'location_items': location_items, 'dropped_items': dropped_items,
                'pinned_notes': pinned_notes, 'notes': notes, 'page_notes': page_notes,
                'NoteFrom': NoteForm,
-               'test': location_items, }
+               }
+    return context
+
+def view_read_book(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    try:
+        progress = BookProgress.objects.get(book=book, user=request.user)
+    except BookProgress.DoesNotExist:
+        progress = BookProgress.start_progress(user=request.user, book=book)   
+    context = get_read_book_context(progress, book)
+
     return render(request, 'book_page.html', context)
-
-
-
-@on_progress
-def saves(request, progress, book_id):
-    """save page"""
-    context = {'book': Book.objects.get(id=book_id),
-               'progress': progress,
-               'saves': progress.progresssave_set.all()}
-    return render(request, 'save_page.html', context)
-
-
-@on_progress
-def save_to(request, progress, book_id, save_id=None):
-    """new/upd save"""
-    save = progress.save_to(save_id=save_id)
-    # upd/ save ?
-    context = {'book_id': book_id, }
-    return redirect(reverse('saves', kwargs=context))
-
-
-
-@on_progress
-def load_from(request, progress, book_id, save_id):
-    progress.save_load(save_id)
-    context = {'book_id': book_id}
-    return redirect(reverse('saves', kwargs=context))
-
-
-@on_progress
-def delete_save(request, progress, book_id, save_id):
-    save = get_object_or_404(ProgressSave, id=save_id)
-    save.delete()
-    return redirect(reverse('saves', kwargs={'book_id': book_id}))
-
-
-def add_note(request, book_id):
-    print(request.method)
-    if request.method == 'POST':
-        print(request.POST)
-        Note.objects.create(
-            title=request.POST['title'],
-
-            text=request.POST['text'],
-            book=Book.objects.get(id=book_id)
-        )
-    anchor = '#notes_block'
-    return _return_to_main_anchor(book_id=book_id, anchor=anchor)
-
-def delete_note(request, book_id, note_id):
-    note = get_object_or_404(Note, id=note_id)
-    note.delete()
-    anchor = '#notes_block'
-    return _return_to_main_anchor(book_id=book_id, anchor=anchor)
-
-
-def toggle_pin(request, book_id, note_id):
-    note = get_object_or_404(Note, id=note_id)
-    note.pinned = True if note.pinned == False else False
-    note.save()
-    anchor = '#notes_block'
-    return _return_to_main_anchor(book_id=book_id, anchor=anchor)
-
-# ------------------------------------------------------------------------------------------------------------- #
-# def _return_to_main(book_id):
-#     return redirect(reverse('book_main', kwargs={'book_id': book_id}))
-def _return_to(book_id):
-    return redirect(reverse('book_main', kwargs={'book_id': book_id}))
-
-
-def books_shelf(request):
-    books = Book.objects.all()
-    print(books)
-    context = {'books': books}
-    return render(request, 'book/book_shelf.html', context)
-
-
-# @on_progress
-def book_titlePage(request, progress, book_id): # перенаправлять на фёрст мб + чек/создание прогресса
-    b = get_object_or_404(Book, id=book_id)
-    context = {'book': b, 'progress': progress}
-    return render(request, 'book/book_title-Page.html', context)
-
-
-
-
-
-# засунул логику создания програсса в мэйн функцию вместо доп декоратор
-def book_main(request, book_id):
-    book = get_object_or_404(Book, id=book_id)
-    try:
-        progress = BookProgress.objects.get(book=book, user=request.user)
-    except BookProgress.DoesNotExist:
-        progress = BookProgress.start_progress(user=request.user, book=book)
-
-    book = get_object_or_404(Book, id=book_id)
-    page = progress.book_page
-    links: list[tuple[any, bool], ...] = [
-        (link, link.check_key_items(progress.inventory_items.all()))
-        for link in page.pagelink_set.all()
-    ]
-    test = progress.droppeditem_set.filter(progress=progress).values_list('item__id', flat=True)
-    location_items = page.page_items.exclude(
-        id__in=progress.inventory_items.all().values_list('id', flat=True)).exclude(
-        id__in=progress.droppeditem_set.filter(progress=progress).values_list('item__id', flat=True))
-    dropped_items = DroppedItem.objects.filter(book_page=page.id)
-    pinned_notes = book.note_set.filter(pinned=True)
-    page_notes = book.note_set.filter(pinned=False, book_page=page)
-    notes = book.note_set.exclude(
-        id__in=[n.id for n in pinned_notes]).exclude(id__in=[n.id for n in page_notes]) # worked too btw pinned_notes.values_list('id', flat=True)
-    test = pinned_notes.values_list('id', flat=True)
-    context = {'book': book, 'page': page,
-               'link_status_tuple': links, 'progress': progress,
-               'location_items': location_items, 'dropped_items': dropped_items,
-               'pinned_notes': pinned_notes, 'notes': notes, 'page_notes': page_notes,
-               'NoteFrom': NoteForm,
-               'test': location_items, }
-    return render(request, 'book/book_page.html', context)
-
 
 
 @on_progress
@@ -205,7 +88,41 @@ def go_to(request,progress, book_id, link_id): #реализовать прив�
         progress.book_page = page_link.to_page
         progress.save()
     context = {'book_id': book_id}
-    return redirect(reverse('book_main', kwargs=context))
+    return redirect(reverse('view_read_book', kwargs=context))
+
+
+@on_progress
+def view_saves(request, progress, book_id):
+    """save page"""
+    context = {'book': Book.objects.get(id=book_id),
+               'progress': progress,
+               'saves': progress.progresssave_set.all()}
+    return render(request, 'save_page.html', context)
+
+
+@on_progress
+def view_save_to(request, progress, book_id, save_id=None):
+    """new/upd save"""
+    save = progress.save_to(save_id=save_id)
+    # upd/ save ?
+    context = {'book_id': book_id, }
+    return redirect(reverse('saves', kwargs=context))
+
+
+
+@on_progress
+def view_load_from(request, progress, book_id, save_id):
+    progress.save_load(save_id)
+    context = {'book_id': book_id}
+    return redirect(reverse('saves', kwargs=context))
+
+
+@on_progress
+def view_delete_save(request, progress, book_id, save_id):
+    save = get_object_or_404(ProgressSave, id=save_id)
+    save.delete()
+    return redirect(reverse('saves', kwargs={'book_id': book_id}))
+
 
 
 @on_progress
@@ -213,7 +130,7 @@ def take_item(request, progress, book_id, item_id):
     item = get_object_or_404(Item, id=item_id)
     progress.inventory_items.add(item)
     context = {'book_id': book_id}
-    return redirect(reverse('book_main', kwargs=context))
+    return redirect(reverse('view_read_book', kwargs=context))
 
 
 @on_progress
@@ -238,25 +155,56 @@ def take_back_item(request, progress, book_id, item_id): # TODO  need transactio
 
 
 
-@on_progress
-def update_note(request, progress, book_id, note_id):
+
+def view_add_note(request, book_id):
+    print(request.method)
+    if request.method == 'POST':
+        print(request.POST)
+        Note.objects.create(
+            title=request.POST['title'],
+
+            text=request.POST['text'],
+            book=Book.objects.get(id=book_id)
+        )
+    anchor = '#notes_block'
+    return _return_to_main_anchor(book_id=book_id, anchor=anchor)
+
+def view_delete_note(request, book_id, note_id):
     note = get_object_or_404(Note, id=note_id)
+    note.delete()
+    anchor = '#notes_block'
+    return _return_to_main_anchor(book_id=book_id, anchor=anchor)
+
+
+def view_toggle_pin(request, book_id, note_id):
+    note = get_object_or_404(Note, id=note_id)
+    note.pinned = True if note.pinned == False else False
+    note.save()
+    anchor = '#notes_block'
+    return _return_to_main_anchor(book_id=book_id, anchor=anchor)
+
+
+@on_progress
+def view_update_note(request, progress, book_id, note_id):
+    selected_note = get_object_or_404(Note, id=note_id)
     print(request.method, '== request.method')
     if request.method == 'GET':
-        return render(request, 'book/change_note.html', context={
-            'page': progress.book_page,
-            'note': note,
-            'change_note_form': ChangeNoteForm()
-        })
+        book = get_object_or_404(Book, id=book_id)
+        context = get_read_book_context(progress, book)
+        context['selected_note'] = selected_note
+        # context['change_note_form'] = ChangeNoteForm(request.POST, instance=selected_note) # для обновления формы(не использовал,а вписал в template ручками для разнообразия)
+        return render(request,  'book_page.html', context=context)
     elif request.method == 'POST':
-        note.text=request.POST['text']
-        note.page=request.POST['page']
-        note.pinned = True if 'pinned' in request.POST.keys() else False
-        note.save()
-    #pinned
-    return _return_to(book_id)
+        print(request.POST, ' ==post')
+        selected_note.title=request.POST['title']
+        selected_note.text=request.POST['text']
+        selected_note.book_page = None if request.POST['book_page'] == 'remove' else get_object_or_404(BookPage, id=request.POST['book_page']) # if upd by form.classs
+        selected_note.pinned = True if 'pinned' in request.POST.keys() else False
+        selected_note.save()
+
+    return _return_to_main(book_id)
 
 
 
-# ------------------------------------------------------------------------------------------------------------- #
+
 

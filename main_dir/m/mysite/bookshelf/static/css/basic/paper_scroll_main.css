@@ -171,7 +171,8 @@ a:hover {color: #805D3F}
 
 .form1_subtitle{
 	font-style: italic;
-	color: #814F2C
+	color: #814F2C;
+	text-align:center;
 }
 
 form.contact_me {
@@ -231,4 +232,9 @@ textarea {
 		margin-left: -65px;
 		/* visibility: visible; */
 	}
+}
+
+.text_style{
+	font-style: italic;
+	color: #814F2C
 }

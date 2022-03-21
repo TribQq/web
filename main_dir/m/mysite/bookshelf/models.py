@@ -125,7 +125,7 @@ class DroppedItemSave(models.Model):
 
 
 class Note(models.Model):
-    title = models.TextField(max_length=30)
+    title = models.TextField(max_length=10)
     text = models.TextField(max_length=300)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

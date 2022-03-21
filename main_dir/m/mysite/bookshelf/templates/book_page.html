@@ -26,14 +26,58 @@
 
 <div class="left_column_boxes">
 <div class="notes_block" >
-  <h4 class="scroll_info_subtitle">Add note</h4>
-  <form action="{% url 'add_note' book.id %}" method="POST">
+  {% if selected_note  %}
+  <h4 class="scroll_info_subtitle title">UPD Note</h4>
+  <form method="POST" style="display: grid;"
+  action="{% url 'update_note' page.book.id selected_note.id %}">
+  {% csrf_token %}
+
+  <label class="form1_subtitle" for="memo-text">Title</label>
+  <textarea class="form_textarea " id="memo-text" name="title" maxlength="10" >{{ selected_note.title }}</textarea>
+
+  <label class="form1_subtitle"  for="memo-text">Text</label>
+  <textarea class="form_textarea text" id="memo-text" name="text"  maxlength="300">{{ selected_note.text }}</textarea>
+
+  <label class="form1_subtitle" for="memo-page">Привязка</label>
+  <select class="form_list_select _wrap" id="memo-page" name="book_page">
+  {% if selected_note.page %}
+  <option value="keep"
+          {% if selected_note.page.id != page.id %}
+          selected
+          {% endif %}>
+    Оставить привязанной к [{{ selected_note.page.title }}]
+  </option>
+  {% endif %}
+  {% if not selected_note.page or selected_note.page.id != page.id %}
+  <option value="change">
+    Привязать к [{{ page.title }}]
+  </option>
+  {% endif %}
+  <option value="remove"
+          {% if not selected_note.page %}
+          selected
+          {% endif %}>
+    {% if selected_note.page %}Отвязать{% endif %}
+  </option>
+  </select>
+  <label class="form1_subtitle" for="memo-pinned">Закреплена</label>
+  <input class="form_checkbox _wrap" id="memo-pinned" name="pinned" type="checkbox"
+      {% if selected_note.pinned %}checked{% endif %}>
+  <button class="form_button" type="submit">[Обновить]</button>
+  </form>
+  {% else %}
+
+    <h4 class="scroll_info_subtitle title">Add Note</h4>
+    <form action="{% url 'add_note' book.id %}" method="POST">
       {% csrf_token %}
       {{ NoteFrom }}
       <button id="note_submit_button" class="submit_button_contact" type="submit"> [submit] </button>
   </form>
+  {% endif %}
+
 </div>
 </div>
+
 
 {% endblock %}
 
@@ -104,12 +148,17 @@
     </div>
   </div>
 </div>
+
 <div class="selected_note">
-  <p class="title">test title</p>
-  <p class="text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore soluta voluptate, ut libero nisi blanditiis. Quaerat, dicta totam assumenda modi eius minus vel consequatur saepe officiis impedit quibusdam temporibus sint!</p>
+  {% if selected_note  %}
+  <p class="title text_style">{{selected_note.title}}</p>
+  <p class="text text_style">{{selected_note.text}}</p>
+  {% else %}
+  <p class="title text_style">test title</p>
+  <p class="text text_style">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore soluta voluptate, ut libero nisi blanditiis. Quaerat, dicta totam assumenda modi eius minus vel consequatur saepe officiis impedit quibusdam temporibus sint!</p>
+{% endif %}
+
 </div>
-
-
 
 {% endblock %}
 

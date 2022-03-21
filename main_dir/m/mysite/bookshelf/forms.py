@@ -31,3 +31,5 @@ class ChangeNoteForm(forms.ModelForm): #форма из модели
         widgets = { #cutomize
             'text': forms.Textarea(attrs={'cols': 30, 'rows': 3})
         }
+
+
