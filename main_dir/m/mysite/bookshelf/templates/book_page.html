@@ -61,7 +61,7 @@
 <div id="notes_block" class="scroll_notes_block">
   <div class="rolled_notes">
   <ul>
-    <h2>Notes:</h2>
+    <!-- <h2>Notes:</h2> -->
       {% if pinned_notes %}
           {% for note in pinned_notes %}
           <li class="rolled_note">
@@ -71,7 +71,7 @@
               <p>{{ note.title }}</p>
              </div>
              <!-- <a class="change" href="">[🖊️]</a> -->
-             <a class ="scroll_button" href=""><img src="{% static 'media/paper_scroll/unrolled_scroll_note.png' %}"> </a>
+             <a class ="scroll_button" href="{% url 'update_note' book.id note.id %}"><img src="{% static 'media/paper_scroll/unrolled_scroll.png' %}"> </a>
              <a class="delete" href="{% url 'delete_note' book.id note.id %}">[🗑️]</a>
           </li>
           {% endfor %}
@@ -86,7 +86,7 @@
               <p>{{ note.title }}</p>
              </div>
              <!-- <a class="change" href="">[🖊️]</a> -->
-             <a class ="scroll_button" href=""><img src="{% static 'media/paper_scroll/unrolled_scroll_note.png' %}"> </a>
+             <a class ="scroll_button" href="{% url 'update_note' book.id note.id %}"><img src="{% static 'media/paper_scroll/unrolled_scroll.png' %}"> </a>
              <a class="delete" href="{% url 'delete_note' book.id note.id %}">[🗑️]</a>
           </li>
           {% endfor %}
@@ -95,12 +95,11 @@
   </div>
   <div class="unrolled_note">
     <div class="content">
-      <a href="">
+      <!-- <a href=""> -->
       <img src="{% static 'media/paper_scroll/unrolled_scroll_note.png' %}">
       <div class="text_content">
         <p class="title">upd note text</p>
-        <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium commodi magnam unde hic ratione velit, accusantium necessitatibus aliquam laborum reprehenderit mollitia, cum explicabo repudiandae nihil! Quaerat nostrum fugit quos iste!</p>
-      </a>
+        <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium commodi magnam unde hic ratione velit, accusantium necessitatibus aliquam laborum reprehenderit mollitia, cum explicabo repudiandae nihil! Quaerat nostrum fugit quos iste!</p>      </a>
       </div>
     </div>
   </div>

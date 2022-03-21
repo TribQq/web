@@ -21,3 +21,13 @@ class NoteForm(forms.ModelForm):
 
         }
 
+
+
+
+class ChangeNoteForm(forms.ModelForm): #форма из модели
+    class Meta:
+        model = Note
+        fields =['text','pinned'] # field from model to form
+        widgets = { #cutomize
+            'text': forms.Textarea(attrs={'cols': 30, 'rows': 3})
+        }

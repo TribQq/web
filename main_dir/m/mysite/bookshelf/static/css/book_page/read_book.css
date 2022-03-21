@@ -104,10 +104,25 @@
   padding-bottom: 3%;
 }
 
+.unrolled_note{
+  margin-left: 2%;
+  transition: 2s;
+}
+
+.unrolled_note:hover{
+  transform: rotate(-188deg);
+ 
+}
+
+
 .unrolled_note .content{
   transform: rotate(8deg);
 }
 
+.unrolled_note .content image{
+  width: 90%;
+}
+
 .unrolled_note .text_content{
   position: absolute;
   top: 10%;
@@ -122,14 +137,15 @@
 .unrolled_note .text_content{
   position: absolute;
   top: 10%;
-  left: 17%;
+  left: 20%;
   width: 50%;
-  height: 50%;
+  height: 70%;
   overflow: hidden;
 }
 .unrolled_note .text_content .title{
   font-size: 18px;
   font-weight: bolder;
+  text-align: center;
 }
 .unrolled_note .text_content .text{
   font-size: 15px;
@@ -156,12 +172,12 @@
 .scroll_button img{
   width: 30px;
   transform: rotate(16deg);
-  
+  transition: 1s;
 }
 
 .scroll_button:hover img{
   transform: rotate(-16deg);
-  transition: 1s;
+  
 }
 
 .selected_note{
@@ -174,7 +190,7 @@
 
 .unpin_hr {
   overflow: visible; /* For IE */
-  height: 20px;
+  height: 25px;
   border-style: solid;
   border-color: black;
   border-width: 1px 0 0 0;

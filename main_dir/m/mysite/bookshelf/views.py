@@ -20,6 +20,10 @@ def _return_to_main(book_id):
     return redirect(reverse('read_book', kwargs={'book_id': book_id}))
 
 
+def _return_to_main_anchor(book_id:int, anchor:str):
+    return redirect(reverse('read_book_anchor', kwargs={'book_id': book_id})+ anchor)
+
+
 
 def on_progress(view):
     def inner(request, book_id, **kwargs):
@@ -39,7 +43,7 @@ def bookshelf(request):
     return render(request, 'bookshelf.html', context=context)
 
 
-def read_book(request, book_id):
+def read_book(request, book_id, anchor=None):
     book = get_object_or_404(Book, id=book_id)
     try:
         progress = BookProgress.objects.get(book=book, user=request.user)
@@ -104,9 +108,39 @@ def delete_save(request, progress, book_id, save_id):
     save.delete()
     return redirect(reverse('saves', kwargs={'book_id': book_id}))
 
+
+def add_note(request, book_id):
+    print(request.method)
+    if request.method == 'POST':
+        print(request.POST)
+        Note.objects.create(
+            title=request.POST['title'],
+
+            text=request.POST['text'],
+            book=Book.objects.get(id=book_id)
+        )
+    anchor = '#notes_block'
+    return _return_to_main_anchor(book_id=book_id, anchor=anchor)
+
+def delete_note(request, book_id, note_id):
+    note = get_object_or_404(Note, id=note_id)
+    note.delete()
+    anchor = '#notes_block'
+    return _return_to_main_anchor(book_id=book_id, anchor=anchor)
+
+
+def toggle_pin(request, book_id, note_id):
+    note = get_object_or_404(Note, id=note_id)
+    note.pinned = True if note.pinned == False else False
+    note.save()
+    anchor = '#notes_block'
+    return _return_to_main_anchor(book_id=book_id, anchor=anchor)
+
 # ------------------------------------------------------------------------------------------------------------- #
 # def _return_to_main(book_id):
 #     return redirect(reverse('book_main', kwargs={'book_id': book_id}))
+def _return_to(book_id):
+    return redirect(reverse('book_main', kwargs={'book_id': book_id}))
 
 
 def books_shelf(request):
@@ -204,30 +238,25 @@ def take_back_item(request, progress, book_id, item_id): # TODO  need transactio
 
 
 
-
-def add_note(request, book_id):
-    print(request.method)
-    if request.method == 'POST':
-        print(request.POST)
-        Note.objects.create(
-            title=request.POST['title'],
-
-            text=request.POST['text'],
-            book=Book.objects.get(id=book_id)
-        )
-    return _return_to_main(book_id)
-
-
-def delete_note(request, book_id, note_id):
+@on_progress
+def update_note(request, progress, book_id, note_id):
     note = get_object_or_404(Note, id=note_id)
-    note.delete()
-    return _return_to_main(book_id)
+    print(request.method, '== request.method')
+    if request.method == 'GET':
+        return render(request, 'book/change_note.html', context={
+            'page': progress.book_page,
+            'note': note,
+            'change_note_form': ChangeNoteForm()
+        })
+    elif request.method == 'POST':
+        note.text=request.POST['text']
+        note.page=request.POST['page']
+        note.pinned = True if 'pinned' in request.POST.keys() else False
+        note.save()
+    #pinned
+    return _return_to(book_id)
 
 
-def toggle_pin(request, book_id, note_id):
-    note = get_object_or_404(Note, id=note_id)
-    note.pinned = True if note.pinned == False else False
-    note.save()
-    return _return_to_main(book_id)
+
 # ------------------------------------------------------------------------------------------------------------- #
 
