@@ -18,11 +18,13 @@ def view_onlyScroll(request):
 
 
 def _return_to_main(book_id):
-    return redirect(reverse('read_book', kwargs={'book_id': book_id}))
+    return redirect(reverse('view_read_book', kwargs={'book_id': book_id}))
 
 
-def _return_to_main_anchor(book_id:int, anchor:str):
-    return redirect(reverse('read_book_anchor', kwargs={'book_id': book_id})+ anchor)
+def _return_to_main_anchor(book_id: int, anchor: str):
+    return redirect(reverse('view_read_book', kwargs={'book_id': book_id}) + anchor)
+
+
 
 
 
@@ -32,9 +34,16 @@ def on_progress(view):
         try:
             progress = BookProgress.objects.get(book=book, user=request.user)
         except BookProgress.DoesNotExist:
-            return redirect(reverse('book_main', kwargs={'book_id': book_id}))
+            return redirect(reverse('view_read_book', kwargs={'book_id': book_id}))
         return view(request=request, progress=progress, book_id=book_id, **kwargs)
     return inner
+
+
+@on_progress
+def view_drop_progress(request,progress, book_id):
+    progress.delete()
+    # return render(request, 'save_page.html', context)
+    return redirect(reverse('view_saves', kwargs={'book_id': book_id}))
 
 
 def view_bookshelf(request):
@@ -66,6 +75,7 @@ def get_read_book_context(progress, book) : #-> dict[any,any, ...]
                }
     return context
 
+
 def view_read_book(request, book_id):
     book = get_object_or_404(Book, id=book_id)
     try:
@@ -74,11 +84,16 @@ def view_read_book(request, book_id):
         progress = BookProgress.start_progress(user=request.user, book=book)   
     context = get_read_book_context(progress, book)
 
-    return render(request, 'book_page.html', context)
+    condition_status = progress.check_win_status(book_id=book_id)
+    print((str(condition_status)+'\n')*5)
+    if condition_status:
+        return HttpResponse('win/lose test')
+    else:
+        return render(request, 'book_page.html', context)
 
 
 @on_progress
-def go_to(request,progress, book_id, link_id): #реализовать привязку к линку т.к ?)
+def view_go_to(request,progress, book_id, link_id): #реализовать привязку к линку т.к ?)
     page_link = get_object_or_404(PageLink, id=link_id)
     if (
         progress.book_page.id == page_link.from_page.id
@@ -104,9 +119,8 @@ def view_saves(request, progress, book_id):
 def view_save_to(request, progress, book_id, save_id=None):
     """new/upd save"""
     save = progress.save_to(save_id=save_id)
-    # upd/ save ?
     context = {'book_id': book_id, }
-    return redirect(reverse('saves', kwargs=context))
+    return redirect(reverse('view_saves', kwargs=context))
 
 
 
@@ -114,19 +128,19 @@ def view_save_to(request, progress, book_id, save_id=None):
 def view_load_from(request, progress, book_id, save_id):
     progress.save_load(save_id)
     context = {'book_id': book_id}
-    return redirect(reverse('saves', kwargs=context))
+    return redirect(reverse('view_saves', kwargs=context))
 
 
 @on_progress
 def view_delete_save(request, progress, book_id, save_id):
     save = get_object_or_404(ProgressSave, id=save_id)
     save.delete()
-    return redirect(reverse('saves', kwargs={'book_id': book_id}))
+    return redirect(reverse('view_saves', kwargs={'book_id': book_id}))
 
 
 
 @on_progress
-def take_item(request, progress, book_id, item_id):
+def view_take_item(request, progress, book_id, item_id):
     item = get_object_or_404(Item, id=item_id)
     progress.inventory_items.add(item)
     context = {'book_id': book_id}
@@ -134,7 +148,7 @@ def take_item(request, progress, book_id, item_id):
 
 
 @on_progress
-def drop_item(request, progress, book_id, item_id):
+def view_drop_item(request, progress, book_id, item_id):
     item = get_object_or_404(Item, id=item_id)
     progress.inventory_items.remove(item)
     progress.save()
@@ -142,24 +156,20 @@ def drop_item(request, progress, book_id, item_id):
         item=item,
         book_page=progress.book_page,
         progress=progress,
-        book=progress.book
     )
     return _return_to_main(book_id)
 
 @on_progress
-def take_back_item(request, progress, book_id, item_id): # TODO  need transaction btw
+def view_take_back_item(request, progress, book_id, item_id): # TODO  need transaction btw
     dropped_item = get_object_or_404(DroppedItem, id=item_id)
     progress.inventory_items.add(dropped_item.item)
     dropped_item.delete()
-    return redirect(reverse('book_main', kwargs={'book_id': book_id}))
-
+    return redirect(reverse('view_read_book', kwargs={'book_id': book_id}))
 
 
 
 def view_add_note(request, book_id):
-    print(request.method)
     if request.method == 'POST':
-        print(request.POST)
         Note.objects.create(
             title=request.POST['title'],
 
@@ -187,7 +197,6 @@ def view_toggle_pin(request, book_id, note_id):
 @on_progress
 def view_update_note(request, progress, book_id, note_id):
     selected_note = get_object_or_404(Note, id=note_id)
-    print(request.method, '== request.method')
     if request.method == 'GET':
         book = get_object_or_404(Book, id=book_id)
         context = get_read_book_context(progress, book)
@@ -195,16 +204,13 @@ def view_update_note(request, progress, book_id, note_id):
         # context['change_note_form'] = ChangeNoteForm(request.POST, instance=selected_note) # для обновления формы(не использовал,а вписал в template ручками для разнообразия)
         return render(request,  'book_page.html', context=context)
     elif request.method == 'POST':
-        print(request.POST, ' ==post')
-        selected_note.title=request.POST['title']
-        selected_note.text=request.POST['text']
+        selected_note.title = request.POST['title']
+        selected_note.text = request.POST['text']
         selected_note.book_page = None if request.POST['book_page'] == 'remove' else get_object_or_404(BookPage, id=request.POST['book_page']) # if upd by form.classs
         selected_note.pinned = True if 'pinned' in request.POST.keys() else False
         selected_note.save()
-
-    return _return_to_main(book_id)
-
-
+    anchor = '#notes_block'
+    return _return_to_main_anchor(book_id=book_id, anchor=anchor)
 
 
 

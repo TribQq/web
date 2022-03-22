@@ -5,6 +5,10 @@
 .ivnentory_image {
 }
 
+.inventory_block .inventory_content{
+  max-width: 70%;
+}
+
 .inventory_content {
   position: absolute;
   top: 4%;
@@ -95,7 +99,7 @@
 }
 
 .rolled_note .content{
-  font-size: 18px;
+  font-size: 17px;
   position: absolute;
   top: 9px;
   left: 80px;
@@ -156,11 +160,10 @@
 }
 
 .selected_note{
-  
 }
-.notes_block .text{
+/* .notes_block .text{
   height: 100px;
-}
+} */
 .notes_block .title{
   font-size: 18px;
   text-align: center;
@@ -175,7 +178,7 @@
 }
 
 .selected_note .title{
-  font-size: 40px;
+  font-size: 25px;
   font-weight: bolder;
   text-align: center;
   

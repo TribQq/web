@@ -18,7 +18,7 @@
 <div class="left_column_boxes">
 <div class="saves_block">
   <img class="saves_image" src="{% static 'media/paper_scroll/saves_sand_clock.png' %}">
-<a class="saves_button activ_button " href="{% url 'read_book' book.id %}">[back to read]</a>
+<a class="saves_button activ_button " href="{% url 'view_read_book' book.id %}">[back to read]</a>
 </div>
 </div>
 {% endblock %}
@@ -34,7 +34,7 @@
     {% for i_item in progress.inventory_items.all %}
     <li class="inventory_item" >
         {{ i_item }}
-        <a href="{% url 'drop_item' book.id i_item.id %}">[drop]</a>
+        <a href="{% url 'view_drop_item' book.id i_item.id %}">[drop]</a>
     </li>
     {% endfor %}
 
@@ -65,9 +65,9 @@
                 {% else %}
                 *your pockets are empty*
                 {% endif %}
-                <a href="{% url 'load_from' book_id=book.id save_id=save.id %}">[load]</a>
-                <a href="{% url 'save_to' book.id save.id %}">[update]</a>
-                <a href="{% url 'delete_save' book.id save.id %}">[delete]</a>
+                <a href="{% url 'view_load_from' book_id=book.id save_id=save.id %}">[load]</a>
+                <a href="{% url 'view_save_to' book.id save.id %}">[update]</a>
+                <a href="{% url 'view_delete_save' book.id save.id %}">[delete]</a>
             </li>
             {% endfor %}
         </ul>
@@ -96,8 +96,9 @@
                 </ul>
             </li>
         </ul>
-        <p><a href="{% url 'read_book' book.id %}">[return to read]</a></p>
-        <p><a href="{% url 'new_save' book.id %}">[add new save]</a></p>
+        <p><a href="{% url 'view_read_book' book.id %}">[return to read]</a></p>
+        <p><a href="{% url 'view_new_save' book.id %}">[add new save]</a></p>
+        <p><a href="{% url 'view_drop_progress' book.id %}">[drop progress]</a></p>
       
         </div>
       </div>  

@@ -4,6 +4,10 @@ from bulletin_board.models import AdvUser as User
 from .utilities import get_timestamp_path
 
 
+class Test(models.Model):
+    bool_null = models.BooleanField(default=None, null=True, blank=True)
+
+
 class Book(models.Model):
     title = models.CharField(max_length=10, default='Book', verbose_name='Title')
     subtitle = models.CharField(max_length=15, default='Name', verbose_name='Subtitle')
@@ -14,6 +18,8 @@ class Book(models.Model):
     cover_img = models.ImageField(blank=True, null=True,
                                   upload_to=get_timestamp_path, verbose_name='Image on book cover')
 
+    progress_conditions = models.ManyToManyField('ProgressCondition', verbose_name='lose/win conditions', blank=True)
+
     class Meta:
         verbose_name_plural = 'Books'
         verbose_name = 'Book'
@@ -21,7 +27,7 @@ class Book(models.Model):
 
 class BookPage(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
-    title = models.TextField(blank=True, null=True)
+    title = models.CharField(max_length=30, blank=True, null=True)
     text = models.TextField()
     image = models.ImageField(blank=True, null=True,
                               upload_to=get_timestamp_path, verbose_name='Page image')
@@ -51,15 +57,18 @@ class PageLink(models.Model):
         check_result: bool = all(key in inventory_items for key in self.key_items.all())
         return check_result
 
-
+###
 class BookProgress(models.Model): # трабла в автосоздании новой модельки под новою книгу+юзера (т.е если ручками создать поле в бд то ок инече краш)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     book_page = models.ForeignKey(BookPage, on_delete=models.CASCADE)
     inventory_items = models.ManyToManyField('Item', blank=True)
+    win_status = models.BooleanField(null=True, blank=True)
+    final_text = models.ForeignKey('FinalText', null=True, blank=True, on_delete=models.SET_NULL)
 
     class Meta:
         unique_together = ['user', 'book']
+
 
     @classmethod
     def start_progress(cls, user, book):
@@ -68,6 +77,17 @@ class BookProgress(models.Model): # трабла в автосоздании н�
         progress.save()
         return progress
 
+    def check_win_status(self, book_id):  # логику в модельку!
+        progress_conditions = Book.objects.get(id=book_id).progress_conditions.all()
+        for condition in progress_conditions:
+            condition_items = list(condition.items.all().values_list('item', flat=True))
+            inventory_items = list(self.inventory_items.all().values_list('id', flat=True))
+            for item in condition_items:
+                if item not in inventory_items:
+                    return None
+            return True
+        return None
+
     @transaction.atomic
     def save_to(self, save_id):
         if save_id is None:
@@ -75,8 +95,8 @@ class BookProgress(models.Model): # трабла в автосоздании н�
                 progress=self, book_page=self.book_page)
         else:
             state = ProgressSave.objects.get(id=save_id)
-            state.progress=self
-            state.book_page=self.book_page
+            state.progress = self
+            state.book_page = self.book_page
             state.droppeditemsave.all().delete()
         state.inventory_items.set(self.inventory_items.all())
         for di in self.droppeditem_set.all():
@@ -109,6 +129,8 @@ class DroppedItem(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     book_page = models.ForeignKey(BookPage, on_delete=models.CASCADE)
     progress = models.ForeignKey(BookProgress, on_delete=models.CASCADE)
+    def __str__(self):
+        return '{self.item.name} ({self.book_page.title})'.format(self=self)
 
 
 class ProgressSave(models.Model):
@@ -134,20 +156,25 @@ class Note(models.Model):
     pinned = models.BooleanField(default=False)
 
 
-class WinCondition(models.Model):
-    book = models.ForeignKey(Book, on_delete=models.CASCADE)
-    progress = models.ForeignKey(BookProgress, on_delete=models.CASCADE)
-    condition = models.ForeignKey('ProgressCondition', on_delete=models.CASCADE)
+class FinalText(models.Model):
+    title = models.CharField(default='text', max_length=30)
+    text = models.TextField(default='text')
 
 
-class LoseCondition(models.Model):
-    book = models.ForeignKey(Book, on_delete=models.CASCADE)
-    progress = models.ForeignKey(BookProgress, on_delete=models.CASCADE)
-    condition = models.ForeignKey('ProgressCondition', on_delete=models.CASCADE)
+class ProgressConditionItem(models.Model):
+    item = models.ForeignKey(Item, on_delete=models.CASCADE) # , related_name='customItem'
+    desc = models.CharField(default='description', verbose_name='description', max_length=60)
+    page_position = models.ForeignKey(BookPage, null=True, blank=True, on_delete=models.SET_NULL)
+
+    # def __str__(self):
+    #     return f'P,I=,{self.page_position},{self.item.name}' #
 
 
 class ProgressCondition(models.Model):
-    condition_item = models.ForeignKey(Item, on_delete=models.CASCADE)
-    condition_item_location = models.ForeignKey(BookPage, on_delete=models.CASCADE)
+    items = models.ManyToManyField(ProgressConditionItem)
+    final_text = models.ForeignKey(FinalText, null=True, blank=True, on_delete=models.SET_NULL)
+    # win_status = models.BooleanField() # False-lose, True-win не нужно т.к заглушка энивей будет текстом(хотя для доп функций можоно будет доабвить)
+    def __str__(self):
+        return f'condotion:({self.id}): items({[pi.item.name for pi in self.items.all()]}'
 
 
