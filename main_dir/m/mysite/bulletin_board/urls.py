@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import *
 
-app_name = 'bulletin_board' # main
+app_name = 'bulletin_board'
 urlpatterns = [
     path('accounts/register/activate/<str:sign>/', user_activate, name='register_activate'),
     path('accounts/register/done/', RegisterDoneView.as_view(), name='register_done'),

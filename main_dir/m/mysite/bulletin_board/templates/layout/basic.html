@@ -38,25 +38,19 @@
         </ul>
     </div>
     <div class="row">
-        <nav class="col-md-auto nav flex-column border">
-            <a class="nav-link root " href=" {% url 'bulletin_board:index' %}">Главная</a>
-            <span class="nav-link root font-weight-bold">Недвижимость</span>
-            <a class="nav-link" href="#">Жилье</a>
-            <a class="nav-link" href="#">Склады</a>
-            <a class="nav-link" href="#">Гаражи</a>
-            <a class="nav-link root" href="{% url 'bulletin_board:index' %}">Главная</a>
-            {% for rubric in rubrics %}
-<!--            <p>s</p>-->
-            {% ifchanged rubric.super_rubric.pk %}
-            <span class="nav-link root font-weight-bold">
-                {{ rubric.super_rubric.name }}</span>
+            <nav class="col-md-auto nav flex-column border">
+                <a class="nav-link root" href="{% url 'bulletin_board:index' %}">Главная</a>
+                {% for rubric in rubrics %}
+                {% ifchanged rubric.super_rubric.pk %}
+                <span class="nav-link root font-weight-bold">{{ rubric.super_rubric.name }}</span>
                 {% endifchanged %}
+                {% if rubric.super_rubric.id  %}
                 <a class="nav-link" href="{% url 'bulletin_board:by_rubric' pk=rubric.pk %}">
-                    {{ rubric.name }}
-                </a>
-            {% endfor %}
-            <a class='nav-link root' href='{% url "bulletin_board:other" page="about" %}'>О сайте</a>
-        </nav>
+                {{ rubric.name }}</a>
+                {% endif %}
+                {% endfor %}
+                <a class="nav-link root" href="{% url 'bulletin_board:other' page='about' %}">О сайте</a>
+            </nav>
         <section class="col border ру-2 ">
             {% bootstrap_messages %} {% block content %} {% endblock %}
         </section>

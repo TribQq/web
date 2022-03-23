@@ -1,4 +1,4 @@
-#A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+
 from django.shortcuts import render, redirect
 from django.http import Http404,HttpResponse
 from django.template import TemplateDoesNotExist
@@ -21,7 +21,6 @@ from django.db.models import Q
 from .models import AdvUser, SubRubric, Bb, Comment
 from .forms import ChangeUserInfoForm, RegisterUserForm, SearchForm, AIFormSet, BbForm, UserCommentForm, GuestCommentForm
 from .utilities import signer
-
 
 
 def index(request):
@@ -57,14 +56,14 @@ class ChangeUserInfoView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = AdvUser
     template_name = 'main/change_user_info.html'
     form_class = ChangeUserInfoForm
-    success_url = reverse_lazy('bulletin_board:profile') # SuccessMessageMixin
-    success_message = 'Данные изменены' # SuccessMessageMixin
+    success_url = reverse_lazy('bulletin_board:profile')
+    success_message = 'Данные изменены'
 
-    def setup(self, request, *args, **kwargs): # UpdateView
+    def setup(self, request, *args, **kwargs):
         self.user_id = request.user.pk
         return super().setup(request, *args, **kwargs)
 
-    def get_object(self, queryset=None):# UpdateView
+    def get_object(self, queryset=None):
         if not queryset:
             queryset = self.get_queryset()
         return get_object_or_404(queryset, pk=self.user_id)
