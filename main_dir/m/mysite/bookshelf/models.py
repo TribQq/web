@@ -57,18 +57,16 @@ class PageLink(models.Model):
         check_result: bool = all(key in inventory_items for key in self.key_items.all())
         return check_result
 
-###
+
 class BookProgress(models.Model): # трабла в автосоздании новой модельки под новою книгу+юзера (т.е если ручками создать поле в бд то ок инече краш)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     book_page = models.ForeignKey(BookPage, on_delete=models.CASCADE)
     inventory_items = models.ManyToManyField('Item', blank=True)
-    win_status = models.BooleanField(null=True, blank=True)
-    final_text = models.ForeignKey('FinalText', null=True, blank=True, on_delete=models.SET_NULL)
+    end_status = models.BooleanField(null=True, blank=True)
 
     class Meta:
         unique_together = ['user', 'book']
-
 
     @classmethod
     def start_progress(cls, user, book):
@@ -77,16 +75,39 @@ class BookProgress(models.Model): # трабла в автосоздании н�
         progress.save()
         return progress
 
-    def check_win_status(self, book_id):  # логику в модельку!
+    def check_items_position(self, checked_i, inventory_i, dropped_i_p) -> list[bool, ...]:
+        item_on_position: list[bool, ...] = []
+        for i in checked_i:
+            if i['page_position'] is None:
+                item_on_position.append((i['item'] in inventory_i))
+            elif i['page_position'] in dropped_i_p.keys():
+                item_on_position.append(i['item'] in dropped_i_p[i['page_position']])
+            else:
+                item_on_position.append(False)
+        return item_on_position
+
+    def try_end_progress(self, book_id: int) -> any:
         progress_conditions = Book.objects.get(id=book_id).progress_conditions.all()
         for condition in progress_conditions:
-            condition_items = list(condition.items.all().values_list('item', flat=True))
-            inventory_items = list(self.inventory_items.all().values_list('id', flat=True))
-            for item in condition_items:
-                if item not in inventory_items:
-                    return None
-            return True
-        return None
+            condition_items: list[dict[str, str], ...] = list(condition.status_items.all().values('item', 'page_position'))
+            inventory_items: list[str, ...] = list(self.inventory_items.all().values_list('id', flat=True))
+            dropped_items_pages: dict[int, list[int, ...]] = {}
+            for di in self.droppeditem_set.all().values('item', 'book_page_id'):
+                try:
+                    dropped_items_pages[di['book_page_id']].append(di['item'])
+                except:
+                    dropped_items_pages[di['book_page_id']] = [di['item']]
+
+            # не раб на нескольких условиях
+            item_on_position: list[bool, ...] = self.check_items_position(condition_items, inventory_items, dropped_items_pages)
+            if False not in item_on_position:
+                return condition.final_page
+        return False
+
+    def end_progress(self, final_page):
+        self.book_page = final_page
+        self.end_status = True
+        self.save()
 
     @transaction.atomic
     def save_to(self, save_id):
@@ -129,6 +150,7 @@ class DroppedItem(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     book_page = models.ForeignKey(BookPage, on_delete=models.CASCADE)
     progress = models.ForeignKey(BookProgress, on_delete=models.CASCADE)
+
     def __str__(self):
         return '{self.item.name} ({self.book_page.title})'.format(self=self)
 
@@ -156,25 +178,21 @@ class Note(models.Model):
     pinned = models.BooleanField(default=False)
 
 
-class FinalText(models.Model):
-    title = models.CharField(default='text', max_length=30)
-    text = models.TextField(default='text')
-
-
-class ProgressConditionItem(models.Model):
+class ProgressConditionStatusItem(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE) # , related_name='customItem'
     desc = models.CharField(default='description', verbose_name='description', max_length=60)
-    page_position = models.ForeignKey(BookPage, null=True, blank=True, on_delete=models.SET_NULL)
+    page_position = models.ForeignKey(BookPage, null=True, blank=True, on_delete=models.SET_NULL) # if none => inventory pos
 
-    # def __str__(self):
-    #     return f'P,I=,{self.page_position},{self.item.name}' #
+    def __str__(self):
+        return f'{self.item.name},{self.page_position}' #
 
 
 class ProgressCondition(models.Model):
-    items = models.ManyToManyField(ProgressConditionItem)
-    final_text = models.ForeignKey(FinalText, null=True, blank=True, on_delete=models.SET_NULL)
+    status_items = models.ManyToManyField(ProgressConditionStatusItem)
+    final_page = models.ForeignKey(BookPage, null=True, blank=True, on_delete=models.CASCADE)
     # win_status = models.BooleanField() # False-lose, True-win не нужно т.к заглушка энивей будет текстом(хотя для доп функций можоно будет доабвить)
+
     def __str__(self):
-        return f'condotion:({self.id}): items({[pi.item.name for pi in self.items.all()]}'
+        return f'condotion:({self.id}): items({[pi.item.name for pi in self.status_items.all()]}'
 
 

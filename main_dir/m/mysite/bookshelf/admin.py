@@ -9,7 +9,7 @@ admin.site.register(Item)
 admin.site.register(Note)
 admin.site.register(DroppedItem)
 
-admin.site.register(ProgressConditionItem)
+admin.site.register(ProgressConditionStatusItem)
 
 
 class BookPageAdmin(admin.ModelAdmin):
@@ -21,7 +21,7 @@ class BookProgressAdmin(admin.ModelAdmin):
 
 
 class AdminProgressCondition(admin.ModelAdmin):
-    filter_horizontal = ('items',)
+    filter_horizontal = ('status_items',)
 
 
 admin.site.register(BookPage, BookPageAdmin)

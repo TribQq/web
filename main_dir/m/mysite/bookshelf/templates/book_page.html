@@ -179,6 +179,14 @@
     <div id="page-2" class="page" style="z-index: 4;">    
       <div class="side-1" id="p3">
         <div class="content">
+            {% if progress.end_status %}
+            <h4>Это приключение закончилось, но вы можете:</h4>
+            <u>
+                <li><a href="{% url 'view_bookshelf' %}">[ попробовать что то ещё ] </a> </li>
+                <li><a href="{% url 'view_drop_progress' book.id %}">[ переиграть эту историю ] </a> </li>
+            </u>
+            {% else %}
+
           <h2 class="book_page_subtitle">Оглядевшись вы видите:</h2>
 
           {% if dropped_items %}
@@ -208,7 +216,8 @@
             <p>{{ link }}, у вас нету ключа для этого.</p>
             {% endif %}
           {% endfor %}</ul>
-      
+
+        {% endif %}
         </div>
       </div>  
 

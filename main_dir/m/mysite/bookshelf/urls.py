@@ -7,7 +7,7 @@ urlpatterns = [
    path('plug/', view_plug, name='plug'),
    path('onlyScroll/', view_onlyScroll, name='onlyScroll'),
 
-   path('', view_bookshelf, name='bookshelf'),
+   path('', view_bookshelf, name='view_bookshelf'),
    path('book/<int:book_id>/', view_read_book, name='view_read_book'),
    
    path('book_main/<int:book_id>/go_to/<int:link_id>', view_go_to, name='view_go_to'),
@@ -22,7 +22,7 @@ urlpatterns = [
    path('book_main/<int:book_id>/add_note/', view_add_note, name='view_add_note'),
    path('book_main/<int:book_id>/toggle_pin/<int:note_id>/', view_toggle_pin, name='view_toggle_pin'),
    path('book_main/<int:book_id>/delete_note/<int:note_id>', view_delete_note, name='view_delete_note'),
-      path('book/<int:book_id>/update_note/<int:note_id>/', view_update_note, name='view_update_note'),
+   path('book/<int:book_id>/update_note/<int:note_id>/', view_update_note, name='view_update_note'),
 
 
    path('book_main/<int:book_id>/saves', view_saves, name='view_saves'),

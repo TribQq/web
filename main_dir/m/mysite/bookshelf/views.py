@@ -6,6 +6,7 @@ from django.urls import reverse
 from bulletin_board.models import AdvUser as User
 from .models import *
 from .forms import *
+# if  no auth. redirect to (create custom user)
 
 
 def view_plug(request):
@@ -16,7 +17,6 @@ def view_onlyScroll(request):
     return render(request, 'layout/scroll_basic.html')
 
 
-
 def _return_to_main(book_id):
     return redirect(reverse('view_read_book', kwargs={'book_id': book_id}))
 
@@ -25,24 +25,25 @@ def _return_to_main_anchor(book_id: int, anchor: str):
     return redirect(reverse('view_read_book', kwargs={'book_id': book_id}) + anchor)
 
 
-
-
-
 def on_progress(view):
     def inner(request, book_id, **kwargs):
         book = get_object_or_404(Book, id=book_id) # мы НЕ хотим 2 раза идти в бд...
         try:
             progress = BookProgress.objects.get(book=book, user=request.user)
         except BookProgress.DoesNotExist:
-            return redirect(reverse('view_read_book', kwargs={'book_id': book_id}))
+            progress = BookProgress.start_progress(user=request.user, book=book)
+
+        final_page = progress.try_end_progress(book_id=book_id)
+        if final_page:
+            progress.end_progress(final_page=final_page)
+
         return view(request=request, progress=progress, book_id=book_id, **kwargs)
     return inner
 
 
 @on_progress
-def view_drop_progress(request,progress, book_id):
+def view_drop_progress(request, progress, book_id):
     progress.delete()
-    # return render(request, 'save_page.html', context)
     return redirect(reverse('view_saves', kwargs={'book_id': book_id}))
 
 
@@ -53,7 +54,8 @@ def view_bookshelf(request):
     return render(request, 'bookshelf.html', context=context)
 
 
-def get_read_book_context(progress, book) : #-> dict[any,any, ...]
+def get_read_book_context(progress, book_id: int) -> dict[any, any]:
+    book = get_object_or_404(Book, id=book_id)
     page = progress.book_page
     links: list[tuple[any, bool], ...] = [
         (link, link.check_key_items(progress.inventory_items.all()))
@@ -76,20 +78,10 @@ def get_read_book_context(progress, book) : #-> dict[any,any, ...]
     return context
 
 
-def view_read_book(request, book_id):
-    book = get_object_or_404(Book, id=book_id)
-    try:
-        progress = BookProgress.objects.get(book=book, user=request.user)
-    except BookProgress.DoesNotExist:
-        progress = BookProgress.start_progress(user=request.user, book=book)   
-    context = get_read_book_context(progress, book)
-
-    condition_status = progress.check_win_status(book_id=book_id)
-    print((str(condition_status)+'\n')*5)
-    if condition_status:
-        return HttpResponse('win/lose test')
-    else:
-        return render(request, 'book_page.html', context)
+@on_progress
+def view_read_book(request, progress, book_id: int) -> render:
+    context = get_read_book_context(progress=progress, book_id=book_id)
+    return render(request, 'book_page.html', context)
 
 
 @on_progress
@@ -198,8 +190,7 @@ def view_toggle_pin(request, book_id, note_id):
 def view_update_note(request, progress, book_id, note_id):
     selected_note = get_object_or_404(Note, id=note_id)
     if request.method == 'GET':
-        book = get_object_or_404(Book, id=book_id)
-        context = get_read_book_context(progress, book)
+        context = get_read_book_context(progress=progress, book_id=book_id)
         context['selected_note'] = selected_note
         # context['change_note_form'] = ChangeNoteForm(request.POST, instance=selected_note) # для обновления формы(не использовал,а вписал в template ручками для разнообразия)
         return render(request,  'book_page.html', context=context)
