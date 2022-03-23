@@ -39,6 +39,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'corsheaders.middleware.CorsMiddleware', #
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'mysite.middleware.BookshelfAutoLogin',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
