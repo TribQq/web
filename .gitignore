@@ -2,23 +2,13 @@ todo
 
 description.txt
 
-main_dir/bboard
-main_dir/.idea
-main_dir/m/mysite/about_me/static/media
+mysite/about_me/static/media
 
-taskmanager/settings.py
-practice_rooms
-win_venv
+
 venv
-0.sublime-workspace
-pic,gif,another
 .idea
 .git
 __pycache__
 .gitignore
-practice_rooms/python_practice
-practice_rooms/js_practice
 /htmlsripts/assets
-save_file
 
-template_in_process
