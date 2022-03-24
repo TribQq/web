@@ -1,3 +1,4 @@
+from typing import Tuple
 from django.db import models, transaction
 from bulletin_board.models import AdvUser as User
 
@@ -190,7 +191,8 @@ class ProgressConditionStatusItem(models.Model):
 class ProgressCondition(models.Model):
     status_items = models.ManyToManyField(ProgressConditionStatusItem)
     final_page = models.ForeignKey(BookPage, null=True, blank=True, on_delete=models.CASCADE)
-    # win_status = models.BooleanField() # False-lose, True-win не нужно т.к заглушка энивей будет текстом(хотя для доп функций можоно будет доабвить)
+    name = models.CharField(default='#noname', max_length=15)
+    win_status = models.BooleanField(blank=True, null=True) # False-lose, True-win не нужно т.к заглушка энивей будет текстом(хотя для доп функций можоно будет доабвить)
 
     def __str__(self):
         return f'condotion:({self.id}): items({[pi.item.name for pi in self.status_items.all()]}'

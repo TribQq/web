@@ -8,13 +8,14 @@
     <!--    мета тэг для бутс трапа-->
     <title> {% block title %} Главная {% endblock %} - Доска объявлений</title>
     {% bootstrap_css %}
+    <link rel="shortcut icon" href="{% static '../media/icons/doggy_browser.ico' %}" type="image/x-icon">
     <link rel=" stylesheet " type=" text/css" href=" {% static 'main/style.css' %}"> {% bootstrap_javascript jquery='slim' %}
 </head>
 
 <body class="container-fluid">
-    <!--К телу страницы (тегу <body>) привязываем стилевой класс container-fluid,требует Bootstrap; -->
+<div class="main_wrapper " style="margin:30px;">
     <header class="mb-4">
-        <h1 class="display-1 text-center">Объявления</h1>
+        <h1 class="display-2 text-center">Объявления</h1>
     </header>
     <div class=" row">
         <ul class="col nav justify-content-end border">
@@ -58,6 +59,7 @@
     <footer class="mt-3">
         <p class=" text-right font-italic">&#8984; <!--&#9885;--> TribQq</p>
     </footer>
+</div>
 </body>
 
 </html>

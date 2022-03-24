@@ -100,7 +100,7 @@
           <ul class='page'>
             <li></li>
             <li>
-              <a class="btn" href="{% url 'view_read_book' book.id %}">Download</a>
+              <a class="btn" href="{% url 'bookshelf:view_read_book' book.id %}">Download</a>
             </li>
             <li></li>
             <li></li>
@@ -120,7 +120,7 @@
                 <h2>{{book.desc_title}}</h2>
                 <span>{{book.desc_subtitle}} </span>
                 <p>{{book.desc_text}}</p>
-                <a class="book_link" href="{% url 'view_saves' book.id %}"><h2>[watch book saves]</h2></a>
+                <a class="book_link" href="{% url 'bookshelf:view_saves' book.id %}"><h2>[watch book saves]</h2></a>
             </div>
           </div>
           </figcaption>

@@ -10,7 +10,8 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:regular,500,600,700,800&display=swap"
         rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1_main</title>
+    <link rel="shortcut icon" href="{% static '../media/icons/doggy_browser.ico' %}" type="image/x-icon">
+    <title>QqAbout</title>
 </head>
 
 <body>
@@ -19,17 +20,19 @@
         <header class='section_header'>
             <div class="header">
                 <div class="header_container">
-                    <a href='' class='switch_theme'><img src="{% static 'media/about_me_main/icons/night_day_theme.gif' %}" alt="night_theme_gif"></a>
+                    <a href='' class='switch_theme'>
+                        <!-- <img src="{% static 'media/about_me_main/icons/night_day_theme.gif' %}" alt="night_theme_gif"> -->
+                    </a>
                     <div class='header_menu menu'>
                         <ul class='header_menu_list'>
                             <li class='menu__item'>
-                                <a href='' class='menu_link'>Home</a>
+                                <a href='#Projects_skills_anchor' class='menu_link'>Exp</a>
                             </li>
                             <li class='menu__item'>
-                                <a href='' class='menu_link'>About me</a>
+                                <a href='#navigation_menu' class='menu_link'>Apps</a>
                             </li>
                             <li class='menu__item'>
-                                <a href='' class='menu_link'>Contacts</a>
+                                <a href='#about_info' class='menu_link'>About&Contacts</a>
                             </li>
                         </ul>
                     </div>
@@ -47,15 +50,19 @@
 
         {% block page_content %}
         <main class="page">
-            <section class='section_main_0'>
+            <section id="navigation_menu" class='section_main_0'>
                 <div class="page_main-block main-block">
                     <div class="main-block_container _container">
                         <div class="main-block_hello-user">
                             <h1 class="main-block_hello-title">Hello user</h1>
                             <div class="main-block_text ">
-                                <p class='hello_text'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-                                    sed in soluta molestias, assumenda delectus et fuga ad eos tenetur eligendi aperiam
-                                    harum molestiae, numquam placeat, nihil maiores illo vero.</p>
+                                <p class='hello_text'>Navigation links: 
+                                <a class="main-block_text _link" href="#Projects_skills_anchor">Projects, </a>    
+                                <a class="main-block_text _link" href="#about_info">About, </a>    
+                                <a class="main-block_text _link" href="{% url 'about_me:alt_about_me' %}">AltAboutMePage, </a>    
+                                <a class="main-block_text _link" href="{% url 'bulletin_board:index' %}">BulletinBoardApp, </a>    
+                                <a class="main-block_text _link" href="{% url 'bookshelf:view_bookshelf' %}">BookshelfGameBooksApp </a>    
+                                </p>
                             </div>
                             <div class='main_hello_button_border'>
                                 <div class='main_hello_button'>
@@ -72,36 +79,75 @@
             </section>
             <div class='kek_compensation'>
             </div>
-            <section class='section_about-me_1'>
+            <section id="Projects_skills_anchor" class='section_about-me_1'>
                 <div class='about-me_1_container'>
                     <div class='about-me_1_body'>
                         <div class='about-me_1_body_left_side'>
                             <div class='about-me_1_block_text text_block_reply'>
                                 <div class='block_text_title'>
-                                    <h3 class='h3_title'>Lorem, ipsum dolor.</h3>
+                                    <h3 class='h3_title'>Some projects & Exp</h3>
                                 </div>
                                 <div class='block_text_main_title'>
-                                    <h2 class='h2_title'> Lorem, ipsum dolor. s</h2>
-                                </div>
-                                <div class='block_text_text'>
-                                    <p class='about-me_1-text'>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        Distinctio suscipit corporis repellat asperiores! Excepturi nam, asperiores
-                                        temporibus illum earum deleniti aut, neque fugit vel amet ab, recusandae
-                                        explicabo
-                                        eum reiciendis.
-                                    </p>
+                                    <h2 class='h2_title'>◖⚆ᴥ⚆◗</h2>
+
                                 </div>
                                 <div class='block_text_link'>
-                                    <p class='about-me_1-text'>Lorem, ipsum dolor. <a href='' class='link_word'>
-                                            just_link</a> </p>
+                                    <p class='about-me_1-text'>Olympiad, MK/MSU collaboration.
+                                        Django, a service for hosting olympiads (backend), <a href="https://pvg.mk.ru/" class='link_word'>
+                                            link</a> </p>
+                                </div>
+                                <div class='block_text_link'>
+                                    <p class='about-me_1-text'>Car magazine (fullstack, with site layout), <a href="https://www.avtovzglyad.ru/podcast/" class='link_word'>
+                                        link</a> </p>
+                                </div>
+                                <div class='block_text_link'>
+                                    <p class='about-me_1-text'>Corporate website(backend), <a href="http://r-t-c.eu/en/" class='link_word'>
+                                        link</a> </p>
+                                </div>
+                                <div class='block_text_link'>
+                                    <p class='about-me_1-text'>Women's magazine(only front),  <a href="http://www.jetsetter.ua/" class='link_word'>
+                                        link</a> </p>
+                                </div>
+                                <div class='block_text_link'>
+                                    <p class='about-me_1-text'>Planner app(only front mobile),  <a href="https://apps.apple.com/ru/app/%D0%BE%D1%82-%D1%8F-%D0%B4%D0%BE-%D1%8F-%D0%BF%D1%83%D1%82%D1%8C-%D1%80%D0%BE%D1%81%D1%82%D0%B0-%D0%BB%D0%B8%D1%87%D0%BD%D0%BE%D1%81%D1%82%D0%B8/id1542790851" class='link_word'>
+                                        link</a> </p>
+                                </div>
+                                <div class='block_text_link'>
+                                    <p class='about-me_1-text'>And much more...</p>
+                                </div>
+
+                                <hr class="hr_skills">
+
+                                <div class='skills_list'>
+                                    <div class="skill_category">
+                                    <h4 class="about-me_1-text">Backend</h4>
+                                    <p>Python(Django,Flask,FastApi,Tornado
+                                        AIOGram, and much more ...)</p>
+                                       <p> DB (SQLite,PostgreSQL,MySQL,MongoDB, Redis)</p>
+                                       <p>PHP(Laravel)</p>
+                                       <p> Native langs: Go, Java, C</p>
+                                    </div>
+                                    <div class="skill_category">
+                                       <h4 class="about-me_1-text">Frontend & Mobile</h4>
+                                       <p>HTML&CSS(CSS & SCSS), Native JS(JS & TS), jQuery, React, PWA </p>
+                                       <p>ReactNative( JS & TS ), Kivy(Python), Brython(Python)</p>
+                                    </div>
+                                    <div class="skill_category">
+                                       <h4 class="about-me_1-text">DevOps & Other</h4>
+                                       <p>REST, RPC, SOAP, Websocket,Docker,Kubernetes, CI/CD, Nginx, ...</p>
+                                    </div>
+                                    <div class="skill_category">
+                                       <h4 class="about-me_1-text">Special abilies</h4>
+                                       <p>Optimism, Fireball (っ・ω・)っ≡≡≡≡≡☆</p>
+                                    </div>
+                                    <div class='skill_category'>
+                                        <p class='about-me_1-text'>And much more...</p>
+                                    </div>
                                 </div>
                                 <div class='about-me_1_block_text_button_border'>
-                                    <!-- <div href='' class='about-me_1_block_text_button'> -->
-                                    <!-- <a href='' class='about-me_1_block_button_text'>button</a> -->
-                                    <a href='' class='about-me_1_block_text_button'>button</a>
 
-                                    <!-- button
-                                    </div> -->
+                                    <a href='#' class='about-me_1_block_text_button'>button</a>
+
                                 </div>
                             </div>
                         </div>
@@ -149,18 +195,22 @@
 
                 </div>
             </section>
-            <section class='section_about-me_2'>
+            <section id="about_info" class='section_about-me_2'>
                 <div class="about-me_2_container _container">
                     <div class="profile_header">
                         <h2 class="header_profile_h2">Profile</h2>
-                        <h2 class="header_profile_h3">Junior backend developer</h2>
+                        <h2 class="header_profile_h3">Full stack developer</h2>
                     </div>
                     <div class='about-me_2_main'>
                         <div class='about-me_2_main_about _about-me_not-lats_margin'>
-                            <h4 class='about-me_2_title _h4'>about me</h4>
-                            <div class='about-me_2_text _just_p_text'>Lorem ipsum dolor sit amet consectetur adipisicing
-                                elit. Odio amet et eum fuga maiores, vel ullam harum, facilis ea voluptatem, veniam
-                                quibusdam iure eveniet assumenda magnam optio error maxime eaque?</div>
+                            <h4 class='about-me_2_title _h4'>About </h4>
+                            <div class='about-me_2_text _just_p_text'>
+                                <p>First web app: ~2013  </p>
+                                <p>Python is my favorite language in which I can write a service of almost arbitrary complexity. </p>
+                                <p>I like and I have some exp on 'Go'</p>
+                                <p>I am positive about Rust, strong typing, type theory in and elements Fp</p>
+                               
+                            </div>
                             <div class='about-me_2_text _just_p_text'>
                                 <p>image by <a href='' class='link_word'>Freepik_link</a></p>
                             </div>
@@ -173,28 +223,32 @@
                             <h4 class='about-me_2_main_details_title _h4'> Details</h4>
                             <div class='about-me_2_main_detaiL'>
                                 <h5 class='detaiL_title'>Name:</h5>
-                                <p class='detaiL_text'>Hunter Norton</p>
+                                <p class='detaiL_text'>Ivan</p>
                             </div>
                             <div class='about-me_2_main_detaiL'>
-                                <h5 class='detaiL_title'>Name:</h5>
-                                <p class='detaiL_text'>Hunter Norton</p>
+                                <h5 class='detaiL_title'>Langs:</h5>
+                                <p class='detaiL_text'>Ru,Eng,Spa</p>
                             </div>
                             <div class='about-me_2_main_detaiL'>
-                                <h5 class='detaiL_title'>Name:</h5>
-                                <p class='detaiL_text'>Hunter Norton</p>
+                                <h5 class='detaiL_title'>Main stack:</h5>
+                                <p class='detaiL_text'>Python,JS(TS)</p>
                             </div>
                             <div class='about-me_2_main_details_soc_icons _SOC'>
-                                <a href=''>
+                                <a href='https://github.com/TribQq'>
                                     <img class='icon_pic' src="{% static 'media/about_me_main/icons/social/github-1.svg' %}"
                                         alt='github_icon'>
                                 </a>
-                                <a href=''>
+                                <a href='https://www.codewars.com/users/TribQq'>
                                     <img class='icon_pic' src="{% static 'media/about_me_main/icons/social/codewars-logo.svg' %}"
                                         alt='codewars_icon'>
                                 </a>
-                                <a href=''>
+                                <a href='https://t.me/Qq_user'>
                                     <img class='icon_pic' src="{% static 'media/about_me_main/icons/social/telegram_app.svg' %}"
                                         alt='telegram_icon'>
+                                </a>
+                                <a href="mailto:ivankartasov.trib@gmail.com">
+                                    <img class='icon_pic' src="{% static 'media/about_me_main/icons/social/gmail.png' %}"
+                                        alt='gmail_icon'>
                                 </a>
                             </div>
 
@@ -214,24 +268,31 @@
                                 </div>
                             </div>
                             <h3 class='section_about-me_3_title _h4 _white'>About</h3>
-                            <p class='section_about-me_3_text _just_p_text _white'>Lorem, ipsum dolor sit amet
-                                consectetur adipisicing elit. Quibusdam numquam maiores nostrum nam nesciunt quos et
-                                adipisci fugiat distinctio omnis est sapiente recusandae provident velit quia nemo,
-                                magni eos officia.</p>
+                            <div class='section_about-me_3_text _just_p_text _white'>
+                                <p >Other than that, I love YouTube, read manga, watch anime, play rpg, ride fast on a motorcycle and work hard.</p>
+                                <p>I think "Done is better than perfect"</p>
+                                <p>I think Bitcoin is cool.</p>
+                                <p>In food, I prefer puree with a cutlet, apples and cola zero.</p>
+                                <p>I put likes on cats and dogs (more often dogs), funny and especially stupid jokes. In general, I'm an ordinary reserved character 👋</p>
+                            </div>
                             <p class='section_about-me_3_text text_link'><a href='' class='link_word _white'>just_link
                                 </a></p>
                             <div class="about-me_3_soc _SOC">
-                                <a href=''>
+                                <a href='https://github.com/TribQq'>
                                     <img class='icon_pic _lower_icon'
                                         src="{% static 'media/about_me_main/icons/social/GitHub-Mark-Light-32px.png' %}" alt='github_icon'>
                                 </a>
-                                <a href=''>
+                                <a href='https://www.codewars.com/users/TribQq'>
                                     <img class='icon_pic _lower_icon'
                                         src="{% static 'media/about_me_main/icons/social/codewars-logo.svg' %}" alt='codewars_icon'>
                                 </a>
-                                <a href=''>
+                                <a href='https://t.me/Qq_user'>
                                     <img class='icon_pic _lower_icon'
                                         src="{% static 'media/about_me_main/icons/social/telegram_app.svg' %}" alt='telegram_icon'>
+                                </a>
+                                <a href="mailto:ivankartasov.trib@gmail.com">
+                                    <img class='icon_pic _lower_icon'
+                                        src="{% static 'media/about_me_main/icons/social/gmail.png' %}" alt='gmail_icon'>
                                 </a>
                             </div>
                         </div>
@@ -248,9 +309,10 @@
             </section>
         </main>
 
-        <a href='' class='fixed_button'>
+        <a href='#navigation_menu' class='fixed_button'>
             <div class="robot_dancer">
-            <img href='' class='fixed_button_img'src="{% static 'media/about_me_main/icons/Robot_1.gif' %}"  alt='fixed_button'>
+            <img  class='fixed_button_img'src="{% static 'media/about_me_main/icons/Robot_1.gif' %}"  alt='fixed_button'>
+
         </div>
         </a>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

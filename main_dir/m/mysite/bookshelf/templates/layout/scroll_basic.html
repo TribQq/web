@@ -5,7 +5,9 @@
   <title> {% block title %} The Bookshelf {% endblock %}</title>
    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/basic/paper_scroll_main.css' %}" />
-  {% block styles %}{% endblock %}
+   <link rel="shortcut icon" href="{% static '../media/icons/doggy_browser.ico' %}" type="image/x-icon">
+
+   {% block styles %}{% endblock %}
 </head>
 <body>
 
@@ -25,11 +27,11 @@
           <h4 class="scroll_info_subtitle">Navigation</h4>
           <div class="navcontainer">
             <ul class="navlist">
-              <li class="active"><a href="" class="current">Home</a></li>
-              <li><a href="">Community</a></li>
+              <li class="active"><a href="{% url 'about_me:about_main'  %}" class="current">Home</a></li>
+              <li><a href="{% url 'about_me:about_main'  %}">Community</a></li>
               <li><a href="">Add book</a></li>
-              <li><a href="">About author</a></li>
-              <li><a href="">Site map </a></li>
+              <li><a href="{% url 'about_me:about_main'  %}">About author</a></li>
+              <li><a href="{% url 'about_me:about_main'  %}">Site map </a></li>
             </ul>
           </div>
         </div>

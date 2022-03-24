@@ -2,7 +2,7 @@ from django.urls import path
 
 from .views import *
 
-
+app_name = 'bookshelf'
 urlpatterns = [
    path('plug/', view_plug, name='plug'),
    path('onlyScroll/', view_onlyScroll, name='onlyScroll'),

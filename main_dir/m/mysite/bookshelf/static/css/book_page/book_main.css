@@ -187,3 +187,19 @@
 .center{
   text-align:center
 }
+
+.b_title{
+  text-align: center;
+  font-size: 22px;
+}
+.b_subtitle{
+  font-size: 15px;
+}
+
+.b_text{
+  font-size: 14px;
+}
+
+.b_button{
+  font-size: 30px;
+}

@@ -43,6 +43,8 @@ body {
     color: #252b42;
     font-weight: 500;
     font-family: Montserrat;
+    scroll-behavior: smooth;
+
 }
 
 
@@ -389,6 +391,12 @@ body {
     opacity: 70%;
     text-align: center;
 }
+._link:hover{
+    color: #f1c50e;
+    font-weight: bolder ;
+    font-style: italic;
+    /* transition: 0.1s; */
+}
 
 @media (max-width: 1025px) {
     .main-block_hello-title {
@@ -661,6 +669,19 @@ body {
     font-size: 25px;
     line-height: 140%;
 }
+
+hr.hr_skills { 
+    border-top: 1px dashed #e1af0e; 
+  } 
+
+.skills_list>*:not(:first-child) {
+    margin-top: 2%;
+}
+.about-me_1-text p {
+    margin-top: 10px;
+    font-size: 15px;
+}
+
 
 @media(max-width:1500px) {
     .h3_title {

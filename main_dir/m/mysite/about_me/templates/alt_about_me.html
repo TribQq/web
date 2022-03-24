@@ -1,0 +1,182 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TribQq</title>
+
+   <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/alt_about_me/backgrounds_custom.css' %}"/>
+    <link
+      href="{% static 'css/alt_about_me/time_styles.css' %}"
+      rel="stylesheet"
+      type="text/css"/>
+      
+      <link
+      href="{% static 'css/alt_about_me/card_skills.css' %}"
+      rel="stylesheet"
+      type="text/css"/>
+
+      <link
+      href="{% static 'css/alt_about_me/envelope.css' %}"
+      rel="stylesheet"
+      type="text/css"/>
+
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="{% static '../media/icons/doggy_browser.ico' %}" type="image/x-icon">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  </head>
+
+
+  <body>
+    <div id="box" >
+      <h1 >Hi, I'm <strong>Ivan</strong>.</h1>
+      <h2 >(aka TribQq )</h2>
+      <img id="ninja" src="{% static 'media/alt_about_me/doggy_header.png' %}"/>
+      <div id="sun"></div>
+      <div id="moon"></div>
+    </div>
+    <input
+      type="range"
+      value="0"
+      max="12"
+      min="-12"
+      step="1"
+      id="timeRange"
+      style="display: none"
+    />
+
+    <div class="info_bar">
+    <div class="left_info_bar"> 
+    <div id="main">
+
+        <ul class="facts">
+        <li>
+          I live in <strong>Ufa, Russia</strong>.
+          <span id="time"></span>
+        </li>
+        <li>
+          I have big  <strong title="Mel">family</strong> 
+          <strong title="Rebekah, Luke, Jadon, Hannah, Sarah"></strong> 2 big brothers and little sister ^_^ , aged from
+          <span class="year-word" data-date="1990-01-28">eleven</span> .
+        </li>
+        <li>I am <strong>agnostic</strong>.</li>
+        <li>
+          I love read <strong>books </strong>,
+          <a href="">my reads coolection</a>.
+        </li>
+        <li>
+          I love watch  <strong> serials & multiplication </strong>,
+          <a href="">my viewed collection</a>.
+        </li>
+        <li>
+          I love  <strong> programming </strong>, some 
+          <a href="https://github.com/TribQq">my projects</a>.
+        </li>
+        <li>I think <strong>Bitcoin</strong> is cool.</li>
+        <li>I think  <strong>Dogs > Cats</strong>  (U● ᴥ ●U) .</li>
+        <li>I enjoy <strong>Python,TS</strong> and web coding.</li>
+        <!-- <li>
+          I work with <a href=""></a> 
+          <span class="year-word" data-date="2011-10-01"></span>  -->
+        </li>
+      </ul>
+      <hr />       
+      <p>
+        I don't actively use social media, but you can always
+        <a href="https://t.me/Qq_user"> tg account </a>,or
+        <a href="mailto:ivankartasov.trib@gmail.com"> email </a>.
+      </p>
+
+      <p>Here's my
+        <a href="https://github.com/TribQq"> GitHub profile</a> .
+
+      </p>
+      <p>My website
+        <a href="{% url 'about_me:about_main' %}">main page</a>.
+      </p>
+    </div>  
+    <div class="envelope">
+      
+      <div class="top">
+         <img src="{% static 'media/alt_about_me/postage_stamp_f.png' %}"/>
+         <div class="top_text"> 
+         </div>
+
+      </div>
+      <div class="left"></div>
+      <div class="back">
+        <div class="paper">
+            <p class="evelope_text">ivankartasov.trib@gmail.com</p>
+
+ 
+
+
+        </div>
+      </div>
+      <div class="right"></div>
+      <div class="bottom"></div>
+    </div>
+  </div>
+
+
+    <div class="right_info_bar">
+      <div class = container_card>
+        <div class = card>
+          <div class = image>
+            <img href = "#" src="{% static 'media/alt_about_me/doggy_work.jpg' %}" >
+            
+          </div>
+          <div class = content>
+            <h3>My skills:</h3>
+           <ul class="card_skill_list">
+             <li>
+               <p class="card_skill_title">Backend:</p>
+                <p class="card_skill_text">Python(Django,Flask,FastAPI)</p>
+                <p class="card_skill_text">DataBases:</p>
+                  <p  class="card_skill_text_lvl2">SQL(SqLite,PostgreSQL)</p>
+                  <p  class="card_skill_text_lvl2">NOSQL(MongoDB)</p>
+             </li>
+ 
+             <li>
+              <p class="card_skill_title">Frontend:</p>
+               <p class="card_skill_text">HTML & CSS(CSS, SCSS) </p>
+               <p class="card_skill_text">JS (JS & TS) </p>
+               <p class="card_skill_text">React</p>
+            </li>
+
+            <li>
+              <p class="card_skill_title">Mobile:</p>
+               <p class="card_skill_text">React Native(JS & TS) </p>
+               <p class="card_skill_text">Kivy(Python) </p>
+            </li>
+       
+            <li>
+              <p class="card_skill_title">Special abilities:</p>
+               <p class="card_skill_text">Optimism </p>
+               <p class="card_skill_text">Fireball </p>
+            </li>
+           </ul>
+          </div>
+        </div>    
+      </div>
+      </div>
+    
+    
+
+
+  </div>
+    <script src="{% static 'js/alt_about_me/myProfile.js' %}"></script>
+    <script src="{% static 'js/alt_about_me/envelope.js' %}"></script> 
+  </body>
+
+
+
+
+</html>

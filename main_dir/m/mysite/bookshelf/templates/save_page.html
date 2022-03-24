@@ -18,7 +18,7 @@
 <div class="left_column_boxes">
 <div class="saves_block">
   <img class="saves_image" src="{% static 'media/paper_scroll/saves_sand_clock.png' %}">
-<a class="saves_button activ_button " href="{% url 'view_read_book' book.id %}">[back to read]</a>
+<a class="saves_button activ_button " href="{% url 'bookshelf:view_read_book' book.id %}">[back to read]</a>
 </div>
 </div>
 {% endblock %}
@@ -34,7 +34,7 @@
     {% for i_item in progress.inventory_items.all %}
     <li class="inventory_item" >
         {{ i_item }}
-        <a href="{% url 'view_drop_item' book.id i_item.id %}">[drop]</a>
+        <a href="{% url 'bookshelf:view_drop_item' book.id i_item.id %}">[drop]</a>
     </li>
     {% endfor %}
 
@@ -43,8 +43,6 @@
 </ul>
 </div>
 </div>
-
-
 {% endblock %}
 
 
@@ -54,10 +52,10 @@
     <div id="page-1" class="page flipped" style="z-index: 1;">        
       <div class="side-2" id="p2">      
         <div class="content">
-          <h2 class="book_page_subtitle">Your saves:</h2>
+          <h2 class="b_title">Your saves:</h2>
           <ul>
             {% for save in saves %}
-            <li>
+            <li class="">
                 {{ save.save_time|date:"H:i:s (d.m.Y)" }} => location: {{ save.book_page.title }}
                 inventory:
                 {% if save.inventory.all %}
@@ -65,9 +63,9 @@
                 {% else %}
                 *your pockets are empty*
                 {% endif %}
-                <a href="{% url 'view_load_from' book_id=book.id save_id=save.id %}">[load]</a>
-                <a href="{% url 'view_save_to' book.id save.id %}">[update]</a>
-                <a href="{% url 'view_delete_save' book.id save.id %}">[delete]</a>
+                <a href="{% url 'bookshelf:view_load_from' book_id=book.id save_id=save.id %}">[load]</a>
+                <a href="{% url 'bookshelf:view_save_to' book.id save.id %}">[update]</a>
+                <a href="{% url 'bookshelf:view_delete_save' book.id save.id %}">[delete]</a>
             </li>
             {% endfor %}
         </ul>
@@ -79,9 +77,9 @@
     
     <div id="page-2" class="page" style="z-index: 4;">    
       <div class="side-1" id="p3">
-        <div class="content">
+        <div class="content b_text">
           <img src="{% static 'media/book/TravelLightPerk.png' %}">
-          <h2 class="book_page_subtitle">Progress now:</h2>
+          <h2 class="b_subtitle">Progress now:</h2>
           <ul>
             <li>location: {{ progress.book_page.title }}</li>
             <li>items:
@@ -96,9 +94,9 @@
                 </ul>
             </li>
         </ul>
-        <p><a href="{% url 'view_read_book' book.id %}">[return to read]</a></p>
-        <p><a href="{% url 'view_new_save' book.id %}">[add new save]</a></p>
-        <p><a href="{% url 'view_drop_progress' book.id %}">[drop progress]</a></p>
+        <p><a href="{% url 'bookshelf:view_read_book' book.id %}">[return to read]</a></p>
+        <p><a href="{% url 'bookshelf:view_new_save' book.id %}">[add new save]</a></p>
+        <p><a href="{% url 'bookshelf:view_drop_progress' book.id %}">[drop progress]</a></p>
       
         </div>
       </div>  

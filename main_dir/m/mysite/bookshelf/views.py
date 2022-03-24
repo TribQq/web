@@ -18,11 +18,11 @@ def view_onlyScroll(request):
 
 
 def _return_to_main(book_id):
-    return redirect(reverse('view_read_book', kwargs={'book_id': book_id}))
+    return redirect(reverse('bookshelf:view_read_book', kwargs={'book_id': book_id}))
 
 
 def _return_to_main_anchor(book_id: int, anchor: str):
-    return redirect(reverse('view_read_book', kwargs={'book_id': book_id}) + anchor)
+    return redirect(reverse('bookshelf:view_read_book', kwargs={'book_id': book_id}) + anchor)
 
 
 def on_progress(view):
@@ -44,7 +44,7 @@ def on_progress(view):
 @on_progress
 def view_drop_progress(request, progress, book_id):
     progress.delete()
-    return redirect(reverse('view_saves', kwargs={'book_id': book_id}))
+    return redirect(reverse('bookshelf:view_saves', kwargs={'book_id': book_id}))
 
 
 def view_bookshelf(request):
@@ -69,11 +69,12 @@ def get_read_book_context(progress, book_id: int) -> dict[any, any]:
     page_notes = book.note_set.filter(pinned=False, book_page=page)
     notes = book.note_set.exclude(
         id__in=[n.id for n in pinned_notes]).exclude(id__in=[n.id for n in page_notes])
+    win_conditions = book.progress_conditions.all().filter(win_status = True)
     context = {'book': book, 'page': page,
                'link_status_tuple': links, 'progress': progress,
                'location_items': location_items, 'dropped_items': dropped_items,
                'pinned_notes': pinned_notes, 'notes': notes, 'page_notes': page_notes,
-               'NoteFrom': NoteForm,
+               'NoteFrom': NoteForm,'win_conditions':win_conditions,
                }
     return context
 
@@ -95,7 +96,7 @@ def view_go_to(request,progress, book_id, link_id): #реализовать пр
         progress.book_page = page_link.to_page
         progress.save()
     context = {'book_id': book_id}
-    return redirect(reverse('view_read_book', kwargs=context))
+    return redirect(reverse('bookshelf:view_read_book', kwargs=context))
 
 
 @on_progress
@@ -112,7 +113,7 @@ def view_save_to(request, progress, book_id, save_id=None):
     """new/upd save"""
     save = progress.save_to(save_id=save_id)
     context = {'book_id': book_id, }
-    return redirect(reverse('view_saves', kwargs=context))
+    return redirect(reverse('bookshelf:view_saves', kwargs=context))
 
 
 
@@ -120,14 +121,14 @@ def view_save_to(request, progress, book_id, save_id=None):
 def view_load_from(request, progress, book_id, save_id):
     progress.save_load(save_id)
     context = {'book_id': book_id}
-    return redirect(reverse('view_saves', kwargs=context))
+    return redirect(reverse('bookshelf:view_saves', kwargs=context))
 
 
 @on_progress
 def view_delete_save(request, progress, book_id, save_id):
     save = get_object_or_404(ProgressSave, id=save_id)
     save.delete()
-    return redirect(reverse('view_saves', kwargs={'book_id': book_id}))
+    return redirect(reverse('bookshelf:view_saves', kwargs={'book_id': book_id}))
 
 
 
@@ -136,7 +137,7 @@ def view_take_item(request, progress, book_id, item_id):
     item = get_object_or_404(Item, id=item_id)
     progress.inventory_items.add(item)
     context = {'book_id': book_id}
-    return redirect(reverse('view_read_book', kwargs=context))
+    return redirect(reverse('bookshelf:view_read_book', kwargs=context))
 
 
 @on_progress
@@ -156,7 +157,7 @@ def view_take_back_item(request, progress, book_id, item_id): # TODO  need trans
     dropped_item = get_object_or_404(DroppedItem, id=item_id)
     progress.inventory_items.add(dropped_item.item)
     dropped_item.delete()
-    return redirect(reverse('view_read_book', kwargs={'book_id': book_id}))
+    return redirect(reverse('bookshelf:view_read_book', kwargs={'book_id': book_id}))
 
 
 
