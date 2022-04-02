@@ -8,6 +8,7 @@ env/
 *.log
 *.pot
 *.pyc
+
 .idea
 .git
 __pycache__
