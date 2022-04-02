@@ -1,0 +1,173 @@
+{% extends "layout/scroll_basic.html" %}
+{% block title %}  Pages {% endblock %}
+{% load static %}
+
+<!--<html lang="en" class=" -webkit-"><head>-->
+
+<!--  <meta charset="UTF-8">-->
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/book_stage/font.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/book_stage/book_main.css' %}"/>
+{% endblock %}
+
+
+
+{% block scroll_text %}
+<h3 class="scroll_subtitle">Nullam nisl ante</h3>
+<p class="scroll_text"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed quam.  Nullam gravida aliquet odio. Phasellus ullamcorper tincidunt orci.  Praesent vel purus. Sed porttitor. Proin porttitor suscipit urna. Morbi  rhoncus posuere orci. In pulvinar condimentum ligula. Aenean imperdiet  pulvinar urna. Morbi dapibus pede vel velit. Duis a nisl. Proin  consequat. Proin lacus purus, auctor ac, semper in, posuere non, leo.  Nullam nisl ante, pulvinar vel, aliquam ut, pulvinar sit amet, turpis.  Aliquam suscipit dui eu turpis. Nullam tellus. Duis at erat id sem  vestibulum egestas. Aliquam varius nisl vel lectus. Aliquam at purus  ullamcorper massa lobortis placerat. Aliquam eget mauris sodales lectus  vestibulum vulputate. </p>
+<h3 class="scroll_subtitle">Sed mollis</h3>
+<p class="scroll_text">Morbi lorem. Vivamus leo diam, bibendum a, interdum quis, volutpat  at, elit. Integer sit amet est at purus rhoncus facilisis. Cum sociis  natoque penatibus et magnis dis parturient montes, nascetur ridiculus  mus. Aenean eu enim vitae ante ullamcorper faucibus. Etiam elementum  lobortis odio. Donec lacus purus, interdum sit amet, convallis quis,  porta sit amet, elit. Donec ac odio quis ipsum convallis ultrices. Nam  hendrerit tincidunt est. Sed ipsum. Proin rutrum ante eget mi. Morbi id  ante. Integer et risus in nisl iaculis ornare. Sed mollis. Cras nisi  elit, rutrum eget, sagittis ac, semper non, sapien. Lorem ipsum dolor  sit amet, consectetuer adipiscing elit. </p>
+<h3 class="scroll_subtitle">Aliquam ut  mauris</h3>
+<p class="scroll_text">Phasellus mollis. Pellentesque nibh metus, hendrerit ac, porttitor  a, pulvinar vel, turpis. Aliquam mattis auctor lectus. Proin eleifend  varius neque. Maecenas nulla. Pellentesque habitant morbi tristique  senectus et netus et malesuada fames ac turpis egestas. Morbi tellus.  Sed libero enim, tempus faucibus, egestas eu, sodales non, tortor.  Aenean eget nibh dictum dui sollicitudin consectetuer. Aliquam ut  mauris non quam facilisis faucibus. Morbi eu est. Vestibulum enim  lorem, tempus ornare, sodales nec, imperdiet ac, augue. Vestibulum nunc  felis, placerat eu, euismod at, pellentesque ut, lacus. Aliquam tempor  consequat enim. Sed ut dolor. Sed vestibulum metus vitae justo. Nulla  libero. Integer sit amet diam ut orci rutrum euismod. Praesent suscipit  augue in justo. Vestibulum diam. </p>
+<h3 class="scroll_subtitle">Aenean purus pede</h3>
+<p class="scroll_text">Vivamus diam orci, bibendum eu, venenatis a, gravida et, nisl. Donec  felis tortor, rhoncus eu, convallis ac, mattis id, est. Donec commodo,  dui vel eleifend varius, lacus nunc suscipit risus, eget bibendum nunc  velit lobortis sapien. Nam sodales volutpat nibh. Cras et justo.  Praesent pede. In sed eros cursus arcu tristique congue. Nulla iaculis  ante sit amet sapien auctor tincidunt. Aliquam sit amet libero. Aliquam  mauris tellus, gravida nec, nonummy vel, tincidunt hendrerit, mi. Etiam  cursus mi et turpis. Phasellus et mi in dolor feugiat feugiat.  Vestibulum ante ipsum primis in faucibus orci luctus et ultrices  posuere cubilia Curae; Fusce commodo. </p>
+<h3 class="scroll_subtitle">Vivamus diam orci</h3>
+<p class="scroll_text">Aenean purus pede, tempor ut, iaculis ac, tincidunt interdum, urna.  Pellentesque quis mauris. Morbi porttitor blandit nisl. Suspendisse  potenti. Cras sem. Maecenas sit amet eros a augue fringilla posuere. Ut  bibendum ultricies lorem. Donec interdum. In interdum ullamcorper nisl.  Mauris tortor pede, accumsan a, tempus et, fermentum et, lectus. In  congue ligula ut odio. Sed adipiscing pharetra quam. </p>
+{% endblock %}
+
+
+
+{% block right_block %}
+ 
+ <!-- <body translate="no"> -->
+   <div class="book">  
+   <div id="page-1" class="page" style="z-index: 4;">    
+    
+     <div class="side-1" id="p1">
+       <div class="content">
+
+        <!-- <img src="https://images.unsplash.com/photo-1553095066-5014bc7b7f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
+        width="189" height="255" alt="lorem"> -->
+
+          <h1 class="book_page_title">The Pilgrim's Path</h1>
+          <p class="book_page_text"> 
+            The pilgrim must visit each of the Shrines of the Seven Graces. At each site the pilgrim must stand before the three-sided stone triolith and read the inscription. To ease the pilgrim's task, the Temple has made this list of shrines along with directions and advice to pilgrims. The blessings of each shrine last at least a half day.
+          </p>
+       </div><!-- .content -->
+     </div><!-- .side-1 -->    
+     <div class="side-2" id="p2">      
+       <div class="content">
+         <h2>The Fields of Kummu: Shrine of Humility</h2>
+         <p class="book_page_text">
+           Here Lord Vivec met a poor farmer whose guar had died. The farmer could not harvest his muck without his guar, and he could not provide for his family or his village. So the Lord Vivec removed his fine clothes and toiled in the fields like a beast of burden until the crop was harvested. It is at the Fields of Kummu we go to pray for the same humility Lord Vivec showed on that day.
+         </p>
+         <p class="book_page_text">
+ The Fields of Kummu are west of Suran on the north shore of Lake Amaya as you head towards Pelagiad. The shrine is between two rocks, and most easily noticed while traveling east along the road. Alof's farm nearby has a small dock on the north bank of Lake Amaya. This is the only dock nearby which Alof kindly allows servants of the Temple to use. It is customary to leave a portion of muck at the shrine to represent Vivec's humility.
+         </p>
+       </div><!-- .content -->
+     </div><!-- .side-2 -->
+   </div><!-- .page -->
+   
+   <div id="page-2" class="page" style="z-index: 3;">    
+     <div class="side-1" id="p3">
+       <div class="content">
+         <h2 class="book_page_subtitle">To Stop the Moon: The Shrine of Daring</h2>
+         <p class="book_page_text">
+ When Sheogorath rebelled against the Tribunal, he tricked the moon Baar Dau into forsaking its appointed path through Oblivion. The Mad Star inspired the moon to hurl itself upon Vivec's new city, which Sheogorath claimed was built in mockery of the heavens. When Vivec learned of Sheogorath's scheme, he froze the rogue moon in the sky with a single gesture and the grace of his countenance. Overwhelmed by the courage and daring of Vivec, the moon Baar Dau swore itself to eternal service of the Tribunal and all its works. Thus the moon now stands guard over the palace, and serves as a citadel for the Temple's Ordinators.
+         </p>
+         <p class="book_page_text">
+ The Shrine of Daring is found in the city of Vivec, in the Temple District, along the western wall of the High Fane, the great Temple of Vvardenfell. When you address the shrine, it is customary to leave behind a Potion of Rising Force. Suitable potions may be purchased from the Temple. Homemade potions are not acceptable.
+           </p>
+       </div><!-- .content -->
+     </div><!-- .side-1 -->    
+     <div class="side-2" id="p4">      
+       <div class="content">
+         <h2>The Palace: Shrine of Generosity</h2>
+         <p class="book_page_text">
+           Long after Lord Nerevar and the Tribunal triumphed over Dagoth Ur, the people wished to build a monument to the heroes of that war. Vivec thanked them, but said that it would be better to dedicate a monument not only to the glorious heroes, but to all people, great and small, who suffered and died in the war. It became the custom to make offerings here, either in thanks of our good fortune, or for those less fortunate.
+         </p>
+         <p class="book_page_text">
+ The Shrine of Generosity is on the top steps of Vivec's Palace, the southernmost Canton of Vivec City. The customary donation for those in good fortune is 100 gold.
+         </p>
+       </div><!-- .content -->
+     </div><!-- .side-2 -->
+   </div><!-- #page-2 -->
+   
+   <div id="page-3" class="page" style="z-index: 2;">    
+     <div class="side-1" id="p5">
+       <div class="content">
+         <h2 class="book_page_subtitle">The Puzzle Canal: The Shrine of Courtesy</h2>
+         <p class="book_page_text">
+           In a battle with Mehrunes Dagon, Vivec gave his own silver longsword to the Daedra Lord rather than dishonor himself by fighting an unarmed foe. This so impressed the Dremora, the most honorable and chivalrous of Mehrunes Dagon's Daedric servants, that they now share a bond of respect and courtesy with the followers of the Tribunal, though we must never forget that they are our enemies.
+         </p>
+         <p class="book_page_text">
+           The Shrine of Courtesy is found in the heart of the Puzzle Canal, a labyrinth beneath Lord Vivec's Palace in the city of Vivec. The journey though the Puzzle Canal can be confusing and it is suggested that common pilgrims carry a scroll of ALMSIVI Intervention in case they get lost. The Dremora Krazzt is found in the center of the Puzzle Canal, and will accept a plain silver longsword if spoken to with courtesy. After Krazzt accepts the sword, pilgrims must read the inscription on the triolith.
+         </p>
+       </div><!-- .content -->
+     </div><!-- .side-1 -->    
+     <div class="side-2" id="p6">      
+       <div class="content">
+         <h2>The Mask of Vivec: Shrine of Justice</h2> 
+         <p class="book_page_text">
+           Near the altar is Vivec's Ash Mask. In the Days of Fire when Dagoth Ur first crept back into Red Mountain and awakened it, Vivec led refugees here as they fled the ash and blight. Weary, they rested here a while. When Vivec awoke, he found himself and all his followers encased in casts of grey ash. Frozen like a sleeping statue and unable to free himself or help his people, Vivec was filled with despair. Vivec's tears weakened his ash cast. He tore the ash from his perished followers, breathed life into their lungs, and cured them of the blight. This is Vivec's heroism -- his tender heart provides strength when his might fails.
+         </p>
+         <p class="book_page_text">
+ The Shrine of Justice is guarded within the Gnisis Temple, in the village of Gnisis, northwest by road from the town of Ald'ruhn. When you address the shrine, it is customary to leave a potion of Cure Common Disease as a token of your respect for justice. Suitable potions may be purchased from Temple. Homemade potions are not acceptable.
+         </p>
+       </div><!-- .content -->
+     </div><!-- .side-2 -->
+   </div><!-- #page-3 -->
+   
+   <div id="page-4" class="page" style="z-index: 1;">    
+     <div class="side-1" id="p7">
+       <div class="content">
+         <h2 class="book_page_subtitle">Koal Cave: The Shrine of Valor</h2>
+         <p class="book_page_text">
+           Within the Koal Cave, Vivec fought a battle with Ruddy Man, the father of the Dreugh. When he defeated Ruddy Man, Vivec spared his life, on the condition that Ruddy Man and his children would give up their tough hides to serve as armor for the Dunmer.
+         </p>
+         <p class="book_page_text">
+           The Shrine of Valor is inside the Koal Cave, a cavern on the seacoast west of the ancient stronghold Berandas and south of Gnisis. The cave mouth faces south, towards the sea, and is marked by a large natural arch of stone. The region is wilderness, and finding the cave mouth can be difficult. Dreugh within the cave itself are fearsome enemies; only experienced and capable adventurers should attempt to re-enact the epic battle with the dreugh in the cave. Dreugh wax may be bought at the Temple in Gnisis. When you address the shrine, it is customary to leave a portion of dreugh wax as a token of Vivec's victorious struggle with Ruddy Man.
+         </p>
+       </div><!-- .content -->
+     </div><!-- .side-1 -->    
+     <div class="side-2" id="p8">      
+       <div class="content">
+         <h2>The Ghostfence: The Shrine of Pride</h2>
+         <p class="book_page_text">
+           The Ghostfence is a lasting symbol of the indomitable will and power of ALMSIVI, and a monument to Dunmer pride in overcoming its enemies.
+         </p>
+         <p class="book_page_text">
+ The Shrine of Pride is found within the Ghostfence, just northeast of the Ghostgate itself. The safest route to Ghostgate is along the Foyada Mamaea, a volcanic ravine running from the top of Red Mountain southwest to its end just below Balmora. An old Dwemer bridge crosses the foyada near Fort Moonmoth. A pilgrim may follow the Foyada Mamaea all the way to Ghostgate. Any journey inside the Ghostfence is dangerous, but even the most timid pilgrim should be safe, so long as he does not stray too far from the Ghostgate and flees from any minions of Dagoth Ur. When you address the shrine, it is customary to leave a soul gem in remembrance of our ancestors who were bound to the Tribunal's service.
+         </p>
+       </div><!-- .content -->
+     </div><!-- .side-2 -->
+   </div><!-- #page-4 -->
+ 
+ 
+   <div id="page-5" class="page" style="z-index: 1;">
+     <div class="side-1" id="p9">
+       <div class="content">
+         <h2 class="book_page_subtitle" >Koal Cave: The Shrine of Valor</h2>
+         <p class="book_page_text">
+           Within the Koal Cave, Vivec fought a battle with Ruddy Man, the father of the Dreugh. When he defeated Ruddy Man, Vivec spared his life, on the condition that Ruddy Man and his children would give up their tough hides to serve as armor for the Dunmer.
+         </p>
+         <p class="book_page_text">
+           The Shrine of Valor is inside the Koal Cave, a cavern on the seacoast west of the ancient stronghold Berandas and south of Gnisis. The cave mouth faces south, towards the sea, and is marked by a large natural arch of stone. The region is wilderness, and finding the cave mouth can be difficult. Dreugh within the cave itself are fearsome enemies; only experienced and capable adventurers should attempt to re-enact the epic battle with the dreugh in the cave. Dreugh wax may be bought at the Temple in Gnisis. When you address the shrine, it is customary to leave a portion of dreugh wax as a token of Vivec's victorious struggle with Ruddy Man.
+         </p>
+       </div><!-- .content -->
+     </div><!-- .side-1 -->    
+     <div class="side-2" id="p10">
+       <div class="content">
+         <h2 class="book_page_subtitle">The Ghostfence: The Shrine of Pride</h2>
+         <p class="book_page_text">
+           The Ghostfence is a lasting symbol of the indomitable will and power of ALMSIVI, and a monument to Dunmer pride in overcoming its enemies.
+         </p>
+         <p class="book_page_text">
+ The Shrine of Pride is found within the Ghostfence, just northeast of the Ghostgate itself. The safest route to Ghostgate is along the Foyada Mamaea, a volcanic ravine running from the top of Red Mountain southwest to its end just below Balmora. An old Dwemer bridge crosses the foyada near Fort Moonmoth. A pilgrim may follow the Foyada Mamaea all the way to Ghostgate. Any journey inside the Ghostfence is dangerous, but even the most timid pilgrim should be safe, so long as he does not stray too far from the Ghostgate and flees from any minions of Dagoth Ur. When you address the shrine, it is customary to leave a soul gem in remembrance of our ancestors who were bound to the Tribunal's service.
+         </p>
+       </div><!-- .content -->
+     </div><!-- .side-2 -->
+   </div><!-- #page-4 -->
+ 
+ 
+ 
+ 
+ </div>
+ 
+ <script src="{% static 'js/book_stage/turn_the_page_0.js' %}"></script>
+ <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+ <script id="rendered-js" src="{% static 'js/book_stage/turn_the_page_2_render.js' %}"></script>
+
+ {% endblock %}

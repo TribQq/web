@@ -2,13 +2,15 @@ todo
 
 description.txt
 
-mysite/about_me/static/media
+hosting_info.txt
 
-
-venv
+env/
+*.log
+*.pot
+*.pyc
 .idea
 .git
 __pycache__
 .gitignore
-/htmlsripts/assets
+in_progress/htmlsripts/assets
 

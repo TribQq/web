@@ -1,0 +1,23 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="shortcut icon" href="{% static 'media/about_me/icons/doggy_browser.ico' %}" type="image/x-icon">
+   <link rel='stylesheet' href="{% static 'css/handlers/handler_404.css' %}">
+   <title>404</title>
+</head>
+<body>
+   <div class="page">
+      <img class="handler_img" src="{% static '/media/handlers/404_cats.jpg' %}">
+      <div class="menu"> 
+         <h2>Error 404, u can: 
+            <a class="menu_link" href="{% url 'about_me:about_main' %}"> return to main</a></h2>
+      </div>
+   </div>
+
+</body>
+</html>

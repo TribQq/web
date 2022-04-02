@@ -1,0 +1,27 @@
+
+.page{
+   position: relative;
+}
+
+.handler_img{
+   width: 100%;
+}
+.menu{
+   position: absolute;
+   top: 2%;
+   left: 30%;
+   color: rgb(228, 226, 226);
+}
+
+.menu_link{
+   color: rgb(242, 240, 238);
+   text-decoration: none; 
+}
+.menu_link:hover{
+   /* border: 0.5px dashed wheat; */
+   /* -webkit-text-stroke: 0.3px black; */
+   transition: 2s;
+   text-decoration: dotted underline black;
+}
+
+

@@ -1,0 +1,249 @@
+{% extends "layout/scroll_basic.html" %}
+{% block title %}  Pages {% endblock %}
+{% load static %}
+
+<!--<html lang="en" class=" -webkit-"><head>-->
+
+<!--  <meta charset="UTF-8">-->
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/book_page/font.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/book_page/book_main.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/book_page/read_book.css' %}"/>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+
+{% endblock %}
+
+{% block scroll_title %} INVENTROY {% endblock %}
+
+
+{% block scroll_left_colum %}
+<div class="left_column_boxes">
+<div class="saves_block">
+  <img class="saves_image" src="{% static 'media/paper_scroll/saves_sand_clock.png' %}">
+<a class="saves_button activ_button " href="{% url 'bookshelf:view_saves' book.id %}">[saves]</a>
+</div>
+</div>
+
+<div class="left_column_boxes">
+<div class="notes_block" >
+  {% if selected_note  %}
+  <h4 class="scroll_info_subtitle title">UPD Note</h4>
+  <form method="POST" style="display: grid;"
+  action="{% url 'bookshelf:view_update_note' page.book.id selected_note.id %}">
+  {% csrf_token %}
+
+  <label class="form1_subtitle" for="memo-text">Title</label>
+  <textarea class="form_textarea " id="memo-text" name="title" maxlength="10" >{{ selected_note.title }}</textarea>
+
+  <label class="form1_subtitle"  for="memo-text">Text</label>
+  <textarea class="form_textarea text" id="memo-text" name="text"  maxlength="300">{{ selected_note.text }}</textarea>
+
+  <label class="form1_subtitle" for="memo-page">Привязка</label>
+  <select class="form_list_select _wrap" id="memo-page" name="book_page">
+  {% if selected_note.page %}
+  <option value="keep"
+          {% if selected_note.page.id != page.id %}
+          selected
+          {% endif %}>
+    Оставить привязанной к [{{ selected_note.page.title }}]
+  </option>
+  {% endif %}
+  {% if not selected_note.page or selected_note.page.id != page.id %}
+  <option value="change">
+    Привязать к [{{ page.title }}]
+  </option>
+  {% endif %}
+  <option value="remove"
+          {% if not selected_note.page %}
+          selected
+          {% endif %}>
+    {% if selected_note.page %}Отвязать{% endif %}
+  </option>
+  </select>
+  <label class="form1_subtitle" for="memo-pinned">Закреплена</label>
+  <input class="form_checkbox _wrap" id="memo-pinned" name="pinned" type="checkbox"
+      {% if selected_note.pinned %}checked{% endif %}>
+  <button class="form_button" type="submit">[Обновить]</button>
+  </form>
+  {% else %}
+
+    <h4 class="scroll_info_subtitle title">Add Note</h4>
+    <form action="{% url 'bookshelf:view_add_note' book.id %}" method="POST">
+      {% csrf_token %}
+      {{ NoteFrom }}
+      <button id="note_submit_button" class="submit_button_contact" type="submit"> [submit] </button>
+  </form>
+  {% endif %}
+
+</div>
+</div>
+
+
+{% endblock %}
+
+
+{% block scroll_text %}
+<div class="inventory_block" >
+<img class="ivnentory_image" src="{% static 'media/paper_scroll/Backpack_no_bg.png' %}">
+<div class="inventory_content">
+<ul class="inventory_list">
+{% if progress.inventory_items.all %}
+
+    {% for i_item in progress.inventory_items.all %}
+    <li class="inventory_item" >
+        {{ i_item }}
+        <a href="{% url 'bookshelf:view_drop_item' book.id i_item.id %}">[drop]</a>
+    </li>
+    {% endfor %}
+
+{% else %}<p class="inventory_item">Ваш инвентарь пуст</p>
+{% endif %}
+</ul>
+</div>
+</div>
+
+<div id="notes_block" class="scroll_notes_block">
+  <div class="rolled_notes">
+  <ul>
+    <!-- <h2>Notes:</h2> -->
+      {% if pinned_notes %}
+          {% for note in pinned_notes %}
+          <li class="rolled_note">
+            <a class="pin" href="{% url 'bookshelf:view_toggle_pin' book.id note.id %}">[📌]</a>
+            <img class="img_note_rolled" src="{% static 'media/paper_scroll/rolled_scroll_note.png' %}">
+            <div class="content">
+              <p>{{ note.title }}</p>
+             </div>
+             <a class ="scroll_button" href="{% url 'bookshelf:view_update_note' book.id note.id %}#notes_block"><img src="{% static 'media/paper_scroll/unrolled_scroll.png' %}"> </a>
+             <a class="delete" href="{% url 'bookshelf:view_delete_note' book.id note.id %}">[🗑️]</a>
+          </li>
+          {% endfor %}
+      <hr class="unpin_hr">
+      {% endif %}
+      {% if notes %}
+          {% for note in notes %}
+          <li class="rolled_note">
+            <a class="pin" href="{% url 'bookshelf:view_toggle_pin' book.id note.id %}">[📌]</a>
+            <img class="img_note_rolled" src="{% static 'media/paper_scroll/rolled_scroll_note.png' %}">
+            <div class="content">
+              <p>{{ note.title }}</p>
+             </div>
+             <a class ="scroll_button" href="{% url 'bookshelf:view_update_note' book.id note.id %}#notes_block"><img src="{% static 'media/paper_scroll/unrolled_scroll.png' %}"> </a>
+             <a class="delete" href="{% url 'bookshelf:view_delete_note' book.id note.id %}">[🗑️]</a>
+          </li>
+          {% endfor %}
+      {% endif %}
+  </ul>
+  </div>
+  <div class="unrolled_note">
+    <div class="content">
+      <!-- <a href=""> -->
+      <img src="{% static 'media/paper_scroll/unrolled_scroll_note.png' %}">
+      <div class="text_content">
+        <p class="title text_style">Win conditions:</p>
+        <ul class="text text_style">
+          {% for condition in win_conditions %}
+            <li>{{ condition.name }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="selected_note">
+  {% if selected_note  %}
+  <p class="title text_style">{{selected_note.title}}</p>
+  <p class="text text_style">{{selected_note.text}}</p>
+  {% else %}
+  <p class="title text_style">Some text</p>
+  <ul class="text text_style">
+  </ul>
+{% endif %}
+
+</div>
+
+{% endblock %}
+
+
+
+{% block right_block %}
+  <div class="book">  
+    <div id="page-1" class="page flipped" style="z-index: 1;">        
+      <div class="side-2" id="p2">      
+        <div class="content">
+          {% if page.title %}
+          <h2 class="book_style b_title">{{ page.title }}</h2>
+          {% endif %}
+          <p class="book_style b_text">{{ page.text }}</p>
+
+        </div><!-- .content -->
+      </div><!-- .side-2 -->
+    </div><!-- .page -->
+    
+    <div id="page-2" class="page" style="z-index: 4;">    
+      <div class="side-1" id="p3">
+        <div class="content">
+            {% if progress.end_status %}
+            <h4 class="book_menu title">Это приключение закончилось, но вы можете:</h4>
+            <u>
+                <li><a href="{% url 'bookshelf:view_bookshelf' %}">[ попробовать что то ещё ] </a> </li>
+                <li><a href="{% url 'bookshelf:view_drop_progress' book.id %}">[ переиграть эту историю ] </a> </li>
+            </u>
+            {% else %}
+
+          <h2 class="b_title">Оглядевшись вы видите</h2>
+
+          {% if dropped_items %}
+          <h4 class="b_subtitle">Брошенные ранее предметы: </h4>
+          <ul class="item_list">
+              {% for d_item in dropped_items %}
+              <li class="b_text" >
+                  {{ d_item.item.name }}
+                  <a href="{% url 'bookshelf:view_take_back_item' page.book_id d_item.id  %}"> [take back] </a>
+              </li>
+              {% endfor %}
+          </ul>
+          {% endif %}
+          {% if location_items %}
+          <h4 class="b_subtitle">Некоторые предметы: </h4>
+          <ul class="item_list" >
+              {% for item in location_items %}
+              <li class="b_text"> <a href="{% url 'bookshelf:view_take_item' page.book_id item.id  %}"> {{ item }} </a> </li>
+              {% endfor %}
+          </ul>
+          {% endif %}
+          <ul class="path_list"><h3 class="b_subtitle">Несколько направлений:</h3>
+            {% for link,status in link_status_tuple %}
+            {% if status %}
+            <a class="b_text" href="{% url 'bookshelf:view_go_to' book_id=page.book_id link_id=link.id %}"> <p> {{ link.to_page }}</p> </a>
+            {% else %}
+            <p class="b_text" >{{ link }},но у вас нету ключа для этого.</p>
+            {% endif %}
+          {% endfor %}</ul>
+
+        {% endif %}
+        </div>
+      </div>  
+
+      <!-- todo animation -->
+      <div class="side-2" id="p4">      
+        <div class="content">
+          <h2>loding...</h2>
+          <p class="book_page_text"></p>
+          <p class="book_page_text"></p>
+        </div>
+      </div>
+      <!--  -->
+    </div>
+    
+  
+  </div>
+ 
+
+ {% endblock %}
