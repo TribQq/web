@@ -1,13 +1,17 @@
 from unicodedata import name
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include , re_path
 from django.conf import settings
-from django.contrib.staticfiles.views import serve
+
 from django.views.decorators.cache import never_cache
 
 from django.views.generic import TemplateView
 
+from django.conf.urls import url
+
+
+from .views import test
 
 urlpatterns = [
     path('admin/', admin.site.urls, name="admin"),
@@ -18,14 +22,23 @@ urlpatterns = [
     
     path('api_notesApp/', include('api_notesApp.urls')),
     path('api/', include('api_notesApp.urls')),
-    path('notesApp/', include('react_notesApp.urls'))
+    path('notesApp/', include('react_notesApp.urls')),
+       
 
-]
+] 
+
 
 handler404 = "mysite.views.page_not_found_view"
-# handler404 = "about_me.views.about_main"
 
 if settings.DEBUG:
+    from django.contrib.staticfiles.views import serve
     urlpatterns.append(path('static/<path:path>', never_cache(serve)))
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # маршрут для обработки выгруженных файлов
-
+else: # only for heroku , if deploy + nginx/apache need refactor
+    from django.views.static import serve as serve
+    urlpatterns.extend([
+        url(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
+        url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),   
+    ])
+    
+    

@@ -592,6 +592,7 @@ Table of Contents
 .book_titles{
 	position	: absolute;
 	top: 20%;
+	width: 100%;
 	/* right: 40%; */
 }
 
@@ -710,6 +711,7 @@ figcaption p {
 
 .indent{
    padding: 10px;
+	overflow: hidden;
 }
 .book_description:hover{
    background: rgba(0, 0, 0, 0.1);

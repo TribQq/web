@@ -1,17 +1,15 @@
 todo
-
 description.txt
-
 hosting_info.txt
-
 env/
 *.log
 *.pot
 *.pyc
-
 .idea
 .git
 __pycache__
 .gitignore
 in_progress/htmlsripts/assets
+db.sqlite3
+
 

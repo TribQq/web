@@ -2,7 +2,6 @@ from django.contrib import admin
 from .models import *
 
 admin.site.register(Book)
-admin.site.register(PageLink)
 admin.site.register(Item)
 
 admin.site.register(Note)
@@ -15,6 +14,10 @@ class BookPageAdmin(admin.ModelAdmin):
     filter_horizontal = ('page_items',)
 
 
+class BookPageLinkAdmin(admin.ModelAdmin):
+    filter_horizontal = ('key_items',)
+
+
 class BookProgressAdmin(admin.ModelAdmin):
     filter_horizontal = ('inventory_items',)
 
@@ -24,6 +27,7 @@ class AdminProgressCondition(admin.ModelAdmin):
 
 
 admin.site.register(BookPage, BookPageAdmin)
+admin.site.register(PageLink, BookPageLinkAdmin)
 admin.site.register(BookProgress, BookProgressAdmin)
 admin.site.register(ProgressCondition, AdminProgressCondition)
 

@@ -190,10 +190,10 @@
       <div class="side-1" id="p3">
         <div class="content">
             {% if progress.end_status %}
-            <h4 class="book_menu title">Это приключение закончилось, но вы можете:</h4>
+            <h4 class="b_subtitle">Это приключение закончилось, но вы можете:</h4>
             <u>
-                <li><a href="{% url 'bookshelf:view_bookshelf' %}">[ попробовать что то ещё ] </a> </li>
-                <li><a href="{% url 'bookshelf:view_drop_progress' book.id %}">[ переиграть эту историю ] </a> </li>
+                <li class="b_text"><a href="{% url 'bookshelf:view_bookshelf' %}">[ попробовать что то ещё ] </a> </li>
+                <li class="b_text"><a href="{% url 'bookshelf:view_drop_progress' book.id %}">[ переиграть эту историю ] </a> </li>
             </u>
             {% else %}
 
@@ -205,7 +205,9 @@
               {% for d_item in dropped_items %}
               <li class="b_text" >
                   {{ d_item.item.name }}
+                  {% if not inventory_full %}
                   <a href="{% url 'bookshelf:view_take_back_item' page.book_id d_item.id  %}"> [take back] </a>
+                  {% endif %}
               </li>
               {% endfor %}
           </ul>
@@ -213,11 +215,20 @@
           {% if location_items %}
           <h4 class="b_subtitle">Некоторые предметы: </h4>
           <ul class="item_list" >
+
               {% for item in location_items %}
+              {% if not inventory_full %}
               <li class="b_text"> <a href="{% url 'bookshelf:view_take_item' page.book_id item.id  %}"> {{ item }} </a> </li>
+              {% else %}
+              <li class="b_text"> {{ item }}</li>
+              {% endif %}
               {% endfor %}
           </ul>
           {% endif %}
+            {% if dropped_items or location_items %} {% if inventory_full %}
+            <br>
+            <p class="b_text">К сожалению вы ничего не можете подобрать, у вас кончилось место в инвентаре... </p>
+            {% endif %} {% endif %}
           <ul class="path_list"><h3 class="b_subtitle">Несколько направлений:</h3>
             {% for link,status in link_status_tuple %}
             {% if status %}
@@ -234,7 +245,7 @@
       <!-- todo animation -->
       <div class="side-2" id="p4">      
         <div class="content">
-          <h2>loding...</h2>
+          <h2>loading...</h2>
           <p class="book_page_text"></p>
           <p class="book_page_text"></p>
         </div>

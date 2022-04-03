@@ -19,6 +19,7 @@ class Book(models.Model):
     cover_img = models.ImageField(blank=True, null=True,
                                   upload_to=get_timestamp_path, verbose_name='Image on book cover')
 
+    inventory_limit = models.IntegerField(default=10)
     progress_conditions = models.ManyToManyField('ProgressCondition', verbose_name='lose/win conditions', blank=True)
 
     class Meta:
@@ -65,6 +66,7 @@ class BookProgress(models.Model): # трабла в автосоздании н�
     book_page = models.ForeignKey(BookPage, on_delete=models.CASCADE)
     inventory_items = models.ManyToManyField('Item', blank=True)
     end_status = models.BooleanField(null=True, blank=True)
+    # inventory_full = models.BooleanField(default=False)
 
     class Meta:
         unique_together = ['user', 'book']
@@ -88,11 +90,13 @@ class BookProgress(models.Model): # трабла в автосоздании н�
         return item_on_position
 
     def try_end_progress(self, book_id: int) -> any:
+        """collect all win/lose conditions =>  check status if something true => return w_page"""
         progress_conditions = Book.objects.get(id=book_id).progress_conditions.all()
         for condition in progress_conditions:
             condition_items: list[dict[str, str], ...] = list(condition.status_items.all().values('item', 'page_position'))
             inventory_items: list[str, ...] = list(self.inventory_items.all().values_list('id', flat=True))
             dropped_items_pages: dict[int, list[int, ...]] = {}
+
             for di in self.droppeditem_set.all().values('item', 'book_page_id'):
                 try:
                     dropped_items_pages[di['book_page_id']].append(di['item'])
@@ -101,6 +105,7 @@ class BookProgress(models.Model): # трабла в автосоздании н�
 
             # не раб на нескольких условиях
             item_on_position: list[bool, ...] = self.check_items_position(condition_items, inventory_items, dropped_items_pages)
+            print(item_on_position)
             if False not in item_on_position:
                 return condition.final_page
         return False
@@ -191,7 +196,7 @@ class ProgressConditionStatusItem(models.Model):
 class ProgressCondition(models.Model):
     status_items = models.ManyToManyField(ProgressConditionStatusItem)
     final_page = models.ForeignKey(BookPage, null=True, blank=True, on_delete=models.CASCADE)
-    name = models.CharField(default='#noname', max_length=15)
+    name = models.CharField(default='#noname', max_length=25)
     win_status = models.BooleanField(blank=True, null=True) # False-lose, True-win не нужно т.к заглушка энивей будет текстом(хотя для доп функций можоно будет доабвить)
 
     def __str__(self):

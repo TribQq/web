@@ -69,12 +69,14 @@ def get_read_book_context(progress, book_id: int) -> dict[any, any]:
     page_notes = book.note_set.filter(pinned=False, book_page=page)
     notes = book.note_set.exclude(
         id__in=[n.id for n in pinned_notes]).exclude(id__in=[n.id for n in page_notes])
-    win_conditions = book.progress_conditions.all().filter(win_status = True)
+    win_conditions = book.progress_conditions.all().filter(win_status=True)
+    inventory_full = book.inventory_limit <= len(progress.inventory_items.all())
     context = {'book': book, 'page': page,
                'link_status_tuple': links, 'progress': progress,
                'location_items': location_items, 'dropped_items': dropped_items,
                'pinned_notes': pinned_notes, 'notes': notes, 'page_notes': page_notes,
-               'NoteFrom': NoteForm,'win_conditions':win_conditions,
+               'NoteFrom': NoteForm, 'win_conditions': win_conditions,
+               'inventory_full': inventory_full,
                }
     return context
 
