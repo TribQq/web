@@ -609,7 +609,7 @@ body {
 
 @media(max-width:330px) {
     .about-me_1_body_left_side {
-        margin: -50px 0px 0px 0px;
+        margin: -45px 0px 0px 0px;
     }
 }
 
@@ -644,6 +644,7 @@ body {
     padding-top: 15px;
 }
 
+
 .block_text_title {
     padding-top: 15%;
 }
@@ -677,10 +678,15 @@ hr.hr_skills {
 .skills_list>*:not(:first-child) {
     margin-top: 2%;
 }
-.about-me_1-text p {
-    margin-top: 10px;
-    font-size: 15px;
+
+.sub_text{
+    font-size: 80%;
 }
+
+.skill_category h4{
+    font-weight: 600;
+}
+
 
 
 @media(max-width:1500px) {
@@ -696,6 +702,8 @@ hr.hr_skills {
         font-size: 20px;
         line-height: 140%;
     }
+
+
 }
 
 @media(max-width:1024px) {
@@ -711,6 +719,7 @@ hr.hr_skills {
         font-size: 15px;
         line-height: 140%;
     }
+    
 }
 
 @media(max-width:330px) {
@@ -726,6 +735,10 @@ hr.hr_skills {
         font-size: 12px;
         line-height: 140%;
     }
+    .about-me_1_block_text>*:not(:last-child) {
+        padding-top: 7.5px;
+    }
+    
 }
 
 @media(max-width:250px) {
@@ -741,6 +754,7 @@ hr.hr_skills {
         font-size: 11px;
         line-height: 140%;
     }
+    
 }
 
 .link_word {

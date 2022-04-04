@@ -11,5 +11,5 @@ __pycache__
 .gitignore
 in_progress/htmlsripts/assets
 db.sqlite3
-
+staticfiles
 
