@@ -11,6 +11,7 @@ from .utilities import send_activation_notification
 
 
 def send_activation_notifications(modeladmin, request, queryset):
+    """ email activation status """
     for rec in queryset:
         if not rec.is_activated:
             send_activation_notification(rec)
@@ -21,6 +22,7 @@ send_activation_notifications.short_description = 'Отправка письма
 
 
 class NonacitvatedFilter(admin.SimpleListFilter):
+    """ filter for acc by non activate date and activate status """
     title = 'Статус активации:'
     parameter_name = 'actstate'
 
@@ -44,6 +46,7 @@ class NonacitvatedFilter(admin.SimpleListFilter):
 
 
 class AdvUserAdmin(UserAdmin):
+    """ user model """
     add_form = UserCreationForm
     form = AdvUserChangeForm
     model = AdvUser

@@ -5,11 +5,8 @@ from bulletin_board.models import AdvUser as User
 from .utilities import get_timestamp_path
 
 
-class Test(models.Model):
-    bool_null = models.BooleanField(default=None, null=True, blank=True)
-
-
 class Book(models.Model):
+    """ main book model """
     title = models.CharField(max_length=10, default='Book', verbose_name='Title')
     subtitle = models.CharField(max_length=15, default='Name', verbose_name='Subtitle')
     desc_title = models.CharField(max_length=10, null=True, blank=True, verbose_name='Title description')
@@ -28,6 +25,7 @@ class Book(models.Model):
 
 
 class BookPage(models.Model):
+    """ Book page model """
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     title = models.CharField(max_length=30, blank=True, null=True)
     text = models.TextField()
@@ -40,6 +38,7 @@ class BookPage(models.Model):
 
 
 class PageLink(models.Model):
+    """ page path`s models (page=>page)==PageLink(path)"""
     from_page = models.ForeignKey(BookPage, on_delete=models.CASCADE)
     to_page = models.ForeignKey(BookPage, related_name='to_page', on_delete=models.CASCADE)
     name_path = models.CharField(null=True, blank=True, max_length=50)
@@ -56,11 +55,13 @@ class PageLink(models.Model):
         unique_together = ['from_page', 'to_page']
 
     def check_key_items(self, inventory_items: list) -> bool:
+        """ checking key-items in inventory """
         check_result: bool = all(key in inventory_items for key in self.key_items.all())
         return check_result
 
 
 class BookProgress(models.Model): # трабла в автосоздании новой модельки под новою книгу+юзера (т.е если ручками создать поле в бд то ок инече краш)
+    """ model for user-book progress """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     book_page = models.ForeignKey(BookPage, on_delete=models.CASCADE)
@@ -73,12 +74,14 @@ class BookProgress(models.Model): # трабла в автосоздании н�
 
     @classmethod
     def start_progress(cls, user, book):
+        """ if no progress create progress"""
         page = book.first_page if book.first_page else BookPage.objects.filter(book_id=book.id)[0] #если страницы по умолчанию нет, то ,берём страницу с меньшим id у этой книжки
         progress = BookProgress(user=user, book=book, book_page=page)
         progress.save()
         return progress
 
-    def check_items_position(self, checked_i, inventory_i, dropped_i_p) -> list[bool, ...]:
+    def check_items_position(self, checked_i: list, inventory_i: list, dropped_i_p: dict) -> list[bool, ...]:
+        """ check item position(page/inventory(None)) for items in condition(win/lose) """
         item_on_position: list[bool, ...] = []
         for i in checked_i:
             if i['page_position'] is None:
@@ -90,7 +93,7 @@ class BookProgress(models.Model): # трабла в автосоздании н�
         return item_on_position
 
     def try_end_progress(self, book_id: int) -> any:
-        """collect all win/lose conditions =>  check status if something true => return w_page"""
+        """collect all win/lose conditions =>  check status if something true => return win page w_page"""
         progress_conditions = Book.objects.get(id=book_id).progress_conditions.all()
         for condition in progress_conditions:
             condition_items: list[dict[str, str], ...] = list(condition.status_items.all().values('item', 'page_position'))
@@ -104,19 +107,21 @@ class BookProgress(models.Model): # трабла в автосоздании н�
                     dropped_items_pages[di['book_page_id']] = [di['item']]
 
             # не раб на нескольких условиях
-            item_on_position: list[bool, ...] = self.check_items_position(condition_items, inventory_items, dropped_items_pages)
-            print(item_on_position)
+            item_on_position: list[bool, ...] = self.check_items_position(
+                checked_i=condition_items, inventory_i=inventory_items, dropped_i_p=dropped_items_pages)
             if False not in item_on_position:
                 return condition.final_page
         return False
 
     def end_progress(self, final_page):
+        """ plug for end progress """
         self.book_page = final_page
         self.end_status = True
         self.save()
 
     @transaction.atomic
     def save_to(self, save_id):
+        """ no save => create new save, else =>update save """
         if save_id is None:
             state = ProgressSave.objects.create(
                 progress=self, book_page=self.book_page)
@@ -133,6 +138,7 @@ class BookProgress(models.Model): # трабла в автосоздании н�
 
     @transaction.atomic
     def save_load(self, save_id):
+        """ save load transaction"""
         state = ProgressSave.objects.get(id=save_id)
         self.book_page = state.book_page
         self.inventory_items.set(state.inventory_items.all())
@@ -144,6 +150,7 @@ class BookProgress(models.Model): # трабла в автосоздании н�
 
 
 class Item(models.Model):
+    """ models for items """
     name = models.CharField(max_length=50)
     description = models.TextField()
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
@@ -153,6 +160,7 @@ class Item(models.Model):
 
 
 class DroppedItem(models.Model):
+    """ model for dropped items, for check item status """
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     book_page = models.ForeignKey(BookPage, on_delete=models.CASCADE)
     progress = models.ForeignKey(BookProgress, on_delete=models.CASCADE)
@@ -162,6 +170,7 @@ class DroppedItem(models.Model):
 
 
 class ProgressSave(models.Model):
+    """ model for save progress """
     progress = models.ForeignKey(BookProgress, on_delete=models.CASCADE)
     save_time = models.DateTimeField(auto_now=True)
     book_page = models.ForeignKey(BookPage, on_delete=models.CASCADE)
@@ -169,12 +178,14 @@ class ProgressSave(models.Model):
 
 
 class DroppedItemSave(models.Model):
+    """ model for save dropped item progress """
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     book_page = models.ForeignKey(BookPage, on_delete=models.CASCADE)
     progress_save = models.ForeignKey(ProgressSave, on_delete=models.CASCADE)
 
 
 class Note(models.Model):
+    """ model for notes """
     title = models.TextField(max_length=10)
     text = models.TextField(max_length=300)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -185,6 +196,7 @@ class Note(models.Model):
 
 
 class ProgressConditionStatusItem(models.Model):
+    """ model for item+position for next use in win/lose conditions"""
     item = models.ForeignKey(Item, on_delete=models.CASCADE) # , related_name='customItem'
     desc = models.CharField(default='description', verbose_name='description', max_length=60)
     page_position = models.ForeignKey(BookPage, null=True, blank=True, on_delete=models.SET_NULL) # if none => inventory pos
@@ -194,10 +206,11 @@ class ProgressConditionStatusItem(models.Model):
 
 
 class ProgressCondition(models.Model):
+    """model for  win/lose condition"""
     status_items = models.ManyToManyField(ProgressConditionStatusItem)
     final_page = models.ForeignKey(BookPage, null=True, blank=True, on_delete=models.CASCADE)
     name = models.CharField(default='#noname', max_length=25)
-    win_status = models.BooleanField(blank=True, null=True) # False-lose, True-win не нужно т.к заглушка энивей будет текстом(хотя для доп функций можоно будет доабвить)
+    win_status = models.BooleanField(default=True) # False-lose, True-win не нужно т.к заглушка энивей будет текстом(хотя для доп функций можоно будет доабвить)
 
     def __str__(self):
         return f'condotion:({self.id}): items({[pi.item.name for pi in self.status_items.all()]}'

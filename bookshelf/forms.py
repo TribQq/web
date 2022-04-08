@@ -5,13 +5,12 @@ from .models import Book, BookPage, Note
 
 
 class NoteForm(forms.ModelForm):
-    
+    """ form for create note"""
     required_css_class = "form1_subtitle"
     error_css_class = "error"
     book_page = forms.ModelChoiceField(queryset=BookPage.objects.all())
-    pinned = forms.BooleanField(widget=forms.CheckboxInput(attrs={"class":"note_pin_checkbox" ,'id': 'pin_checkbox'}))
-    
-    
+    pinned = forms.BooleanField(widget=forms.CheckboxInput(attrs={"class": "note_pin_checkbox", 'id': 'pin_checkbox'}))
+
     class Meta:
         model = Note
         fields = ('title', 'text', 'book_page', 'pinned')
@@ -22,12 +21,11 @@ class NoteForm(forms.ModelForm):
         }
 
 
-
-
 class ChangeNoteForm(forms.ModelForm): #форма из модели
+    """ form for change note"""
     class Meta:
         model = Note
-        fields =['text','pinned'] # field from model to form
+        fields = ['text', 'pinned'] # field from model to form
         widgets = { #cutomize
             'text': forms.Textarea(attrs={'cols': 30, 'rows': 3})
         }

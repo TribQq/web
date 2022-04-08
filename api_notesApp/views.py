@@ -12,10 +12,8 @@ from .serializers import *
 from .utilites import *
 
 
-
 @api_view(['GET'])
 def get_Routes(request):
-
     routes = [
         {
             'Endpoint': '/notes/',
@@ -54,7 +52,7 @@ def get_Routes(request):
 
 @api_view(['GET', 'POST'])
 def get_Notes(request):
-
+    """ array notes handler """
     if request.method == 'GET':
         return get_Notes_List(request)
 
@@ -64,7 +62,7 @@ def get_Notes(request):
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def get_Note(request, note_id):
-
+    """ note handler """
     if request.method == 'GET':
         return get_Note_Detail(request, note_id)
 

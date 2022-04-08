@@ -13,19 +13,20 @@ def view_plug(request):
     return HttpResponse('just plug')
 
 
-def view_onlyScroll(request):
+def view_onlyScroll(request) -> render:
     return render(request, 'layout/scroll_basic.html')
 
 
-def _return_to_main(book_id):
+def _return_to_main(book_id: int) -> redirect:
     return redirect(reverse('bookshelf:view_read_book', kwargs={'book_id': book_id}))
 
 
-def _return_to_main_anchor(book_id: int, anchor: str):
+def _return_to_main_anchor(book_id: int, anchor: str) -> redirect:
     return redirect(reverse('bookshelf:view_read_book', kwargs={'book_id': book_id}) + anchor)
 
 
 def on_progress(view):
+    """ work with progress create/update/check status"""
     def inner(request, book_id, **kwargs):
         book = get_object_or_404(Book, id=book_id) # мы НЕ хотим 2 раза идти в бд...
         try:
@@ -42,19 +43,22 @@ def on_progress(view):
 
 
 @on_progress
-def view_drop_progress(request, progress, book_id):
+def view_drop_progress(request, progress, book_id: int) -> redirect:
+    """ delete progress """
     progress.delete()
     return redirect(reverse('bookshelf:view_saves', kwargs={'book_id': book_id}))
 
 
-def view_bookshelf(request):
+def view_bookshelf(request) -> render:
+    """ get some book => render page with this book queryset"""
     max_book = 11
     books = Book.objects.all()[:max_book]
     context = {'books': books, }
     return render(request, 'bookshelf.html', context=context)
 
 
-def get_read_book_context(progress, book_id: int) -> dict[any, any]:
+def get_read_book_context(progress, book_id: int) -> dict[str, any]:
+    """ context data for reading book """
     book = get_object_or_404(Book, id=book_id)
     page = progress.book_page
     links: list[tuple[any, bool], ...] = [
@@ -83,12 +87,14 @@ def get_read_book_context(progress, book_id: int) -> dict[any, any]:
 
 @on_progress
 def view_read_book(request, progress, book_id: int) -> render:
+    """ main view for read book """
     context = get_read_book_context(progress=progress, book_id=book_id)
     return render(request, 'book_page.html', context)
 
 
 @on_progress
-def view_go_to(request,progress, book_id, link_id): #реализовать привязку к линку т.к ?)
+def view_go_to(request, progress, book_id: int, link_id: int) -> redirect: #реализовать привязку к линку т.к ?)
+    """ if page path validate for progress => update progress page """
     page_link = get_object_or_404(PageLink, id=link_id)
     if (
         progress.book_page.id == page_link.from_page.id
@@ -102,8 +108,8 @@ def view_go_to(request,progress, book_id, link_id): #реализовать пр
 
 
 @on_progress
-def view_saves(request, progress, book_id):
-    """save page"""
+def view_saves(request, progress, book_id: int) -> render:
+    """ save page """
     context = {'book': Book.objects.get(id=book_id),
                'progress': progress,
                'saves': progress.progresssave_set.all()}
@@ -111,23 +117,24 @@ def view_saves(request, progress, book_id):
 
 
 @on_progress
-def view_save_to(request, progress, book_id, save_id=None):
-    """new/upd save"""
+def view_save_to(request, progress, book_id: int, save_id: int | None = None) -> redirect:
+    """create/upd save"""
     save = progress.save_to(save_id=save_id)
     context = {'book_id': book_id, }
     return redirect(reverse('bookshelf:view_saves', kwargs=context))
 
 
-
 @on_progress
-def view_load_from(request, progress, book_id, save_id):
+def view_load_from(request, progress, book_id: int, save_id: int) -> redirect:
+    """ update progress from save """
     progress.save_load(save_id)
     context = {'book_id': book_id}
     return redirect(reverse('bookshelf:view_saves', kwargs=context))
 
 
 @on_progress
-def view_delete_save(request, progress, book_id, save_id):
+def view_delete_save(request, progress, book_id: int, save_id: int) -> redirect:
+    """ delete save """
     save = get_object_or_404(ProgressSave, id=save_id)
     save.delete()
     return redirect(reverse('bookshelf:view_saves', kwargs={'book_id': book_id}))
@@ -135,7 +142,8 @@ def view_delete_save(request, progress, book_id, save_id):
 
 
 @on_progress
-def view_take_item(request, progress, book_id, item_id):
+def view_take_item(request, progress, book_id: int, item_id: int) -> redirect:
+    """ upd progress, add item """
     item = get_object_or_404(Item, id=item_id)
     progress.inventory_items.add(item)
     context = {'book_id': book_id}
@@ -143,7 +151,8 @@ def view_take_item(request, progress, book_id, item_id):
 
 
 @on_progress
-def view_drop_item(request, progress, book_id, item_id):
+def view_drop_item(request, progress, book_id: int, item_id: int) -> redirect:
+    """ upd dropped items model, add item + remove item from inventory"""
     item = get_object_or_404(Item, id=item_id)
     progress.inventory_items.remove(item)
     progress.save()
@@ -154,16 +163,18 @@ def view_drop_item(request, progress, book_id, item_id):
     )
     return _return_to_main(book_id)
 
+
 @on_progress
-def view_take_back_item(request, progress, book_id, item_id): # TODO  need transaction btw
+def view_take_back_item(request, progress, book_id: int, item_id: int) -> redirect: # TODO  need transaction btw
+    """ remove item from dropped item model and add to progress """
     dropped_item = get_object_or_404(DroppedItem, id=item_id)
     progress.inventory_items.add(dropped_item.item)
     dropped_item.delete()
     return redirect(reverse('bookshelf:view_read_book', kwargs={'book_id': book_id}))
 
 
-
-def view_add_note(request, book_id):
+def view_add_note(request, book_id: int) -> redirect:
+    """  create note """
     if request.method == 'POST':
         Note.objects.create(
             title=request.POST['title'],
@@ -174,14 +185,17 @@ def view_add_note(request, book_id):
     anchor = '#notes_block'
     return _return_to_main_anchor(book_id=book_id, anchor=anchor)
 
-def view_delete_note(request, book_id, note_id):
+
+def view_delete_note(request, book_id: int, note_id: int) -> redirect:
+    """ delete note """
     note = get_object_or_404(Note, id=note_id)
     note.delete()
     anchor = '#notes_block'
     return _return_to_main_anchor(book_id=book_id, anchor=anchor)
 
 
-def view_toggle_pin(request, book_id, note_id):
+def view_toggle_pin(request, book_id: int, note_id: int) -> redirect:
+    """ toggle note pin 'status' """
     note = get_object_or_404(Note, id=note_id)
     note.pinned = True if note.pinned == False else False
     note.save()
@@ -190,7 +204,8 @@ def view_toggle_pin(request, book_id, note_id):
 
 
 @on_progress
-def view_update_note(request, progress, book_id, note_id):
+def view_update_note(request, progress, book_id: int, note_id: int) -> redirect:
+    """ update note """
     selected_note = get_object_or_404(Note, id=note_id)
     if request.method == 'GET':
         context = get_read_book_context(progress=progress, book_id=book_id)

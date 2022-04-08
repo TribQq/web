@@ -12,4 +12,5 @@ __pycache__
 in_progress/htmlsripts/assets
 db.sqlite3
 staticfiles
+tests.py
 
