@@ -4,6 +4,10 @@ from .models import SubRubric
 
 
 def bboard_context_processor(request):
+    """ pagination
+    'keyword'- GET parameter, which will be needed to generate Internet addresses in paginator hyperlinks;
+    'all'- with the 'keyword' and 'page' GET parameters that we will add to the Internet URLs of hyperlinks pointing to add detail pages.
+    """
     context = {}
     context['rubrics'] = SubRubric.objects.all()
     context['keyword'] = ''

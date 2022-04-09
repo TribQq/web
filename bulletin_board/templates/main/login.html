@@ -5,7 +5,7 @@
 {% if user.is_authenticated %}
 <p>Вы уже вошли</p>
 {% else %}
-<form method='post'>
+<form action="{% url 'bulletin_board:login' %}" method='post'>
     {% csrf_token %} {% bootstrap_form form layout='horizontal' %}
     <input type='hidden' name='next' value='{{ next }}'>
     {% buttons submit='Войти' %}{% endbuttons %}

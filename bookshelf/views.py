@@ -3,6 +3,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.urls import reverse
 
+from django.db.models import QuerySet # for typehint
+
 from bulletin_board.models import AdvUser as User
 from .models import *
 from .forms import *
@@ -65,16 +67,16 @@ def get_read_book_context(progress, book_id: int) -> dict[str, any]:
         (link, link.check_key_items(progress.inventory_items.all()))
         for link in page.pagelink_set.all()
     ]
-    location_items = page.page_items.exclude(
+    location_items: QuerySet = page.page_items.exclude(
         id__in=progress.inventory_items.all().values_list('id', flat=True)).exclude(
         id__in=progress.droppeditem_set.filter(progress=progress).values_list('item__id', flat=True))
-    dropped_items = DroppedItem.objects.filter(book_page=page.id)
-    pinned_notes = book.note_set.filter(pinned=True)
-    page_notes = book.note_set.filter(pinned=False, book_page=page)
+    dropped_items: QuerySet = DroppedItem.objects.filter(book_page=page.id)
+    pinned_notes: QuerySet = book.note_set.filter(pinned=True)
+    page_notes: QuerySet = book.note_set.filter(pinned=False, book_page=page)
     notes = book.note_set.exclude(
         id__in=[n.id for n in pinned_notes]).exclude(id__in=[n.id for n in page_notes])
-    win_conditions = book.progress_conditions.all().filter(win_status=True)
-    inventory_full = book.inventory_limit <= len(progress.inventory_items.all())
+    win_conditions: QuerySet = book.progress_conditions.all().filter(win_status=True)
+    inventory_full: bool = book.inventory_limit <= len(progress.inventory_items.all())
     context = {'book': book, 'page': page,
                'link_status_tuple': links, 'progress': progress,
                'location_items': location_items, 'dropped_items': dropped_items,

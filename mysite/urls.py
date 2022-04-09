@@ -7,6 +7,7 @@ from django.views.decorators.cache import never_cache
 
 from django.conf.urls import url
 
+from .views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls, name="admin"),
@@ -19,7 +20,7 @@ urlpatterns = [
     path('api/', include('api_notesApp.urls')),
     path('notesApp/', include('react_notesApp.urls')),
        
-
+    path('accounts/profile/', view_profile, name='view_profile')
 ] 
 
 

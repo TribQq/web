@@ -26,8 +26,7 @@ class AdvUserCreationForm(UserCreationForm):
 
 
 class AdvUserChangeForm(UserChangeForm):
-    email = forms.EmailField(required=True, label='Адресс электронной почты')
-
+    email = forms.EmailField(required=True, label='Адресc электронной почты')
     class Meta:
         model = AdvUser
         fields = ('username', 'email', 'first_name', 'last_name',

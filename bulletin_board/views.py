@@ -24,12 +24,14 @@ from .utilities import signer
 
 
 def index(request):
+    """ render main page bbs(ads) limit = first 10"""
     bbs = Bb.objects.filter(is_active=True)[:10]
     context = {'bbs': bbs}
     return render(request, 'main/index.html', context)
 
 
 def other_page(request, page):
+    """ get template or 404"""
     try:
         template = get_template('main/' + page +'.html')
     except TemplateDoesNotExist:
@@ -38,11 +40,13 @@ def other_page(request, page):
 
 
 class BBLoginView(LoginView):
+    """ view for login , sumbit => redirect to /accounts/profile"""
     template_name = 'main/login.html'
 
 
 @login_required
 def profile(request):
+    """ get only the current user of the bbs(ads)"""
     bbs = Bb.objects.filter(author=request.user.pk)
     context = {'bbs': bbs}
     return render(request, 'main/profile.html', context)
@@ -53,6 +57,7 @@ class BBLogoutView(LoginRequiredMixin, LogoutView): # LoginRequiredMixin - че�
 
 
 class ChangeUserInfoView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
+    """ change the curent user info data and """
     model = AdvUser
     template_name = 'main/change_user_info.html'
     form_class = ChangeUserInfoForm
@@ -70,12 +75,14 @@ class ChangeUserInfoView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
 
 
 class BBPasswordChangeView(SuccessMessageMixin, LoginRequiredMixin, PasswordChangeView):
+    """ view for change user pass """
     template_name = 'main/password_change.html'
     success_url = reverse_lazy('bulletin_board:profile')
     success_message = 'Пароль изменён'
 
 
 class BBPasswordResetView(PasswordResetView):
+    """ view for drop user pass with email  """
     template_name = 'main/password_reset.html' # взять с кнопки реги отправку письма на почту
     subject_template_name = 'email/reset_letter_subject.txt'
     email_template_name = 'email/reset_letter_body.txt'
@@ -83,19 +90,23 @@ class BBPasswordResetView(PasswordResetView):
 
 
 class BBPasswordResetDoneView(PasswordResetDoneView):
+    """ reset pass"""
     template_name = 'main/password_reset_done.html'
 
 
 class BBPasswordResetConfirmView(PasswordResetConfirmView):
+    """ confirm reset pass"""
     template_name = 'main/password_confirm.html'
     success_url = reverse_lazy('bulletin_board:password_reset_complete')
 
 
 class BBPasswordResetCompleteView(PasswordResetCompleteView):
+    """ complete reset pass """
     template_name = 'main/password_complete.html'
 
 
 class RegisterUserView(CreateView):
+    """ view for register user"""
     model = AdvUser
     template_name = 'main/register_user.html'
     form_class = RegisterUserForm
@@ -103,10 +114,12 @@ class RegisterUserView(CreateView):
 
 
 class RegisterDoneView(TemplateView):
+    """ user register done"""
     template_name = 'main/register_done.html'
 
 
 def user_activate(request, sign):
+    """ user acc activation"""
     try:
         username = signer.unsign(sign)
     except BadSignature:
@@ -123,6 +136,7 @@ def user_activate(request, sign):
 
 
 class DeleteUserView(LoginRequiredMixin, DeleteView):
+    """ delete user acc"""
     model = AdvUser
     template_name = 'main/delete_user.html'
     success_url = reverse_lazy('bulletin_board:index')
@@ -143,7 +157,7 @@ class DeleteUserView(LoginRequiredMixin, DeleteView):
 
 
 def by_rubric(request, pk):
-    # return HttpResponse('plug')
+    """ only current rubric bbs(ads) + pagination"""
     rubric = get_object_or_404(SubRubric, pk=pk)
     bbs = Bb.objects.filter(is_active=True, rubric=pk)
     if 'keyword' in request.GET:
@@ -164,6 +178,7 @@ def by_rubric(request, pk):
 
 
 def detail(request, rubric_pk, pk):
+    """ detail about bb(ad)"""
     bb = get_object_or_404(Bb, pk=pk)
     ais = bb.additionalimage_set.all() # пикчи
     comments = Comment.objects.filter(bb=pk, is_active=True)
@@ -188,6 +203,7 @@ def detail(request, rubric_pk, pk):
 
 @login_required
 def profile_bb_detail(request, pk):
+    """ profile bb detail """
     bb = get_object_or_404(Bb, pk=pk)
     ais = bb.additionalimage_set.all()
     # comments = Comment.objects.filter(bb=pk, is_active=True)
@@ -196,7 +212,8 @@ def profile_bb_detail(request, pk):
 
 
 @login_required
-def profile_bb_add(request):
+def profile_bb_add(request): # only adm now
+    """ add bb from profile page """
     if request.method == 'POST':
         form = BbForm(request.POST, request.FILES)
         if form.is_valid():
@@ -215,6 +232,7 @@ def profile_bb_add(request):
 
 @login_required
 def profile_bb_change(request,pk):
+    """ change bb from profile page"""
     bb = get_object_or_404(Bb, pk=pk)
     if request.method == 'POST':
         form = BbForm(request.POST, request.FILES, instance=bb)
@@ -234,6 +252,7 @@ def profile_bb_change(request,pk):
 
 @login_required
 def profile_bb_delete(request, pk):
+    """ delete bb from profile """
     bb = get_object_or_404(Bb, pk=pk)
     if request.method == 'POST':
         bb.delete()

@@ -46,11 +46,11 @@ class NonacitvatedFilter(admin.SimpleListFilter):
 
 
 class AdvUserAdmin(UserAdmin):
-    """ user model """
+    """ user model fro admin """
     add_form = UserCreationForm
     form = AdvUserChangeForm
     model = AdvUser
-    list_display = ['email', 'username', '__str__', 'is_activated', 'date_joined', ]
+    list_display = ['__str__', 'email', 'is_activated', 'date_joined', ] # first elem = link to change
     list_filter = (NonacitvatedFilter,)
     fieldsets = (
         ('section_0', {
@@ -69,29 +69,6 @@ class AdvUserAdmin(UserAdmin):
 
 
 admin.site.register(AdvUser, AdvUserAdmin)
-
-
-class AdvUserNotAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'is_activated', 'date_joined')
-    search_fields = ('username', 'email', 'first_name', 'last_name')
-    list_filter = (NonacitvatedFilter,)
-
-    fields = (('username', 'email'),
-              ('first_name', 'last_name'),
-              ('password', 'new_password_link',),
-              ('send_messages', 'is_active', 'is_activated'),
-              ('is_staff', 'is_superuser'),
-              'groups', 'user_permissions',
-              ('last_login', 'date_joined'))
-
-    readonly_fields = ('last_login', 'date_joined', 'new_password_link')
-    actions = (
-        send_activation_notifications,)
-
-    def new_password_link(self, object):
-        if object.password:
-            return mark_safe(
-                f'<p>Raw passwords are not stored, so there is no way to see this users password, but you can change the password using <a href="../password/">this form</a>.</p>')
 
 
 class SubRubricInline(admin.TabularInline):
@@ -122,7 +99,8 @@ class CommentInBbAdmin(admin.StackedInline):
 
 
 class BbAdmin(admin.ModelAdmin):
-    list_display = ('rubric', 'title', 'content', 'author', 'created_at',)
+    """ products with info for admin panel """
+    list_display = ( 'title','rubric', 'content', 'author', 'created_at',)
     fields = (('rubric', 'author'), 'title', 'content', 'price', 'contacts', 'image', 'is_active',)
     inlines = (AdditionalImageInline, CommentInBbAdmin, )
 
@@ -131,6 +109,7 @@ admin.site.register(Bb, BbAdmin)
 
 
 class CommentAdmin(admin.ModelAdmin):
+    """ products comments for admin panel"""
     list_display = ('author', 'content', 'created_at', 'is_active')
     list_display_links = ('author', 'content')
     list_filter = ('is_active',)

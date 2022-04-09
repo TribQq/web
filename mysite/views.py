@@ -7,3 +7,7 @@ def page_not_found_view(request, exception):
     """ redirect to 404 handler """
     return redirect(reverse('about_me:handler_404', kwargs={}))
 
+
+def view_profile(request):
+    return redirect(reverse('bulletin_board:profile'))
+

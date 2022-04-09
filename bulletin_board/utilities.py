@@ -11,6 +11,7 @@ signer = Signer()
 
 
 def send_activation_notification(user):
+    """ send activation notification """
     if ALLOWED_HOSTS:
         host = 'http://'+ALLOWED_HOSTS[0]
     else:
@@ -26,6 +27,7 @@ def get_timestamp_path(instance,filename):
 
 
 def send_new_comment_notification(comment):
+    """ send new comment notification """
     if ALLOWED_HOSTS:
         host = 'http://' + ALLOWED_HOSTS[0]
     else:
@@ -38,6 +40,7 @@ def send_new_comment_notification(comment):
 
 
 def send_password_reset(user):
+    """ send password reset"""
     if ALLOWED_HOSTS:
         host = 'http://'+ALLOWED_HOSTS[0]
     else:

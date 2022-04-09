@@ -7,6 +7,7 @@ from .utilities import get_timestamp_path, send_new_comment_notification
 
 
 class AdvUser(AbstractUser):
+    """ change default user model on custom user model"""
     is_activated = models.BooleanField(default=True, db_index=True, verbose_name='Активация пройдена')
     send_messages = models.BooleanField(default=True, verbose_name='Отправлять ли оповещения?')
 
@@ -21,6 +22,7 @@ class AdvUser(AbstractUser):
 
 
 class Rubric(models.Model):
+    """ model for ad super rubrics"""
     name = models.CharField(max_length=20, db_index=True, unique=True, verbose_name='Название')
     order = models.SmallIntegerField(default=0, db_index=True,
                                      verbose_name='Порядок')
@@ -34,6 +36,7 @@ class SuperRubricManager(models.Manager):
 
 
 class SuperRubric(Rubric):
+    """ model for super rubric SuperRubric > subRubric > ad"""
     objects = SuperRubricManager()
 
     def __str__(self):
@@ -53,6 +56,7 @@ class SubRubricManager(models.Manager):
 
 
 class SubRubric(Rubric):
+    """ model for sub rubric SuperRubric > subRubric > ad"""
     object = SubRubricManager()
 
     def __str__(self):
@@ -66,6 +70,7 @@ class SubRubric(Rubric):
 
 
 class Bb(models.Model):
+    """ Bb (ad) model """
     rubric = models.ForeignKey(SubRubric, on_delete=models.PROTECT, verbose_name='Рубрика')
     title = models.CharField(max_length=40, verbose_name='Товар')
     content = models.TextField(verbose_name='Описание')
@@ -89,6 +94,7 @@ class Bb(models.Model):
 
 
 class AdditionalImage(models.Model):
+    """ model for add 1 < images"""
     bb = models.ForeignKey(Bb, on_delete=models.CASCADE, verbose_name='Обьявление')
     image = models.ImageField(upload_to=get_timestamp_path, verbose_name='Изображение')
 
@@ -98,6 +104,7 @@ class AdditionalImage(models.Model):
 
 
 class Comment(models.Model):
+    """ model for comments """
     bb = models.ForeignKey(Bb, on_delete=models.CASCADE, verbose_name='Обьявление')
     author = models.CharField(max_length=30, verbose_name='Автор')
     content = models.TextField(verbose_name='Содержание')
