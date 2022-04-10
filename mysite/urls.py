@@ -20,7 +20,7 @@ urlpatterns = [
     path('api/', include('api_notesApp.urls')),
     path('notesApp/', include('react_notesApp.urls')),
        
-    path('accounts/profile/', view_profile, name='view_profile')
+    path('accounts/profile/', view_profile, name='view_profile'),
 ] 
 
 

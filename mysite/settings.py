@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'api_notesApp.apps.ApiNotesappConfig',
     'react_notesApp.apps.ReactNotesappConfig',
     
+    
 
 ]
 
@@ -91,6 +92,7 @@ DATABASES = {
             'PORT': '5432',
     }
 }
+
 
 
 # -------------------- heroku database settings ----------------------
