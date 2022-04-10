@@ -6,14 +6,13 @@ from django.core.signing import Signer
 
 from mysite.settings import ALLOWED_HOSTS
 
-
 signer = Signer()
 
 
 def send_activation_notification(user):
     """ send activation notification """
     if ALLOWED_HOSTS:
-        host = 'http://'+ALLOWED_HOSTS[0]
+        host = 'http://' + ALLOWED_HOSTS[0]
     else:
         host = 'http://localhost:8000'
     context = {'user': user, 'host': host, 'sign': signer.sign(user.username)}
@@ -22,7 +21,8 @@ def send_activation_notification(user):
     user.email_user(subject, body_text)
 
 
-def get_timestamp_path(instance,filename):
+def get_timestamp_path(instance, filename):
+    """ generate timestamp-name for img bb_== app + timestamp"""
     return 'bb_%s%s' % (datetime.now().timestamp(), splitext(filename)[1])
 
 

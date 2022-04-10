@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-# import whitenoise
+
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -9,7 +9,6 @@ SECRET_KEY = 'django-insecure-%+$+reas1f7vm*xep@t#1-2gs&ci^ptq_m-bj5__pnm&cf5j3y
 
 DEBUG = True
 # DEBUG = False
-
 
 
 # ALLOWED_HOSTS = ['*']
@@ -82,18 +81,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
+# DATABASES = {
+#     'default': {
+#             'ENGINE': 'django.db.backends.postgresql',
+#             'NAME': 'mysite_db',
+#             'USER': 'petuser',
+#             'PASSWORD': 'password',
+#             'HOST': 'localhost',
+#             'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
     'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'mysite_db',
-            'USER': 'petuser',
-            'PASSWORD': 'password',
-            'HOST': 'localhost',
-            'PORT': '5432',
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
-
 
 # -------------------- heroku database settings ----------------------
 
@@ -149,12 +153,8 @@ else:
 STATIC_URL = '/static/'
 
 
-
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
-
-
 
 
 

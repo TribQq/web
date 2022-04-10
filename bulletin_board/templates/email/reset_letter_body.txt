@@ -3,7 +3,7 @@
 Вы запросили на сайте "Доска объявлений" сброс пароля.
 Чтобы выполнить сброс, пройдите, пожалуйста, по ссылке
 
-{{ protocol}}://{{ domain }}{% url 'main:password_reset_confirm' uidb64=uid token=token %}
+{{ protocol}}://{{ domain }}{% url 'bulletin_board:password_reset_confirm' uidb64=uid token=token %}
 
 До свидания!
 
