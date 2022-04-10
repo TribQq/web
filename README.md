@@ -23,7 +23,7 @@ repo in progress ...
 <img src="https://raw.githubusercontent.com/TribQq/web/master/description/altAboutMe.jpg">
 
 <h3><li>BulletinBoardApp</li></h3>
-<p>Bulletin board for ad, registratin, comments, sort, Bootstrap styles<p>
+<p>Bulletin board for ad: registratin/auth, comments, sort, Bootstrap styles, etc...)<p>
 <img src="https://raw.githubusercontent.com/TribQq/web/master/description/bulletin_board.jpg">
 
 <h3><li>BookshelfApp</li></h3>
@@ -31,6 +31,13 @@ repo in progress ...
 <p>Now realized: saves, notes, map, win/lose, progress tracking, key-items </p>
 <p>For example added minigame "Лодочник"</p>
 <img src="https://raw.githubusercontent.com/TribQq/web/master/description/book_saves_page.jpg">
+
+
+
+<h3><li>NotesApp</li></h3>
+<p>Just notes app.Create by React + synch with DjanoApi.Realized CRUD operations, sort,create/optimize title for note  </p>
+
+<img src="https://raw.githubusercontent.com/TribQq/web/master/description/notesApp.jpg">
 
 </ul>
 
@@ -47,9 +54,21 @@ source envName/bin/activate
 pip install -r requirements.txt
 python manage.py makemigrations
 python manage.py migrate
+```
+app 'bookshelf do autologin to 'visitor' acc, u need create this(or u can this disable middleware)
+```
+python manage.py createsuperuser
+   >>> Username: visitor
+   >>> Email address:
+   >>> Password:visitor
+   >>> Password (again):visitor
+   >>> Bypass password validation and create user anyway? [y/N]:y
+```
+```
 python manage.py runserver
 ```
 => browser
+http://127.0.0.1:8000/
 </p>
 
 
