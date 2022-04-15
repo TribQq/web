@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<title>title</title>
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!--<meta property="og:image" content="path/to/image.jpg">
+	<link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">-->
+	<link rel="stylesheet" href="css/main.min.css">
+	<meta name="theme-color" content="#000">
+	<meta name="msapplication-navbutton-color" content="#000">
+	<meta name="apple-mobile-web-app-status-bar-style" content="#000">
+</head>
+<body>
+	<!-- start header -->
+	<header class="header">
+		<div class="wrapper">
+			<div class="header-logo">
+				<a href="#">
+					<img src="img/logo.svg" alt="">
+				</a>
+			</div>
+			<div class="header-row">
+				<ul class="header-list">
+					<li><a href="#">Home</a></li>
+					<li><a href="#">About us</a></li>
+					<li><a href="#">How it works</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">Resources</a></li>
+					<li><a href="#">Support</a></li>
+				</ul>
+				<div class="header-btns">
+					<a href="#" class="header-link">Login</a>
+					<a href="#" class="header-btn"><span>Sign Up</span></a>
+				</div>
+			</div>
+			<div class="header-bar">
+				<span></span>
+			</div>
+		</div>
+	</header>
+	<!-- end header -->
+	<!-- start main -->
+	<section class="main">
+		<div class="main-bg main-bg__1"><svg width="199" height="417" viewBox="0 0 199 417" fill="none" xmlns="http://www.w3.org/2000/svg"><g opacity="0.2"><path d="M72.5009 0.564442L198.5 66.3031V209.697L73 275.436L-52.5 209.697V66.302L72.5009 0.564442Z" stroke="white"/><path d="M-52.5 66.5L73 132L198.5 66.5" stroke="white"/><path d="M73 132V276" stroke="white"/></g><path d="M72 276L-68 349V417L72 343V276Z" fill="#4FA8FD"/><path d="M146 237V170L72 209V276L146 237Z" fill="#F39661"/></svg></div>
+		<div class="main-bg main-bg__2"><svg width="199" height="284" viewBox="0 0 199 284" fill="none" xmlns="http://www.w3.org/2000/svg"><g opacity="0.2"><path d="M125.501 8.56444L251.5 74.3031V217.697L126 283.436L0.5 217.697V74.302L125.501 8.56444Z" stroke="white"/><path d="M0.5 74.5L126 140L251.5 74.5" stroke="white"/><path d="M126 140V284" stroke="white"/></g><path d="M126 208V141L52 180V247L126 208Z" fill="#925AF0"/><path d="M266 0L126 73V141L266 67V0Z" fill="#4FA8FD"/></svg></div>
+		<div class="main-bg main-bg__mob main-bg__1"><svg width="36" height="156" viewBox="0 0 36 156" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M36 137L20 145V156L36 148V137Z" fill="white"/><path d="M20 39V0L-54 39V78L20 39Z" fill="#F39661"/></svg></div>
+		<div class="main-bg main-bg__mob main-bg__2"><svg width="36" height="157" viewBox="0 0 36 157" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 0L0 8V19L16 11V0Z" fill="white"/><path d="M90 118V79L16 118V157L90 118Z" fill="#925AF0"/></svg></div>
+		<div class="wrapper">
+			<div class="main-wrap">
+				<div class="main-img main-img__1"><svg width="260" height="300" viewBox="0 0 260 300" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#jdwine345)"><rect x="30" y="10" width="200" height="87" rx="25" fill="white"/></g><path d="M117.56 48.58C118.32 48.58 118.993 48.7 119.58 48.94C120.18 49.18 120.64 49.5133 120.96 49.94C121.293 50.3667 121.46 50.84 121.46 51.36L121.44 51.72H119.58V51.54C119.58 50.5667 118.827 50.08 117.32 50.08C115.827 50.08 115.08 50.5267 115.08 51.42C115.08 51.8333 115.293 52.14 115.72 52.34C116.147 52.5267 116.8 52.7067 117.68 52.88C118.52 53.0533 119.207 53.2333 119.74 53.42C120.287 53.6067 120.747 53.9 121.12 54.3C121.507 54.7 121.7 55.24 121.7 55.92C121.7 57.0133 121.327 57.8333 120.58 58.38C119.833 58.9267 118.76 59.2 117.36 59.2H117.06C116.22 59.2 115.487 59.0733 114.86 58.82C114.233 58.5533 113.747 58.2 113.4 57.76C113.067 57.3067 112.907 56.8 112.92 56.24V55.8H114.78V56C114.78 57.1333 115.733 57.7 117.64 57.7C118.2 57.7 118.7 57.5733 119.14 57.32C119.593 57.0667 119.82 56.72 119.82 56.28C119.82 55.9067 119.693 55.6133 119.44 55.4C119.2 55.1867 118.9 55.0267 118.54 54.92C118.18 54.8133 117.68 54.7067 117.04 54.6C116.213 54.44 115.547 54.28 115.04 54.12C114.533 53.9467 114.1 53.66 113.74 53.26C113.38 52.86 113.2 52.3133 113.2 51.62C113.2 50.6733 113.573 49.9333 114.32 49.4C115.067 48.8533 116.087 48.58 117.38 48.58H117.56ZM128.444 48.58C129.284 48.58 130.024 48.76 130.664 49.12C131.317 49.4667 131.824 49.9667 132.184 50.62C132.544 51.2733 132.724 52.0333 132.724 52.9V54.32H125.584C125.61 55.4 125.864 56.2333 126.344 56.82C126.824 57.4067 127.537 57.7 128.484 57.7C129.324 57.7 129.944 57.4533 130.344 56.96C130.744 56.4667 130.944 55.88 130.944 55.2H132.724C132.724 56 132.537 56.7 132.164 57.3C131.804 57.9 131.297 58.3667 130.644 58.7C130.004 59.0333 129.27 59.2 128.444 59.2H128.364C126.924 59.2 125.784 58.74 124.944 57.82C124.117 56.8867 123.704 55.6467 123.704 54.1V53.7C123.704 52.6867 123.89 51.7933 124.264 51.02C124.637 50.2467 125.17 49.6467 125.864 49.22C126.557 48.7933 127.37 48.58 128.304 48.58H128.444ZM128.344 50.08C127.584 50.08 126.964 50.3133 126.484 50.78C126.017 51.2467 125.73 51.94 125.624 52.86H130.864V52.62C130.864 51.86 130.63 51.2467 130.164 50.78C129.71 50.3133 129.104 50.08 128.344 50.08ZM139.457 48.58C140.27 48.58 140.997 48.76 141.637 49.12C142.29 49.4667 142.797 49.96 143.157 50.6C143.517 51.24 143.697 51.9733 143.697 52.8H141.837C141.837 51.9733 141.624 51.3133 141.197 50.82C140.784 50.3267 140.184 50.08 139.397 50.08C138.57 50.08 137.91 50.36 137.417 50.92C136.937 51.4667 136.697 52.22 136.697 53.18V54.26C136.697 55.42 136.937 56.2867 137.417 56.86C137.897 57.42 138.577 57.7 139.457 57.7C140.27 57.7 140.877 57.46 141.277 56.98C141.69 56.4867 141.897 55.8267 141.897 55H143.697C143.697 56.28 143.31 57.3 142.537 58.06C141.777 58.82 140.757 59.2 139.477 59.2H139.317C138.41 59.2 137.617 58.9933 136.937 58.58C136.257 58.1533 135.73 57.56 135.357 56.8C134.997 56.04 134.817 55.1533 134.817 54.14V53.66C134.817 52.6467 135.004 51.76 135.377 51C135.75 50.2267 136.277 49.6333 136.957 49.22C137.637 48.7933 138.417 48.58 139.297 48.58H139.457ZM150.936 48.58C151.882 48.58 152.622 48.8867 153.156 49.5C153.689 50.1 153.956 50.86 153.956 51.78L153.896 52.54H152.236V52.1C152.236 51.7 152.136 51.3467 151.936 51.04C151.736 50.7333 151.482 50.5 151.176 50.34C150.869 50.1667 150.562 50.08 150.256 50.08C149.616 50.08 149.116 50.3333 148.756 50.84C148.396 51.3467 148.216 52.0333 148.216 52.9V59H146.336V48.78H147.676L147.956 50.3C148.036 50.0333 148.216 49.7667 148.496 49.5C148.776 49.2333 149.122 49.0133 149.536 48.84C149.962 48.6667 150.429 48.58 150.936 48.58ZM160.24 48.58C161.08 48.58 161.82 48.76 162.46 49.12C163.114 49.4667 163.62 49.9667 163.98 50.62C164.34 51.2733 164.52 52.0333 164.52 52.9V54.32H157.38C157.407 55.4 157.66 56.2333 158.14 56.82C158.62 57.4067 159.334 57.7 160.28 57.7C161.12 57.7 161.74 57.4533 162.14 56.96C162.54 56.4667 162.74 55.88 162.74 55.2H164.52C164.52 56 164.334 56.7 163.96 57.3C163.6 57.9 163.094 58.3667 162.44 58.7C161.8 59.0333 161.067 59.2 160.24 59.2H160.16C158.72 59.2 157.58 58.74 156.74 57.82C155.914 56.8867 155.5 55.6467 155.5 54.1V53.7C155.5 52.6867 155.687 51.7933 156.06 51.02C156.434 50.2467 156.967 49.6467 157.66 49.22C158.354 48.7933 159.167 48.58 160.1 48.58H160.24ZM160.14 50.08C159.38 50.08 158.76 50.3133 158.28 50.78C157.814 51.2467 157.527 51.94 157.42 52.86H162.66V52.62C162.66 51.86 162.427 51.2467 161.96 50.78C161.507 50.3133 160.9 50.08 160.14 50.08ZM169.454 48.78H171.834V50.28H169.454V56.38C169.454 56.86 169.547 57.2067 169.734 57.42C169.92 57.6333 170.207 57.74 170.594 57.74C170.94 57.74 171.354 57.64 171.834 57.44V58.84C171.354 59.08 170.734 59.2 169.974 59.2C169.187 59.2 168.587 58.9667 168.174 58.5C167.774 58.0333 167.574 57.2933 167.574 56.28V50.28H166.454V48.78H167.634L168.274 45.52H169.454V48.78ZM175.908 56.78V59H173.888V56.78H175.908ZM187.293 59H185.893C185.8 58.5733 185.713 58.1067 185.633 57.6C184.873 58.6667 183.82 59.2 182.473 59.2C181.193 59.2 180.18 58.7267 179.433 57.78C178.7 56.8333 178.333 55.5333 178.333 53.88V53.66C178.333 52.1 178.693 50.8667 179.413 49.96C180.146 49.04 181.166 48.58 182.473 48.58C183.74 48.58 184.72 49.08 185.413 50.08V44.6H187.293V59ZM182.813 50.08C181.92 50.08 181.26 50.3933 180.833 51.02C180.42 51.6333 180.213 52.5933 180.213 53.9C180.213 55.2067 180.426 56.1667 180.853 56.78C181.28 57.3933 181.933 57.7 182.813 57.7C184.56 57.7 185.433 56.4333 185.433 53.9C185.433 52.5933 185.213 51.6333 184.773 51.02C184.333 50.3933 183.68 50.08 182.813 50.08ZM194.693 48.58C196.12 48.58 197.26 49.02 198.113 49.9C198.966 50.78 199.393 51.9867 199.393 53.52V54.26C199.393 55.7933 198.973 57 198.133 57.88C197.293 58.76 196.146 59.2 194.693 59.2C193.24 59.2 192.093 58.76 191.253 57.88C190.413 57 189.993 55.7933 189.993 54.26V53.52C189.993 51.9867 190.42 50.78 191.273 49.9C192.126 49.02 193.266 48.58 194.693 48.58ZM194.693 50.08C193.8 50.08 193.106 50.3867 192.613 51C192.12 51.6133 191.873 52.5133 191.873 53.7V54.08C191.873 55.24 192.113 56.1333 192.593 56.76C193.086 57.3867 193.786 57.7 194.693 57.7C195.573 57.7 196.26 57.3933 196.753 56.78C197.26 56.1533 197.513 55.2533 197.513 54.08V53.7C197.513 52.54 197.266 51.6467 196.773 51.02C196.293 50.3933 195.6 50.08 194.693 50.08ZM206.098 48.58C206.911 48.58 207.638 48.76 208.278 49.12C208.931 49.4667 209.438 49.96 209.798 50.6C210.158 51.24 210.338 51.9733 210.338 52.8H208.478C208.478 51.9733 208.264 51.3133 207.838 50.82C207.424 50.3267 206.824 50.08 206.038 50.08C205.211 50.08 204.551 50.36 204.058 50.92C203.578 51.4667 203.338 52.22 203.338 53.18V54.26C203.338 55.42 203.578 56.2867 204.058 56.86C204.538 57.42 205.218 57.7 206.098 57.7C206.911 57.7 207.518 57.46 207.918 56.98C208.331 56.4867 208.538 55.8267 208.538 55H210.338C210.338 56.28 209.951 57.3 209.178 58.06C208.418 58.82 207.398 59.2 206.118 59.2H205.958C205.051 59.2 204.258 58.9933 203.578 58.58C202.898 58.1533 202.371 57.56 201.998 56.8C201.638 56.04 201.458 55.1533 201.458 54.14V53.66C201.458 52.6467 201.644 51.76 202.018 51C202.391 50.2267 202.918 49.6333 203.598 49.22C204.278 48.7933 205.058 48.58 205.938 48.58H206.098Z" fill="#499AF9"/><g filter="url(#pofdnewql45)"><path d="M197 178.667H161L149 166.667H119C114.029 166.667 110 170.696 110 175.667V240.333C110 245.304 114.029 249.333 119 249.333H197C201.971 249.333 206 245.304 206 240.333V187.667C206 182.696 201.971 178.667 197 178.667Z" fill="white"/></g><rect x="46" y="26" width="54" height="54" rx="13" fill="#499AF9" fill-opacity="0.25"/><path d="M74.25 46.4375V39H63.3125C62.5852 39 62 39.5852 62 40.3125V65.6875C62 66.4148 62.5852 67 63.3125 67H81.6875C82.4148 67 83 66.4148 83 65.6875V47.75H75.5625C74.8406 47.75 74.25 47.1594 74.25 46.4375ZM77.75 59.3438C77.75 59.7047 77.4547 60 77.0938 60H67.9062C67.5453 60 67.25 59.7047 67.25 59.3438V58.9062C67.25 58.5453 67.5453 58.25 67.9062 58.25H77.0938C77.4547 58.25 77.75 58.5453 77.75 58.9062V59.3438ZM77.75 55.8438C77.75 56.2047 77.4547 56.5 77.0938 56.5H67.9062C67.5453 56.5 67.25 56.2047 67.25 55.8438V55.4062C67.25 55.0453 67.5453 54.75 67.9062 54.75H77.0938C77.4547 54.75 77.75 55.0453 77.75 55.4062V55.8438ZM77.75 51.9062V52.3438C77.75 52.7047 77.4547 53 77.0938 53H67.9062C67.5453 53 67.25 52.7047 67.25 52.3438V51.9062C67.25 51.5453 67.5453 51.25 67.9062 51.25H77.0938C77.4547 51.25 77.75 51.5453 77.75 51.9062ZM83 45.6664V46H76V39H76.3336C76.6836 39 77.0172 39.1367 77.2633 39.3828L82.6172 44.7422C82.8633 44.9883 83 45.3219 83 45.6664Z" fill="#499AF9"/><g clip-path="url(#n3i4nrf)"><path d="M168.049 202.072L153.05 206.501C152.746 206.597 152.48 206.787 152.291 207.044C152.102 207.302 152 207.612 152 207.932V220.185C151.509 220.066 151.005 220.004 150.5 220.001C148.016 220.001 146 221.345 146 223.001C146 224.658 148.016 226.001 150.5 226.001C152.984 226.001 155 224.658 155 223.001V212.048L167 208.532V217.186C166.509 217.066 166.005 217.004 165.5 217.001C163.016 217.001 161 218.345 161 220.001C161 221.658 163.016 223.001 165.5 223.001C167.984 223.001 170 221.658 170 220.001V203.501C170 203.266 169.944 203.034 169.838 202.824C169.731 202.614 169.576 202.432 169.386 202.293C169.196 202.154 168.976 202.061 168.744 202.023C168.512 201.984 168.274 202.001 168.049 202.072Z" fill="#9175F7"/></g><path d="M18 185L2 193V204L18 196V185Z" fill="white"/><defs><filter id="jdwine345" x="0" y="0" width="260" height="147" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/><feOffset dy="20"/><feGaussianBlur stdDeviation="15"/><feColorMatrix type="matrix" values="0 0 0 0 0.229491 0 0 0 0 0.153663 0 0 0 0 0.695833 0 0 0 1 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/></filter><filter id="pofdnewql45" x="80" y="150" width="156" height="156" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/><feOffset dy="20"/><feGaussianBlur stdDeviation="15"/><feColorMatrix type="matrix" values="0 0 0 0 0.231373 0 0 0 0 0.152941 0 0 0 0 0.694118 0 0 0 0.5 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/></filter><clipPath id="n3i4nrf"><rect width="24" height="24" fill="white" transform="translate(146 202)"/></clipPath></defs></svg></div>
+				<div class="main-img main-img__2"><svg width="260" height="387" viewBox="0 0 260 387" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#omofnrf43)"><rect x="30" y="250" width="200" height="87" rx="25" fill="white"/></g><rect x="46" y="266" width="54" height="54" rx="13" fill="#F2AF60" fill-opacity="0.25"/><g filter="url(#ubrencds32)"><path d="M141 104.667H105L93 92.6667H63C58.0294 92.6667 54 96.696 54 101.667V166.333C54 171.304 58.0294 175.333 63 175.333H141C145.971 175.333 150 171.304 150 166.333V113.667C150 108.696 145.971 104.667 141 104.667Z" fill="white"/></g><path d="M116.5 127H116V128.25C116 128.663 115.663 129 115.25 129H112.75C112.337 129 112 128.663 112 128.25V127H92V128.25C92 128.663 91.6625 129 91.25 129H88.75C88.3375 129 88 128.663 88 128.25V127H87.5C86.6687 127 86 127.669 86 128.5V149.5C86 150.331 86.6687 151 87.5 151H88V149.75C88 149.337 88.3375 149 88.75 149H91.25C91.6625 149 92 149.337 92 149.75V151H112V149.75C112 149.337 112.337 149 112.75 149H115.25C115.663 149 116 149.337 116 149.75V151H116.5C117.331 151 118 150.331 118 149.5V128.5C118 127.669 117.331 127 116.5 127ZM92 146.25C92 146.663 91.6625 147 91.25 147H88.75C88.3375 147 88 146.663 88 146.25V143.75C88 143.337 88.3375 143 88.75 143H91.25C91.6625 143 92 143.337 92 143.75V146.25ZM92 140.25C92 140.663 91.6625 141 91.25 141H88.75C88.3375 141 88 140.663 88 140.25V137.75C88 137.337 88.3375 137 88.75 137H91.25C91.6625 137 92 137.337 92 137.75V140.25ZM92 134.25C92 134.662 91.6625 135 91.25 135H88.75C88.3375 135 88 134.662 88 134.25V131.75C88 131.338 88.3375 131 88.75 131H91.25C91.6625 131 92 131.338 92 131.75V134.25ZM109 147.25C109 147.663 108.663 148 108.25 148H95.75C95.3375 148 95 147.663 95 147.25V141.25C95 140.837 95.3375 140.5 95.75 140.5H108.25C108.663 140.5 109 140.837 109 141.25V147.25ZM109 136.75C109 137.163 108.663 137.5 108.25 137.5H95.75C95.3375 137.5 95 137.163 95 136.75V130.75C95 130.338 95.3375 130 95.75 130H108.25C108.663 130 109 130.338 109 130.75V136.75ZM116 146.25C116 146.663 115.663 147 115.25 147H112.75C112.337 147 112 146.663 112 146.25V143.75C112 143.337 112.337 143 112.75 143H115.25C115.663 143 116 143.337 116 143.75V146.25ZM116 140.25C116 140.663 115.663 141 115.25 141H112.75C112.337 141 112 140.663 112 140.25V137.75C112 137.337 112.337 137 112.75 137H115.25C115.663 137 116 137.337 116 137.75V140.25ZM116 134.25C116 134.662 115.663 135 115.25 135H112.75C112.337 135 112 134.662 112 134.25V131.75C112 131.338 112.337 131 112.75 131H115.25C115.663 131 116 131.338 116 131.75V134.25Z" fill="#EE665E"/><path d="M82.6172 284.742L77.2633 279.383C77.0172 279.137 76.6836 279 76.3336 279H76V286H83V285.666C83 285.322 82.8633 284.988 82.6172 284.742ZM69.0219 297.375C68.043 297.375 67.25 298.037 67.25 298.852C67.25 299.672 68.0484 300.328 69.0273 300.328C70.0063 300.328 70.7992 299.666 70.7992 298.852C70.7992 298.037 70.0008 297.375 69.0219 297.375ZM74.25 286.438V279H70.7719V280.75H69.0219V279H63.3125C62.5852 279 62 279.585 62 280.312V305.688C62 306.415 62.5852 307 63.3125 307H81.6875C82.4148 307 83 306.415 83 305.688V287.75H75.5625C74.8406 287.75 74.25 287.159 74.25 286.438ZM67.2445 280.75H68.9945V282.5H67.2445V280.75ZM69.0109 301.75C67.1953 301.75 65.8391 300.087 66.2 298.31L67.2719 293V291.25H69.0219V289.5H67.2719V287.75H69.0219V286H67.2719V284.25H69.0219V282.5H70.7719V284.25H69.0219V286H70.7719V287.75H69.0219V289.5H70.7719V291.25H69.0219V293H70.2305C70.5422 293 70.8156 293.224 70.8758 293.53L71.8219 298.327C72.1719 300.098 70.8156 301.75 69.0109 301.75Z" fill="#F2AF60"/><path d="M120.54 284.6V294.48L125.1 288.78H127.16L123.22 293.74L127.42 299H125.14L122.08 295.2L120.54 296.8V299H118.66V284.6H120.54ZM133.112 288.58C133.952 288.58 134.692 288.76 135.332 289.12C135.985 289.467 136.492 289.967 136.852 290.62C137.212 291.273 137.392 292.033 137.392 292.9V294.32H130.252C130.278 295.4 130.532 296.233 131.012 296.82C131.492 297.407 132.205 297.7 133.152 297.7C133.992 297.7 134.612 297.453 135.012 296.96C135.412 296.467 135.612 295.88 135.612 295.2H137.392C137.392 296 137.205 296.7 136.832 297.3C136.472 297.9 135.965 298.367 135.312 298.7C134.672 299.033 133.938 299.2 133.112 299.2H133.032C131.592 299.2 130.452 298.74 129.612 297.82C128.785 296.887 128.372 295.647 128.372 294.1V293.7C128.372 292.687 128.558 291.793 128.932 291.02C129.305 290.247 129.838 289.647 130.532 289.22C131.225 288.793 132.038 288.58 132.972 288.58H133.112ZM133.012 290.08C132.252 290.08 131.632 290.313 131.152 290.78C130.685 291.247 130.398 291.94 130.292 292.86H135.532V292.62C135.532 291.86 135.298 291.247 134.832 290.78C134.378 290.313 133.772 290.08 133.012 290.08ZM144.645 298.6C144.192 299.72 143.772 300.573 143.385 301.16C142.998 301.76 142.605 302.167 142.205 302.38C141.805 302.607 141.338 302.72 140.805 302.72C140.312 302.72 139.845 302.627 139.405 302.44V300.9C139.845 301.087 140.178 301.18 140.405 301.18C140.952 301.18 141.405 300.993 141.765 300.62C142.138 300.26 142.445 299.687 142.685 298.9L138.705 288.78H140.705L143.645 296.32H143.725L146.625 288.78H148.465L144.645 298.6ZM154.259 288.58C155.019 288.58 155.693 288.7 156.279 288.94C156.879 289.18 157.339 289.513 157.659 289.94C157.993 290.367 158.159 290.84 158.159 291.36L158.139 291.72H156.279V291.54C156.279 290.567 155.526 290.08 154.019 290.08C152.526 290.08 151.779 290.527 151.779 291.42C151.779 291.833 151.993 292.14 152.419 292.34C152.846 292.527 153.499 292.707 154.379 292.88C155.219 293.053 155.906 293.233 156.439 293.42C156.986 293.607 157.446 293.9 157.819 294.3C158.206 294.7 158.399 295.24 158.399 295.92C158.399 297.013 158.026 297.833 157.279 298.38C156.533 298.927 155.459 299.2 154.059 299.2H153.759C152.919 299.2 152.186 299.073 151.559 298.82C150.933 298.553 150.446 298.2 150.099 297.76C149.766 297.307 149.606 296.8 149.619 296.24V295.8H151.479V296C151.479 297.133 152.433 297.7 154.339 297.7C154.899 297.7 155.399 297.573 155.839 297.32C156.293 297.067 156.519 296.72 156.519 296.28C156.519 295.907 156.393 295.613 156.139 295.4C155.899 295.187 155.599 295.027 155.239 294.92C154.879 294.813 154.379 294.707 153.739 294.6C152.913 294.44 152.246 294.28 151.739 294.12C151.233 293.947 150.799 293.66 150.439 293.26C150.079 292.86 149.899 292.313 149.899 291.62C149.899 290.673 150.273 289.933 151.019 289.4C151.766 288.853 152.786 288.58 154.079 288.58H154.259ZM162.783 296.78V299H160.763V296.78H162.783ZM172.468 288.78V289.52L167.468 297.5H172.628V299H164.888V298.24L169.868 290.28H165.188V288.78H172.468ZM177.006 284.6V286.34H175.046V284.6H177.006ZM176.966 288.78V299H175.086V288.78H176.966ZM185.101 288.58C186.394 288.58 187.408 289.053 188.141 290C188.874 290.947 189.241 292.247 189.241 293.9V294.12C189.241 295.693 188.874 296.933 188.141 297.84C187.421 298.747 186.408 299.2 185.101 299.2C183.848 299.2 182.868 298.7 182.161 297.7V302.62H180.281V288.78H181.681C181.774 289.207 181.861 289.673 181.941 290.18C182.701 289.113 183.754 288.58 185.101 288.58ZM184.761 290.08C183.854 290.08 183.188 290.393 182.761 291.02C182.348 291.647 182.141 292.6 182.141 293.88C182.141 295.187 182.354 296.153 182.781 296.78C183.221 297.393 183.881 297.7 184.761 297.7C185.641 297.7 186.294 297.387 186.721 296.76C187.148 296.133 187.361 295.173 187.361 293.88C187.361 292.573 187.141 291.613 186.701 291C186.274 290.387 185.628 290.08 184.761 290.08Z" fill="#F2AF60"/><path d="M258 0L242 8V19L258 11V0Z" fill="white"/><defs><filter id="omofnrf43" x="0" y="240" width="260" height="147" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/><feOffset dy="20"/><feGaussianBlur stdDeviation="15"/><feColorMatrix type="matrix" values="0 0 0 0 0.231373 0 0 0 0 0.152941 0 0 0 0 0.694118 0 0 0 0.5 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/></filter><filter id="ubrencds32" x="24" y="76" width="156" height="156" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/><feOffset dy="20"/><feGaussianBlur stdDeviation="15"/><feColorMatrix type="matrix" values="0 0 0 0 0.231373 0 0 0 0 0.152941 0 0 0 0 0.694118 0 0 0 0.5 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/></filter></defs></svg></div>
+				<div class="main-info">
+					<h1 class="main-title">Bitcoin Blockchain File Hosting</h1>
+					<p>Easy and secure file sharing</p>
+					<div class="main-drop">
+						<div class="main-drop__wrap">
+							<input type="file" class="input-file"><!-- here input upload -->
+							<div class="main-drop__ico"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M47.6983 16.045C46.863 7.86546 40.3428 1.16395 32.2062 0.142475C23.4276 -0.948647 15.7319 4.34446 13.048 12.0055C12.7077 11.9746 12.3751 11.9514 12.0271 11.9514C5.44505 11.9514 0 17.3296 0 23.9305V26.9175C0 30.7249 5.98646 31.0034 5.98646 26.8479V24.4877C5.63841 20.928 8.53882 17.9332 12.0271 17.9332C12.9707 17.9332 13.9065 17.9409 14.8501 17.9332C16.2114 18.0493 17.4566 17.4534 17.9052 16.1688L18.5549 14.3193C20.125 9.81555 24.1005 6.44932 28.834 6.0237C36.9938 5.30403 42.114 11.7502 42.0057 19.5118C42.0057 22.0733 42.0367 24.7043 42.0367 27.2271C42.261 30.7945 47.706 31.0653 47.9845 27.2193C47.9845 23.1644 48.1005 19.9684 47.6983 16.045Z" fill="url(#jewbofjqwe3)"/><path fill-rule="evenodd" clip-rule="evenodd" d="M25.9935 24.8823C24.8256 23.7293 22.9229 23.7293 21.7627 24.8823L12.9068 33.8899C10.1301 36.6525 14.3609 40.87 17.1375 38.0996L20.997 34.1452V45.0487C20.997 48.9799 26.9603 48.9876 26.9603 45.0487L26.9525 34.1684L30.7037 38.0067C33.666 40.9551 37.8194 36.668 35.0505 33.9131L25.9935 24.8823Z" fill="url(#newpk3423)"/><defs><linearGradient id="jewbofjqwe3" x1="3.93912" y1="30.1079" x2="39.267" y2="2.67606" gradientUnits="userSpaceOnUse"><stop stop-color="#40B8FF"/><stop offset="0.257902" stop-color="#9556EF"/><stop offset="0.463542" stop-color="#EB505C"/><stop offset="0.739764" stop-color="#F29160"/><stop offset="1" stop-color="#FAD464"/></linearGradient><linearGradient id="newpk3423" x1="13.9664" y1="48.0829" x2="36.8527" y2="36.9843" gradientUnits="userSpaceOnUse"><stop stop-color="#40B8FF"/><stop offset="0.257902" stop-color="#9556EF"/><stop offset="0.463542" stop-color="#EB505C"/><stop offset="0.739764" stop-color="#F29160"/><stop offset="1" stop-color="#FAD464"/></linearGradient></defs></svg></div>
+							<span class="main-drop__title">Drag & Drop files</span>
+							<span class="main-drop__subtitle">or click to send up to 1GB</span>
+							<span class="main-btn">Select file to upload</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end main -->
+	<!-- start about -->
+	<section class="about">
+		<div class="about-bg"><svg width="163" height="276" viewBox="0 0 163 276" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M74 151.928V85L0 123.544V191L74 151.928Z" fill="#925AF0"/><g opacity="0.2"><path d="M36.5009 0.564442L162.5 66.3031V209.697L37 275.436L-88.5 209.697V66.302L36.5009 0.564442Z" stroke="#59678C"/><path d="M-88.5 66.5L37 132L162.5 66.5" stroke="#59678C"/><path d="M37 132V276" stroke="#59678C"/></g></svg></div>
+		<div class="wrapper">
+			<div class="about-row">
+				<div class="about-img">
+					<img src="img/about-img.svg" alt="">
+				</div>
+				<div class="about-info">
+					<h2 class="section-title">What is BitUpload?</h2>
+					<span class="about-subtitle">Bitcoin and other Cryptocurrencies are an excellent way to stay anonymous when you do online purchases, peer-to-Peer payments & more.</span>
+					<p>However, cryptocurrencies do not afford you complete anonymity since all activities and transactions are recorded in the open-source software, called the blockchain. </p>
+					<div class="about-btn">
+						<a href="#modal-video" class="main-btn main-btn__ico button-modal video">
+							<span class="video-url">https://www.youtube.com/embed/Uoq8NA_N7Ao?autoplay=1</span>
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="12" fill="white"/><path d="M16 12L10 8V16L16 12Z" fill="#4B37C6"/></svg>
+							Watch video
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end about -->
+	<!-- start howWork -->
+	<section class="howWork">
+		<div class="howWork-bg"><svg width="163" height="276" viewBox="0 0 163 276" fill="none" xmlns="http://www.w3.org/2000/svg"><g opacity="0.2"><path d="M125.501 0.564442L251.5 66.3031V209.697L126 275.436L0.5 209.697V66.302L125.501 0.564442Z" stroke="#59678C"/><path d="M0.5 66.5L126 132L251.5 66.5" stroke="#59678C"/><path d="M126 132V276" stroke="#59678C"/></g><path d="M163 151.928V85L89 123.544V191L163 151.928Z" fill="#F39661"/></svg></div>
+		<div class="wrapper">
+			<div class="howWork-top">
+				<div class="howWork-top__main">
+					<span class="section-subtitle">ABOUT BITUPLOAD</span>
+					<h2 class="section-title">How Does It Work?</h2>
+				</div>
+				<p>Bitcoin and other Cryptocurrencies are anexcellent way to stay anonymous when you do online purchases.</p>
+			</div>
+		</div>
+		<div class="wrapper wrapper-big">
+			<div class="howWork-row">
+				<div class="howWork-col">
+					<div class="howWork-wrap">
+						<div class="howWork-ico"><img src="img/howWork-ico-1.svg" alt=""></div>
+						<h3 class="howWork-title">Step 1</h3>
+						<span class="howWork-subtitle">Select file to upload</span>
+						<p>However, cryptocurrencies do not afford you complete anonymity since all </p>
+					</div>
+				</div><!-- col -->
+				<div class="howWork-col">
+					<div class="howWork-wrap">
+					 	<div class="howWork-ico"><img src="img/howWork-ico-2.svg" alt=""></div>
+						<h3 class="howWork-title">Step 2</h3>
+						<span class="howWork-subtitle">Pay for file uploading</span>
+						<p>However, cryptocurrencies do not afford you complete anonymity since all </p>
+					</div>
+				</div><!-- col -->
+				<div class="howWork-col">
+					<div class="howWork-wrap">
+						<div class="howWork-ico"><img src="img/howWork-ico-3.svg" alt=""></div>
+						<h3 class="howWork-title">Step 3</h3>
+						<span class="howWork-subtitle">We uploads your file to the blockchain</span>
+						<p>However, cryptocurrencies do not afford you complete anonymity since all </p>
+					</div>
+				</div><!-- col -->
+				<div class="howWork-col">
+					<div class="howWork-wrap">
+						<div class="howWork-ico"><img src="img/howWork-ico-4.svg" alt=""></div>
+						<h3 class="howWork-title">Step 4</h3>
+						<span class="howWork-subtitle">You get a link to your file</span>
+						<p>However, cryptocurrencies do not afford you complete anonymity since all </p>
+					</div>
+				</div><!-- col -->
+			</div>
+		</div>
+	</section>
+	<!-- end howWork -->
+	<!-- start cases -->
+	<section class="cases">
+		<div class="cases-bg cases-bg__1"><svg width="127" height="417" viewBox="0 0 127 417" fill="none" xmlns="http://www.w3.org/2000/svg"><g opacity="0.2"><path d="M0.500916 0.564442L126.5 66.3031V209.697L1 275.436L-124.5 209.697V66.302L0.500916 0.564442Z" stroke="white"/><path d="M-124.5 66.5L1 132L126.5 66.5" stroke="white"/><path d="M1 132V276" stroke="white"/></g><path d="M74 237V170L0 208.586V276.114L74 237Z" fill="#4FA8FD"/></svg></div>
+		<div class="cases-bg cases-bg__2"><svg width="1000" height="522" viewBox="0 0 1000 522" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1000 905.405V0L0 521.429V1433.98L1000 905.405Z" fill="#4733BD"/><g opacity="0.2"><path d="M999.501 156.564L1125.5 222.303V365.697L1000 431.436L874.5 365.697V222.302L999.501 156.564Z" stroke="white"/><path d="M874.5 222.5L1000 288L1125.5 222.5" stroke="white"/><path d="M1000 288V432" stroke="white"/></g><path d="M1000 356V289L926 327.586V395.114L1000 356Z" fill="#925AF0"/></svg></div>
+		<div class="wrapper">
+			<div class="section-top">
+				<h2 class="section-title">Use Cases</h2>
+				<p>What can be stored on the blockchain?</p>
+			</div>
+			<div class="cases-row">
+				<div class="cases-info">
+					<div class="cases-drop">
+						<div class="cases-drop__ico"><svg width="17" height="13" viewBox="0 0 17 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.3751 2.54688L6.53125 11.7032L6.54688 12.6876H6.95313L16.5313 4.96876C16.2501 4.1094 15.8594 3.28126 15.3751 2.54688Z" fill="#281887"/><path d="M16.8126 2.10941L15.047 0.359385C14.8126 0.124997 14.422 0.124997 14.172 0.359385L6.62505 8.1563L3.3594 4.93754C3.12501 4.70315 2.73439 4.70315 2.48441 4.93754L0.921885 6.48443C0.687497 6.71882 0.687497 7.10944 0.921885 7.34383L6.14068 12.5157C6.28132 12.6563 6.46881 12.7032 6.65631 12.6876C6.8438 12.7032 7.0313 12.6563 7.17194 12.5157L16.8126 2.9844C17.047 2.73438 17.047 2.34375 16.8126 2.10941Z" fill="#F2F1EF"/><path d="M7.17194 12.5157L16.8126 2.98438C17.047 2.75 17.047 2.35937 16.8126 2.12499L16.5314 1.85938L6.64068 11.5782L1.1719 6.25003L0.93751 6.48442C0.703122 6.71881 0.703122 7.10943 0.93751 7.34382L6.15631 12.5157C6.29695 12.6564 6.48444 12.7032 6.67194 12.6876C6.8438 12.7032 7.0313 12.6563 7.17194 12.5157Z" fill="#E6E5E3"/></svg></div>
+						<div class="cases-drop__top">
+							<span class="cases-drop__top-subtitle">
+								Cryptocurrency wallet backup
+								<svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6 6C7.66667 4.33333 11 1 11 1" stroke="white" stroke-width="2"/></svg>
+							</span>
+						</div>
+						<div class="cases-drop__block">
+							<p>Bitcoin and other Cryptocurrencies are an excellent way to stay anonymous when you do online purchases, peer-to-Peer payments & more.</p>
+						</div>
+					</div>
+					<div class="cases-drop">
+						<div class="cases-drop__ico"><svg width="17" height="13" viewBox="0 0 17 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.3751 2.54688L6.53125 11.7032L6.54688 12.6876H6.95313L16.5313 4.96876C16.2501 4.1094 15.8594 3.28126 15.3751 2.54688Z" fill="#281887"/><path d="M16.8126 2.10941L15.047 0.359385C14.8126 0.124997 14.422 0.124997 14.172 0.359385L6.62505 8.1563L3.3594 4.93754C3.12501 4.70315 2.73439 4.70315 2.48441 4.93754L0.921885 6.48443C0.687497 6.71882 0.687497 7.10944 0.921885 7.34383L6.14068 12.5157C6.28132 12.6563 6.46881 12.7032 6.65631 12.6876C6.8438 12.7032 7.0313 12.6563 7.17194 12.5157L16.8126 2.9844C17.047 2.73438 17.047 2.34375 16.8126 2.10941Z" fill="#F2F1EF"/><path d="M7.17194 12.5157L16.8126 2.98438C17.047 2.75 17.047 2.35937 16.8126 2.12499L16.5314 1.85938L6.64068 11.5782L1.1719 6.25003L0.93751 6.48442C0.703122 6.71881 0.703122 7.10943 0.93751 7.34382L6.15631 12.5157C6.29695 12.6564 6.48444 12.7032 6.67194 12.6876C6.8438 12.7032 7.0313 12.6563 7.17194 12.5157Z" fill="#E6E5E3"/></svg></div>
+						<div class="cases-drop__top">
+							<span class="cases-drop__top-subtitle">
+								Important documents
+								<svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6 6C7.66667 4.33333 11 1 11 1" stroke="white" stroke-width="2"/></svg>
+							</span>
+						</div>
+						<div class="cases-drop__block">
+							<p>Bitcoin and other Cryptocurrencies are an excellent way to stay anonymous when you do online purchases, peer-to-Peer payments & more.</p>
+						</div>
+					</div>
+					<div class="cases-drop">
+						<div class="cases-drop__ico"><svg width="17" height="13" viewBox="0 0 17 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.3751 2.54688L6.53125 11.7032L6.54688 12.6876H6.95313L16.5313 4.96876C16.2501 4.1094 15.8594 3.28126 15.3751 2.54688Z" fill="#281887"/><path d="M16.8126 2.10941L15.047 0.359385C14.8126 0.124997 14.422 0.124997 14.172 0.359385L6.62505 8.1563L3.3594 4.93754C3.12501 4.70315 2.73439 4.70315 2.48441 4.93754L0.921885 6.48443C0.687497 6.71882 0.687497 7.10944 0.921885 7.34383L6.14068 12.5157C6.28132 12.6563 6.46881 12.7032 6.65631 12.6876C6.8438 12.7032 7.0313 12.6563 7.17194 12.5157L16.8126 2.9844C17.047 2.73438 17.047 2.34375 16.8126 2.10941Z" fill="#F2F1EF"/><path d="M7.17194 12.5157L16.8126 2.98438C17.047 2.75 17.047 2.35937 16.8126 2.12499L16.5314 1.85938L6.64068 11.5782L1.1719 6.25003L0.93751 6.48442C0.703122 6.71881 0.703122 7.10943 0.93751 7.34382L6.15631 12.5157C6.29695 12.6564 6.48444 12.7032 6.67194 12.6876C6.8438 12.7032 7.0313 12.6563 7.17194 12.5157Z" fill="#E6E5E3"/></svg></div>
+						<div class="cases-drop__top">
+							<span class="cases-drop__top-subtitle">
+								Media files
+								<svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6 6C7.66667 4.33333 11 1 11 1" stroke="white" stroke-width="2"/></svg>
+							</span>
+						</div>
+						<div class="cases-drop__block">
+							<p>Bitcoin and other Cryptocurrencies are an excellent way to stay anonymous when you do online purchases, peer-to-Peer payments & more.</p>
+						</div>
+					</div>
+					<div class="cases-drop">
+						<div class="cases-drop__ico"><svg width="17" height="13" viewBox="0 0 17 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.3751 2.54688L6.53125 11.7032L6.54688 12.6876H6.95313L16.5313 4.96876C16.2501 4.1094 15.8594 3.28126 15.3751 2.54688Z" fill="#281887"/><path d="M16.8126 2.10941L15.047 0.359385C14.8126 0.124997 14.422 0.124997 14.172 0.359385L6.62505 8.1563L3.3594 4.93754C3.12501 4.70315 2.73439 4.70315 2.48441 4.93754L0.921885 6.48443C0.687497 6.71882 0.687497 7.10944 0.921885 7.34383L6.14068 12.5157C6.28132 12.6563 6.46881 12.7032 6.65631 12.6876C6.8438 12.7032 7.0313 12.6563 7.17194 12.5157L16.8126 2.9844C17.047 2.73438 17.047 2.34375 16.8126 2.10941Z" fill="#F2F1EF"/><path d="M7.17194 12.5157L16.8126 2.98438C17.047 2.75 17.047 2.35937 16.8126 2.12499L16.5314 1.85938L6.64068 11.5782L1.1719 6.25003L0.93751 6.48442C0.703122 6.71881 0.703122 7.10943 0.93751 7.34382L6.15631 12.5157C6.29695 12.6564 6.48444 12.7032 6.67194 12.6876C6.8438 12.7032 7.0313 12.6563 7.17194 12.5157Z" fill="#E6E5E3"/></svg></div>
+						<div class="cases-drop__top">
+							<span class="cases-drop__top-subtitle">
+								Your thoughts and messages
+								<svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L6 6C7.66667 4.33333 11 1 11 1" stroke="white" stroke-width="2"/></svg>
+							</span>
+						</div>
+						<div class="cases-drop__block">
+							<p>Bitcoin and other Cryptocurrencies are an excellent way to stay anonymous when you do online purchases, peer-to-Peer payments & more.</p>
+						</div>
+					</div>
+				</div>
+				<div class="cases-img">
+					<img src="img/cases-img.svg" alt="">
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end cases -->
+	<!-- start features -->
+	<section class="features">
+		<div class="wrapper wrapper-big">
+			<div class="section-top">
+				<span class="section-subtitle">ABOUT BITUPLOAD</span>
+				<h2 class="section-title">Our Features</h2>
+				<p>Bitcoin and other Cryptocurrencies are anexcellent way to stay anonymous when you do online purchases.</p>
+			</div>
+			<div class="features-row">
+				<div class="features-col">
+					<div class="features-wrap">
+						<div class="features-ico"><img src="img/features-ico-1.svg" alt=""></div>
+						<p>Bitcoin blockchain is <br>used  for data storage</p>
+					</div>
+				</div><!-- col -->
+				<div class="features-col">
+					<div class="features-wrap">
+						<div class="features-ico"><img src="img/features-ico-2.svg" alt=""></div>
+						<p>Client-side  data encryption <br>and decryption</p>
+					</div>
+				</div><!-- col -->
+				<div class="features-col">
+					<div class="features-wrap">
+						<div class="features-ico"><img src="img/features-ico-3.svg" alt=""></div>
+						<p>Data is stored while the Bitcoin blockchain exists</p>
+					</div>
+				</div><!-- col -->
+				<div class="features-col">
+					<div class="features-wrap">
+						<div class="features-ico"><img src="img/features-ico-4.svg" alt=""></div>
+						<p>Easy use of complex machinery</p>
+					</div>
+				</div><!-- col -->
+				<div class="features-col">
+					<div class="features-wrap">
+						<div class="features-ico"><img src="img/features-ico-5.svg" alt=""></div>
+						<p>The ability to download<br>a file without using the service site</p>
+					</div>
+				</div><!-- col -->
+				<div class="features-col">
+					<div class="features-wrap">
+						<div class="features-ico"><img src="img/features-ico-6.svg" alt=""></div>
+						<p>No geographical restrictions and firewalls</p>
+					</div>
+				</div><!-- col -->
+				<div class="features-col">
+					<div class="features-wrap">
+						<div class="features-ico"><img src="img/features-ico-7.svg" alt=""></div>
+						<p>Additional features for registered users</p>
+					</div>
+				</div><!-- col -->
+				<div class="features-col">
+					<div class="features-wrap">
+						<div class="features-ico"><img src="img/features-ico-8.svg" alt=""></div>
+						<p>Support 24/7</p>
+					</div>
+				</div><!-- col -->
+			</div>
+		</div>
+	</section>
+	<!-- end features -->
+	<!-- start faq -->
+	<section class="faq">
+		<div class="wrapper">
+			<div class="faq-wrap">
+				<div class="faq-bgMain"></div>
+				<div class="faq-bg faq-bg__1"><svg width="267" height="417" viewBox="0 0 267 417" fill="none" xmlns="http://www.w3.org/2000/svg"><g opacity="0.2"><path d="M140.501 0.564442L266.5 66.3031V209.697L141 275.436L15.5 209.697V66.302L140.501 0.564442Z" stroke="white"/><path d="M15.5 66.5L141 132L266.5 66.5" stroke="white"/><path d="M141 132V276" stroke="white"/></g><path d="M140 276L0 349V417L140 343V276Z" fill="#4FA8FD"/><path d="M214 237V170L140 208.586V276.114L214 237Z" fill="#F39661"/></svg></div>
+				<div class="faq-bg faq-bg__2"><svg width="266" height="397" viewBox="0 0 266 397" fill="none" xmlns="http://www.w3.org/2000/svg"><g opacity="0.2"><path d="M125.501 121.564L251.5 187.303V330.697L126 396.436L0.5 330.697V187.302L125.501 121.564Z" stroke="white"/><path d="M0.5 187.5L126 253L251.5 187.5" stroke="white"/><path d="M126 253V397" stroke="white"/></g><path d="M126 321V254L52 292.586V360.114L126 321Z" fill="#925AF0"/><path d="M266 113L126 186V254L266 180V113Z" fill="#4FA8FD"/><path d="M46 0L30 8V19L46 11V0Z" fill="white"/></svg></div>
+				<div class="faq-info">
+					<div class="section-top">
+						<h2 class="section-title">Frequently Asked Questions </h2>
+						<h2 class="section-title section-title__mob">FAQ</h2>
+						<p>What can be stored on the blockchain?</p>
+					</div>
+					<div class="faq-accordeons">
+						<div class="accordeon accordeon-active">
+							<div class="accordeon-top">
+								<h3 class="accordeon-title">Cryptocurrency wallet backup</h3>
+							</div>
+							<div class="accordeon-block">
+								<p>Bitcoin and other Cryptocurrencies are an excellent way to stay anonymous when you do online purchases, peer-to-Peer  payments & more.</p>
+							</div>
+						</div>
+						<div class="accordeon">
+							<div class="accordeon-top">
+								<h3 class="accordeon-title">Cryptocurrency wallet backup</h3>
+							</div>
+							<div class="accordeon-block">
+								<p>Bitcoin and other Cryptocurrencies are an excellent way to stay anonymous when you do online purchases, peer-to-Peer  payments & more.</p>
+							</div>
+						</div>
+						<div class="accordeon">
+							<div class="accordeon-top">
+								<h3 class="accordeon-title">Cryptocurrency wallet backup</h3>
+							</div>
+							<div class="accordeon-block">
+								<p>Bitcoin and other Cryptocurrencies are an excellent way to stay anonymous when you do online purchases, peer-to-Peer  payments & more.</p>
+							</div>
+						</div>
+						<div class="accordeon">
+							<div class="accordeon-top">
+								<h3 class="accordeon-title">Cryptocurrency wallet backup</h3>
+							</div>
+							<div class="accordeon-block">
+								<p>Bitcoin and other Cryptocurrencies are an excellent way to stay anonymous when you do online purchases, peer-to-Peer  payments & more.</p>
+							</div>
+						</div>
+						<div class="accordeon accordeon-mob">
+							<div class="accordeon-top">
+								<h3 class="accordeon-title">Cryptocurrency wallet backup</h3>
+							</div>
+							<div class="accordeon-block">
+								<p>Bitcoin and other Cryptocurrencies are an excellent way to stay anonymous when you do online purchases, peer-to-Peer  payments & more.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end faq -->
+	<!-- start testimonials -->
+	<section class="testimonials">
+		<div class="wrapper">
+			<div class="section-top">
+				<span class="section-subtitle">ABOUT BITUPLOAD</span>
+				<h2 class="section-title">Customer Reviews</h2>
+				<p>Bitcoin and other Cryptocurrencies are anexcellent way to stay anonymous when you do online purchases.</p>
+			</div>
+		</div>
+		<div class="testimonials-slider">
+			<div class="testimonials-slide">
+				<div class="testimonials-wrap">
+					<span class="testimonials-stars"><svg width="122" height="16" viewBox="0 0 122 16" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip021)"><path d="M8.10314 0.556158L6.06251 4.69366L1.49689 5.35928C0.67814 5.47803 0.350015 6.48741 0.943765 7.06553L4.24689 10.2843L3.46564 14.8312C3.32501 15.653 4.19064 16.2687 4.91564 15.8843L9.00001 13.7374L13.0844 15.8843C13.8094 16.2655 14.675 15.653 14.5344 14.8312L13.7531 10.2843L17.0563 7.06553C17.65 6.48741 17.3219 5.47803 16.5031 5.35928L11.9375 4.69366L9.89689 0.556158C9.53126 -0.181342 8.47189 -0.190717 8.10314 0.556158Z" fill="#5ECFB4"/></g><g clip-path="url(#clip1dw)"><path d="M34.1031 0.556158L32.0625 4.69366L27.4969 5.35928C26.6781 5.47803 26.35 6.48741 26.9438 7.06553L30.2469 10.2843L29.4656 14.8312C29.325 15.653 30.1906 16.2687 30.9156 15.8843L35 13.7374L39.0844 15.8843C39.8094 16.2655 40.675 15.653 40.5344 14.8312L39.7531 10.2843L43.0563 7.06553C43.65 6.48741 43.3219 5.47803 42.5031 5.35928L37.9375 4.69366L35.8969 0.556158C35.5313 -0.181342 34.4719 -0.190717 34.1031 0.556158Z" fill="#5ECFB4"/></g><g clip-path="url(#clip2op3)"><path d="M60.1031 0.556158L58.0625 4.69366L53.4969 5.35928C52.6781 5.47803 52.35 6.48741 52.9438 7.06553L56.2469 10.2843L55.4656 14.8312C55.325 15.653 56.1906 16.2687 56.9156 15.8843L61 13.7374L65.0844 15.8843C65.8094 16.2655 66.675 15.653 66.5344 14.8312L65.7531 10.2843L69.0563 7.06553C69.65 6.48741 69.3219 5.47803 68.5031 5.35928L63.9375 4.69366L61.8969 0.556158C61.5313 -0.181342 60.4719 -0.190717 60.1031 0.556158Z" fill="#5ECFB4"/></g><g clip-path="url(#clip3i2)"><path d="M86.1031 0.556158L84.0625 4.69366L79.4969 5.35928C78.6781 5.47803 78.35 6.48741 78.9438 7.06553L82.2469 10.2843L81.4656 14.8312C81.325 15.653 82.1906 16.2687 82.9156 15.8843L87 13.7374L91.0844 15.8843C91.8094 16.2655 92.675 15.653 92.5344 14.8312L91.7531 10.2843L95.0563 7.06553C95.65 6.48741 95.3219 5.47803 94.5031 5.35928L89.9375 4.69366L87.8969 0.556158C87.5313 -0.181342 86.4719 -0.190717 86.1031 0.556158Z" fill="#5ECFB4"/></g><g clip-path="url(#clip4o23)"><path d="M112.103 0.556158L110.063 4.69366L105.497 5.35928C104.678 5.47803 104.35 6.48741 104.944 7.06553L108.247 10.2843L107.466 14.8312C107.325 15.653 108.191 16.2687 108.916 15.8843L113 13.7374L117.084 15.8843C117.809 16.2655 118.675 15.653 118.534 14.8312L117.753 10.2843L121.056 7.06553C121.65 6.48741 121.322 5.47803 120.503 5.35928L115.938 4.69366L113.897 0.556158C113.531 -0.181342 112.472 -0.190717 112.103 0.556158Z" fill="#5ECFB4"/></g><defs><clipPath id="clip021"><rect width="18" height="16" fill="white"/></clipPath><clipPath id="clip1dw"><rect width="18" height="16" fill="white" transform="translate(26)"/></clipPath><clipPath id="clip2op3"><rect width="18" height="16" fill="white" transform="translate(52)"/></clipPath><clipPath id="clip3i2"><rect width="18" height="16" fill="white" transform="translate(78)"/></clipPath><clipPath id="clip4o23"><rect width="18" height="16" fill="white" transform="translate(104)"/></clipPath></defs></svg></span>
+					<h4 class="testimonials-title">"Well-recommended way to send custom forms and surveys!"</h4>
+					<p>osted on Trustpilot.com by Adama Sidibe</p>
+				</div>
+			</div><!-- slide -->
+			<div class="testimonials-slide">
+				<div class="testimonials-wrap">
+					<span class="testimonials-stars"><svg width="122" height="16" viewBox="0 0 122 16" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip021)"><path d="M8.10314 0.556158L6.06251 4.69366L1.49689 5.35928C0.67814 5.47803 0.350015 6.48741 0.943765 7.06553L4.24689 10.2843L3.46564 14.8312C3.32501 15.653 4.19064 16.2687 4.91564 15.8843L9.00001 13.7374L13.0844 15.8843C13.8094 16.2655 14.675 15.653 14.5344 14.8312L13.7531 10.2843L17.0563 7.06553C17.65 6.48741 17.3219 5.47803 16.5031 5.35928L11.9375 4.69366L9.89689 0.556158C9.53126 -0.181342 8.47189 -0.190717 8.10314 0.556158Z" fill="#5ECFB4"/></g><g clip-path="url(#clip1dw)"><path d="M34.1031 0.556158L32.0625 4.69366L27.4969 5.35928C26.6781 5.47803 26.35 6.48741 26.9438 7.06553L30.2469 10.2843L29.4656 14.8312C29.325 15.653 30.1906 16.2687 30.9156 15.8843L35 13.7374L39.0844 15.8843C39.8094 16.2655 40.675 15.653 40.5344 14.8312L39.7531 10.2843L43.0563 7.06553C43.65 6.48741 43.3219 5.47803 42.5031 5.35928L37.9375 4.69366L35.8969 0.556158C35.5313 -0.181342 34.4719 -0.190717 34.1031 0.556158Z" fill="#5ECFB4"/></g><g clip-path="url(#clip2op3)"><path d="M60.1031 0.556158L58.0625 4.69366L53.4969 5.35928C52.6781 5.47803 52.35 6.48741 52.9438 7.06553L56.2469 10.2843L55.4656 14.8312C55.325 15.653 56.1906 16.2687 56.9156 15.8843L61 13.7374L65.0844 15.8843C65.8094 16.2655 66.675 15.653 66.5344 14.8312L65.7531 10.2843L69.0563 7.06553C69.65 6.48741 69.3219 5.47803 68.5031 5.35928L63.9375 4.69366L61.8969 0.556158C61.5313 -0.181342 60.4719 -0.190717 60.1031 0.556158Z" fill="#5ECFB4"/></g><g clip-path="url(#clip3i2)"><path d="M86.1031 0.556158L84.0625 4.69366L79.4969 5.35928C78.6781 5.47803 78.35 6.48741 78.9438 7.06553L82.2469 10.2843L81.4656 14.8312C81.325 15.653 82.1906 16.2687 82.9156 15.8843L87 13.7374L91.0844 15.8843C91.8094 16.2655 92.675 15.653 92.5344 14.8312L91.7531 10.2843L95.0563 7.06553C95.65 6.48741 95.3219 5.47803 94.5031 5.35928L89.9375 4.69366L87.8969 0.556158C87.5313 -0.181342 86.4719 -0.190717 86.1031 0.556158Z" fill="#5ECFB4"/></g><g clip-path="url(#clip4o23)"><path d="M112.103 0.556158L110.063 4.69366L105.497 5.35928C104.678 5.47803 104.35 6.48741 104.944 7.06553L108.247 10.2843L107.466 14.8312C107.325 15.653 108.191 16.2687 108.916 15.8843L113 13.7374L117.084 15.8843C117.809 16.2655 118.675 15.653 118.534 14.8312L117.753 10.2843L121.056 7.06553C121.65 6.48741 121.322 5.47803 120.503 5.35928L115.938 4.69366L113.897 0.556158C113.531 -0.181342 112.472 -0.190717 112.103 0.556158Z" fill="#5ECFB4"/></g><defs><clipPath id="clip021"><rect width="18" height="16" fill="white"/></clipPath><clipPath id="clip1dw"><rect width="18" height="16" fill="white" transform="translate(26)"/></clipPath><clipPath id="clip2op3"><rect width="18" height="16" fill="white" transform="translate(52)"/></clipPath><clipPath id="clip3i2"><rect width="18" height="16" fill="white" transform="translate(78)"/></clipPath><clipPath id="clip4o23"><rect width="18" height="16" fill="white" transform="translate(104)"/></clipPath></defs></svg></span>
+					<h4 class="testimonials-title">"Well-recommended way to send custom forms and surveys!"</h4>
+					<p>osted on Trustpilot.com by Adama Sidibe</p>
+				</div>
+			</div><!-- slide -->
+			<div class="testimonials-slide">
+				<div class="testimonials-wrap">
+					<span class="testimonials-stars"><svg width="122" height="16" viewBox="0 0 122 16" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip021)"><path d="M8.10314 0.556158L6.06251 4.69366L1.49689 5.35928C0.67814 5.47803 0.350015 6.48741 0.943765 7.06553L4.24689 10.2843L3.46564 14.8312C3.32501 15.653 4.19064 16.2687 4.91564 15.8843L9.00001 13.7374L13.0844 15.8843C13.8094 16.2655 14.675 15.653 14.5344 14.8312L13.7531 10.2843L17.0563 7.06553C17.65 6.48741 17.3219 5.47803 16.5031 5.35928L11.9375 4.69366L9.89689 0.556158C9.53126 -0.181342 8.47189 -0.190717 8.10314 0.556158Z" fill="#5ECFB4"/></g><g clip-path="url(#clip1dw)"><path d="M34.1031 0.556158L32.0625 4.69366L27.4969 5.35928C26.6781 5.47803 26.35 6.48741 26.9438 7.06553L30.2469 10.2843L29.4656 14.8312C29.325 15.653 30.1906 16.2687 30.9156 15.8843L35 13.7374L39.0844 15.8843C39.8094 16.2655 40.675 15.653 40.5344 14.8312L39.7531 10.2843L43.0563 7.06553C43.65 6.48741 43.3219 5.47803 42.5031 5.35928L37.9375 4.69366L35.8969 0.556158C35.5313 -0.181342 34.4719 -0.190717 34.1031 0.556158Z" fill="#5ECFB4"/></g><g clip-path="url(#clip2op3)"><path d="M60.1031 0.556158L58.0625 4.69366L53.4969 5.35928C52.6781 5.47803 52.35 6.48741 52.9438 7.06553L56.2469 10.2843L55.4656 14.8312C55.325 15.653 56.1906 16.2687 56.9156 15.8843L61 13.7374L65.0844 15.8843C65.8094 16.2655 66.675 15.653 66.5344 14.8312L65.7531 10.2843L69.0563 7.06553C69.65 6.48741 69.3219 5.47803 68.5031 5.35928L63.9375 4.69366L61.8969 0.556158C61.5313 -0.181342 60.4719 -0.190717 60.1031 0.556158Z" fill="#5ECFB4"/></g><g clip-path="url(#clip3i2)"><path d="M86.1031 0.556158L84.0625 4.69366L79.4969 5.35928C78.6781 5.47803 78.35 6.48741 78.9438 7.06553L82.2469 10.2843L81.4656 14.8312C81.325 15.653 82.1906 16.2687 82.9156 15.8843L87 13.7374L91.0844 15.8843C91.8094 16.2655 92.675 15.653 92.5344 14.8312L91.7531 10.2843L95.0563 7.06553C95.65 6.48741 95.3219 5.47803 94.5031 5.35928L89.9375 4.69366L87.8969 0.556158C87.5313 -0.181342 86.4719 -0.190717 86.1031 0.556158Z" fill="#5ECFB4"/></g><g clip-path="url(#clip4o23)"><path d="M112.103 0.556158L110.063 4.69366L105.497 5.35928C104.678 5.47803 104.35 6.48741 104.944 7.06553L108.247 10.2843L107.466 14.8312C107.325 15.653 108.191 16.2687 108.916 15.8843L113 13.7374L117.084 15.8843C117.809 16.2655 118.675 15.653 118.534 14.8312L117.753 10.2843L121.056 7.06553C121.65 6.48741 121.322 5.47803 120.503 5.35928L115.938 4.69366L113.897 0.556158C113.531 -0.181342 112.472 -0.190717 112.103 0.556158Z" fill="#5ECFB4"/></g><defs><clipPath id="clip021"><rect width="18" height="16" fill="white"/></clipPath><clipPath id="clip1dw"><rect width="18" height="16" fill="white" transform="translate(26)"/></clipPath><clipPath id="clip2op3"><rect width="18" height="16" fill="white" transform="translate(52)"/></clipPath><clipPath id="clip3i2"><rect width="18" height="16" fill="white" transform="translate(78)"/></clipPath><clipPath id="clip4o23"><rect width="18" height="16" fill="white" transform="translate(104)"/></clipPath></defs></svg></span>
+					<h4 class="testimonials-title">"Well-recommended way to send custom forms and surveys!"</h4>
+					<p>Posted on Trustpilot.com by Tovie</p>
+				</div>
+			</div><!-- slide -->
+			<div class="testimonials-slide">
+				<div class="testimonials-wrap">
+					<span class="testimonials-stars"><svg width="122" height="16" viewBox="0 0 122 16" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip021)"><path d="M8.10314 0.556158L6.06251 4.69366L1.49689 5.35928C0.67814 5.47803 0.350015 6.48741 0.943765 7.06553L4.24689 10.2843L3.46564 14.8312C3.32501 15.653 4.19064 16.2687 4.91564 15.8843L9.00001 13.7374L13.0844 15.8843C13.8094 16.2655 14.675 15.653 14.5344 14.8312L13.7531 10.2843L17.0563 7.06553C17.65 6.48741 17.3219 5.47803 16.5031 5.35928L11.9375 4.69366L9.89689 0.556158C9.53126 -0.181342 8.47189 -0.190717 8.10314 0.556158Z" fill="#5ECFB4"/></g><g clip-path="url(#clip1dw)"><path d="M34.1031 0.556158L32.0625 4.69366L27.4969 5.35928C26.6781 5.47803 26.35 6.48741 26.9438 7.06553L30.2469 10.2843L29.4656 14.8312C29.325 15.653 30.1906 16.2687 30.9156 15.8843L35 13.7374L39.0844 15.8843C39.8094 16.2655 40.675 15.653 40.5344 14.8312L39.7531 10.2843L43.0563 7.06553C43.65 6.48741 43.3219 5.47803 42.5031 5.35928L37.9375 4.69366L35.8969 0.556158C35.5313 -0.181342 34.4719 -0.190717 34.1031 0.556158Z" fill="#5ECFB4"/></g><g clip-path="url(#clip2op3)"><path d="M60.1031 0.556158L58.0625 4.69366L53.4969 5.35928C52.6781 5.47803 52.35 6.48741 52.9438 7.06553L56.2469 10.2843L55.4656 14.8312C55.325 15.653 56.1906 16.2687 56.9156 15.8843L61 13.7374L65.0844 15.8843C65.8094 16.2655 66.675 15.653 66.5344 14.8312L65.7531 10.2843L69.0563 7.06553C69.65 6.48741 69.3219 5.47803 68.5031 5.35928L63.9375 4.69366L61.8969 0.556158C61.5313 -0.181342 60.4719 -0.190717 60.1031 0.556158Z" fill="#5ECFB4"/></g><g clip-path="url(#clip3i2)"><path d="M86.1031 0.556158L84.0625 4.69366L79.4969 5.35928C78.6781 5.47803 78.35 6.48741 78.9438 7.06553L82.2469 10.2843L81.4656 14.8312C81.325 15.653 82.1906 16.2687 82.9156 15.8843L87 13.7374L91.0844 15.8843C91.8094 16.2655 92.675 15.653 92.5344 14.8312L91.7531 10.2843L95.0563 7.06553C95.65 6.48741 95.3219 5.47803 94.5031 5.35928L89.9375 4.69366L87.8969 0.556158C87.5313 -0.181342 86.4719 -0.190717 86.1031 0.556158Z" fill="#5ECFB4"/></g><g clip-path="url(#clip4o23)"><path d="M112.103 0.556158L110.063 4.69366L105.497 5.35928C104.678 5.47803 104.35 6.48741 104.944 7.06553L108.247 10.2843L107.466 14.8312C107.325 15.653 108.191 16.2687 108.916 15.8843L113 13.7374L117.084 15.8843C117.809 16.2655 118.675 15.653 118.534 14.8312L117.753 10.2843L121.056 7.06553C121.65 6.48741 121.322 5.47803 120.503 5.35928L115.938 4.69366L113.897 0.556158C113.531 -0.181342 112.472 -0.190717 112.103 0.556158Z" fill="#5ECFB4"/></g><defs><clipPath id="clip021"><rect width="18" height="16" fill="white"/></clipPath><clipPath id="clip1dw"><rect width="18" height="16" fill="white" transform="translate(26)"/></clipPath><clipPath id="clip2op3"><rect width="18" height="16" fill="white" transform="translate(52)"/></clipPath><clipPath id="clip3i2"><rect width="18" height="16" fill="white" transform="translate(78)"/></clipPath><clipPath id="clip4o23"><rect width="18" height="16" fill="white" transform="translate(104)"/></clipPath></defs></svg></span>
+					<h4 class="testimonials-title">"Well-recommended way to send custom forms and surveys!"</h4>
+					<p>Posted on G2.com by Irfan K.</p>
+				</div>
+			</div><!-- slide -->
+			<div class="testimonials-slide">
+				<div class="testimonials-wrap">
+					<span class="testimonials-stars"><svg width="122" height="16" viewBox="0 0 122 16" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip021)"><path d="M8.10314 0.556158L6.06251 4.69366L1.49689 5.35928C0.67814 5.47803 0.350015 6.48741 0.943765 7.06553L4.24689 10.2843L3.46564 14.8312C3.32501 15.653 4.19064 16.2687 4.91564 15.8843L9.00001 13.7374L13.0844 15.8843C13.8094 16.2655 14.675 15.653 14.5344 14.8312L13.7531 10.2843L17.0563 7.06553C17.65 6.48741 17.3219 5.47803 16.5031 5.35928L11.9375 4.69366L9.89689 0.556158C9.53126 -0.181342 8.47189 -0.190717 8.10314 0.556158Z" fill="#5ECFB4"/></g><g clip-path="url(#clip1dw)"><path d="M34.1031 0.556158L32.0625 4.69366L27.4969 5.35928C26.6781 5.47803 26.35 6.48741 26.9438 7.06553L30.2469 10.2843L29.4656 14.8312C29.325 15.653 30.1906 16.2687 30.9156 15.8843L35 13.7374L39.0844 15.8843C39.8094 16.2655 40.675 15.653 40.5344 14.8312L39.7531 10.2843L43.0563 7.06553C43.65 6.48741 43.3219 5.47803 42.5031 5.35928L37.9375 4.69366L35.8969 0.556158C35.5313 -0.181342 34.4719 -0.190717 34.1031 0.556158Z" fill="#5ECFB4"/></g><g clip-path="url(#clip2op3)"><path d="M60.1031 0.556158L58.0625 4.69366L53.4969 5.35928C52.6781 5.47803 52.35 6.48741 52.9438 7.06553L56.2469 10.2843L55.4656 14.8312C55.325 15.653 56.1906 16.2687 56.9156 15.8843L61 13.7374L65.0844 15.8843C65.8094 16.2655 66.675 15.653 66.5344 14.8312L65.7531 10.2843L69.0563 7.06553C69.65 6.48741 69.3219 5.47803 68.5031 5.35928L63.9375 4.69366L61.8969 0.556158C61.5313 -0.181342 60.4719 -0.190717 60.1031 0.556158Z" fill="#5ECFB4"/></g><g clip-path="url(#clip3i2)"><path d="M86.1031 0.556158L84.0625 4.69366L79.4969 5.35928C78.6781 5.47803 78.35 6.48741 78.9438 7.06553L82.2469 10.2843L81.4656 14.8312C81.325 15.653 82.1906 16.2687 82.9156 15.8843L87 13.7374L91.0844 15.8843C91.8094 16.2655 92.675 15.653 92.5344 14.8312L91.7531 10.2843L95.0563 7.06553C95.65 6.48741 95.3219 5.47803 94.5031 5.35928L89.9375 4.69366L87.8969 0.556158C87.5313 -0.181342 86.4719 -0.190717 86.1031 0.556158Z" fill="#5ECFB4"/></g><g clip-path="url(#clip4o23)"><path d="M112.103 0.556158L110.063 4.69366L105.497 5.35928C104.678 5.47803 104.35 6.48741 104.944 7.06553L108.247 10.2843L107.466 14.8312C107.325 15.653 108.191 16.2687 108.916 15.8843L113 13.7374L117.084 15.8843C117.809 16.2655 118.675 15.653 118.534 14.8312L117.753 10.2843L121.056 7.06553C121.65 6.48741 121.322 5.47803 120.503 5.35928L115.938 4.69366L113.897 0.556158C113.531 -0.181342 112.472 -0.190717 112.103 0.556158Z" fill="#5ECFB4"/></g><defs><clipPath id="clip021"><rect width="18" height="16" fill="white"/></clipPath><clipPath id="clip1dw"><rect width="18" height="16" fill="white" transform="translate(26)"/></clipPath><clipPath id="clip2op3"><rect width="18" height="16" fill="white" transform="translate(52)"/></clipPath><clipPath id="clip3i2"><rect width="18" height="16" fill="white" transform="translate(78)"/></clipPath><clipPath id="clip4o23"><rect width="18" height="16" fill="white" transform="translate(104)"/></clipPath></defs></svg></span>
+					<h4 class="testimonials-title">"Well-recommended way to send custom forms and surveys!"</h4>
+					<p>Posted on Trustpilot.com by Jono Cole</p>
+				</div>
+			</div><!-- slide -->
+		</div>
+	</section>
+	<!-- end testimonials -->
+	<!-- start articles -->
+	<section class="articles">
+		<div class="articles-bg articles-bg__1"><svg width="162" height="276" viewBox="0 0 162 276" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M73 151.928V85L-1 123.544V191L73 151.928Z" fill="#925AF0"/><g opacity="0.2"><path d="M35.5009 0.564442L161.5 66.3031V209.697L36 275.436L-89.5 209.697V66.302L35.5009 0.564442Z" stroke="#59678C"/><path d="M-89.5 66.5L36 132L161.5 66.5" stroke="#59678C"/><path d="M36 132V276" stroke="#59678C"/></g></svg></div>
+		<div class="articles-bg articles-bg__2"><svg width="163" height="215" viewBox="0 0 163 215" fill="none" xmlns="http://www.w3.org/2000/svg"><g opacity="0.2"><path d="M125.501 0.564442L251.5 66.3031V209.697L126 275.436L0.5 209.697V66.302L125.501 0.564442Z" stroke="#59678C"/><path d="M0.5 66.5L126 132L251.5 66.5" stroke="#59678C"/><path d="M126 132V276" stroke="#59678C"/></g><path d="M163 151.928V85L89 123.544V191L163 151.928Z" fill="#F39661"/></svg></div>
+		<div class="wrapper">
+			<div class="section-top">
+				<h2 class="section-title">Last Articles</h2>
+				<p>Bitcoin and other Cryptocurrencies are anexcellent way to stay anonymous when you do online purchases.</p>
+			</div>
+			<div class="articles-row">
+				<div class="articles-col">
+					<a href="#" class="articles-wrap">
+						<div class="articles-img">
+							<img src="img/articles-1.jpg" alt="">
+							<span class="articles-ico"><svg width="115" height="126" viewBox="0 0 115 126" fill="none" xmlns="http://www.w3.org/2000/svg"><g opacity="0.3"><path d="M51.7509 0.564442L114.5 33.3031V104.697L52 137.436L-10.5 104.697V33.302L51.7509 0.564442Z" stroke="white"/><path d="M-10.75 33.25L52 66L114.75 33.25" stroke="white"/><path d="M52 66V138" stroke="white"/></g><path d="M53 66L-17 102.5V136.5L53 99.5V66Z" fill="#4FA8FD"/><path d="M90 46.5V13L53 32.2929V66.0571L90 46.5Z" fill="#F39661"/></svg></span>
+						</div>
+						<div class="articles-info">
+							<h4 class="articles-title">How to Create Online Communication Skills Training</h4>
+							<span class="articles-date">09 June 2020</span>
+						</div>
+					</a>
+				</div><!-- col -->
+				<div class="articles-col">
+					<a href="#" class="articles-wrap">
+						<div class="articles-img">
+							<img src="img/articles-2.jpg" alt="">
+							<span class="articles-ico articles-ico__second"><svg width="132" height="102" viewBox="0 0 132 102" fill="none" xmlns="http://www.w3.org/2000/svg"><g opacity="0.3"><path d="M68.7509 0.564442L131.5 33.3031V104.697L69 137.436L6.5 104.697V33.302L68.7509 0.564442Z" stroke="white"/><path d="M6.25 33.25L69 66L131.75 33.25" stroke="white"/><path d="M69 66V138" stroke="white"/></g><path d="M70 66L0 102.5V136.5L70 99.5V66Z" fill="#4FA8FD"/><path d="M107 46.5V13L70 32.2929V66.0571L107 46.5Z" fill="#925AF0"/></svg></span>
+						</div>
+						<div class="articles-info">
+							<h4 class="articles-title">How to Create Sales Training If You’re Not an Expert</h4>
+							<span class="articles-date">09 June 2020</span>
+						</div>
+					</a>
+				</div><!-- col -->
+				<div class="articles-col">
+					<a href="#" class="articles-wrap">
+						<div class="articles-img">
+							<img src="img/articles-3.jpg" alt="">
+							<span class="articles-ico"><svg width="115" height="126" viewBox="0 0 115 126" fill="none" xmlns="http://www.w3.org/2000/svg"><g opacity="0.3"><path d="M51.7509 0.564442L114.5 33.3031V104.697L52 137.436L-10.5 104.697V33.302L51.7509 0.564442Z" stroke="white"/><path d="M-10.75 33.25L52 66L114.75 33.25" stroke="white"/><path d="M52 66V138" stroke="white"/></g><path d="M53 66L-17 102.5V136.5L53 99.5V66Z" fill="#4FA8FD"/><path d="M90 46.5V13L53 32.2929V66.0571L90 46.5Z" fill="#F39661"/></svg></span>
+						</div>
+						<div class="articles-info">
+							<h4 class="articles-title">How to Create Effective Soft Skills Training</h4>
+							<span class="articles-date">09 June 2020</span>
+						</div>
+					</a>
+				</div><!-- col -->
+			</div>
+		</div>
+	</section>
+	<!-- end articles -->
+	<!-- start hosting -->
+	<section class="hosting">
+		<div class="hosting-bg"><svg width="1360" height="301" viewBox="0 0 1360 301" fill="none" xmlns="http://www.w3.org/2000/svg"><g opacity="0.15"><path d="M360 18.6665H324L312 6.6665H282C277.029 6.6665 273 10.6959 273 15.6665V80.3332C273 85.3038 277.029 89.3332 282 89.3332H360C364.971 89.3332 369 85.3038 369 80.3332V27.6665C369 22.6959 364.971 18.6665 360 18.6665Z" fill="#9175F7"/></g><g opacity="0.15"><path d="M226 213.667H190L178 201.667H148C143.029 201.667 139 205.696 139 210.667V275.333C139 280.304 143.029 284.333 148 284.333H226C230.971 284.333 235 280.304 235 275.333V222.667C235 217.696 230.971 213.667 226 213.667Z" fill="#499AF9"/></g><g opacity="0.15"><path d="M1212 28.6665H1176L1164 16.6665H1134C1129.03 16.6665 1125 20.6959 1125 25.6665V90.3332C1125 95.3038 1129.03 99.3332 1134 99.3332H1212C1216.97 99.3332 1221 95.3038 1221 90.3332V37.6665C1221 32.6959 1216.97 28.6665 1212 28.6665Z" fill="#EE665E"/></g><path opacity="0.15" d="M1078 223.667H1042L1030 211.667H1000C995.029 211.667 991 215.696 991 220.667V285.333C991 290.304 995.029 294.333 1000 294.333H1078C1082.97 294.333 1087 290.304 1087 285.333V232.667C1087 227.696 1082.97 223.667 1078 223.667Z" fill="#F2AF60"/><g clip-path="url(#rgre)"><path d="M331.049 43.0723L316.05 47.5015C315.746 47.5972 315.48 47.7874 315.291 48.0446C315.102 48.3018 315 48.6126 315 48.9317V61.1853C314.509 61.0661 314.005 61.0044 313.5 61.0015C311.016 61.0015 309 62.345 309 64.0015C309 65.6581 311.016 67.0015 313.5 67.0015C315.984 67.0015 318 65.6581 318 64.0015V53.0478L330 49.5322V58.1858C329.509 58.0661 329.005 58.0043 328.5 58.0015C326.016 58.0015 324 59.345 324 61.0015C324 62.6581 326.016 64.0015 328.5 64.0015C330.984 64.0015 333 62.6586 333 61.0015V44.5015C333 44.2661 332.944 44.0339 332.838 43.824C332.731 43.614 332.576 43.4321 332.386 43.2929C332.196 43.1537 331.976 43.0612 331.744 43.0229C331.512 42.9846 331.274 43.0015 331.049 43.0723Z" fill="#9175F7"/></g><path d="M198.375 261.5H175.625C174.175 261.5 173 260.325 173 258.875V243.125C173 241.675 174.175 240.5 175.625 240.5H198.375C199.825 240.5 201 241.675 201 243.125V258.875C201 260.325 199.825 261.5 198.375 261.5ZM179.125 243.562C177.434 243.562 176.062 244.934 176.062 246.625C176.062 248.316 177.434 249.688 179.125 249.688C180.816 249.688 182.188 248.316 182.188 246.625C182.188 244.934 180.816 243.562 179.125 243.562ZM176.5 258H197.5V251.875L192.714 247.089C192.458 246.833 192.042 246.833 191.786 247.089L184.375 254.5L181.339 251.464C181.083 251.208 180.667 251.208 180.411 251.464L176.5 255.375V258Z" fill="#499AF9"/><path d="M1048.62 250.742L1043.26 245.383C1043.02 245.137 1042.68 245 1042.33 245H1042V252H1049V251.666C1049 251.322 1048.86 250.988 1048.62 250.742ZM1035.02 263.375C1034.04 263.375 1033.25 264.037 1033.25 264.852C1033.25 265.672 1034.05 266.328 1035.03 266.328C1036.01 266.328 1036.8 265.666 1036.8 264.852C1036.8 264.037 1036 263.375 1035.02 263.375ZM1040.25 252.438V245H1036.77V246.75H1035.02V245H1029.31C1028.59 245 1028 245.585 1028 246.312V271.688C1028 272.415 1028.59 273 1029.31 273H1047.69C1048.41 273 1049 272.415 1049 271.688V253.75H1041.56C1040.84 253.75 1040.25 253.159 1040.25 252.438ZM1033.24 246.75H1034.99V248.5H1033.24V246.75ZM1035.01 267.75C1033.2 267.75 1031.84 266.087 1032.2 264.31L1033.27 259V257.25H1035.02V255.5H1033.27V253.75H1035.02V252H1033.27V250.25H1035.02V248.5H1036.77V250.25H1035.02V252H1036.77V253.75H1035.02V255.5H1036.77V257.25H1035.02V259H1036.23C1036.54 259 1036.82 259.224 1036.88 259.53L1037.82 264.327C1038.17 266.098 1036.82 267.75 1035.01 267.75Z" fill="#F2AF60"/><path d="M1187.5 54H1187V55.25C1187 55.6625 1186.66 56 1186.25 56H1183.75C1183.34 56 1183 55.6625 1183 55.25V54H1163V55.25C1163 55.6625 1162.66 56 1162.25 56H1159.75C1159.34 56 1159 55.6625 1159 55.25V54H1158.5C1157.67 54 1157 54.6687 1157 55.5V76.5C1157 77.3312 1157.67 78 1158.5 78H1159V76.75C1159 76.3375 1159.34 76 1159.75 76H1162.25C1162.66 76 1163 76.3375 1163 76.75V78H1183V76.75C1183 76.3375 1183.34 76 1183.75 76H1186.25C1186.66 76 1187 76.3375 1187 76.75V78H1187.5C1188.33 78 1189 77.3312 1189 76.5V55.5C1189 54.6687 1188.33 54 1187.5 54ZM1163 73.25C1163 73.6625 1162.66 74 1162.25 74H1159.75C1159.34 74 1159 73.6625 1159 73.25V70.75C1159 70.3375 1159.34 70 1159.75 70H1162.25C1162.66 70 1163 70.3375 1163 70.75V73.25ZM1163 67.25C1163 67.6625 1162.66 68 1162.25 68H1159.75C1159.34 68 1159 67.6625 1159 67.25V64.75C1159 64.3375 1159.34 64 1159.75 64H1162.25C1162.66 64 1163 64.3375 1163 64.75V67.25ZM1163 61.25C1163 61.6625 1162.66 62 1162.25 62H1159.75C1159.34 62 1159 61.6625 1159 61.25V58.75C1159 58.3375 1159.34 58 1159.75 58H1162.25C1162.66 58 1163 58.3375 1163 58.75V61.25ZM1180 74.25C1180 74.6625 1179.66 75 1179.25 75H1166.75C1166.34 75 1166 74.6625 1166 74.25V68.25C1166 67.8375 1166.34 67.5 1166.75 67.5H1179.25C1179.66 67.5 1180 67.8375 1180 68.25V74.25ZM1180 63.75C1180 64.1625 1179.66 64.5 1179.25 64.5H1166.75C1166.34 64.5 1166 64.1625 1166 63.75V57.75C1166 57.3375 1166.34 57 1166.75 57H1179.25C1179.66 57 1180 57.3375 1180 57.75V63.75ZM1187 73.25C1187 73.6625 1186.66 74 1186.25 74H1183.75C1183.34 74 1183 73.6625 1183 73.25V70.75C1183 70.3375 1183.34 70 1183.75 70H1186.25C1186.66 70 1187 70.3375 1187 70.75V73.25ZM1187 67.25C1187 67.6625 1186.66 68 1186.25 68H1183.75C1183.34 68 1183 67.6625 1183 67.25V64.75C1183 64.3375 1183.34 64 1183.75 64H1186.25C1186.66 64 1187 64.3375 1187 64.75V67.25ZM1187 61.25C1187 61.6625 1186.66 62 1186.25 62H1183.75C1183.34 62 1183 61.6625 1183 61.25V58.75C1183 58.3375 1183.34 58 1183.75 58H1186.25C1186.66 58 1187 58.3375 1187 58.75V61.25Z" fill="#EE665E"/><circle opacity="0.3" cx="291" cy="157" r="4" stroke="#59678C" stroke-width="2"/><circle opacity="0.3" cx="5" cy="199" r="4" stroke="#59678C" stroke-width="2"/><circle opacity="0.3" cx="1355" cy="39" r="4" stroke="#59678C" stroke-width="2"/><circle opacity="0.3" cx="1069" cy="81" r="4" stroke="#59678C" stroke-width="2"/><circle opacity="0.3" cx="162" cy="53" r="4" stroke="#59678C" stroke-width="2"/><circle opacity="0.3" cx="1198" cy="185" r="4" stroke="#59678C" stroke-width="2"/><defs><clipPath id="rgre"><rect width="24" height="24" fill="white" transform="translate(309 43)"/></clipPath></defs></svg></div>
+		<div class="wrapper">
+			<div class="section-top">
+				<div class="hosting-top__bg"><svg width="530" height="530" viewBox="0 0 530 530" fill="none" xmlns="http://www.w3.org/2000/svg"><g opacity="0.1"><circle cx="265" cy="265" r="264.5" fill="white"/><circle cx="265" cy="265" r="264.5" fill="white"/><circle cx="265" cy="265" r="264.5" stroke="#7277A4"/></g><g opacity="0.15"><circle cx="265" cy="265" r="179.5" fill="white"/><circle cx="265" cy="265" r="179.5" fill="white"/><circle cx="265" cy="265" r="179.5" stroke="#7277A4"/></g><g opacity="0.3"><circle cx="265" cy="265" r="94.5" fill="white"/><circle cx="265" cy="265" r="94.5" fill="white"/><circle cx="265" cy="265" r="94.5" stroke="#7277A4"/></g></svg></div>
+				<span class="section-subtitle">ABOUT BITUPLOAD</span>
+				<h2 class="section-title">Bitcoin Blockchain File Hosting</h2>
+				<div class="hosting-btns">
+					<a href="#" class="second-btn">Login</a>
+					<a href="#" class="main-btn">Sign Up</a>
+				</div>
+			</div>
+			<div class="hosting-img">
+				<img src="img/hosting-img.svg" alt="">
+			</div>
+		</div>
+	</section>
+	<!-- end hosting -->
+	<!-- start footer -->
+	<footer class="footer">
+		<div class="wrapper">
+			<div class="footer-top">
+				<div class="footer-logo">
+					<a href="#">
+						<img src="img/footer-logo.svg" alt="">
+					</a>
+					<span class="logo-title">Bitcoin Blockchain File Hosting</span>
+				</div>
+				<div class="footer-row">
+					<div class="footer-col footer-col__1">
+						<ul>
+							<li><a href="#" class="active">Home</a></li>
+							<li><a href="#">About us</a></li>
+							<li><a href="#">How it works</a></li>
+							<li><a href="#">Blog</a></li>
+						</ul>
+					</div>
+					<div class="footer-col footer-col__2">
+						<span class="footer-subtitle"><a href="#">Resources</a></span>
+						<ul class="footer-menu">
+							<li><a href="#">API docs</a></li>
+							<li><a href="#">Press about us</a></li>
+							<li><a href="#">Testimonials</a></li>
+							<li><a href="#">Media</a></li>
+						</ul>
+					</div>
+					<div class="footer-col footer-col__3">
+						<span class="footer-subtitle"><a href="#">Support</a></span>
+						<ul class="footer-menu">
+							<li><a href="#">FAQ</a></li>
+							<li><a href="#">Help center</a></li>
+							<li><a href="#">Contact support</a></li>
+						</ul>
+					</div>
+					<div class="footer-col footer-col__4 footer-col__mob">
+						<ul>
+							<li><a href="#">Cookies</a></li>
+							<li><a href="#">Privacy</a></li>
+							<li><a href="#">Terms</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<p>©2020 All rights Reserved</p>
+				<div class="footer-bottom__row">
+					<div class="drop">
+						<div class="drop-top">
+							<div class="drop-top__row">
+								<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.9999 21.9997C17.0749 21.9997 21.9997 17.0749 21.9997 10.9999C21.9997 4.9248 17.0749 0 10.9999 0C4.9248 0 0 4.9248 0 10.9999C0 17.0749 4.9248 21.9997 10.9999 21.9997Z" fill="#F0F0F0"/><path d="M21.3155 14.8254C21.7577 13.6337 21.9997 12.3449 21.9997 10.9994C21.9997 9.65385 21.7577 8.36498 21.3155 7.17334H0.684182C0.24204 8.36498 0 9.65385 0 10.9994C0 12.3449 0.24204 13.6337 0.684182 14.8254L10.9999 15.7819L21.3155 14.8254Z" fill="#0052B4"/><path d="M11.0002 22C15.7298 22 19.7617 19.0149 21.3159 14.8262H0.68457C2.23877 19.0149 6.27069 22 11.0002 22Z" fill="#D80027"/></svg>
+								Russian
+							</div>
+							<div class="drop-top__arrow"><svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 1.5L5 5L8.5 1.5" stroke="#59678C" stroke-width="1.5"/></svg></div>
+						</div>
+						<div class="drop-list">
+							<ul>
+								<li>
+									<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.9999 21.9997C17.0749 21.9997 21.9997 17.0749 21.9997 10.9999C21.9997 4.9248 17.0749 0 10.9999 0C4.9248 0 0 4.9248 0 10.9999C0 17.0749 4.9248 21.9997 10.9999 21.9997Z" fill="#F0F0F0"/><path d="M21.3155 14.8254C21.7577 13.6337 21.9997 12.3449 21.9997 10.9994C21.9997 9.65385 21.7577 8.36498 21.3155 7.17334H0.684182C0.24204 8.36498 0 9.65385 0 10.9994C0 12.3449 0.24204 13.6337 0.684182 14.8254L10.9999 15.7819L21.3155 14.8254Z" fill="#0052B4"/><path d="M11.0002 22C15.7298 22 19.7617 19.0149 21.3159 14.8262H0.68457C2.23877 19.0149 6.27069 22 11.0002 22Z" fill="#D80027"/></svg>
+									Russian
+								</li>
+								<li>
+									<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.9999 21.9997C17.0749 21.9997 21.9997 17.0749 21.9997 10.9999C21.9997 4.9248 17.0749 0 10.9999 0C4.9248 0 0 4.9248 0 10.9999C0 17.0749 4.9248 21.9997 10.9999 21.9997Z" fill="#F0F0F0"/><path d="M21.3155 14.8254C21.7577 13.6337 21.9997 12.3449 21.9997 10.9994C21.9997 9.65385 21.7577 8.36498 21.3155 7.17334H0.684182C0.24204 8.36498 0 9.65385 0 10.9994C0 12.3449 0.24204 13.6337 0.684182 14.8254L10.9999 15.7819L21.3155 14.8254Z" fill="#0052B4"/><path d="M11.0002 22C15.7298 22 19.7617 19.0149 21.3159 14.8262H0.68457C2.23877 19.0149 6.27069 22 11.0002 22Z" fill="#D80027"/></svg>
+									Russian
+								</li>
+							</ul>
+						</div>
+					</div>
+					<ul class="footer-list">
+						<li><a href="#">Cookies</a></li>
+						<li><a href="#">Privacy</a></li>
+						<li><a href="#">Terms</a></li>
+					</ul>
+					<ul class="footer-social">
+						<li><a href="#"><img src="img/github.svg" alt=""></a></li>
+						<li><a href="#"><img src="img/twitter.svg" alt=""></a></li>
+						<li><a href="#"><img src="img/linkedin.svg" alt=""></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- end footer -->
+	<!-- modal-form -->
+	<div class="modal-overlay"></div>
+	<div class="modal modal-video" id="modal-video">
+		<div class="modal-content">
+			<div class="modal-iframe">
+				<iframe src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</div>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="js/scripts.min.js"></script>
+</body>
+</html>

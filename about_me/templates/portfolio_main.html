@@ -1,0 +1,343 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TribQq</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="Keywords" content="HTML, META">
+	<meta name="description" content="Сайт HTML">
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#fc5f45">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#fc5f45">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#fc5f45">
+	<link rel="shortcut icon" href="{% static '../media/icons/doggy_browser.ico' %}" type="image/x-icon">
+
+</head>
+<style>
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+  -webkit-transition: 1s all ease;
+  transition: 1s all ease;
+  opacity: 1;
+  visibility: visible;
+  background-color: #fc5f45; }
+  .preloader .loader {
+    width: 100%;
+    height: 75px;
+    line-height: 75px;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    font-size: 75px; }
+    .preloader .loader #load_prec {
+      font-size: 70px;
+      font-weight: bold;
+      color: #fff; }
+  .preloader.done {
+    opacity: 0;
+    visibility: hidden; }
+</style>
+<body>
+	<div id="page-preloader" class="preloader">
+		<div class="loader">
+			<span id="load_prec">0%</span>
+		</div>
+	</div>
+	<header>
+		<div class="wrapper">
+			<div class="logo">
+				<a href="">
+					<picture>
+					 	<!-- <source srcset="images/logo/logo-3.svg" type="image/svg+xml"> -->
+					 	<img src="{% static 'portfolio_main/images/logo/logo_purple.png' %}" alt="Логотип">
+					</picture>
+				</a>
+			</div>
+			<div class="mob-menu">
+				<span></span>
+			</div>
+			<ul class="menu">
+		    <li><a href="#home">Home</a><i></i></li>
+				<li><a href="#about">About</a><i></i></li>
+				<li><a href="#services">Services</a><i></i></li>
+				<li><a href="#works">Portfolio</a><i></i></li>
+				<li><a href="#steps">Steps</a><i></i></li>
+				<li><a href="#skills">Skills</a><i></i></li>
+			</ul>
+		</div>
+	</header>
+	<section id="home" class="section-bg" style="background: url(images/home.jpeg);">
+		<div class="banner-text">
+			<h1 id="typed" style="white-space:pre;"></h1>
+			<p>Lorem ipsum dolor sit amet, <span>consectetur</span> adipisicing elit. Suscipit quis <span>laboriosam</span> libero dolores iure nihil explicabo deserunt <span>pariatur</span> reprehenderit. Harum reiciendis hic esse, debitis qui fuga ipsa at <span>voluptate</span> aliquid.</p>
+			<a class="banner-a" href="#works">my works</a>
+		</div>
+		<ul class="banner-social">
+			<li><a target="_blank" href="mailto:ivankartasov.trib@gmail.com">
+				<picture>
+				 	<source srcset="{% static 'portfolio_main/images/social/email.svg' %}" type="image/svg+xml">
+				 	<img src="{% static 'portfolio_main/images/social/email.png' %}" alt="column">
+				</picture>
+			</a></li>
+			<li><a target="_blank" href="https://t.me/Qq_user">
+				<picture>
+				 	<source srcset="{% static 'portfolio_main/images/social/telegram.svg' %}" type="image/svg+xml">
+				 	<img src="{% static 'portfolio_main/images/social/telegram.png' %}" alt="column">
+				</picture>
+			</a></li>
+			<li><a target="_blank" href="">
+				<picture>
+				 	<source srcset="{% static 'portfolio_main/images/social/linkedin.svg' %}" type="image/svg+xml">
+				 	<img src="{% static 'portfolio_main/images/social/linkedin.png' %}" alt="column">
+				</picture>
+			</a></li>
+		</ul>
+	</section>
+	<section id="about" class="section">
+		<div class="wrapper">
+			<div class="about-me">
+				<div class="about-photo"></div>
+				<div class="about-text">
+					<h2>About Me</h2>
+					<span class="section-bg-num">01</span>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime repellendus dicta placeat, dolores quaerat quidem unde! Eveniet nobis temporibus recusandae odio laboriosam in ducimus vero, earum necessitatibus nam a excepturi.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi iusto voluptates alias, blanditiis iste enim.</p>
+					<span class="line l1"></span>
+					<span class="line l2"></span>
+					<span class="line l3"></span>
+					<span class="line l4"></span>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="section" id="services">
+		<div class="wrapper">
+			<div class="section-text">
+				<h2>My Services</h2>
+				<p>I understand your requirement and provide quality works.</p>
+			</div>
+			<span class="section-bg-num sec-num">02</span>
+			<div class="services">
+				<div class="services-column">
+					<img src="{% static 'portfolio_main/images/services/responsive.svg' %}"  alt="responsive">
+					<h4>100% Responsive</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo.</p>
+				</div>
+				<div class="services-column">
+					<img src="{% static 'portfolio_main/images/services/setting.svg' %}" alt="support">
+					<h4>7x24 Support</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo.</p>
+				</div>
+				<div class="services-column">
+					<img src="{% static 'portfolio_main/images/services/binary.svg' %}" alt="binary">
+					<h4>Clean Coding</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo.</p>
+				</div>
+				<div class="services-column">
+					<img src="{% static 'portfolio_main/images/services/customizable.svg' %}" alt="customizable">
+					<h4>Easy Customizable</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="count-section section" style="background: url(images/count.jpg);">
+		<div class="wrapper">
+			<div id="counter">
+				<div class="count-column">
+					<img src="{% static 'portfolio_main/images/count/diamond.svg' %}" alt="Картинка">
+					<div data-num="34" class="number n1">0</div>
+					<h5>Projects Completed</h5>
+				</div>
+				<div class="count-column">
+					<img src="{% static 'portfolio_main/images/count/user.svg' %}" alt="Картинка">
+					<div data-num="21" class="number n2">0</div>
+					<h5>Satisfied Clients</h5>
+				</div>
+				<div class="count-column">
+					<img src="{% static 'portfolio_main/images/count/like.svg' %}" alt="Картинка">
+					<div data-num="42" class="number n3">0</div>
+					<h5>Projects Completed</h5>
+				</div>
+				<div class="count-column">
+					<img src="{% static 'portfolio_main/images/count/gift.svg' %}" alt="Картинка">
+					<div data-num="56" class="number n4">0</div>
+					<h5>Projects Completed</h5>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="section" id="works">
+		<div class="wrapper">
+			<div class="section-text">
+				<h2>Portfolio</h2>
+				<p>I understand your requirement and provide quality works.</p>
+			</div>
+			<span class="section-bg-num sec-num">03</span>
+			<div class="projects">
+				<div class="portfolio-post">
+					<img class="portfolio-img" src="{% static 'portfolio_main/images/portfolio/endo.jpg' %}"  alt="portfolio">
+					<div class="descr">
+						<div class="descr-head">
+							<img src="{% static 'portfolio_main/images/portfolio/endo-logo.png' %}" alt="Логотип">
+							<h4>Landing</h4>
+						</div>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores nisi placeat, nulla odit?</p>
+						<a href="">Read More</a>
+					</div>
+				</div><!--1-->
+				<div class="portfolio-post">
+					<img class="portfolio-img" src="{% static 'portfolio_main/images/portfolio/powerBall.jpg' %}" alt="portfolio">
+					<div class="descr">
+						<div class="descr-head">
+							<img src="{% static 'portfolio_main/images/portfolio/powerBall-logo.png' %}" alt="Логотип">
+							<h4>Landing</h4>
+						</div>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores nisi placeat, nulla odit?</p>
+						<a href="">Read More</a>
+					</div>
+				</div><!--2-->
+			</div>
+		</div>
+	</section>
+	<section class="section" id="steps">
+		<div class="wrapper">
+			<div class="section-text">
+				<h2>Work Steps.</h2>
+				<p>I understand your requirement and provide quality works.</p>
+			</div>
+			<span class="section-bg-num sec-num">04</span>
+			<div class="step">
+				<div class="steps-column">
+					<img src="{% static 'portfolio_main/images/steps/step-1.jpg' %}" alt="">
+					<div class="steps-column-text steps-1">
+						<span>01</span>
+						<h4>Project Understanding</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque veniam ipsum maiores, eius consequatur commodi non provident cumque.</p>
+					</div>
+				</div>
+				<div class="steps-column">
+					<img src="{% static 'portfolio_main/images/steps/step-2.jpg' %}" alt="">
+					<div class="steps-column-text steps-2">
+						<span>02</span>
+						<h4>Project Understanding</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque veniam ipsum maiores, eius consequatur commodi non provident cumque.</p>
+					</div>
+				</div>
+				<div class="steps-column">
+					<img src="{% static 'portfolio_main/images/steps/step-3.jpg' %}" alt="">
+					<div class="steps-column-text steps-3">
+						<span>03</span>
+						<h4>Project Understanding</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque veniam ipsum maiores, eius consequatur commodi non provident cumque.</p>
+					</div>
+				</div>
+				<div class="steps-column">
+					<img src="{% static 'portfolio_main/images/steps/step-4.jpeg' %}" alt="">
+					<div class="steps-column-text steps-4">
+						<span>04</span>
+						<h4>Development</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque veniam ipsum maiores, eius consequatur commodi non provident cumque.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="section" id="skills">
+		<div class="wrapper">
+			<div class="section-text">
+				<h2>Skills</h2>
+				<p>I understand your requirement and provide quality works.</p>
+			</div>
+			<span class="section-bg-num sec-num">05</span>
+			<div class="skills">
+				<div class="skills-column">
+					<img src="{% static 'portfolio_main/images/skills/css-3.svg' %}" alt="css">
+					<h4>CSS</h4>
+					<p>Lorem ipsum dolor sit amet, elit. Maiores modi, vero animi.</p>
+				</div>
+				<div class="skills-column">
+					<img src="{% static 'portfolio_main/images/skills/javascript.svg' %}" alt="Js">
+					<h4>JavaScript</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				</div>
+				<div class="skills-column">
+					<img src="{% static 'portfolio_main/images/skills/python.svg' %}" alt="Python">
+					<h4>Python</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores modi.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<div class="wrapper">
+			<div class="footer">
+				<div class="fot-column fot-logo">
+					<a href="">
+						<picture>
+						 	<!-- <source srcset="{% static 'portfolio_main/images/logo/logo-1.svg' %}" type="image/svg+xml"> -->
+						 	<img src="{% static 'portfolio_main/images/logo/logo_red.png' %}" alt="Логотип">
+						</picture>
+					</a>
+				</div>
+				<div class="fot-column contact">
+					<h4>Contact Me.</h4>
+					<ul>
+						<li><a href=""><i class="fa fa-phone" aria-hidden="true"></i> +***</a></li>
+						<li><a href="mailto:ivankartasov.trib@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i> ivankartasov.trib@gmail.com</a></li>
+						<li><i class="fa fa-map-marker" aria-hidden="true"></i>  GMT, +5</li>
+					</ul>
+				</div>
+				<div class="fot-column info">
+					<h4>Info</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, id!</p>
+				</div>
+				<div class="fot-column">
+					<h4>Contact Me.</h4>
+					<ul class="fot-social">
+						<li><a target="_blank" href="mailto:ivankartasov.trib@gmail.com">
+							<picture>
+							 	<source srcset="{% static 'portfolio_main/images/social/email.svg' %}" type="image/svg+xml">
+							 	<img src="{% static 'portfolio_main/images/social/email.png' %}" alt="column">
+							</picture>
+						</a></li>
+						<li><a target="_blank" href="https://t.me/Qq_user">
+							<picture>
+							 	<source srcset="{% static 'portfolio_main/images/social/telegram.svg' %}" type="image/svg+xml">
+							 	<img src="{% static 'portfolio_main/images/social/telegram.png' %}" alt="column">
+							</picture>
+						</a></li>
+						<li><a target="_blank" href="">
+							<picture>
+							 	<source srcset="{% static 'portfolio_main/images/social/linkedin.svg' %}" type="image/svg+xml">
+							 	<img src="{% static 'portfolio_main/images/social/linkedin.png' %}" alt="column">
+							</picture>
+						</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</footer>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="{% static 'portfolio_main/css/main.min.css' %}">
+	<script src="{% static 'portfolio_main/js/scripts.min.js' %}"></script>
+</body>
+</html>

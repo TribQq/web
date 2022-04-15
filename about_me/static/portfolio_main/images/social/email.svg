@@ -1,0 +1,10 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
+	<title>icons8-mail-96</title>
+	<defs>
+		<image  width="80" height="64" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABACAMAAAC6GQAEAAAAAXNSR0IB2cksfwAAAM9QTFRFAAAA////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////qIieRwAAAEV0Uk5TAC2R1PT/kCwHlv2VBr69l5T8K47V0/Pysx4ZovV3AwJm8c82L8iZDQqI++VUTOBN4eZeDjDJ0DcEGqsfVeJPqh2wjZK8FrnkMwAAAa1JREFUeJzt2NtWgkAUgOGdurGQTCC1g6aWx05WdrLSNHv/ZwolZWZgmBmZm1bsK2Xhp/AzugTAm51MNocJJ5c18uDP7p6ZVPPHLFgrb18Pt5ziUjzQ5yGWvPOn6Xj9sR3I6PQQXTjUC5ahoheswvoRJJyN84/Bo+Mk3MlpCMRa/WxbrtFsYRhEPL/Yzmt3CIQE0ez21Ln+4BJ5IOLVtap3c0sLDKgaJ4jBBVXikDH4oHycdifixRtweBdslIrTH9jBK+4fQiC9gzgOGcPsjiKX3uMT8dHj41Axnl+As5YbzWqwW0wcKkat/go8EGD8RrwzLw59JO/+Rg4IIIzDxFhv5oJMnA/WGzIxxGBsnHEohgzIjcPEoKLFgpw4kTEkQTbOiBtDGoSeQQCT6XQSPLONcH0xyBxixClQBuk46+GsICnQi/PJemwMRZCO413ooRjKIFmXXBnbg0Gc2G9yFdBfIYLfGiUQYDafz+L3UATFk4IpmIIp+NdBzX/AW/pvERh6wS/I2+K95Md2AAo6wYWXxyrq875XN7+skqajthfW7zXkuOXEV0+l7DpL6wf5PE6WAS2BcwAAAABJRU5ErkJggg=="/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<use id="Background" href="#img1" x="8" y="16" />
+</svg>

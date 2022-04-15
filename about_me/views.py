@@ -12,6 +12,10 @@ def alt_about_me(request):
     return render(request, 'alt_about_me.html')
 
 
+def portfolio_main(request):
+    return render(request, 'portfolio_main.html')
+
+
 def handler_404(request):
     """ page for 404 error"""
     return render(request, 'handlers/404.html')

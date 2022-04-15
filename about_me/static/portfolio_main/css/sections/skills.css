@@ -1,0 +1,66 @@
+.skills {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  margin: 60px 0; }
+  .skills .skills-column {
+    width: 22.6%;
+    padding: 40px 25px;
+    -webkit-border-radius: 13px;
+            border-radius: 13px;
+    background: #f7f7f7;
+    margin: 15px 1.2%;
+    text-align: center;
+    -webkit-box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.1);
+            box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.1);
+    border-top: 5px solid transparent;
+    -webkit-transition: .35s linear;
+    transition: .35s linear; }
+    .skills .skills-column:hover {
+      -webkit-box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+              box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2); }
+    .skills .skills-column:nth-child(1) {
+      border-color: #fc5f45; }
+    .skills .skills-column:nth-child(2) {
+      border-color: #38c695;
+      -webkit-animation-delay: .2s;
+              animation-delay: .2s; }
+    .skills .skills-column:nth-child(3) {
+      border-color: #b27cf5;
+      -webkit-animation-delay: .4s;
+              animation-delay: .4s; }
+    .skills .skills-column:nth-child(4) {
+      border-color: #feb960;
+      -webkit-animation-delay: .6s;
+              animation-delay: .6s; }
+    .skills .skills-column:nth-child(5) {
+      border-color: #fc5f45;
+      -webkit-animation-delay: .2s;
+              animation-delay: .2s; }
+    .skills .skills-column:nth-child(6) {
+      border-color: #38c695;
+      -webkit-animation-delay: .4s;
+              animation-delay: .4s; }
+    .skills .skills-column:nth-child(7) {
+      border-color: #b27cf5;
+      -webkit-animation-delay: .6s;
+              animation-delay: .6s; }
+    .skills .skills-column:nth-child(8) {
+      border-color: #feb960;
+      -webkit-animation-delay: .8s;
+              animation-delay: .8s; }
+    .skills .skills-column img {
+      height: 130px;
+      margin-bottom: 15px; }
+      .skills .skills-column img.jquery {
+        width: 150px;
+        margin-left: 50px; }
+    .skills .skills-column h4 {
+      font-size: 23px;
+      margin-bottom: 15px; }
+    .skills .skills-column p {
+      font-size: 16px; }

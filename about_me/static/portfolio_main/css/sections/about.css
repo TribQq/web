@@ -1,0 +1,66 @@
+.about-me {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+.about-photo {
+  width: 600px;
+  min-height: 750px;
+  border: 10px solid #ccc;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  position: relative;
+  background: url(../images/about.jpg);
+  background-size: cover; }
+
+.about-text {
+  width: 650px;
+  padding: 60px 70px;
+  max-height: 500px;
+  background: #ffffff;
+  margin: 140px 0 0 -50px;
+  -webkit-box-shadow: 0px 4px 15px 2px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 4px 15px 2px rgba(0, 0, 0, 0.15);
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  z-index: 10;
+  position: relative;
+  -webkit-transition: .35s linear;
+  transition: .35s linear; }
+  .about-text:hover {
+    -webkit-box-shadow: 0px 4px 15px 2px rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 4px 15px 2px rgba(0, 0, 0, 0.5);
+    -webkit-transform: translate(-10px, 20px);
+        -ms-transform: translate(-10px, 20px);
+            transform: translate(-10px, 20px); }
+  .about-text .section-bg-num {
+    top: -30px;
+    left: 30px; }
+  .about-text p {
+    font-size: 16px;
+    line-height: 2;
+    margin-bottom: 30px; }
+
+.line {
+  position: absolute;
+  bottom: 0;
+  width: 25%;
+  display: block;
+  height: 5px; }
+  .line.l1 {
+    left: 0%;
+    background: #fc5f45; }
+  .line.l2 {
+    left: 25%;
+    background: #38c695; }
+  .line.l3 {
+    left: 50%;
+    background: #b27cf5; }
+  .line.l4 {
+    left: 75%;
+    background: #feb960; }

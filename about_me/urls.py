@@ -7,5 +7,9 @@ app_name = 'about_me'
 urlpatterns = [
    path('', about_main, name='about_main'),
    path('alt/', alt_about_me, name='alt_about_me'),
+   
+   path('portfolio/', portfolio_main, name='portfolio_main'),
+   
+   
    path('404/', handler_404, name='handler_404'),
 ]
