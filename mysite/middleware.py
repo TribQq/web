@@ -1,5 +1,5 @@
 from django.contrib.auth import authenticate, login
-
+from bulletin_board.models import AdvUser
 
 class BookshelfAutoLogin: # 500 если не будет acc visitor.. mb стоит перенести в bookshelf а тут заменить на разлоги наоборот на случай visitor`а`
     """middleware для авто логина при исп bookshelf, можно было просто прикрутить деркоратор к прогрессу,но  концепт c middleware мне понравился больше)"""
@@ -7,7 +7,7 @@ class BookshelfAutoLogin: # 500 если не будет acc visitor.. mb сто
         self._get_response = get_response
 
     def __call__(self, request):
-        if (str(request)[:31] =="<WSGIRequest: GET '/bookshelf/'"
+        if (str(request)[:40] =="<WSGIRequest: GET '/portfolio/bookshelf/"
                 and not request.user.is_authenticated):
             user = authenticate(username='visitor', password='visitor')
             login(request, user)
@@ -15,3 +15,19 @@ class BookshelfAutoLogin: # 500 если не будет acc visitor.. mb сто
         return response
 
 
+
+### old example
+# class BookshelfAutoLogin: # 500 если не будет acc visitor.. mb стоит перенести в bookshelf а тут заменить на разлоги наоборот на случай visitor`а`
+#     """middleware для авто логина при исп bookshelf, можно было просто прикрутить деркоратор к прогрессу,но  концепт c middleware мне понравился больше)"""
+#     def __init__(self, get_response):
+#         self._get_response = get_response
+#
+#     def __call__(self, request):
+#         if (str(request)[:31] =="<WSGIRequest: GET '/bookshelf/'"
+#                 and not request.user.is_authenticated):
+#             user = authenticate(username='visitor', password='visitor')
+#             login(request, user)
+#         response = self._get_response(request)
+#         return response
+#
+#

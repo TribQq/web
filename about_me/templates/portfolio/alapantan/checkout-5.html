@@ -1,0 +1,75 @@
+{% extends "portfolio/alapantan/layout/basic.html" %}
+{% load static %}
+{% block title %} checkout-5 {% endblock %}
+
+{% block content %}
+
+	<!-- start checkout -->
+	<section class="checkout">
+		<div class="wrapper">
+			<ul class="bread-crumbs">
+				<li><a href="#">Главная</a></li>
+				<li>Оформление заказа</li>
+			</ul>
+			<h1 class="page-name">Оформление заказа</h1>
+			<div class="order-accepted">
+				<div class="order-accepted__img">
+					<img src="{% static 'portfolio/alapantan/img/order.png' %}" alt="">
+				</div>
+				<div class="order-accepted__info">
+					<h3 class="order-accepted__title">Спасибо за покупку!</h3>
+					<h4 class="order-accepted__subtitle">Ваш заказ оформлен и оплачен</h4>
+					<div class="order-accepted__row">
+						<div class="order-accepted__name">
+							<p>Номер заказа:</p>
+						</div>
+						<div class="order-accepted__col">
+							<p>№ 123456789</p>
+							<span>Для отслеживания заказа в Личном кабинете</span>
+						</div>
+					</div>
+					<div class="order-accepted__row">
+						<div class="order-accepted__name">
+							<p>Получатель:</p>
+						</div>
+						<div class="order-accepted__col">
+							<p>Иванова Светлана Александровна</p>
+						</div>
+					</div>
+					<div class="order-accepted__row">
+						<div class="order-accepted__name">
+							<p>Адрес доставки:</p>
+						</div>
+						<div class="order-accepted__col">
+							<p>г. Москва, ул.Садовое Кольцо, д 150, кв.20</p>
+						</div>
+					</div>
+					<div class="order-accepted__row">
+						<div class="order-accepted__name">
+							<p>Способ доставки:</p>
+						</div>
+						<div class="order-accepted__col">
+							<p>Доставка до пункта выдачи</p>
+							<p>СДЭК<a href="#">Посмотреть на карте</a></p>
+						</div>
+					</div>
+					<div class="order-accepted__row">
+						<div class="order-accepted__name">
+							<p>Дата доставки:</p>
+						</div>
+						<div class="order-accepted__col">
+							<p>27 октября</p>
+							<span>10:00 - 19:00</span>
+						</div>
+					</div>
+					<div class="order-accepted__bottom">
+						<p>Оплата онлайн банковской картой<span>1 857 р</span></p>
+						<a href="#" class="solid-btn">Вернуться к покупкам</a>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</section>
+	<!-- end checkout -->
+
+{% endblock %}

@@ -1,0 +1,221 @@
+{% extends "portfolio/alapantan/layout/basic.html" %}
+{% load static %}
+{% block title %} checkout-2 {% endblock %}
+
+{% block content %}
+
+	<!-- end header -->
+	<!-- start checkout -->
+	<section class="checkout">
+		<div class="wrapper">
+			<ul class="bread-crumbs">
+				<li><a href="#">Главная</a></li>
+				<li>Оформление заказа</li>
+			</ul>
+			<h1 class="page-name">Оформление заказа</h1>
+			<div class="checkout-row">
+				<div class="checkout-content">
+					<div class="checkout-step checkout-error">
+						<div class="checkout-step__top">
+							<span class="checkout-step__num">1</span>
+							<h2 class="checkout-step__title">Способы доставки</h2>
+							<p>Выберите способ доставки</p>
+						</div>
+						<h3 class="checkout-step__subtitle">Укажите город для доставки заказа</h3>
+						<div class="checkout-step__local">
+							<span class="ico-hb ico-local"></span>
+							<input type="text" name="text" value="Санкт-Петербург, Северо-Запад, Россия">
+							<a href="#" class="ico-hb ico-close"></a>
+						</div>
+						<div class="checkout-step__radio">
+							<div class="radio radio-main">
+								<div class="radio-input">
+									<input type="radio" name="radio-1">
+									<span></span>
+									<div class="radio-input__row">
+										<div class="radio-input__col radio-input__col-1">
+											<h3 class="radio-input__title">Самовывоз из магазина</h3>
+										</div>
+										<div class="radio-input__col radio-input__col-2"></div>
+										<div class="radio-input__col radio-input__col-3">
+											<p>Бесплатно</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="radio">
+								<div class="radio-input">
+									<input type="radio" name="radio-1">
+									<span></span>
+									<div class="radio-input__row">
+										<div class="radio-input__col radio-input__col-1">
+											<h3 class="radio-input__title">Доставка до пункта выдачи</h3>
+										</div>
+										<div class="radio-input__col radio-input__col-2">
+											<p>3 - 4 дня</p>
+										</div>
+										<div class="radio-input__col radio-input__col-3">
+											<p><b>104 р</b> 52 р</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="radio">
+								<div class="radio-input">
+									<input type="radio" name="radio-1">
+									<span></span>
+									<div class="radio-input__row">
+										<div class="radio-input__col radio-input__col-1">
+											<h3 class="radio-input__title">Доставка курьером </h3>
+										</div>
+										<div class="radio-input__col radio-input__col-2">
+											<p>5 дней</p>
+										</div>
+										<div class="radio-input__col radio-input__col-3">
+											<p><b>214 р</b> 107 р</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="radio">
+								<div class="radio-input">
+									<input type="radio" name="radio-1">
+									<span></span>
+									<div class="radio-input__row">
+										<div class="radio-input__col radio-input__col-1">
+											<h3 class="radio-input__title">Доставка Почтой России</h3>
+										</div>
+										<div class="radio-input__col radio-input__col-2">
+											<p>3 - 5 дней</p>
+										</div>
+										<div class="radio-input__col radio-input__col-3">
+											<p><b>433 р</b> 216,5 р</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="checkout-step checkout-step__2">
+						<div class="checkout-step__top">
+							<span class="checkout-step__num">2</span>
+							<h2 class="checkout-step__title">Способ оплаты</h2>
+						</div>
+						<div class="checkout-step__radio">
+							<div class="radio radio-first">
+								<div class="radio-input">
+									<input type="radio" name="radio-2">
+									<span></span>
+									<div class="radio-input__row">
+										<div class="radio-input__col radio-input__col-1">
+											<h3 class="radio-input__title">Оплата онлайн</h3>
+										</div>
+										<div class="radio-input__col radio-input__col-2">
+											<p class="color-blue">При оплате онлайн скидка на доставку 50%</p>
+										</div>
+										<div class="radio-input__col radio-input__col-3">
+											<img src="{% static 'portfolio/alapantan/img/logo_card.png' %}" alt="">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="radio">
+								<div class="radio-input">
+									<input type="radio" name="radio-2">
+									<span></span>
+									<div class="radio-input__row">
+										<div class="radio-input__col radio-input__col-1">
+											<h3 class="radio-input__title">Оплата при получении</h3>
+										</div>
+										<div class="radio-input__col radio-input__col-3">
+											<p>Банковской картой, наличными</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="radio">
+								<div class="radio-input checkbox">
+									<input type="checkbox" name="checkbox">
+									<span></span>
+									<div class="radio-input__row">
+										<div class="radio-input__col radio-input__col-1">
+											<h3 class="radio-input__title">Оплатить баллами</h3>
+										</div>
+										<div class="radio-input__col radio-input__col-3">
+											<p><b>на Вашем счету:  300 баллов</b></p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="checkout-step checkout-error">
+						<div class="checkout-step__top">
+							<span class="checkout-step__num">3</span>
+							<h2 class="checkout-step__title">Ваши данные</h2>
+							<p>Заполните обязательные поля</p>
+						</div>
+						<p class="checkout-step__text">Вы уже зарегистрированны? <a href="#">Войдите</a> и Вам не придётся заполнять форму снова, а заказ сохранится в Вашем личном кабинете.</p>
+						<h3 class="checkout-step__subtitle">Ваши данные</h3>
+						<div class="checkout-step__form">
+							<form action="">
+								<div class="checkout-step__form-row">
+									<div class="checkout-step__form-col">
+										<label for="j-1">Имя<span>*</span></label>
+										<input id="j-1" type="text" name="text">
+									</div>
+									<div class="checkout-step__form-col">
+										<label for="j-2">Фамилия<span>*</span></label>
+										<input id="j-2" type="text" name="text">
+									</div>
+									<div class="checkout-step__form-col">
+										<label for="j-3">Телефон<span>*</span></label>
+										<input class="input-error" id="j-3" type="text" name="text" value="text">
+									</div>
+									<div class="checkout-step__form-col">
+										<label for="j-4">E-mail<span>*</span></label>
+										<input id="j-4" type="text" name="text">
+									</div>
+								</div>
+								<p class="checkout-step__form-p"><span>*</span> поля обязательные к заполнению</p>
+								<div class="checkout-step__form-btn">
+									<a href="#" class="solid-btn">Вернуться в корзину</a>
+									<a href="#" class="second-btn">Оплатить</a>
+								</div>
+								<p>Продолжая оформление заказа вы соглашаетесь с <a href="#">условиями оферты</a> и <a href="#">политикой конфиденциальности.</a></p>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="checkout-sidebar">
+					<h3 class="checkout-sidebar__title">Ваш заказ</h3>
+					<div class="checkout-sidebar__content">
+						<div class="checkout-sidebar__row">
+							<p>4 товара </p>
+							<div>
+								<p>1 700 р</p>
+								<span>с учетом скидки</span>
+							</div>
+						</div>
+						<div class="checkout-sidebar__row">
+							<p>Доставка</p>
+							<div>
+								<p><b>252 р</b>  156 р</p>
+							</div>
+						</div>
+					</div>
+					<div class="checkout-sidebar__bottom">
+						<form action="">
+							<div class="checkout-sidebar__bottom-promo">
+								<input type="text" name="text" placeholder="Промокод">
+								<button class="main-btn">Применить</button>
+							</div>
+						</form>
+						<p>Итого <span>1 852 р</span></p>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</section>
+	<!-- end checkout -->
+{% endblock %}

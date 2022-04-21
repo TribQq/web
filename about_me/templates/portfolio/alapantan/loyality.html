@@ -1,0 +1,84 @@
+{% extends "portfolio/alapantan/layout/basic.html" %}
+{% load static %}
+{% block title %} loyalty {% endblock %}
+
+{% block content %}
+	<!-- start buy -->
+	<section class="buy news-alapa">
+		<div class="wrapper">
+			<ul class="bread-crumbs">
+				<li><a href="#">Главная</a></li>
+				<li>Баллы</li>
+			</ul>
+			<div class="cabinet-top">
+				<h1 class="page-name">Программа лояльности Alapantan</h1>
+				<a href="#" class="cabinet-exit cabinet-share"><span class="ico-hb ico-share"></span>Поделиться</a>
+			</div>	
+		</div>
+		<div class="wrapper">
+			<div class="loyalty-content">
+				<div class="loyalty-main">
+					<div class="loyalty-main__bg" style="background-image: url({% static 'portfolio/alapantan/img/ball-bg.png' %});"></div>
+					<div class="loyalty-main__bg loyalty-main__bg-mob" style="background-image: url({% static 'portfolio/alapantan/img/ball-bg.png' %});"></div>
+					<span class="loyalty-main__ball">1 балл = 1 рубль</span>
+					<div class="loyalty-main__info">
+						<h3 class="loyalty-main__title">Оплачивайте баллами Alapantan <span>до 99%</span> своей покупки</h3>
+						<p>В нашем интернет-магазине действует удобная система баллов. За каждый оплаченный заказ на сайте alapantan.ru мы начисляем баллы, которые можно тратить на покупки.</p>
+						<p>Баллы начисляются по факту оплаты<br>(на сайте, курьеру, в отделении Почты России) <br>в течение 1-2 дней. </p>
+					</div>
+				</div>
+			</div>
+			<div class="loyalty-receive">
+				<h2 class="loyalty-title">Как получить баллы Alapantan?</h2>
+				<div class="loyalty-row">
+					<div class="loyalty-col">
+						<div class="loyalty-col__img">
+							<img src="{% static 'portfolio/alapantan/img/sale_image-1.png' %}" alt="">
+						</div>
+						<div class="loyalty-col__info">
+							<h3 class="loyalty-col__title">Войдите</h3>
+							<p>Что бы получить баллы Alapantan, войдите или зарегистрируйтесь на сайте</p>
+							<div class="loyalty-col__row">
+								<a href="#" class="second-btn">Войти</a>
+								<a href="#" class="main-btn">Зарегистрироваться</a>
+							</div>
+						</div>
+					</div><!-- col(1) -->
+					<div class="loyalty-col">
+						<div class="loyalty-col__img">
+							<img src="{% static 'portfolio/alapantan/img/sale_image-2.png' %}" alt="">
+						</div>
+						<div class="loyalty-col__info">
+							<h3 class="loyalty-col__title">Сделайте заказ</h3>
+							<p>Совершайте покупки на сайте и получайте баллы за каждый заказ</p>
+						</div>
+					</div><!-- col(2) -->
+					<div class="loyalty-col">
+						<div class="loyalty-col__img">
+							<img src="{% static 'portfolio/alapantan/img/sale_image-3.png' %}" alt="">
+						</div>
+						<div class="loyalty-col__info">
+							<h3 class="loyalty-col__title">Увеличивайте скидку</h3>
+							<p>Делайте больше заказов, копите баллы и оплачивайте до 99% всего заказа</p>
+						</div>
+					</div><!-- col(3) -->
+				</div>
+			</div>
+			<div class="loyalty-spend">
+				<div class="loyalty-spend__info">
+					<h2 class="loyalty-spend__title">Как потратить баллы Alapantan?</h2>
+					<h3 class="loyalty-spend__subtitle">Оплачивайте заказы </h3>
+					<p>Вы можете оплатить баллами Alapantan весь свой заказ или часть заказа</p>
+					<p>Узнать количество баллов, историю их начисления или списания, Вы можете после авторизации на сайте в <a href="#">Личном кабинете</a> в разделе <a href="#">“Мои баллы”</a>.</p>
+					<p>Неиспользованные баллы не сгорают</p>
+					<a href="#" class="second-btn">Сколько у меня баллов?</a>
+				</div>
+				<div class="loyalty-spend__img">
+					<img src="{% static 'portfolio/alapantan/img/balls_image.png' %}" alt="">
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end buy -->
+
+{% endblock %}

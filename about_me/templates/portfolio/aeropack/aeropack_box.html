@@ -1,0 +1,353 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<title>title</title>
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="{% static 'portfolio/aeropack_box/css/main.min.css' %}">
+	<meta name="theme-color" content="#000">
+	<meta name="msapplication-navbutton-color" content="#000">
+	<meta name="apple-mobile-web-app-status-bar-style" content="#000">
+	<link rel="shortcut icon" href="{% static '../media/icons/doggy_browser.ico' %}" type="image/x-icon">
+</head>
+<body>
+	<!-- modal -->
+	<div class="modal-overlay"></div>
+	<!-- modal-call -->
+	<div class="modal modal-call" id="modal-call">
+		<div class="modal-call__content">
+			<div class="cancel"><img src="{% static 'portfolio/aeropack_box/img/delete.svg' %}" alt=""></div>
+			<div class="modal-call__descr">
+				<p>Приглашаем к сотрудничеству торговых представителей в городах ПФО, СКФО, СФО, ДВФО России и странах СНГ, и Европы</p>
+				<h2 class="modal-call__title">Заполните анкету</h2>
+				<p>и скачайте предложение по франщизе</p>
+			</div>
+			<form method="post" action="">
+				<div class="modal-call__row">
+					<input name="name" type="text" placeholder="Ваше имя">
+					<input name="phone" type="phone" placeholder="Телефон">
+				</div>
+				<div class="modal-call__row">
+					<input name="name" type="text" placeholder="Город">
+					<input name="phone" type="email" placeholder="Email">
+				</div>
+				<button class="modal-call__btn">Отправить</button>
+			</form>
+		</div>
+	</div>
+	<!-- modal-cooperation -->
+	<div class="modal modal-cooperation" id="modal-cooperation">
+		<div class="cancel"><img src="{% static 'portfolio/aeropack_box/img/delete.svg' %}" alt=""></div>
+		<div class="modal-cooperation__content">
+			<div class="modal-cooperation__block">
+				<h2 class="modal-cooperation__title">Приглашаем к сотрудничеству</h2>
+				<div class="modal-cooperation__row">
+					<div class="modal-cooperation__col">
+						<div>
+							<img src="{% static 'portfolio/aeropack_box/img/store.svg' %}" alt="">
+						</div>
+						<p>Супермаркеты и магазины</p>
+					</div>
+					<div class="modal-cooperation__col">
+						<div>
+							<img src="{% static 'portfolio/aeropack_box/img/plane-ticket.svg' %}"  alt="">
+						</div>
+						<p>Туристические фирмы</p>
+					</div>
+					<div class="modal-cooperation__col">
+						<div>
+							<img src="{% static 'portfolio/aeropack_box/img/hotel.svg' %}"  alt="">
+						</div>
+						<p>Гостиницы и хостелы</p>
+					</div>
+					<div class="modal-cooperation__col">
+						<div>
+							<img src="{% static 'portfolio/aeropack_box/img/fuel-station.svg' %}"  alt="">
+						</div>
+						<p>АЗС</p>
+					</div>
+				</div>
+			</div>
+			<div class="modal-cooperation__block">
+				<h2 class="modal-cooperation__title">Мы предлагаем</h2>
+				<div class="modal-cooperation__row">
+					<div class="modal-cooperation__col">
+						<div>
+							<img src="{% static 'portfolio/aeropack_box/img/40.svg' %}"  alt="">
+						</div>
+						<p>Скидка <br>до 40%</p>
+					</div>
+					<div class="modal-cooperation__col">
+						<div>
+							<img src="{% static 'portfolio/aeropack_box/img/60.svg' %}"  alt="">
+						</div>
+						<p>Отсрочка платежа <br>до 60 дней</p>
+					</div>
+					<div class="modal-cooperation__col">
+						<div>
+							<img src="{% static 'portfolio/aeropack_box/img/0.svg' %}"  alt="">
+						</div>
+						<p>Бесплатна <br>доставка</p>
+					</div>
+					<div class="modal-cooperation__col">
+						<div>
+							<img src="{% static 'portfolio/aeropack_box/img/star.svg' %}"  alt="">
+						</div>
+						<p>Рекламная <br>поддержка</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-call__content">
+			<div class="modal-call__descr">
+				<h2 class="modal-call__title">Заполните анкету</h2>
+			</div>
+			<form method="post" action="">
+				<div class="modal-call__row">
+					<input name="name" type="text" placeholder="Ваше имя">
+					<input name="phone" type="phone" placeholder="Телефон">
+				</div>
+				<div class="modal-call__row">
+					<input name="name" type="text" placeholder="Город">
+					<input name="phone" type="email" placeholder="Email">
+				</div>
+				<button class="modal-call__btn">Отправить</button>
+			</form>
+		</div>
+	</div>
+	<div class="body-img body-img-1">
+		<img src="{% static 'portfolio/aeropack_box/img/cl-1.png' %}"  alt="">
+	</div>
+	<div class="body-img body-img-1 body-img__mob">
+		<img src="{% static 'portfolio/aeropack_box/img/cl-1.png' %}"  alt="">
+	</div>
+	<div class="body-img body-img-2">
+		<img src="{% static 'portfolio/aeropack_box/img/cl-2.png' %}"  alt="">
+	</div>
+	<div class="body-img body-img-4">
+		<img src="{% static 'portfolio/aeropack_box/img/cl-4.png' %}"  alt="">
+	</div>
+	<div class="body-img body-img-5">
+		<img src="{% static 'portfolio/aeropack_box/img/cl-5.png' %}" alt="">
+	</div>
+	<!-- start header -->
+	<header class="header">
+		<div class="wrapper">
+			<div class="header-logo">
+				<a href="#">
+					<img src="{% static 'portfolio/aeropack_box/img/logo.svg' %}"  alt="">
+					<img class="logo-mob" src="{% static 'portfolio/aeropack_box/img/logo-w.svg' %}"  alt="">
+				</a>
+			</div>
+			<ul class="header-social">
+				<li><a href="#"><img src="{% static 'portfolio/aeropack_box/img/vk-social-network-logo.svg' %}"  alt=""></a></li>
+				<li><a href="#"><img src="{% static 'portfolio/aeropack_box/img/facebook-logo.svg' %}" alt=""></a></li>
+				<li><a href="#"><img src="{% static 'portfolio/aeropack_box/img/instagram-logo.svg' %}"  alt=""></a></li>
+				<li><a href="#"><img src="{% static 'portfolio/aeropack_box/img/odnoklassniki-logo.svg' %}"  alt=""></a></li>
+			</ul>
+		</div>
+	</header>
+	<!-- end header -->
+	<!-- start main -->
+	<section class="main">
+		<div class="wrapper">
+			<h1 class="main-title">Защитная пленка</h1>
+			<p class="main-text">для багажа и бытовых нужд</p>
+			<div class="main-img">
+				<img src="{% static 'portfolio/aeropack_box/img/main-img.png' %}"  alt="">
+			</div>
+			<div class="main-img__mob">
+				<img src="{% static 'portfolio/aeropack_box/img/main-img-mob.png' %}"  alt="">
+			</div>
+			<div class="main-img__mob-2">
+				<img src="{% static 'portfolio/aeropack_box/img/main-img-mob-2.png' %}"  alt="">
+			</div>
+		</div>
+	</section>
+	<!-- end main -->
+	<!-- start perfect -->
+	<section class="perfect">
+		<div class="wrapper">
+			<h2 class="section-title">Идеально подходит</h2>
+			<div class="perfect-train">
+				<img src="{% static 'portfolio/aeropack_box/img/train.png' %}"  alt="">
+				<p>ЖД поезда</p>
+			</div>
+			<div class="perfect-row">
+				<div class="perfect-col perfect-col__1">
+					<img src="{% static 'portfolio/aeropack_box/img/img-1.png' %}"  alt="">
+					<p>Авиаперевозки</p>
+				</div>
+				<div class="perfect-col perfect-col__2">
+					<div>
+						<p>Переезды квартир и офисов</p>
+						<img src="{% static 'portfolio/aeropack_box/img/img-2.png' %}"  alt="">
+					</div>
+				</div>
+				<div class="perfect-col perfect-col__3">
+					<img src="{% static 'portfolio/aeropack_box/img/img-3.png' %}"  alt="">
+					<p>Упаковка инвентаря и оборудования</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end perfect -->
+	<!-- start convenient -->
+	<section class="convenient">
+		<div class="convenient-bg cl-3" ></div>
+		<div class="wrapper">
+			<h2 class="section-title">Быстро и удобно</h2>
+			<div class="convenient-row">
+				<div class="convenient-col">
+					<div>
+						<img src="{% static 'portfolio/aeropack_box/img/circular-clock.svg' %}"  alt="">
+					</div>
+					<p>Всего 1 минута на упаковку</p>
+				</div>
+				<div class="convenient-col">
+					<div>
+						<img src="{% static 'portfolio/aeropack_box/img/like.svg' %}"  alt="">
+					</div>
+					<p>Удобная упаковка одной левой</p>
+				</div>
+				<div class="convenient-col convenient-col__3">
+					<div>
+						<img src="{% static 'portfolio/aeropack_box/img/30-м.svg' %}"  alt="">
+					</div>
+					<p>30 метров пленки на одном рулоне</p>
+				</div>
+			</div>
+			<div class="convenient-bottom">
+				<h2 class="section-title">Тройная защита</h2>
+				<div class="convenient-row">
+					<div class="convenient-col convenient-col__1">
+						<div>
+							<img src="{% static 'portfolio/aeropack_box/img/ico-1.svg' %}"  alt="">
+						</div>
+						<p>От грязи</p>
+					</div>
+					<div class="convenient-col">
+						<div>
+							<img src="{% static 'portfolio/aeropack_box/img/ico-2.svg' %}"  alt="">
+						</div>
+						<p>От дождя</p>
+					</div>
+					<div class="convenient-col">
+						<div>
+							<img src="{% static 'portfolio/aeropack_box/img/ico-3.svg' %}"  alt="">
+						</div>
+						<p>От воров</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end convenient -->
+	<!-- start benefit -->
+	<section class="benefit">
+		<div class="wrapper">
+			<div class="benefit-img">
+				<img src="{% static 'portfolio/aeropack_box/img/150.png' %}"  alt="">
+			</div>
+			<h2 class="section-title">Выгода и экономия</h2>
+			<div class="benefit-row">
+				<div class="benefit-col">
+					<span>3x</span>
+					<p>Трехкратная экономия по сравнению с обмотчиками аэропортов</p>
+				</div>
+				<div class="benefit-col">
+					<span>2x</span>
+					<p>Одного рулона хватит на обмотку двух чемоданов среднего размера</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end benefit -->
+	<!-- start contacts -->
+	<section class="contacts">
+		<div class="wrapper">
+			<div class="contacts-top">
+				<h2 class="section-title">Где купить</h2>
+				<div class="contacts-top__row">
+					<ul class="contacts-top__list">
+						<li><a class="active" href="#">На карте</a></li>
+						<li><a href="#">Списком</a></li>
+					</ul>
+					<ul class="contacts-top__social">
+						<li><a href="#"><img src="{% static 'portfolio/aeropack_box/img/vk.svg' %}"  alt=""></a></li>
+						<li><a href="#"><img src="{% static 'portfolio/aeropack_box/img/facebook.svg' %}"  alt=""></a></li>
+						<li><a href="#"><img src="{% static 'portfolio/aeropack_box/img/insta.svg' %}"  alt=""></a></li>
+						<li><a href="#"><img src="{% static 'portfolio/aeropack_box/img/odnoklassniki.svg' %}"  alt=""></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="contacts-map">
+				<div id="map"></div>
+			</div>
+			<div class="contacts-bottom">
+				<ul>
+					<li><a class="button-modal" href="#modal-cooperation">Сотрудничество</a></li>
+					<li><a class="button-modal" href="#modal-call">Франшиза</a></li>
+				</ul>
+				<p class="contacts-bottom__phone"><a href="#">8 800 555 35 35</a></p>
+				<p class="contacts-bottom__mail"><a href="#">hello@aeropackbox.ru</a></p>
+			</div>
+		</div>
+	</section>
+	<!-- end contacts -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+	<script>
+		ymaps.ready(init);
+		var myMap;
+
+		function init(){    
+	    myMap = new ymaps.Map ("map", {
+	        center: [55.75734971466011,37.62232662925426],
+	        zoom: 10,
+	        controls: []
+	    });
+
+	    myMap.behaviors.disable([
+			  'scrollZoom'
+			]);
+
+			myPin = new ymaps.GeoObjectCollection({}, {
+        iconLayout: 'default#image',
+        iconImageHref: 'img/map-ico.svg',
+        iconImageHref: "{% static 'portfolio/aeropack_box/img/store.svg' %}" ,
+        iconImageSize: [36, 52],
+        iconImageOffset: [-36, -52]
+      });
+
+			myPlacemark1 = new ymaps.Placemark([55.843985514275985,37.74592282066051], {
+        balloonContentHeader: '<p class="bal-text">Магазин “Дикси”<br />Москва <br />Нахиловский 23<a href="#">8 800 555 35 35</a></p>',
+        balloonContentBody: '<p class="bal-time">9:00 - 20:00</p>'
+      });
+
+      myPlacemark2 = new ymaps.Placemark([55.76122151324889,37.71021725425427], {
+        balloonContentHeader: '<p class="bal-text">Магазин “Дикси”<br />Москва <br />Нахиловский 23<a href="#">8 800 555 35 35</a></p>',
+        balloonContentBody: '<p class="bal-time">9:00 - 20:00</p>'
+      });
+
+      myPlacemark3 = new ymaps.Placemark([55.732561061120784,37.51520993003553], {
+        balloonContentHeader: '<p class="bal-text">Магазин “Дикси”<br />Москва <br />Нахиловский 23<a href="#">8 800 555 35 35</a></p>',
+        balloonContentBody: '<p class="bal-time">9:00 - 20:00</p>'
+      });
+
+      myPlacemark4 = new ymaps.Placemark([55.80798127490955,37.5388683429077], {
+        balloonContentHeader: '<p class="bal-text">Магазин “Дикси”<br />Москва <br />Нахиловский 23<a href="#">8 800 555 35 35</a></p>',
+        balloonContentBody: '<p class="bal-time">9:00 - 20:00</p>'
+      });
+
+      myPin.add(myPlacemark1).add(myPlacemark2).add(myPlacemark3).add(myPlacemark4);
+
+		  myMap.geoObjects.add(myPin);
+		}
+	</script>
+	<script src="{% static 'portfolio/aeropack_box/js/scripts.min.js' %}" ></script>
+</body>
+</html>

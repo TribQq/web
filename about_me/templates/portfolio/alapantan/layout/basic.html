@@ -1,0 +1,658 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<title>{% block title %} title {% endblock %}</title>
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="{% static 'portfolio/alapantan/css/main.min.css' %}">
+	<meta name="theme-color" content="#000">
+	<meta name="msapplication-navbutton-color" content="#000">
+	<meta name="apple-mobile-web-app-status-bar-style" content="#000">
+   <link rel="shortcut icon" href="{% static '../media/icons/doggy_browser.ico' %}" type="image/x-icon">
+   {% block headers %} {% endblock %}
+</head>
+<body>
+   {% block menumob %} 
+	<div class="menu-mob">
+		<div class="menu-mob__wrap">
+			<div class="menu-mob__top">
+				<div class="menu-mob__top-local">
+					<span class="ico-hb ico-local"></span>
+					<p><span>Ваш город:</span><a href="#">Санкт-Петербург</a></p>
+				</div>
+			</div>
+			<ul class="menu-mob__list">
+				<li><a href="#">Личный кабинет</a></li>
+				<li><a href="#">Избранное</a></li>
+			</ul>
+			<div class="menu-mob__middle">
+				<ul>
+					<li>
+						<a class="link-main link-arrow catalog-link" href="#"><span class="ico-hb ico-menu-1"></span>Каталог</a>
+						<div class="catalog-menu">
+							<div class="catalog-menu__top">меню</div>
+							<div class="catalog-menu__content">
+								<div class="catalog-menu__content-scroll">
+									<ul>
+										<li>
+											<a class="link-arrow catalog-link" href="#"><span class="ico-hb ico-menu-8"></span>Акции</a>
+											<div class="catalog-menu">
+												<div class="catalog-menu__top">каталог</div>
+												<div class="catalog-menu__content">
+													<div class="catalog-menu__content-scroll">
+														<ul>
+															<li><a href="#">lorem-1</a></li>
+															<li><a href="#">lorem-2</a></li>
+															<li><a href="#">lorem-3</a></li>
+															<li><a href="#">lorem-4</a></li>
+															<li><a href="#">lorem-5</a></li>
+															<li><a href="#">lorem-6</a></li>
+															<li><a href="#">lorem-7</a></li>
+															<li><a href="#">lorem-8</a></li>
+															<li><a href="#">lorem-9</a></li>
+															<li><a href="#">lorem-1</a></li>
+															<li><a href="#">lorem-2</a></li>
+															<li><a href="#">lorem-3</a></li>
+															<li><a href="#">lorem-4</a></li>
+															<li><a href="#">lorem-5</a></li>
+															<li><a href="#">lorem-6</a></li>
+															<li><a href="#">lorem-7</a></li>
+															<li><a href="#">lorem-8</a></li>
+															<li><a href="#">lorem-9</a></li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li><a class="link-arrow catalog-link" href="#"><span class="ico-hb ico-menu-9"></span>Здоровье</a></li>
+										<li><a class="link-arrow catalog-link" href="#"><span class="ico-hb ico-menu-10"></span>Здоровое питание</a></li>
+										<li><a class="link-arrow catalog-link" href="#"><span class="ico-hb ico-menu-11"></span>Косметика</a></li>
+										<li><a class="link-arrow catalog-link" href="#"><span class="ico-hb ico-menu-12"></span>Бытовая химия</a></li>
+										<li><a class="link-arrow catalog-link" href="#"><span class="ico-hb ico-menu-13"></span>Назначение</a></li>
+										<li><a class="link-arrow catalog-link" href="#"><span class="ico-hb ico-menu-14"></span>Бренды</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li><a class="link-main" href="#"><span class="ico-hb ico-menu-2"></span>Доставка</a></li>
+					<li><a class="link-main" href="#"><span class="ico-hb ico-menu-3"></span>Оплата</a></li>
+					<li><a class="link-main" href="#"><span class="ico-hb ico-menu-4"></span>Баллы</a></li>
+					<li><a class="link-main" href="#"><span class="ico-hb ico-menu-5"></span>Как купить</a></li>
+					<li><a class="link-main" href="#"><span class="ico-hb ico-menu-6"></span>Где мой заказ</a></li>
+					<li><a class="link-main" href="#"><span class="ico-hb ico-menu-7"></span>Контакты</a></li>
+				</ul>
+			</div>
+			<div class="menu-mob__bottom">
+				<ul>
+					<li><a href="#">8 (800) 555-35-35</a><span>Бесплатно по России</span></li>
+					<li><a href="#">8 (800) 555-35-35</a><span>Для Санкт-Петербурга</span></li>
+				</ul>
+				<a href="#" class="second-btn">Перезвоните мне</a>
+			</div>
+		</div>
+	</div>
+   {% endblock %}
+	<!-- start header -->
+   {% block header %} 
+	<header class="header">
+		<div class="header-top">
+			<div class="wrapper">
+				<div class="header-local">
+					<span class="ico-hb ico-local"></span>
+					<p>Ваш город:<a href="#">Санкт-Петербург</a></p>
+				</div>
+				<ul class="header-top__list">
+					<li><a href="{% url 'about_me:alapantan' %}">About</a></li>
+					<li><a href="{% url 'about_me:alapantan_basket' %}">basket</a></li>
+					<li><a href="{% url 'about_me:alapantan_buy' %}">buy</a></li>
+					<li><a href="{% url 'about_me:alapantan_card' %}">card</a></li>
+					<li><a href="{% url 'about_me:alapantan_catalog' %}">catalog</a></li>
+					<li><a href="{% url 'about_me:alapantan_checkout' %}">checkout</a></li>
+					<li><a href="{% url 'about_me:alapantan_checkout_1' %}">c1</a></li>
+					<li><a href="{% url 'about_me:alapantan_checkout_2' %}">с2</a></li>
+					<li><a href="{% url 'about_me:alapantan_checkout_3' %}">с3</a></li>
+					<li><a href="{% url 'about_me:alapantan_checkout_4' %}">c4</a></li>
+					<li><a href="{% url 'about_me:alapantan_checkout_5' %}">c5</a></li>
+					<li><a href="{% url 'about_me:alapantan_delivery' %}">delivery</a></li>
+					<li><a href="{% url 'about_me:alapantan_loyality' %}">loyal</a></li>
+					<li><a href="{% url 'about_me:alapantan_modals' %}">models</a></li>
+					<li><a href="{% url 'about_me:alapantan_news' %}">news</a></li>
+					<li><a href="{% url 'about_me:alapantan_payment' %}">payment</a></li>
+					<li><a href="{% url 'about_me:alapantan_personal_area' %}">account</a></li>
+					<li><a href="{% url 'about_me:alapantan_question' %}">questions</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="header-middle">
+			<div class="wrapper">
+				<div class="header-bar"></div>
+				<div class="header-logo">
+					<a href="{% url 'about_me:alapantan' %}">
+						<img src="{% static 'portfolio/alapantan/img/logo.png' %}" alt="">
+						<img class="logo-mob" src="{% static 'portfolio/alapantan/img/logo-mob.png' %}" alt="">
+					</a>
+				</div>
+				<div class="header-form">
+					<div class="header-form__wrap">
+						<form action="">
+							<input type="text" name="text" placeholder="Поиск по каталогу">
+							<button class="header-form__btn"></button>
+						</form>
+					</div>
+				</div>
+				<div class="header-phone">
+					<div class="header-phone__main">
+						<p><a href="#">8 (800) 555-35-35</a></p>
+						<span><a href="#">Перезвоните мне</a></span>
+						<div class="header-phone__click"><span class="ico-hb ico-phone"></span></div>
+					</div>
+					<div class="header-phone__drop">
+						<div class="header-phone__drop-block">
+							<p><a href="#">8 (800) 555-35-35</a></p>
+							<span>Бесплатно по России</span>
+						</div>
+						<div class="header-phone__drop-block">
+							<p><a href="#">8 (800) 555-35-35</a></p>
+							<span>Для Санкт-Петербурга</span>
+						</div>
+					</div>
+				</div>
+				<div class="header-row">
+					<a href="{% url 'about_me:alapantan_personal_area' %}" class="header-user"><span class="ico-hb ico-user"></span></a>
+					<a href="#" class="header-favourites"><span class="ico-hb ico-favourites"></span><b>4</b></a>
+					<div class="header-basket">
+						<div class="header-basket__row">
+							<div class="header-basket__ico">
+								<span class="ico-hb ico-basket"></span>
+								<b>4</b>
+							</div>
+							<p>1 500 р</p>
+						</div>
+						<div class="header-basket__drop">
+							<div class="header-basket__drop-content">
+								<div class="header-basket__drop-block">
+									<div class="header-basket__drop-scroll">
+										<div class="basket-drop__row">
+											<div class="ico-hb ico-close"></div>
+											<div class="basket-drop__img">
+												<img src="{% static 'portfolio/alapantan/img/product-small.png' %}"  alt="">
+											</div>
+											<div class="basket-drop__info">
+												<h4 class="basket-drop__name"><a href="#">Масло конопляное с добавлением льняного Алтэя, 100 мл</a></h4>
+												<p class="basket-drop__price">250 р <span>500 р</span></p>
+												<div class="basket-drop__input">
+													<span class="basket-drop__input-text">-</span>
+													<input type="text" name="text" value="1">
+													<span class="basket-drop__input-text">+</span>
+												</div>
+											</div>
+										</div>
+										<div class="basket-drop__row">
+											<div class="ico-hb ico-close"></div>
+											<div class="basket-drop__img">
+												<img src="{% static 'portfolio/alapantan/img/product-small.png' %}" alt="">
+											</div>
+											<div class="basket-drop__info">
+												<h4 class="basket-drop__name"><a href="#">Масло конопляное с добавлением льняного Алтэя, 100 мл</a></h4>
+												<p class="basket-drop__price">250 р <span>500 р</span></p>
+												<div class="basket-drop__input">
+													<span class="basket-drop__input-text">-</span>
+													<input type="text" name="text" value="1">
+													<span class="basket-drop__input-text">+</span>
+												</div>
+											</div>
+										</div>
+										<div class="basket-drop__row">
+											<div class="ico-hb ico-close"></div>
+											<div class="basket-drop__img">
+												<img src="{% static 'portfolio/alapantan/img/product-small.png' %}" alt="">
+											</div>
+											<div class="basket-drop__info">
+												<h4 class="basket-drop__name"><a href="#">Масло конопляное с добавлением льняного Алтэя, 100 мл</a></h4>
+												<p class="basket-drop__price">250 р <span>500 р</span></p>
+												<div class="basket-drop__input">
+													<span class="basket-drop__input-text">-</span>
+													<input type="text" name="text" value="1">
+													<span class="basket-drop__input-text">+</span>
+												</div>
+											</div>
+										</div>
+										<div class="basket-drop__row">
+											<div class="ico-hb ico-close"></div>
+											<div class="basket-drop__img">
+												<img src="{% static 'portfolio/alapantan/img/product-small.png' %}" alt="">
+											</div>
+											<div class="basket-drop__info">
+												<h4 class="basket-drop__name"><a href="#">Масло конопляное с добавлением льняного Алтэя, 100 мл</a></h4>
+												<p class="basket-drop__price">250 р <span>500 р</span></p>
+												<div class="basket-drop__input">
+													<span class="basket-drop__input-text">-</span>
+													<input type="text" name="text" value="1">
+													<span class="basket-drop__input-text">+</span>
+												</div>
+											</div>
+										</div>
+										<div class="basket-drop__row">
+											<div class="ico-hb ico-close"></div>
+											<div class="basket-drop__img">
+												<img src="{% static 'portfolio/alapantan/img/product-small.png' %}" alt="">
+											</div>
+											<div class="basket-drop__info">
+												<h4 class="basket-drop__name"><a href="#">Масло конопляное с добавлением льняного Алтэя, 100 мл</a></h4>
+												<p class="basket-drop__price">250 р <span>500 р</span></p>
+												<div class="basket-drop__input">
+													<span class="basket-drop__input-text">-</span>
+													<input type="text" name="text" value="1">
+													<span class="basket-drop__input-text">+</span>
+												</div>
+											</div>
+										</div>
+										<div class="basket-drop__row">
+											<div class="ico-hb ico-close"></div>
+											<div class="basket-drop__img">
+												<img src="{% static 'portfolio/alapantan/img/product-small.png' %}" alt="">
+											</div>
+											<div class="basket-drop__info">
+												<h4 class="basket-drop__name"><a href="#">Масло конопляное с добавлением льняного Алтэя, 100 мл</a></h4>
+												<p class="basket-drop__price">250 р <span>500 р</span></p>
+												<div class="basket-drop__input">
+													<span class="basket-drop__input-text">-</span>
+													<input type="text" name="text" value="1">
+													<span class="basket-drop__input-text">+</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="header-basket__drop-bottom">
+								<div>
+									<b>Итого:</b>
+									<p>1 516 р<span>2 000 р</span></p>
+								</div>
+								<a href="{% url 'about_me:alapantan_basket' %}" class="second-btn">В корзину</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="header-bottom">
+			<div class="wrapper">
+				<ul class="header-list">
+					<li class="header-list__1 header-list__stocks">
+						<a href="{% url 'about_me:alapantan_basket' %}"><span class="ico-hb ico-stocks"></span>Акции</a>
+						<div class="header-drop">
+							<div class="header-drop__wrap">
+								<div class="header-drop__col">
+									<ul>
+										<li><a href="#">Распродажа</a></li>
+										<li><a href="#">Всё до 100 р</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="header-list__2">
+						<a href="#">Здоровье</a>
+						<div class="header-drop">
+							<div class="header-drop__wrap">
+								<div class="header-drop__row">
+									<div class="header-drop__col header-drop__col-25">
+										<ul>
+											<li><a href="#">Живица</a></li>
+											<li><a href="#">Жир</a></li>
+											<li><a href="#">Каменное масло</a></li>
+											<li><a href="#">Мумие</a></li>
+											<li><a href="#">Подарочные наборы</a></li>
+											<li><a href="#">Пантогематоген</a></li>
+											<li><a href="#">Алтайские сборы</a></li>
+											<li><a href="#">Алтайские травы</a></li>
+										</ul>
+									</div>
+									<div class="header-drop__col header-drop__col-75">
+										<ul>
+											<li><a href="#">Фирменная продукция Alapantan</a></li>
+											<li><a href="#">Бальзамы и Растительные комплексы</a></li>
+										</ul>
+										<div class="header-drop__row">
+											<div class="header-drop__col header-drop__col-33">
+												<ul class="header-drop__col-list">
+													<li><a href="#">Для детей</a></li>
+													<li><a href="#">Для женщин</a></li>
+													<li><a href="#">Для мужчин</a></li>
+													<li><a href="#">Для зрения</a></li>
+													<li><a href="#">Для иммунитета</a></li>
+													<li><a href="#">Для похудения</a></li>
+													<li><a href="#">Для пищеварения</a></li>
+													<li><a href="#">Для очищения организма</a></li>
+												</ul>
+											</div>
+											<div class="header-drop__col header-drop__col-33">
+												<ul class="header-drop__col-list">
+													<li><a href="#">Для кожи</a></li>
+													<li><a href="#">Для слуха</a></li>
+													<li><a href="#">Для суставов</a></li>
+													<li><a href="#">Для щитовидной</a></li>
+													<li><a href="#">Для печени и почек</a></li>
+													<li><a href="#">Для сердца и сосудов</a></li>
+													<li><a href="#">Для мозговой активности</a></li>
+												</ul>
+											</div>
+											<div class="header-drop__col header-drop__col-33">
+												<ul class="header-drop__col-list">
+													<li><a href="#">При аллергии</a></li>
+													<li><a href="#">При диабете</a></li>
+													<li><a href="#">От простуды</a></li>
+													<li><a href="#">Успокаивающию</a></li>
+													<li><a href="#">Тонизирующие</a></li>
+													<li><a href="#">Молодость и долголетие</a></li>
+													<li><a href="#">Розничная цена</a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="header-list__3">
+						<a href="#">Здоровое питание</a>
+						<div class="header-drop">
+							<div class="header-drop__wrap">
+								<div class="header-drop__row">
+									<div class="header-drop__col header-drop__col-50">
+										<ul>
+											<li><a href="#">Каши</a></li>
+											<li><a href="#">Леденцы</a></li>
+											<li><a href="#">Мармелад</a></li>
+											<li><a href="#">Масла растительные</a></li>
+											<li><a href="#">Мука</a></li>
+										</ul>
+									</div>
+									<div class="header-drop__col header-drop__col-50">
+										<ul>
+											<li><a href="#">Семена</a></li>
+											<li><a href="#">Подарочные наборы</a></li>
+											<li><a href="#">Мёд</a></li>
+											<li><a href="#">Настойки</a></li>
+											<li><a href="#">Алтайские чаи</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="header-list__4">
+						<a href="#">Косметика</a>
+						<div class="header-drop">
+							<div class="header-drop__wrap">
+								<div class="header-drop__row">
+									<div class="header-drop__col header-drop__col-33">
+										<ul>
+											<li><a href="#">Уход за волосами</a></li>
+										</ul>
+										<ul class="header-drop__col-list">
+											<li><a href="#">Лосьоны, масла, спреи</a></li>
+											<li><a href="#">Бальзамы</a></li>
+											<li><a href="#">Маски</a></li>
+											<li><a href="#">Шампуни</a></li>
+											<li><a href="#">От седины</a></li>
+										</ul>
+									</div>
+									<div class="header-drop__col header-drop__col-33">
+										<ul>
+											<li><a href="#">Уход за телом</a></li>
+										</ul>
+										<ul class="header-drop__col-list">
+											<li><a href="#">Гели</a></li>
+											<li><a href="#">Глина</a></li>
+											<li><a href="#">Кремы</a></li>
+											<li><a href="#">Другие средства</a></li>
+										</ul>
+									</div>
+									<div class="header-drop__col header-drop__col-33">
+										<ul>
+											<li><a href="#">Уход за лицом</a></li>
+										</ul>
+										<ul class="header-drop__col-list">
+											<li><a href="#">Для век и ресниц</a></li>
+											<li><a href="#">Другие средства</a></li>
+											<li><a href="#">Кремы</a></li>
+											<li><a href="#">Маски</a></li>
+										</ul>
+									</div>
+									<div class="header-drop__col header-drop__col-33">
+										<ul>
+											<li><a href="#">Уход за полостью рта</a></li>
+											<li><a href="#">Уход за руками</a></li>
+											<li><a href="#">Уход за ногами</a></li>
+										</ul>
+									</div>
+									<div class="header-drop__col header-drop__col-33">
+										<ul>
+											<li><a href="#">Средства для душа и ванны</a></li>
+											<li><a href="#">Уход для детей</a></li>
+											<li><a href="#">Уход для мужчин</a></li>
+										</ul>
+									</div>
+									<div class="header-drop__col header-drop__col-33">
+										<ul>
+											<li><a href="#">Подарочные наборы</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="header-list__5">
+						<a href="#">Бытовая химия</a>
+						<div class="header-drop">
+							<div class="header-drop__wrap">
+								<div class="header-drop__col">
+									<ul>
+										<li><a href="#">Кондиционеры для белья</a></li>
+										<li><a href="#">Средства для мытья посуды</a></li>
+										<li><a href="#">Средства для мытья фруктов и овощей</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="header-list__6">
+						<a href="#">Назначение</a>
+						<div class="header-drop">
+							<div class="header-drop__wrap">
+								<div class="header-drop__row">
+									<div class="header-drop__col header-drop__col-25">
+										<p class="active">Назначение</p>
+										<ul class="header-drop__col-list">
+											<li><a href="#">Аллергия</a></li>
+											<li><a href="#">Вредные привычки</a></li>
+											<li><a href="#">Геморрой</a></li>
+											<li><a href="#">Диабет</a></li>
+											<li><a href="#">Молодость и долголетие</a></li>
+											<li><a href="#">Очищение организма</a></li>
+											<li><a href="#">Похудение</a></li>
+											<li><a href="#">Простуда</a></li>
+											<li><a href="#">Тонизирующие</a></li>
+											<li><a href="#">Успокаивающее</a></li>
+										</ul>
+									</div>
+									<div class="header-drop__col header-drop__col-50">
+										<p>Для чего</p>
+										<div class="header-drop__row">
+											<ul class="header-drop__col-list header-drop__col-50">
+												<li><a href="#">Зрение</a></li>
+												<li><a href="#">Иммунитет</a></li>
+												<li><a href="#">Кожа</a></li>
+												<li><a href="#">Лёгкие</a></li>
+												<li><a href="#">Мозговая активность</a></li>
+												<li><a href="#">Органы пищеварения</a></li>
+											</ul>
+											<ul class="header-drop__col-list header-drop__col-50">
+												<li><a href="#">Нервная система</a></li>
+												<li><a href="#">Печень и почки</a></li>
+												<li><a href="#">Сердце и сосуды</a></li>
+												<li><a href="#">Слух</a></li>
+												<li><a href="#">Суставы</a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="header-drop__col header-drop__col-25">
+										<p>Для кого</p>
+										<ul class="header-drop__col-list">
+											<li><a href="#">Для женщин</a></li>
+											<li><a href="#">Для мужчин</a></li>
+											<li><a href="#">Для детей</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="header-list__7">
+						<a href="#">Бренды</a>
+						<div class="header-drop">
+							<div class="header-drop__wrap">
+								<div class="header-drop__row">
+									<div class="header-drop__col header-drop__col-50">
+										<ul>
+											<li><a href="#">Алтай-Селигор</a></li>
+											<li><a href="#">АлтайБиоПроект</a></li>
+											<li><a href="#">Алтайский букет</a></li>
+											<li><a href="#">АлтайФлора</a></li>
+											<li><a href="#">Две линии</a></li>
+											<li><a href="#">Зеленый Алтай</a></li>
+											<li><a href="#">Медель</a></li>
+										</ul>
+									</div>
+									<div class="header-drop__col header-drop__col-50">
+										<ul>
+											<li><a href="#">Пасеки Соловьевых</a></li>
+											<li><a href="#">Радоград</a></li>
+											<li><a href="#">Сашера-Мед</a></li>
+											<li><a href="#">Сиб-Крук</a></li>
+											<li><a href="#">Травы Алтая</a></li>
+											<li><a href="#">Травынадом</a></li>
+											<li><a href="#">Юг</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</header>
+   {% endblock %}
+	<!-- end header -->
+
+   {% block content %} 
+   <!-- start content -->
+	<!-- end content -->
+   {% endblock %}
+
+	<!-- start footer -->
+   {% block footer %} 
+	<footer class="footer">
+		<div class="wrapper">
+			<div class="footer-top">
+				<h4 class="footer-top__title">Подпишитесь на нашу рассылку и будьте в курсе всех акций и новинок</h4>
+				<div class="footer-top__form">
+					<form action="">
+						<input type="text" name="text" placeholder="Введите Ваш E-mail">
+						<button class="main-btn">Подписаться</button>
+					</form>
+				</div>
+			</div>
+			<div class="footer-social">
+				<p>Мы в соцсетях</p>
+				<ul>
+					<li><a href="#"><img src="{% static 'portfolio/alapantan/img/soc-1.png' %}" alt=""></a></li>
+					<li><a href="#"><img src="{% static 'portfolio/alapantan/img/soc-2.png' %}" alt=""></a></li>
+					<li><a href="#"><img src="{% static 'portfolio/alapantan/img/soc-3.png' %}" alt=""></a></li>
+					<li><a href="#"><img src="{% static 'portfolio/alapantan/img/soc-4.png' %}" alt=""></a></li>
+					<li><a href="#"><img src="{% static 'portfolio/alapantan/img/soc-5.png' %}" alt=""></a></li>
+				</ul>
+			</div>
+			<div class="footer-middle">
+				<div class="footer-col footer-col__first">
+					<div class="footer-col__wrap">
+						<div class="footer-col__mob">
+							<a href="#">
+								<img src="{% static 'portfolio/alapantan/img/logo-footer-mob.png' %}" alt="">
+							</a>
+						</div>
+						<div class="footer-col__logo">
+							<a href="#">
+								<img src="{% static 'portfolio/alapantan/img/logo-footer.png' %}" alt="">
+							</a>
+						</div>
+						<div class="footer-col__row">
+							<div class="footer-col__phone">
+								<ul>
+									<li><a href="#">8 (800) 555-35-35</a></li>
+									<li><a href="#">8 (800) 555-35-35</a></li>
+								</ul>
+							</div>
+							<div class="footer-col__pay">
+								<img src="{% static 'portfolio/alapantan/img/mir.png' %}" alt="">
+								<img src="{% static 'portfolio/alapantan/img/visa.png' %}" lt="">
+								<img src="{% static 'portfolio/alapantan/img/mastercard.png' %}" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer-col">
+					<h3 class="footer-col__title">О компании</h3>
+					<ul>
+						<li><a href="{% url 'about_me:alapantan' %}">Карта сайта</a></li>
+						<li><a href="{% url 'about_me:alapantan' %}">О нас</a></li>
+						<li><a href="#">График работы</a></li>
+					</ul>
+				</div>
+				<div class="footer-col">
+					<h3 class="footer-col__title">Сервис</h3>
+					<ul>
+						<li><a href="{% url 'about_me:alapantan_card' %}">Баллы</a></li>
+						<li><a href="{% url 'about_me:alapantan_buy' %}">Как купить</a></li>
+						<li><a href="{% url 'about_me:alapantan_personal_area' %}">Личный кабинет</a></li>
+						<li><a href="{% url 'about_me:alapantan_question' %}">Вопрос/Ответ</a></li>
+						<li><a href="#">Узнать где заказ</a></li>
+						<li><a href="{% url 'about_me:alapantan_buy' %}">Способы оплаты</a></li>
+						<li><a href="{% url 'about_me:alapantan_delivery' %}">Доставка</a></li>
+						<li><a href="#">Возврат</a></li>
+					</ul>
+				</div>
+				<div class="footer-col">
+					<h3 class="footer-col__title">Мы в соцсетях</h3>
+					<ul>
+						<li><a href="#">ODNOKLASSNIKI</a></li>
+						<li><a href="#">VKONTAKTE</a></li>
+						<li><a href="#">FACEBOOK</a></li>
+						<li><a href="#">TWITTER</a></li>
+						<li><a href="#">INSTAGRAM</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<p>Copyright 2021 alapantan.ru © Все права защищены.</p>
+			</div>
+		</div>
+	</footer>
+   {% endblock %}
+	<!-- end footer -->
+
+   {% block scripts %} 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="{% static 'portfolio/alapantan/js/scripts.min.js' %}"></script>
+   {% endblock %}
+</body>
+</html>
+

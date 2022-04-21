@@ -1,0 +1,133 @@
+{% extends "portfolio/alapantan/layout/basic.html" %}
+{% load static %}
+{% block title %} delivery {% endblock %}
+
+{% block content %}
+	<!-- start buy -->
+	<section class="buy delivery">
+		<div class="wrapper">
+			<ul class="bread-crumbs">
+				<li><a href="#">Главная</a></li>
+				<li>Доставка</li>
+			</ul>
+			<ul class="buy-list">
+				<li><a href="#" class="active">Доставка</a></li>
+				<li><a href="#">Оплата</a></li>
+				<li><a href="#">Как купить</a></li>
+			</ul>
+			<div class="cabinet-top">
+				<h1 class="page-name">Доставка товара</h1>
+				<a href="#" class="cabinet-exit"><span class="ico-exit"></span>Войти в аккаунт</a>
+			</div>	
+		</div>
+		<div class="delivery-top">
+			<div class="wrapper">
+				<h2 class="delivery-title"><b>Условия доставки по вашему адресу</b><span>Условия доставки</span></h2>
+				<div class="delivery-info">
+					<div class="delivery-wrap">
+						<form action="">
+							<div class="delivery-form">
+								<div class="delivery-input">
+									<label for="i-1">Ваш город</label>
+									<input id="i-1" type="text" name="text" value="Санкт-Петербург">
+									<span class="ico-hb ico-close"></span>
+								</div>
+								<button class="second-btn">Узнать</button>
+							</div>
+						</form>
+					</div>
+					<div class="delivery-row">
+						<div class="delivery-col">
+							<div class="delivery-col__img">
+								<img src="{% static 'portfolio/alapantan/img/ico-delivery-1.png' %}" alt="">
+							</div>
+							<div class="delivery-col__info">
+								<h4 class="delivery-col__title">Самовывоз</h4>
+								<p>1 день, бесплатно</p>
+								<a href="#">посмотреть на карте</a>
+							</div>
+						</div>
+						<div class="delivery-col">
+							<div class="delivery-col__img">
+								<img src="{% static 'portfolio/alapantan/img/ico-delivery-2.png' %}" alt="">
+							</div>
+							<div class="delivery-col__info">
+								<h4 class="delivery-col__title">Доставка курьером</h4>
+								<p>3-5 день, 150 р.</p>
+								<a href="#">курьерские службы</a>
+							</div>
+						</div>
+						<div class="delivery-col">
+							<div class="delivery-col__img">
+								<img src="{% static 'portfolio/alapantan/img/ico-delivery-3.png' %}" alt="">
+							</div>
+							<div class="delivery-col__info">
+								<h4 class="delivery-col__title">Пункты выдачи</h4>
+								<p>3-5 день, 150 р.</p>
+								<a href="#">посмотреть на карте</a>
+							</div>
+						</div>
+						<div class="delivery-col">
+							<div class="delivery-col__img">
+								<img src="{% static 'portfolio/alapantan/img/ico-delivery-4.png' %}" alt="">
+							</div>
+							<div class="delivery-col__info">
+								<h4 class="delivery-col__title">Доставка почтой</h4>
+								<p>7-10 день, 250 р.</p>
+							</div>
+						</div>
+						<div class="delivery-col">
+							<div class="delivery-col__img">
+								<img src="{% static 'portfolio/alapantan/img/ico-delivery-5.png' %}" alt="">
+							</div>
+							<div class="delivery-col__info">
+								<h4 class="delivery-col__title">Бесплатная доставка</h4>
+								<p>при оплате онлайн или при покупке от 3 000 р.</p>
+							</div>
+						</div>
+						<div class="delivery-row__bottom">
+							<p>Точный срок и стоимость доставки будет рассчитана при оформлении заказа</p>
+						</div>
+					</div>
+					<div class="delivery-img">
+						<img src="{% static 'portfolio/alapantan/img/delivery-img.png' %}"  alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="delivery-bottom">
+			<div class="wrapper">
+				<h2 class="delivery-bottom__title">Удобная доставка</h2>
+				<div class="delivery-bottom__col">
+					<div class="delivery-bottom__col-img">
+						<img src="{% static 'portfolio/alapantan/img/pay-4.png' %}"  alt="">
+					</div>
+					<div class="delivery-bottom__col-info">
+						<h3 class="delivery-bottom__subtitle">Доставка до двери</h3>
+						<p>Круглый год в будни и<br>выходные курьер позвонит<br>и привезет заказ, куда нужно</p>
+					</div>
+				</div>
+				<div class="delivery-bottom__col">
+					<div class="delivery-bottom__col-img">
+						<img src="{% static 'portfolio/alapantan/img/pay-5.png' %}"  alt="">
+					</div>
+					<div class="delivery-bottom__col-info">
+						<h3 class="delivery-bottom__subtitle">Заберите сами</h3>
+						<p>Вы можете самостоятельно забрать Ваш заказ в удобном Вам пункте самовывоза</p>
+					</div>
+				</div>
+				<div class="delivery-bottom__col">
+					<div class="delivery-bottom__col-img">
+						<img src="{% static 'portfolio/alapantan/img/pay-6.png' %}" alt="">
+					</div>
+					<div class="delivery-bottom__col-info">
+						<h3 class="delivery-bottom__subtitle">Оплата</h3>
+						<p>Любые способы<br>При оплате на сайте вы получите скидку на доставку</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end buy -->
+
+{% endblock %}

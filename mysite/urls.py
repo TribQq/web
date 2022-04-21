@@ -10,15 +10,16 @@ from django.conf.urls import url
 from .views import *
 
 urlpatterns = [
+    path('', include('about_me.urls'), name='about_me'),
     path('admin/', admin.site.urls, name="admin"),
     path('captcha/', include('captcha.urls')),
-    path('bb/', include('bulletin_board.urls')),
-    path('bookshelf/', include('bookshelf.urls')),
-    path('', include('about_me.urls') ,name='about_me'),
+
+    path('portfolio/bb/', include('bulletin_board.urls')),
+    path('portfolio/bookshelf/', include('bookshelf.urls')),
     
     path('api_notesApp/', include('api_notesApp.urls')),
     path('api/', include('api_notesApp.urls')),
-    path('notesApp/', include('react_notesApp.urls')),
+    path('portfolio/notesApp/', include('react_notesApp.urls')),
        
     path('accounts/profile/', view_profile, name='view_profile'),
 ] 

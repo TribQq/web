@@ -56,13 +56,12 @@
                         <div class="main-block_hello-user">
                             <h1 class="main-block_hello-title">Hello user</h1>
                             <div class="main-block_text ">
-                                <p class='hello_text'>Navigation links: 
+                                <p class='hello_text'>Some navigation: 
                                 <a class="main-block_text _link" href="#Projects_skills_anchor">Projects, </a>    
                                 <a class="main-block_text _link" href="#about_info">About, </a>    
                                 <a class="main-block_text _link" href="{% url 'about_me:alt_about_me' %}">AltAboutMePage, </a>    
-                                <a class="main-block_text _link" href="{% url 'bulletin_board:index' %}">BulletinBoardApp, </a>    
-                                <a class="main-block_text _link" href="{% url 'bookshelf:view_bookshelf' %}">BookshelfApp, </a>
-                                <a class="main-block_text _link" href="{% url 'react_notesApp:notesApp' %}#/notes">NotesApp</a>
+                                <a class="main-block_text _link" href="{% url 'about_me:portfolio_main' %}">Portfolio. </a>    
+                                <!-- <a class="main-block_text _link" href="{% url 'react_notesApp:notesApp' %}#/notes">NotesApp</a> -->
                                 </p>
                             </div>
                             <div class='main_hello_button_border'>
@@ -114,7 +113,12 @@
                                         link</a> </p>
                                 </div>
                                 <div class='block_text_link'>
-                                    <p class='about-me_1-text'>And much more...</p>
+                                    
+                                    <!-- <p class='about-me_1-text'>And much more...</p> -->
+                                    <!-- <p class='about-me_1-text'>Some projects(freelance -->
+                                        <!-- <p style="font-size:80%; color: #c9be68;">(if I got permission to "open source" publication)) </p>and pet projects added to  <a href="{% url 'about_me:portfolio_main' %}" class="link_word">portfolio</a></p> -->
+                                        <p class='about-me_1-text'>Open source projects added to <a href="{% url 'about_me:portfolio_main' %}" class="link_word">portfolio</a></p>
+
                                 </div>
 
                                 <hr class="hr_skills">
@@ -146,7 +150,7 @@
                                 </div>
                                 <div class='about-me_1_block_text_button_border'>
 
-                                    <a href='#' class='about-me_1_block_text_button'>button</a>
+                                    <a href="{% url 'about_me:portfolio_main' %}" class='about-me_1_block_text_button'>Portfolio</a>
 
                                 </div>
                             </div>

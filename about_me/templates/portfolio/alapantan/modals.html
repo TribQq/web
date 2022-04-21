@@ -1,0 +1,494 @@
+{% extends "portfolio/alapantan/layout/basic.html" %}
+{% load static %}
+{% block title %} modals {% endblock %}
+
+{% block content %}
+	<div class="hb-btns">
+		<div class="wrapper">
+			<ul>
+				<li><a class="button-modal second-btn" href="#modal-1">modal-1</a></li>
+				<li><a class="button-modal second-btn" href="#modal-2">modal-2</a></li>
+				<li><a class="button-modal second-btn" href="#modal-3">modal-3</a></li>
+				<li><a class="button-modal second-btn" href="#modal-4">modal-4</a></li>
+				<li><a class="button-modal second-btn" href="#modal-5">modal-5</a></li>
+				<li><a class="button-modal second-btn" href="#modal-6">modal-6</a></li>
+				<li><a class="button-modal second-btn" href="#modal-7">modal-7</a></li>
+				<li><a class="button-modal second-btn" href="#modal-8">modal-8</a></li>
+				<li><a class="button-modal second-btn" href="#modal-9">modal-9</a></li>
+				<li><a class="button-modal second-btn" href="#modal-10">modal-10</a></li>
+				<li><a class="button-modal second-btn" href="#modal-11">modal-11</a></li>
+				<li><a class="button-modal second-btn" href="#modal-12">modal-12</a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- modal-form -->
+	<div class="modal-overlay"></div>
+	<div class="modal modal-call modal-small" id="modal-1">
+		<div class="modal-close ico-close"></div>
+		<div class="modal-content">
+			<h3 class="modal-title">Заказать обратный звонок</h3>
+			<form method="POST">
+				<label for="g-1">Введите номер телефона<span>*</span></label>
+				<input class="phone-input" id="g-1" type="text" name="text">
+				<p class="modal-text"><span>*</span> - поля обязательные к заполнению</p>
+				<button class="second-btn">Позвоните мне</button>
+			</form>
+		</div>
+		<div class="modal-bottom">
+			<p>Мы свяжемся с Вами в течении 5 минут</p>
+		</div>
+	</div>
+	<div class="modal modal-recovery modal-small" id="modal-2">
+		<div class="modal-close ico-close"></div>
+		<div class="modal-content">
+			<h3 class="modal-title">Восстановление пароля</h3>
+			<div class="modal-center">
+				<img src="{% static 'portfolio/alapantan/img/check_up.png' %}" alt="">
+				<p>Контрольная строка для смены пароля, а также ваши регистрационные данные, высланы вам на email.</p>
+			</div>
+			<button class="second-btn">Вход</button>
+		</div>
+	</div>
+	<div class="modal modal-entry modal-small" id="modal-3">
+		<div class="modal-close ico-close"></div>
+		<div class="modal-content">
+			<h3 class="modal-title">Вход</h3>
+			<form method="POST">
+				<div class="modal-input">
+					<label for="f-1">Email или телефон<span>*</span></label>
+					<input id="f-1" type="text" name="text">
+				</div>
+				<div class="modal-input">
+					<label for="f-2">Пароль<span>*</span></label>
+					<input id="f-2" type="text" name="text">
+				</div>
+				<div class="modal-check">
+					<div class="checkbox">
+						<input type="checkbox">
+						<span></span>
+						<p>Запомнить меня</p>
+					</div>
+					<a href="#">Забыли пароль?</a>
+				</div>
+				<p class="modal-text"><span>*</span> - поля обязательные к заполнению</p>
+				<button class="second-btn">Войти</button>
+			</form>
+		</div>
+		<div class="modal-bottom">
+			<a href="#">Зарегистироваться</a>
+		</div>
+	</div>
+	<div class="modal modal-check-in" id="modal-4">
+		<div class="modal-close ico-close"></div>
+		<div class="modal-content">
+			<h3 class="modal-title">Регистрация</h3>
+			<p class="modal-top__text">Уже зарегистрированы? <a href="#">Войдите</a></p>
+			<form method="POST">
+				<div class="modal-input__row">
+					<div class="modal-input">
+						<label for="h-1">Имя<span>*</span></label>
+						<input id="h-1" type="text" name="text">
+					</div>
+					<div class="modal-input">
+						<label for="h-2">Фамилия<span>*</span></label>
+						<input id="h-2" type="text" name="text">
+					</div>
+					<div class="modal-input">
+						<label for="h-3">Номер телефона<span>*</span></label>
+						<input class="phone-input" id="h-3" type="text" name="text">
+					</div>
+					<div class="modal-input">
+						<label for="h-4">E-mail<span>*</span></label>
+						<input id="h-4" type="text" name="text">
+					</div>
+					<div class="modal-input">
+						<label for="h-5">Введите пароль<span>*</span></label>
+						<input id="h-5" type="text" name="text">
+					</div>
+					<div class="modal-input">
+						<label for="h-6">Повторить пароль<span>*</span></label>
+						<input id="h-6" type="text" name="text">
+					</div>
+				</div>
+				<p class="modal-text"><span>*</span> - поля обязательные к заполнению</p>
+				<button class="second-btn">Зарегистрироваться</button>
+				<p class="modal-bottom__text">Нажимая на кнопку “Зарегистрироваться”, Вы соглашаетесь на обработку <a href="#">персональных данных</a></p>
+			</form>
+		</div>
+	</div>
+	<div class="modal modal-data" id="modal-5">
+		<div class="modal-close ico-close"></div>
+		<div class="modal-content">
+			<h3 class="modal-title">Введите данные, чтобы узнать статус заказа</h3>
+			<form method="POST">
+				<div class="modal-row">
+					<div class="modal-col">
+						<div class="modal-input">
+							<label for="k-1">Введите номер заказа</label>
+							<input id="k-1" type="text" name="text">
+						</div>
+					</div>
+					<div class="modal-col">
+						<a href="#" class="second-btn">Проверить статус заказа</a>
+					</div>
+				</div>
+				<p>Если вы не знаете свой номер заказа или у вас возникли вопросы по статусу заказа - свяжитесь с нами по телефону 8 (800) 555-35-35 или оставьте свой телефон и мы вам перезвоним в ближайшее время.</p>
+				<div class="modal-row">
+					<div class="modal-col">
+						<div class="modal-input">
+							<label for="k-2">Введите номер телефона</label>
+							<input class="phone-input" id="k-2" type="text" name="text">
+						</div>
+					</div>
+					<div class="modal-col">
+						<a href="#" class="second-btn">Позвоните мне</a>
+					</div>
+				</div>
+				<p class="data-text"><a href="#">Зарегистрируйтесь</a> сейчас, чтобы иметь возможность просматривать историю своих покупок, сумму накоплений и уровень скидки.</p>
+			</form>
+		</div>
+	</div>
+	<div class="modal modal-subscription" id="modal-6">
+		<div class="modal-close ico-close"></div>
+		<div class="modal-content">
+			<div class="modal-subscription__info">
+				<h3 class="modal-title">Хотите знать обо всех акциях и новинках?</h3>
+				<p>Подписывайтесь<br>на нашу группу вконтакте</p>
+				<a href="#" class="second-btn">Подписаться<span class="ico-hb ico-vk"></span></a>
+			</div>
+		</div>
+		<div class="modal-subscription__img">
+			<img src="{% static 'portfolio/alapantan/img/modal-bg.png' %}" alt="">
+		</div>
+	</div>
+	<div class="modal modal-recovery modal-small" id="modal-7">
+		<div class="modal-close ico-close"></div>
+		<div class="modal-content">
+			<h3 class="modal-title">Восстановление пароля</h3>
+			<p>Если Вы забыли пароль, <br>введите логин или E-mail</p>
+			<form method="POST">
+				<div class="modal-input__text block-error">
+					<input type="text" name="text">
+					<p class="error-text">Введенный e-mail не зарегистрирован на сайте</p>
+				</div>
+				<p>Контрольная строка для смены пароля, а также ваши регистрационные данные, будут высланы вам на email.</p>
+				<button class="second-btn">Выслать</button>
+			</form>
+		</div>
+	</div>
+	<div class="modal modal-review modal-small" id="modal-8">
+		<div class="modal-close ico-close"></div>
+		<div class="modal-content">
+			<h3 class="modal-title">Напишите отзыв о товаре</h3>
+			<div class="modal-review__slider">
+				<div class="modal-review__slide">
+					<div class="modal-review__slide-wrap">
+						<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+					</div>
+				</div>
+				<div class="modal-review__slide">
+					<div class="modal-review__slide-wrap">
+						<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+					</div>
+				</div>
+				<div class="modal-review__slide">
+					<div class="modal-review__slide-wrap">
+						<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+					</div>
+				</div>
+				<div class="modal-review__slide">
+					<div class="modal-review__slide-wrap">
+						<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+					</div>
+				</div>
+				<div class="modal-review__slide">
+					<div class="modal-review__slide-wrap">
+						<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+					</div>
+				</div>
+				<div class="modal-review__slide">
+					<div class="modal-review__slide-wrap">
+						<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+					</div>
+				</div>
+			</div>
+			<h4 class="modal-review__name"><a href="#">Натуральный природный комплекс MaxiVisor, 10 капсул</a></h4>
+			<div class="modal-review__content">
+				<div class="modal-review__content-top">
+					<div class="rating-slide__row">
+						<div class="stars">
+					    <input type="radio" id="star5" name="rating" value="5"><label for="star5"></label>
+					    <input type="radio" id="star4" name="rating" value="4"><label for="star4"></label>
+					    <input type="radio" id="star3" name="rating" value="3"><label for="star3"></label>
+					    <input type="radio" id="star2" name="rating" value="2"><label for="star2"></label>
+					    <input type="radio" id="star1" name="rating" value="1"><label for="star1"></label>
+						</div>
+						<p>Отличный товар</p>
+					</div>
+					<a href="#"><span class="ico-hb ico-del"></span>Не оценивать</a>
+				</div>
+				<textarea name="text" placeholder="Напишите отзыв"></textarea>
+			</div>
+			<div class="modal-review__add">
+				<h3 class="modal-review__add-title">Добавьте фотографии</h3>
+				<div class="modal-review__add-row">
+					<div class="modal-review__add-col">
+						<div class="modal-review__add-wrap">
+							<a href="#"></a>
+							<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+						</div>
+					</div>
+					<div class="modal-review__add-col">
+						<div class="modal-review__add-wrap">
+							<a href="#"></a>
+							<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+						</div>
+					</div>
+					<div class="modal-review__add-col">
+						<div class="modal-review__add-wrap">
+							<a href="#"></a>
+							<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+						</div>
+					</div>
+					<div class="modal-review__add-col">
+						<div class="modal-review__add-wrap">
+							<a href="#"></a>
+							<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+						</div>
+					</div>
+					<div class="modal-review__add-col">
+						<div class="modal-review__add-wrap">
+							<a href="#"></a>
+							<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+						</div>
+					</div>
+					<div class="modal-review__add-col">
+						<div class="modal-review__add-wrap">
+							<a href="#"></a>
+							<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+						</div>
+					</div>
+					<div class="modal-review__add-col">
+						<div class="modal-review__add-wrap">
+							<a href="#"></a>
+							<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+						</div>
+					</div>
+					<div class="modal-review__add-col">
+						<div class="modal-review__add-wrap">
+							<a href="#"></a>
+							<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+						</div>
+					</div>
+					<div class="modal-review__add-col">
+						<div class="modal-review__add-wrap modal-review__add-block">
+							<input type="file">
+							<img src="{% static 'portfolio/alapantan/img/photo-ico.png' %}" alt="">
+							<p>Добавить</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-review__bottom">
+				<span class="modal-review__bottom-subtitle">Вы оставляете отзыв как</span>
+				<span class="modal-review__bottom-title">Аноним</span>
+				<div class="modal-review__bottom-row">
+					<div class="toggle">
+						<input type="checkbox">
+						<p>Показать мои данные</p>
+						<div class="toggle-wrap">
+							<div></div>
+						</div>
+					</div>
+					<a href="#" class="second-btn">Отправить отзыв</a>
+				</div>
+				<p>Перед отправкой отзыва, пожалуйста, ознакомьтесь с <a href="#">правилами публикации.</a></p>
+			</div>
+		</div>
+	</div>
+	<div class="modal modal-review modal-small" id="modal-9">
+		<div class="modal-close ico-close"></div>
+		<div class="modal-content">
+			<h3 class="modal-title">Напишите отзыв о товаре</h3>
+			<div class="modal-review__slider">
+				<div class="modal-review__slide">
+					<div class="modal-review__slide-wrap">
+						<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+					</div>
+				</div>
+				<div class="modal-review__slide">
+					<div class="modal-review__slide-wrap">
+						<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+					</div>
+				</div>
+				<div class="modal-review__slide">
+					<div class="modal-review__slide-wrap">
+						<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+					</div>
+				</div>
+				<div class="modal-review__slide">
+					<div class="modal-review__slide-wrap">
+						<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+					</div>
+				</div>
+				<div class="modal-review__slide">
+					<div class="modal-review__slide-wrap">
+						<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+					</div>
+				</div>
+				<div class="modal-review__slide">
+					<div class="modal-review__slide-wrap">
+						<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+					</div>
+				</div>
+			</div>
+			<h4 class="modal-review__name"><a href="#">Натуральный природный комплекс MaxiVisor, 10 капсул</a></h4>
+			<div class="modal-review__content">
+				<div class="modal-review__content-top">
+					<div class="rating-slide__row">
+						<div class="stars">
+					    <input type="radio" id="star5" name="rating" value="5"><label for="star5"></label>
+					    <input type="radio" id="star4" name="rating" value="4"><label for="star4"></label>
+					    <input type="radio" id="star3" name="rating" value="3"><label for="star3"></label>
+					    <input type="radio" id="star2" name="rating" value="2"><label for="star2"></label>
+					    <input type="radio" id="star1" name="rating" value="1"><label for="star1"></label>
+						</div>
+						<p>Отличный товар</p>
+					</div>
+					<a href="#"><span class="ico-hb ico-del"></span>Не оценивать</a>
+				</div>
+				<textarea name="text" placeholder="Напишите отзыв"></textarea>
+			</div>
+			<div class="modal-review__add">
+				<h3 class="modal-review__add-title">Добавьте фотографии</h3>
+				<div class="modal-review__photo">
+					<div class="modal-review__photo-ico">
+						<input type="file">
+					</div>
+					<div class="modal-review__photo-info">
+						<p>Нажмите на фотоаппарат или перетащите на него фотографию</p>
+						<span>до 10 фотографий<br>в формате JPG, PNG</span>
+					</div>
+				</div>
+			</div>
+			<div class="modal-review__bottom">
+				<span class="modal-review__bottom-subtitle">Вы оставляете отзыв как</span>
+				<span class="modal-review__bottom-title">Аноним</span>
+				<div class="modal-review__bottom-row">
+					<div class="toggle">
+						<input type="checkbox">
+						<p>Показать мои данные</p>
+						<div class="toggle-wrap">
+							<div></div>
+						</div>
+					</div>
+					<a href="#" class="second-btn">Отправить отзыв</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal modal-comment" id="modal-10">
+		<div class="modal-close ico-close"></div>
+		<div class="modal-content">
+			<h3 class="modal-title">Оставить комментарий к отзыву</h3>
+			<form method="POST">
+				<div class="modal-input__row">
+					<div class="modal-input">
+						<label for="p-1">Введите Ваше имя<span>*</span></label>
+						<input id="p-1" type="text" name="text">
+					</div>
+					<div class="modal-input">
+						<label for="p-2">Введите E-mail<span>*</span></label>
+						<input id="p-2" type="text" name="text">
+					</div>
+					<div class="modal-review__content modal-input modal-input__full">
+						<textarea name="text" placeholder="Написать комментарий..."></textarea>
+					</div>
+				</div>
+				<p class="modal-text"><span>*</span> - поля обязательные к заполнению</p>
+				<button class="second-btn">Оставить комментарий</button>
+			</form>
+		</div>
+	</div>
+	<div class="modal modal-comment" id="modal-11">
+		<div class="modal-close ico-close"></div>
+		<div class="modal-content">
+			<h3 class="modal-title">Оставить отзыв</h3>
+			<div class="modal-stars">
+				<div class="rating-slide__row">
+				<p tabindex="0">Оценка:</p>
+					<div class="stars">
+				    <input type="radio" id="star5" name="rating" value="5" tabindex="0"><label for="star5"></label>
+				    <input type="radio" id="star4" name="rating" value="4" tabindex="0"><label for="star4"></label>
+				    <input type="radio" id="star3" name="rating" value="3" tabindex="0"><label for="star3"></label>
+				    <input type="radio" id="star2" name="rating" value="2" tabindex="0"><label for="star2"></label>
+				    <input type="radio" id="star1" name="rating" value="1" tabindex="0"><label for="star1"></label>
+					</div>
+				</div>
+			</div>
+			<form method="POST">
+				<div class="modal-input__row">
+					<div class="modal-input">
+						<label for="pc-1">Введите Ваше имя<span>*</span></label>
+						<input id="pc-1" type="text" name="text">
+					</div>
+					<div class="modal-input">
+						<label for="pc-2">Введите E-mail<span>*</span></label>
+						<input id="pc-2" type="text" name="text">
+					</div>
+					<div class="modal-review__content modal-input modal-input__full">
+						<textarea name="text" placeholder="Написать комментарий..."></textarea>
+					</div>
+				</div>
+				<p class="modal-text"><span>*</span> - поля обязательные к заполнению</p>
+				<button class="second-btn">Написать отзыв...</button>
+			</form>
+		</div>
+	</div>
+	<div class="modal modal-order" id="modal-12">
+		<div class="modal-close ico-close"></div>
+		<div class="modal-content">
+			<h3 class="modal-title">Быстрое оформление заказа</h3>
+			<p class="modal-order__text">После отправки заказа наши менеджеры свяжутся с Вами <span>в ближайшее время</span></p>
+			<h3 class="modal-order__title">Панты Марала консервированные слайсы , 40 г</h3>
+			<form action="">
+				<div class="modal-order__row">
+					<div class="modal-order__img">
+						<img src="{% static 'portfolio/alapantan/img/modal-img.png' %}" alt="">
+						<div class="modal-order__input">
+							<label for="hh">Количество</label>
+							<div class="basket-col__input">
+								<span class="basket-col__input-minus">-</span>
+								<input type="text" name="text" value="1" id="hh">
+								<span class="basket-col__input-add">+</span>
+							</div>
+						</div>
+					</div>
+					<div class="modal-order__info">
+						<div class="modal-input">
+							<label for="ji-1">Имя<span>*</span></label>
+							<input id="ji-1" type="text" name="text">
+						</div>
+						<div class="modal-input">
+							<label for="ji-2">E-mail<span>*</span></label>
+							<input id="ji-2" type="text" name="text">
+						</div>
+						<div class="modal-input">
+							<label for="ji-3">Номер телефона<span>*</span></label>
+							<input id="ji-3" type="text" name="text" class="phone-input">
+						</div>
+						<div class="modal-input">
+							<label for="ji-4">Комментарий</label>
+							<textarea name="text" id="ji-4"></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="modal-order__bottom">
+					<button class="second-btn">Оформить заказ</button>
+					<p>Нажимая на кнопку <a href="#">“Оформить заказ”</a>,<br>Вы соглашаетесь на обработку <a href="#">персональных данных</a></p>
+				</div>
+			</form>
+		</div>
+	</div>
+
+{% endblock %}

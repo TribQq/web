@@ -1,0 +1,549 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+	<meta charset="utf-8">
+	<title>photo</title>
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="theme-color" content="#000">
+	<meta name="msapplication-navbutton-color" content="#000">
+	<meta name="apple-mobile-web-app-status-bar-style" content="#000">
+	<style>body { opacity: 0;} html { background-color: #fff; }</style>
+	<link rel="shortcut icon" href="{% static '../media/icons/doggy_browser.ico' %}" type="image/x-icon">
+</head>
+<body>
+	<!-- start header -->
+	<header class="header">
+		<div class="wrapper">
+			<div class="menu-bar"></div>
+			<div class="header-logo">
+				<a href="#">
+					<img src="{% static 'portfolio/photo_birds/img/logo.svg' %}" alt="">
+				</a>
+			</div>
+			<nav class="header-nav">
+				<ul class="header-menu">
+					<li><a href="#section-1">преимущества мобильного зума</a></li>
+					<li><a href="#section-2">каталог</a></li>
+					<li><a href="#section-3">фотогалерея</a></li>
+					<li><a href="#section-4">кто мы</a></li>
+					<li><a href="#section-5">отзывы</a></li>
+				</ul>
+				<div class="header-menu__right hidden-input">
+					<a href="#" class="header-phone">+ 7 (800) 555 35 35</a>
+					<a href="#modal-form" class="header-call button-modal hidden-input__value"><span>Позвоните мне</span></a>
+				</div>
+			</nav>
+		</div>
+	</header>
+	<!-- end header -->
+	<!-- start main -->
+	<section class="main">
+		<div class="main-bg" style="background-image: url({% static 'portfolio/photo_birds/img/main-bg.jpg' %});"></div>
+		<div class="wrapper">
+			<div class="main-info">
+				<h1 class="main-info__title">ФОТОГРАФИРОВАНИЕ <b>птиц <span>стало доступнее!</span></b></h1>
+				<a href="#section-1" class="main-info__btn">Узнать подробнее</a>
+			</div>
+		</div>
+	</section>
+	<!-- end main -->
+	<!-- start advantages -->
+	<section class="advantages" id="section-1">
+		<div class="wrapper">
+			<h2 class="section-title"><span>Мобильный зум - </span>новая возможность для вашего телефона</h2>
+			<div class="advantages-row">
+				<div class="advantages-col advantages-col__img">
+					<img src="{% static 'portfolio/photo_birds/img/advantages-img.png' %}"  alt="">
+				</div>
+				<div class="advantages-col">
+					<div class="advantages-col__info">
+						<div class="advantages-col__info-top">
+							<img src="{% static 'portfolio/photo_birds/img/advantages-1.svg' %}" alt="">
+							<h3 class="advantages-col__info-title">Мобильность</h3>
+						</div>
+						<p>Легко взять с собой в любую поездку, так как вес устройства очень маленький. Быстро подсоединяется к телефону.</p>
+					</div>
+					<div class="advantages-col__info">
+						<div class="advantages-col__info-top">
+							<img src="{% static 'portfolio/photo_birds/img/advantages-2.svg' %}" alt="">
+							<h3 class="advantages-col__info-title">Достойнное качество</h3>
+						</div>
+						<p>Качественные линзы только усиливают камеру телефону, при этом не ухудшают качество при увеличении, как при цифровом зуме.</p>
+					</div>
+					<div class="advantages-col__info">
+						<div class="advantages-col__info-top">
+							<img src="{% static 'portfolio/photo_birds/img/advantages-3.svg' %}" alt="">
+							<h3 class="advantages-col__info-title">Доступность</h3>
+						</div>
+						<p>Небольшая стоимость относительно фотокамер с таким же зумом.</p>
+					</div>
+					<div class="advantages-col__info">
+						<div class="advantages-col__info-top">
+							<img src="{% static 'portfolio/photo_birds/img/advantages-4.svg' %}" alt="">
+							<h3 class="advantages-col__info-title">Широкая сфера применения</h3>
+						</div>
+						<p>Мобильный зум можно использовать в качестве бинокля без использования телефона</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end advantages -->
+	<!-- start catalog -->
+	<section class="catalog" id="section-2">
+		<div class="catalog-img catalog-img__1">
+			<img src="{% static 'portfolio/photo_birds/img/feathers.png' %}" alt="">
+		</div>
+		<div class="catalog-img catalog-img__2">
+			<img src="{% static 'portfolio/photo_birds/img/feathers.png' %}" alt="">
+		</div>
+		<div class="wrapper">
+			<div class="scope">
+				<h2 class="scope-title">Каталог<span></span></h2>
+			</div>
+			<div class="catalog-wrap">
+				<div class="catalog-card hidden-input">
+					<h3 class="catalog-card__title hidden-input__value">Telescope 40/60</h3>
+					<div class="catalog-row">
+						<div class="catalog-slider"><!-- data-vertical="false" -->
+							<div class="fotorama" data-width="100%" data-ratio="19/12" data-caption="true" data-thumbBorderColor="transparent" data-background="#FFFFFF" data-thumbBorderWidth="0" data-fullscreenIcon="true" data-navPosition="right" data-vertical="false">
+								<img src="{% static 'portfolio/photo_birds/img/fotorama-1.jpg' %}" alt="">
+								<img src="{% static 'portfolio/photo_birds/img/fotorama-2.jpg' %}" alt="">
+								<img src="{% static 'portfolio/photo_birds/img/fotorama-3.jpg' %}" alt="">
+								<img src="{% static 'portfolio/photo_birds/img/fotorama-4.jpg' %}" alt="">
+							</div>
+						</div>
+						<div class="catalog-tabs">
+							<ul class="catalog-tab__list">
+								<li><a class="active" href="#tab-1">Описание:</a></li>
+								<li><a href="#tab-2">Характеристики:</a></li>
+								<li><a href="#tab-3">Комплектация:</a></li>
+							</ul>
+							<div class="catalog-tab catalog-tab__active" id="tab-1">
+								<p>Портативный и компактный, 40X60 открытый монокуляр является идеальным инструментом для поиска птиц. Его можно сложить, чтобы соответствовать расстоянию ваших глаз, подходит как для взрослых, так и для детей.</p>
+							</div>
+							<div class="catalog-tab" id="tab-2">
+								<div class="catalog-tab__row">
+									<ul>
+										<li>Модель: <b>40X60</b></li>
+										<li>Увеличение: <b>40X</b></li>
+										<li>Диаметр объектива: <b>52 мм</b></li>
+										<li>Диаметр окуляра: <b>22 мм</b></li>
+										<li>Диаметр выходного зрачка: <b>3 мм</b></li>
+										<li>Расстояние рельефа глаза: <b>14 мм</b></li>
+									</ul>
+									<ul>
+										<li>Поле зрения: <b>1500/9500 м</b></li>
+										<li>Длина: <b>15 см/5,91 дюйма</b></li>
+										<li>Призма Тип: <b>BAK4</b></li>
+										<li>Оптическое покрытие: <b>полностью многослойная пленка FMC green</b></li>
+										<li>Система фокусировки: <b>Центр индивидуального фокуса</b></li>
+									</ul>
+								</div>
+							</div>
+							<div class="catalog-tab" id="tab-3">
+								<p>Lorem ipsum dolor. 3</p>
+							</div>
+						</div>
+					</div>
+					<div class="catalog-info">
+						<div class="catalog-info__col">
+							<span>новая цена:</span>
+							<p>1960 р</p>
+						</div>
+						<div class="catalog-info__col catalog-info__col-old">
+							<span>старая цена:</span>
+							<p>2 940 р</p>
+						</div>
+						<div class="catalog-info__col">
+							<a href="#modal-form" class="main-btn button-modal">Заказать</a>
+						</div>
+					</div>
+				</div><!-- card(1) -->
+				<div class="catalog-card hidden-input">
+					<h3 class="catalog-card__title hidden-input__value">Telescope 40/60(2)</h3>
+					<div class="catalog-row">
+						<div class="catalog-slider"><!-- data-vertical="false" -->
+							<div class="fotorama" data-width="100%" data-ratio="19/12" data-caption="true" data-thumbBorderColor="transparent" data-background="#FFFFFF" data-thumbBorderWidth="0" data-fullscreenIcon="true" data-navPosition="left">
+								<img src="{% static 'portfolio/photo_birds/img/m1.jpg' %}"  alt="">
+								<img src="{% static 'portfolio/photo_birds/img/m2.jpg' %}"  alt="">
+								<img src="{% static 'portfolio/photo_birds/img/m3.jpg' %}"  alt="">
+								<img src="{% static 'portfolio/photo_birds/img/m4.jpg' %}"  alt="">
+							</div>
+						</div>
+						<div class="catalog-tabs">
+							<ul class="catalog-tab__list">
+								<li><a class="active" href="#tab-4">Описание:</a></li>
+								<li><a href="#tab-5">Характеристики:</a></li>
+								<li><a href="#tab-6">Комплектация:</a></li>
+							</ul>
+							<div class="catalog-tab catalog-tab__active" id="tab-4">
+								<p>Портативный и компактный, 40X60 открытый монокуляр является идеальным инструментом для поиска птиц. Его можно сложить, чтобы соответствовать расстоянию ваших глаз, подходит как для взрослых, так и для детей.</p>
+							</div>
+							<div class="catalog-tab" id="tab-5">
+								<div class="catalog-tab__row">
+									<ul>
+										<li>Модель: <b>40X60</b></li>
+										<li>Увеличение: <b>40X</b></li>
+										<li>Диаметр объектива: <b>52 мм</b></li>
+										<li>Диаметр окуляра: <b>22 мм</b></li>
+										<li>Диаметр выходного зрачка: <b>3 мм</b></li>
+										<li>Расстояние рельефа глаза: <b>14 мм</b></li>
+									</ul>
+									<ul>
+										<li>Поле зрения: <b>1500/9500 м</b></li>
+										<li>Длина: <b>15 см/5,91 дюйма</b></li>
+										<li>Призма Тип: <b>BAK4</b></li>
+										<li>Оптическое покрытие: <b>полностью многослойная пленка FMC green</b></li>
+										<li>Система фокусировки: <b>Центр индивидуального фокуса</b></li>
+									</ul>
+								</div>
+							</div>
+							<div class="catalog-tab" id="tab-6">
+								<p>Lorem ipsum dolor. 3</p>
+							</div>
+						</div>
+					</div>
+					<div class="catalog-info">
+						<div class="catalog-info__col">
+							<span>новая цена:</span>
+							<p>1960 р</p>
+						</div>
+						<div class="catalog-info__col catalog-info__col-old">
+							<span>старая цена:</span>
+							<p>2 940 р</p>
+						</div>
+						<div class="catalog-info__col">
+							<a href="#modal-form" class="main-btn button-modal">Заказать</a>
+						</div>
+					</div>
+				</div><!-- card(2) -->
+				<div class="catalog-card hidden-input">
+					<h3 class="catalog-card__title hidden-input__value">Telescope 40/60(3)</h3>
+					<div class="catalog-row">
+						<div class="catalog-slider"><!-- data-vertical="false" -->
+							<div class="fotorama" data-width="100%" data-ratio="19/12" data-caption="true" data-thumbBorderColor="transparent" data-background="#FFFFFF" data-thumbBorderWidth="0" data-fullscreenIcon="true" data-navPosition="left">
+								<img src="{% static 'portfolio/photo_birds/img/mx1.jpg' %}" alt="">
+								<img src="{% static 'portfolio/photo_birds/img/mx2.jpg' %}" alt="">
+								<img src="{% static 'portfolio/photo_birds/img/mx3.jpg' %}" alt="">
+								<img src="{% static 'portfolio/photo_birds/img/mx4.jpg' %}" alt="">
+							</div>
+						</div>
+						<div class="catalog-tabs">
+							<ul class="catalog-tab__list">
+								<li><a class="active" href="#tab-7">Описание:</a></li>
+								<li><a href="#tab-8">Характеристики:</a></li>
+								<li><a href="#tab-9">Комплектация:</a></li>
+							</ul>
+							<div class="catalog-tab catalog-tab__active" id="tab-7">
+								<p>Портативный и компактный, 40X60 открытый монокуляр является идеальным инструментом для поиска птиц. Его можно сложить, чтобы соответствовать расстоянию ваших глаз, подходит как для взрослых, так и для детей.</p>
+							</div>
+							<div class="catalog-tab" id="tab-8">
+								<div class="catalog-tab__row">
+									<ul>
+										<li>Модель: <b>40X60</b></li>
+										<li>Увеличение: <b>40X</b></li>
+										<li>Диаметр объектива: <b>52 мм</b></li>
+										<li>Диаметр окуляра: <b>22 мм</b></li>
+										<li>Диаметр выходного зрачка: <b>3 мм</b></li>
+										<li>Расстояние рельефа глаза: <b>14 мм</b></li>
+									</ul>
+									<ul>
+										<li>Поле зрения: <b>1500/9500 м</b></li>
+										<li>Длина: <b>15 см/5,91 дюйма</b></li>
+										<li>Призма Тип: <b>BAK4</b></li>
+										<li>Оптическое покрытие: <b>полностью многослойная пленка FMC green</b></li>
+										<li>Система фокусировки: <b>Центр индивидуального фокуса</b></li>
+									</ul>
+								</div>
+							</div>
+							<div class="catalog-tab" id="tab-9">
+								<p>Lorem ipsum dolor. 3</p>
+							</div>
+						</div>
+					</div>
+					<div class="catalog-info">
+						<div class="catalog-info__col">
+							<span>новая цена:</span>
+							<p>1960 р</p>
+						</div>
+						<div class="catalog-info__col catalog-info__col-old">
+							<span>старая цена:</span>
+							<p>2 940 р</p>
+						</div>
+						<div class="catalog-info__col">
+							<a href="#modal-form" class="main-btn button-modal">Заказать</a>
+						</div>
+					</div>
+				</div><!-- card(3) -->
+			</div>
+		</div>
+	</section>
+	<!-- end catalog -->
+	<!-- start examples -->
+	<section class="examples" id="section-3">
+		<div class="wrapper">
+			<h2 class="section-title"><span>Как фотографирует</span>мобильный зум?</h2>
+			<div class="examples-tabs">
+				<ul class="examples-tab__list">
+					<li><a class="active" href="#ex-tab-1">1</a></li>
+					<li><a href="#ex-tab-2">2</a></li>
+					<li><a href="#ex-tab-3">3</a></li>
+				</ul>
+				<div class="examples-tabs__wrap">
+					<div class="examples-tab examples-tab__active" id="ex-tab-1">
+						<div class="examples-tab__wrap">
+							<div>
+								<img src="{% static 'portfolio/photo_birds/img/examples-1.jpg' %}" alt="">
+							</div>
+							<div>
+								<img src="{% static 'portfolio/photo_birds/img/examples-2.jpg' %}" alt="">
+							</div>
+						</div>
+					</div><!-- examples(1) -->
+					<div class="examples-tab" id="ex-tab-2">
+						<div class="examples-tab__wrap">
+							<div>
+								<img src="{% static 'portfolio/photo_birds/img/examples-3.jpg' %}" alt="">
+							</div>
+							<div>
+								<img src="{% static 'portfolio/photo_birds/img/examples-4.jpg' %}" alt="">
+							</div>
+						</div>
+					</div><!-- examples(2) -->
+					<div class="examples-tab" id="ex-tab-3">
+						<div class="examples-tab__wrap">
+							<div>
+								<img src="{% static 'portfolio/photo_birds/img/examples-5.jpg' %}" alt="">
+							</div>
+							<div>
+								<img src="{% static 'portfolio/photo_birds/img/examples-6.jpg' %}" alt="">
+							</div>
+						</div>
+					</div><!-- examples(3) -->
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end examples -->
+	<!-- start who-are -->
+	<section class="who-are" id="section-4">
+		<div class="wrapper">
+			<div class="scope">
+				<h2 class="scope-title">Кто мы?<span></span></h2>
+			</div>
+			<div class="who-are__info">
+				<div class="who-are__info-img">
+					<img src="{% static 'portfolio/photo_birds/img/human-big.png' %}" alt="">
+				</div>
+				<div class="who-are__info-main">
+					<h3 class="who-are__info-subtitle">Мы - бёрдвотчеры или орнитологи - любители.</h3>
+					<p>Сами очень часто выезжаем в фотоэкспедиции для того чтобы радовать глаз людей, которым нравятся птицы. Мы долго думали как сделать наше увлечение доступным каждому и нашли замечательное устройство мобильного зума по доступным ценам от производителей!</p>
+					<p>С удовольствием предлагаем вам окунуться <b>в мир фотографирования птиц.</b></p>
+				</div>
+				<div class="who-are__info-subscribe">
+					<h3 class="who-are__info-subscribe__title">Подписывайтесь на нашу страницу instagram:</h3>
+					<div class="who-are__info-subscribe__link">
+						<a href="#"><img src="{% static 'portfolio/photo_birds/img/inst.svg' %}" alt=""><span>@birds.rus</span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="who-are__bottom">
+			<div class="wrapper">
+				<div class="who-are__bottom-row">
+					<div class="who-are__bottom-phone">
+						<img src="{% static 'portfolio/photo_birds/img/phone-big.png' %}" alt="">
+					</div>
+					<div class="who-are__bottom-block">
+						<img src="{% static 'portfolio/photo_birds/img/who-are-1.jpg' %}" alt="">
+
+					</div>
+					<div class="who-are__bottom-block">
+						<img src="{% static 'portfolio/photo_birds/img/who-are-2.jpg' %}" alt="">
+					</div>
+					<div class="who-are__bottom-block">
+						<img src="{% static 'portfolio/photo_birds/img/who-are-3.jpg' %}" alt="">
+					</div>
+					<a href="#" class="who-are__bottom-link">Смотреть больше в instagram</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end who-are -->
+	<!-- start reviews -->
+	<section class="reviews" id="section-5">
+		<div class="wrapper">
+			<h2 class="section-title"><span>Отзывы</span> покупателей:</h2>
+			<div class="reviews-slider">
+				<div class="reviews-slide">
+					<div class="reviews-slide__row">
+						<div class="reviews-slide__img">
+							<img src="{% static 'portfolio/photo_birds/img/reviews-1.png' %}" alt="">
+						</div>
+						<div class="reviews-slide__info">
+							<p>Разнообразный и богатый опыт начало повседневной работы по формированию позиции влечет за собой процесс внедрения и модернизации систем массового участия. Задача организации, в особенности же начало повседневной работы по формированию позиции требуют от нас анализа систем массового участия.</p>
+							<h3 class="reviews-slide__info-name">Александр Иванов</h3>
+						</div>
+					</div>
+				</div><!-- slide(1) -->
+				<div class="reviews-slide">
+					<div class="reviews-slide__row">
+						<div class="reviews-slide__img">
+							<img src="{% static 'portfolio/photo_birds/img/reviews-1.png' %}" alt="">
+						</div>
+						<div class="reviews-slide__info">
+							<p>Разнообразный и богатый опыт начало повседневной работы по формированию позиции влечет за собой процесс внедрения и модернизации систем массового участия. Задача организации, в особенности же начало повседневной работы по формированию позиции требуют от нас анализа систем массового участия.</p>
+							<h3 class="reviews-slide__info-name">Александр Иванов</h3>
+						</div>
+					</div>
+				</div><!-- slide(2) -->
+				<div class="reviews-slide">
+					<div class="reviews-slide__row">
+						<div class="reviews-slide__img">
+							<img src="{% static 'portfolio/photo_birds/img/reviews-1.png' %}" alt="">
+						</div>
+						<div class="reviews-slide__info">
+							<p>Разнообразный и богатый опыт начало повседневной работы по формированию позиции влечет за собой процесс внедрения и модернизации систем массового участия. Задача организации, в особенности же начало повседневной работы по формированию позиции требуют от нас анализа систем массового участия.</p>
+							<h3 class="reviews-slide__info-name">Александр Иванов</h3>
+						</div>
+					</div>
+				</div><!-- slide(3) -->
+			</div>
+		</div>
+	</section>
+	<!-- end reviews -->
+	<!-- start delivery -->
+	<section class="delivery">
+		<div class="wrapper">
+			<h2 class="section-title"><span>Доставка и оплата</span></h2>
+			<div class="delivery-row">
+				<div class="delivery-col delivery-col__img">
+					<img src="{% static 'portfolio/photo_birds/img/box.png' %}" alt="">
+					<img class="mob-img" src="{% static 'portfolio/photo_birds/img/box-mob.png' %}" alt="">
+				</div>
+				<div class="delivery-col delivery-col__info">
+					<div class="delivery-col__info-img delivery-col__info-img__1">
+						<img src="{% static 'portfolio/photo_birds/img/sent-mail.svg' %}" alt="">
+					</div>
+					<div class="delivery-col__info-img delivery-col__info-img__2">
+						<img src="{% static 'portfolio/photo_birds/img/airplane.svg' %}" alt="">
+					</div>
+					<div class="delivery-col__step">
+						<div class="delivery-col__step-top">
+							<b>01</b>
+							<h3 class="delivery-col__step-title">Заявка</h3>
+						</div>
+						<p>Оставьте заявку на нашем сайте, заполнив форму заказа</p>
+					</div>
+					<div class="delivery-col__step">
+						<div class="delivery-col__step-top">
+							<b>02</b>
+							<h3 class="delivery-col__step-title">Отправка</h3>
+						</div>
+						<p>Оператор уточнит у вас все детали и мы отправим ваш заказ</p>
+					</div>
+					<div class="delivery-col__step">
+						<div class="delivery-col__step-top">
+							<b>03</b>
+							<h3 class="delivery-col__step-title">Получение</h3>
+						</div>
+						<p>Доставка почтой от 3 рабочих дней, в зависимости от региона</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end delivery -->
+	<!-- start stock -->
+	<section class="stock">
+		<div class="main-bg" style="background-image: url({% static 'portfolio/photo_birds/img/main-bg.jpg' %});"></div>
+		<div class="wrapper">
+			<div class="stock-row hidden-input">
+				<h2 class="stock-title hidden-input__value">ЗАКАЖИТЕ СЕЙЧАС СО СКИДКОЙ 50%</h2>
+				<div class="stock-wrap">
+					<h3 class="stock-wrap__subtitle">До конца акции осталось:</h3>
+<!--					<script src="//megatimer.ru/get/606e047a1db039a01f1c57c3ea51f800.js"></script>-->
+					<script src="https://megatimer.ru/get/606e047a1db039a01f1c57c3ea51f800.js"></script>
+					<div class="fotorama" data-width="100%" data-ratio="19/12" data-caption="true" data-thumbBorderColor="transparent" data-background="#FFFFFF" data-thumbBorderWidth="0" data-fullscreenIcon="true" data-navPosition="right"  data-vertical="true">
+						<img src="{% static 'portfolio/photo_birds/img/fotorama-1.jpg' %}" alt="">
+						<img src="{% static 'portfolio/photo_birds/img/fotorama-1.jpg' %}" alt="">
+						<img src="{% static 'portfolio/photo_birds/img/fotorama-1.jpg' %}" alt="">
+						<img src="{% static 'portfolio/photo_birds/img/fotorama-1.jpg' %}" alt="">
+					</div>
+					<div class="catalog-info">
+						<div class="catalog-info__col">
+							<span>новая цена:</span>
+							<p>1960 р</p>
+						</div>
+						<div class="catalog-info__col catalog-info__col-old">
+							<span>старая цена:</span>
+							<p>2 940 р</p>
+						</div>
+						<div class="catalog-info__col">
+							<a href="#modal-form" class="main-btn button-modal">Заказать</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end stock -->
+	<!-- start footer -->
+	<footer class="footer">
+		<div class="wrapper">
+			<div class="footer-logo">
+				<a href="#">
+					<img src="{% static 'portfolio/photo_birds/img/logo.svg' %}" alt="">
+				</a>
+			</div>
+			<div class="footer-info">
+				<div class="footer-info__col">
+					<p>© Все права защищены 2021. UpActivity</p>
+					<p>Политика конфиденциальности Публичная оферта</p>
+				</div>
+				<div class="footer-info__col footer-info__col-1">
+					<p>ИП Поляков А.А</p>
+					<p>ИНН 366230167072 ОГРНИП 317366800113059</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- end footer -->
+	<!-- modal-form -->
+	<div class="modal-overlay"></div>
+	<div class="modal" id="modal-form">
+		<div class="modal-content">
+			<div class="success">
+				<h3 class="modal-content__title">Спасибо за заявку</h3>
+				<p class="modal-content__subtitle">Мы перезвоним Вам в ближайшее время</p>
+			</div>
+			<form class="callback" method="POST">
+				<input type="hidden" name="subject" value="" id="info-form">
+				<h3 class="modal-content__title">Оставьте заявку</h3>
+				<p class="modal-content__subtitle">Наш менеджер перезвонит Вам в ближайшее время</p>
+				<div class="modal-content__input">
+					<input type="text" name="name" placeholder="Введите имя" required minlength="2">
+					<img src="{% static 'portfolio/photo_birds/img/ico-1.svg' %}" alt="">
+				</div>
+				<div class="modal-content__input">
+					<input type="tel" name="phone" placeholder="Введите телефон" minlength="8">
+					<img src="{% static 'portfolio/photo_birds/img/ico-2.svg' %}" alt="">
+				</div>
+				<div class="modal-content__input">
+					<input type="text" name="address" placeholder="Введите адрес" minlength="5">
+					<img src="{% static 'portfolio/photo_birds/img/ico-3.svg' %}" alt="">
+				</div>
+				<button class="main-btn submit">ОСТАВИТЬ ЗАЯВКУ</button>
+			</form>
+		</div>
+	</div>
+	<link rel="stylesheet" href="{% static 'portfolio/photo_birds/css/main.min.css' %}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="{% static 'portfolio/photo_birds/js/scripts.min.js' %}"></script>
+</body>
+</html>

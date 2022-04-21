@@ -1,0 +1,120 @@
+{% extends "portfolio/alapantan/layout/basic.html" %}
+{% load static %}
+{% block title %} buy {% endblock %}
+
+{% block content %} 
+
+	<!-- start buy -->
+	<section class="buy">
+		<div class="wrapper">
+			<ul class="bread-crumbs">
+				<li><a href="#">Главная</a></li>
+				<li>Как купить</li>
+			</ul>
+			<ul class="buy-list">
+				<li><a href="#">Доставка</a></li>
+				<li><a href="#">Оплата</a></li>
+				<li><a href="#" class="active">Как купить</a></li>
+			</ul>
+			<div class="cabinet-top">
+				<h1 class="page-name">Как сделать заказ</h1>
+				<a href="#" class="cabinet-exit"><span class="ico-exit"></span>Войти в аккаунт</a>
+			</div>
+			<div class="buy-top">
+				<p>Заказ можно оформить на сайте или по бесплатному телефону <a href="#">8 (800) 555-35-35</a>.</p>
+			</div>
+			<div class="buy-row">
+				<h2 class="buy-row__title">Сделать заказ на сайте</h2>
+				<h3 class="buy-title">1. Выберите нужный товар и положите его в корзину </h3>
+				<div class="buy-col">
+					<p>В каталоге на карточке товара нажмите <span>“Купить”</span></p>
+					<div class="buy-img">
+						<img src="{% static 'portfolio/alapantan/img/screenshot-4.png' %}" alt="">
+					</div>
+				</div>
+				<div class="buy-col">
+					<p>Либо в самой карточке товара нажмите <span>“Добавить в корзину”</span></p>
+					<div class="buy-img">
+						<img src="{% static 'portfolio/alapantan/img/screenshot-5.png' %}" alt="">
+					</div>
+				</div>
+				<h3 class="buy-title">2. Зайдите в корзину</h3>
+				<div class="buy-col">
+					<p>Корзина находится <b>в верхнем правом углу сайта</b>, возле поля "Мой личный кабинет". При наведении курсора на этот значок, у Вас откроется информация о том, какие товары находятся в «Корзине», а при клике на него, Вы перейдете в саму «Корзину».</p>
+					<div class="buy-img">
+						<img src="{% static 'portfolio/alapantan/img/screenshot-6.png' %}" alt="">
+					</div>
+				</div>
+				<div class="buy-col">
+					<p>В «Корзине» перед тем как нажать на кнопку <span>“Оформить заказ”</span>, Вы можете: <b>проверить Ваш заказ</b>, при необходимости <b>изменить количество товара или удалить товар</b>, если передумали его заказывать.</p>
+					<div class="buy-img">
+						<img src="{% static 'portfolio/alapantan/img/screenshot-7.png' %}" alt="">
+					</div>
+				</div>
+				<div class="buy-col">
+					<h3 class="buy-title">3. Выберите способ доставки</h3>
+					<p>Выберите удобный для Вас способ доставки, доступный в Вашем регионе, и укажите адрес доставки</p>
+					<p><i>1. Самовывоз из магазина</i>Вы можете самостоятельно забрать Ваш заказ в пункте самовывоза.</p>
+					<p><i>2. Доставка курьером</i>Курьеры доставят заказ по Вашему адресу, который Вы укажите при оформлении заказа.</p>
+					<p><i>3. Доставка Почтой России</i>Наш интернет-магазин также доставляет заказы в отделения Почты России.</p>
+					<p><i>4. Доставка до пунта выдачи</i>Мы доставим Ваш заказ до ближайшего Вам пункта выдачи.</p>
+				</div>
+				<div class="buy-col">
+					<div class="buy-img">
+						<img src="{% static 'portfolio/alapantan/img/screenshot-8.png' %}" alt="">
+					</div>
+				</div>
+				<h3 class="buy-title">4. Проверьте сумму заказа и выберите способ оплаты</h3>
+				<div class="buy-col">
+					<p>Выберите способ оплаты из предложенных вариантов. Можно оплатить заказ при получении или на сайте с помощью банковской карты, а так же баллами Alapantan</p>
+					<div class="buy-img">
+						<img src="{% static 'portfolio/alapantan/img/screenshot-9.png' %}" alt="">
+					</div>
+				</div>
+				<div class="buy-col">
+					<p>Если у Вас есть промокод, который необходимо ввести вручную, то введите его в пустое поле и нажмите кнопку <span>«Применить»</span>.</p>
+					<div class="buy-img">
+						<img src="{% static 'portfolio/alapantan/img/screenshot-10.png' %}" alt="">
+					</div>
+				</div>
+				<div class="buy-col">
+					<h3 class="buy-title">5. Введите Ваши данные</h3>
+					<p>Перед завершением оформления заполните поля с Вашими контактными данными</p>
+					<div class="buy-img">
+						<img src="{% static 'portfolio/alapantan/img/screenshot-11.png' %}" alt="">
+					</div>
+				</div>
+				<div class="buy-col">
+					<h3 class="buy-title">6. Завершить оформление заказа</h3>
+					<p>Нажмите кнопку <span>“Оформить заказ”</span>,<br>для завершения его оформления</p>
+					<div class="buy-img">
+						<img src="{% static 'portfolio/alapantan/img/screenshot-12.png' %}" alt="">
+					</div>
+				</div>
+				<div class="buy-col">
+					<h3 class="buy-title">7. Оформление заказа в 1 клик</h3>
+					<p>Для быстрых покупок рекомендуем пользоваться функцией <span>“Купить в 1 клик”</span> : укажите номер телефона, e-mail и имя или просто закажите звонок – наш менеджер свяжется с вами для уточнения деталей заказа, а мы оформим его за вас.</p>
+					<div class="buy-img">
+						<img src="{% static 'portfolio/alapantan/img/screenshot-13.png' %}" alt="">
+					</div>
+				</div>
+				<div class="buy-col">
+					<h3 class="buy-title">Поздравляем, Ваш заказ подтвержден!</h3>
+					<p>Заказ будет автоматически подтвержден на доставку.<br>Вам поступит письмо на e-mail, и заказ отобразится в разделе Личного кабинета <span>“Мои заказы”</span>.<br>Если для оформления заказа потребуется дополнительная информация, мы свяжемся с Вами.<br>Отслеживать всю информацию о доставке Вашего заказа Вы сможете в разделе Личного кабинета <span>“Мои заказы”</span> - <span>”Текущие заказы”</span>.</p>
+					<div class="buy-col__img">
+						<img src="{% static 'portfolio/alapantan/img/buy-img.png' %}" alt="">
+					</div>
+				</div>
+			</div>
+			<div class="buy-bottom">
+				<h3 class="buy-title">Ограничения</h3>
+				<p>Некоторые способы доставки и оплаты могут быть не доступны для отдельных регионов и категорий товаров. <b>Минимальная сумма заказа отсутствует, т.е. вы можете заказать товар на любую сумму.</b></p>
+				<h3 class="buy-title">Возникли трудности</h3>
+				<p>Если у вас не получается сделать заказ или остались вопросы, <a href="#"><i>напишите нам в чат</i></a></p>
+				<p>или позвоните по телефону <a href="#">8 (800) 555-35-35  (Звонок по России бесплатный)</a></p>
+			</div>
+		</div>	
+	</section>
+	<!-- end buy -->
+	{% endblock %}
+	

@@ -1,0 +1,1296 @@
+{% extends "portfolio/alapantan/layout/basic.html" %}
+{% load static %}
+{% block title %} personal-area {% endblock %}
+
+{% block content %}
+
+	<!-- start cabinet -->
+	<section class="cabinet">
+		<div class="wrapper">
+			<ul class="bread-crumbs">
+				<li><a href="#">Главная</a></li>
+				<li>Личный кабинет</li>
+			</ul>
+			<div class="cabinet-top">
+				<h1 class="page-name">Личный кабинет</h1>
+				<p>Здравствуйте, <b>Светлана!</b> Добро пожаловать в Ваш личный кабинет</p>
+				<a href="#" class="cabinet-exit"><span class="ico-exit"></span>Выйти из аккаунта</a>
+			</div>
+			<div class="cabinet-row">
+				<div class="cabinet-sidebar">
+					<div class="cabinet-select">
+						<p class="cabinet-select__text">Личные данные</p>
+						<ul class="tab-list cabinet-select__list">
+							<li><a class="active" href="#tab-1"><span class="ico-hb ico-cabinet-1"></span>Личные данные</a></li>
+							<li><a href="#tab-2"><span class="ico-hb ico-cabinet-2"></span>Мои заказы</a></li>
+							<li><a href="#tab-3"><span class="ico-hb ico-cabinet-3"></span>Моя корзина</a></li>
+							<li><a href="#tab-4"><span class="ico-hb ico-cabinet-4"></span>Мои баллы</a></li>
+							<li><a href="#tab-5"><span class="ico-hb ico-cabinet-5"></span>Избранное</a></li>
+							<li><a href="#tab-6"><span class="ico-hb ico-cabinet-6"></span>Мои отзывы</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="cabinet-content">
+					<div id="tab-1" class="tab cabinet-tab tab-active">
+						<div class="cabinet-content__row">
+							<div class="cabinet-col">
+								<div class="cabinet-col__wrapper">
+									<div class="cabinet-col__top">
+										<h3 class="cabinet-col__title">Персональные данные</h3>
+									</div>
+									<div class="cabinet-col__wrap">
+										<div class="cabinet-col__row cabinet-col__row-top">
+											<span class="cabinet-col__subtitle">ФИО:</span>
+											<p>Иванова<br> Светлана Ивановна</p>
+											<a href="#" class="cabinet-col__link">изменить</a>
+										</div>
+										<div class="cabinet-col__email">
+											<span class="cabinet-col__subtitle">E-mail:</span>
+											<div class="cabinet-col__email-block">
+												<form action="">
+													<input name="email" type="email" placeholder="svetlana@mail.ru">
+													<div class="cabinet-col__email-row">
+														<a href="#" class="solid-btn">Отменить</a>
+														<a href="#" class="second-btn">Сохранить</a>
+													</div>
+												</form>
+											</div>
+										</div>
+										<div class="cabinet-col__bottom">
+											<div class="cabinet-col__row">
+												<span class="cabinet-col__subtitle">Телефон:</span>
+												<p>+7 (999) 123-45-67</p>
+												<a href="#" class="cabinet-col__link">изменить</a>
+											</div>
+											<div class="cabinet-col__row">
+												<span class="cabinet-col__subtitle">Пароль:</span>
+												<p>********</p>
+												<a href="#" class="cabinet-col__link">изменить</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="cabinet-col__wrapper">
+									<div class="cabinet-col__top">
+										<h3 class="cabinet-col__title">Рассылки</h3>
+										<a href="#" class="cabinet-col__link">отписаться</a>
+									</div>
+									<div class="cabinet-col__wrap cabinet-col__wrap-mail">
+										<div class="cabinet-col__mail-row">
+											<div class="cabinet-col__mail-ico">
+												<img src="{% static 'portfolio/alapantan/img/mail.png' %}" alt="">
+											</div>
+											<div class="cabinet-col__mail-info">
+												<span>На e-mail</span>
+												<p>Новинки, акции, распродажи</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="cabinet-col cabinet-col__second">
+								<div class="cabinet-col__wrapper">
+									<div class="cabinet-col__top">
+										<h3 class="cabinet-col__title">Мой адрес доставки</h3>
+										<a href="#" class="cabinet-col__link">изменить</a>
+									</div>
+									<div class="cabinet-col__wrap">
+										<div class="cabinet-col__row cabinet-col__row-default">
+											<span class="cabinet-col__subtitle">Адрес:</span>
+											<p>101000, г.Москва<br>ул.Садовое Кольцо, д.150, кв.10</p>
+											<span class="cabinet-col__default">по умолчанию</span>
+										</div>
+										<form action="">
+											<div class="cabinet-col__form">
+												<h3 class="cabinet-col__form-title">Добавить адрес</h3>
+												<label for="i-1">Город / поселок / село</label>
+												<input id="i-1" name="text" type="text">
+												<label for="i-2">Улица</label>
+												<input id="i-2" name="text" type="text">
+												<div class="cabinet-col__form-row">
+													<div>
+														<label for="i-3">Дом / корпус</label>
+														<input id="i-3" name="text" type="text">
+													</div>
+													<div>
+														<label for="i-4">Квартира / офис</label>
+														<input id="i-4" name="text" type="text">
+													</div>
+												</div>
+												<div class="checkbox">
+													<input type="checkbox" checked>
+													<span></span>
+													<p>Указать адрес по умолчанию</p>
+												</div>
+											</div>
+											<div class="cabinet-col__form-bottom">
+												<a href="#" class="solid-btn">Отменить</a>
+												<a href="#" class="second-btn">Сохранить</a>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="tab-2" class="tab cabinet-tab">
+						<div class="orders-list">
+							<div class="cabinet-select">
+								<p class="cabinet-select__text">Текущие заказы</p>
+								<ul class="cabinet-select__list">
+									<li><a class="active" href="#order-1">Текущие заказы</a></li>
+									<li><a href="#order-2">История заказов</a></li>
+									<li><a href="#order-3">Купленные товары</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="orders-tab tab-active" id="order-1">
+							<div class="orders">
+								<div class="orders-col">
+									<div class="orders-col__top">
+										<p>Заказ <b>№ 123456</b>   от  1 января 2019</p>
+									</div>
+									<div class="orders-col__status">
+										<h3 class="orders-col__status-title">Статус заказа</h3>
+										<div class="orders-col__status-row">
+											<div class="orders-col__status-bar">
+												<div style="width: 50%;"></div>
+											</div>
+											<div class="orders-col__status-block block-done">
+												<p>Оплачен</p>
+											</div>
+											<div class="orders-col__status-block block-done">
+												<p>Упаковывается</p>
+											</div>
+											<div class="orders-col__status-block block-active">
+												<p>Передан<br>в службу доставки</p>
+											</div>
+											<div class="orders-col__status-block">
+												<p>На пути<br>в пункт выдачи</p>
+											</div>
+											<div class="orders-col__status-block">
+												<p>Ожидает<br>в пункте выдачи</p>
+											</div>
+										</div>
+									</div>
+									<div class="orders-col__table">
+										<div class="orders-col__table-row orders-col__table-top">
+											<div class="orders-col__table-col orders-col__table-col__1">
+												<p>Получатель</p>
+											</div>
+											<div class="orders-col__table-col orders-col__table-col__2">
+												<p>Способ доставки</p>
+											</div>
+											<div class="orders-col__table-col orders-col__table-col__3">
+												<p>Статус оплаты</p>
+											</div>
+											<div class="orders-col__table-col orders-col__table-col__4">
+												<p>Статус доставки</p>
+											</div>
+										</div>
+										<div class="orders-col__table-row">
+											<div class="orders-col__table-col orders-col__table-col__1">
+												<span class="orders-titleMob">Получатель</span>
+												<span class="orders-col__table-title">Светлана Иванова</span>
+												<p><a href="#">+7 (999) 123-45-67</a></p>
+											</div>
+											<div class="orders-col__table-col orders-col__table-col__2">
+												<span class="orders-col__table-title">Курьером до пункта выдачи</span>
+												<p><span>Адрес:</span> 101000, Москва<br>ул.Садовое Кольцо 150, д.10</p>
+											</div>
+											<div class="orders-col__table-col orders-col__table-col__3">
+												<span class="orders-col__table-title paid">Оплачен</span>
+												<p>Онлайн-оплата банковской картой</p>
+												<img src="{% static 'portfolio/alapantan/img/visa.jpg' %}" alt="">
+												<a href="#" class="link-check"><span class="ico-check"></span><b>Электронный чек</b></a>
+											</div>
+											<div class="orders-col__table-col orders-col__table-col__4">
+												<span class="orders-titleMob">Статус доставки</span>
+												<span class="orders-col__table-title">Дата доставки</span>
+												<p>10 сентября с 12:00 до 19:00</p>
+												<div class="delivery-service">
+													Передан<br>в службу доставки
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="orders-col__products">
+										<h3 class="orders-col__title">Товары</h3>
+										<div class="orders-col__products-row">
+											<div class="orders-products">
+												<div class="orders-products__wrap">
+													<div class="orders-products__img">
+														<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+													</div>
+													<h3 class="orders-products__name"><a href="#">Каменное масло Капсулы молодости с амарантом и ягодами Годжи</a></h3>
+													<div class="orders-products__row">
+														<b>375 руб</b>
+														<span>1 шт</span>
+													</div>
+												</div>
+											</div><!-- col(1) -->
+											<div class="orders-products">
+												<div class="orders-products__wrap">
+													<div class="orders-products__img">
+														<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+													</div>
+													<h3 class="orders-products__name"><a href="#">Каменное масло Капсулы молодости с амарантом и ягодами Годжи</a></h3>
+													<div class="orders-products__row">
+														<b>375 руб</b>
+														<span>1 шт</span>
+													</div>
+												</div>
+											</div><!-- col(2) -->
+											<div class="orders-products">
+												<div class="orders-products__wrap">
+													<div class="orders-products__img">
+														<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+													</div>
+													<h3 class="orders-products__name"><a href="#">Каменное масло Капсулы молодости с амарантом и ягодами Годжи</a></h3>
+													<div class="orders-products__row">
+														<b>375 руб</b>
+														<span>1 шт</span>
+													</div>
+												</div>
+											</div><!-- col(3) -->
+											<div class="orders-products">
+												<div class="orders-products__wrap">
+													<div class="orders-products__img">
+														<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+													</div>
+													<h3 class="orders-products__name"><a href="#">Каменное масло Капсулы молодости с амарантом и ягодами Годжи</a></h3>
+													<div class="orders-products__row">
+														<b>375 руб</b>
+														<span>1 шт</span>
+													</div>
+												</div>
+											</div><!-- col(4) -->
+										</div>
+										<div class="orders-col__products-row">
+											<div class="orders-products">
+												<div class="orders-products__wrap">
+													<div class="orders-products__img">
+														<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+													</div>
+													<h3 class="orders-products__name"><a href="#">Каменное масло Капсулы молодости с амарантом и ягодами Годжи</a></h3>
+													<div class="orders-products__row">
+														<b>375 руб</b>
+														<span>1 шт</span>
+													</div>
+												</div>
+											</div><!-- col(1) -->
+											<div class="orders-products">
+												<div class="orders-products__wrap">
+													<div class="orders-products__img">
+														<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+													</div>
+													<h3 class="orders-products__name"><a href="#">Каменное масло Капсулы молодости с амарантом и ягодами Годжи</a></h3>
+													<div class="orders-products__row">
+														<b>375 руб</b>
+														<span>1 шт</span>
+													</div>
+												</div>
+											</div><!-- col(2) -->
+											<div class="orders-products">
+												<div class="orders-products__wrap">
+													<div class="orders-products__img">
+														<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+													</div>
+													<h3 class="orders-products__name"><a href="#">Каменное масло Капсулы молодости с амарантом и ягодами Годжи</a></h3>
+													<div class="orders-products__row">
+														<b>375 руб</b>
+														<span>1 шт</span>
+													</div>
+												</div>
+											</div><!-- col(3) -->
+											<div class="orders-products">
+												<div class="orders-products__wrap">
+													<div class="orders-products__img">
+														<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+													</div>
+													<h3 class="orders-products__name"><a href="#">Каменное масло Капсулы молодости с амарантом и ягодами Годжи</a></h3>
+													<div class="orders-products__row">
+														<b>375 руб</b>
+														<span>1 шт</span>
+													</div>
+												</div>
+											</div><!-- col(4) -->
+										</div>
+									</div>
+									<div class="orders-col__products-bottom">
+										<div class="orders-col__products-wrap">
+											<ul>
+												<li><b>На сумму:</b> <span>5 000 р</span></li>
+												<li><b>Доставка:</b> <span>250 р</span></li>
+												<li><b>Оплата баллами:</b> <span>250 р</span></li>
+											</ul>
+											<p><b>Итого:</b> <span>5 250 р</span></p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="orders-tab" id="order-2">
+							<div class="story">
+								<div class="story-top">
+									<div class="story-top__wrap">
+										<div class="story-top__left">
+											<div>
+												<p>Заказ <b>№ 123456</b></p>
+												<p>от  1 января 2019</p>
+											</div>
+											<span class="completed">Выполнен</span>
+										</div>
+										<div class="story-top__right">
+											<p>На сумму: <span>5 000 р</span></p>
+											<a href="#" class="story-link"><span>Подробнее</span></a>
+										</div>
+									</div>
+								</div>
+								<div class="story-wrap">
+									<div class="story-wrap__top">
+										<div class="story-line"></div>
+										<div class="story-wrap__row">
+											<p class="color-gray">Получатель</p>
+											<p>Доставка: <span>250 р</span></p>
+										</div>
+										<div class="story-wrap__row">
+											<p><b>Светлана Иванова</b></p>
+											<p>Оплата баллами: <span>250 р</span></p>
+										</div>
+										<div class="story-wrap__row">
+											<p><a href="#">+7 (999) 123-45-67</a></p>
+											<p class="story-wrap__total">Итого:<span> 5 000 р</span></p>
+										</div>
+									</div>
+									<div class="orders-col__table">
+										<div class="orders-col__table-row orders-col__table-top">
+											<div class="orders-col__table-col orders-col__table-col__1">
+												<p>Способ доставки</p>
+											</div>
+											<div class="orders-col__table-col orders-col__table-col__2">
+												<p>Способ оплаты</p>
+											</div>
+											<div class="orders-col__table-col orders-col__table-col__3">
+												<p>Статус доставки</p>
+											</div>
+										</div>
+										<div class="orders-col__table-row">
+											<div class="orders-col__table-col orders-col__table-col__1">
+												<span class="orders-col__table-title">Курьером до пункта выдачи</span>
+												<p><span>Адрес:</span> 101000, Москва<br>ул.Садовое Кольцо 150, д.10</p>
+											</div>
+											<div class="orders-col__table-col orders-col__table-col__2">
+												<span class="orders-col__table-title">Онлайн-оплата банковской картой</span>
+												<img src="{% static 'portfolio/alapantan/img/visa.jpg' %}" alt="">
+												<a href="#" class="link-check"><span class="ico-check"></span><b>Электронный чек</b></a>
+											</div>
+											<div class="orders-col__table-col orders-col__table-col__3">
+												<span class="orders-col__table-title">Дата доставки</span>
+												<p>10 сентября  в 12:45</p>
+												<a href="#" class="orders-btn">Повторить заказ</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="story-products">
+									<div class="orders-col__products">
+										<h3 class="orders-col__title">Товары</h3>
+										<div class="orders-col__products-row">
+											<div class="orders-products">
+												<div class="orders-products__wrap">
+													<div class="orders-products__img">
+														<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+													</div>
+													<h3 class="orders-products__name"><a href="#">Каменное масло Капсулы молодости с амарантом и ягодами Годжи</a></h3>
+													<div class="orders-products__row">
+														<b>375 руб</b>
+														<span>1 шт</span>
+													</div>
+												</div>
+											</div><!-- col(1) -->
+											<div class="orders-products">
+												<div class="orders-products__wrap">
+													<div class="orders-products__img">
+														<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+													</div>
+													<h3 class="orders-products__name"><a href="#">Каменное масло Капсулы молодости с амарантом и ягодами Годжи</a></h3>
+													<div class="orders-products__row">
+														<b>375 руб</b>
+														<span>1 шт</span>
+													</div>
+												</div>
+											</div><!-- col(2) -->
+											<div class="orders-products">
+												<div class="orders-products__wrap">
+													<div class="orders-products__img">
+														<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+													</div>
+													<h3 class="orders-products__name"><a href="#">Каменное масло Капсулы молодости с амарантом и ягодами Годжи</a></h3>
+													<div class="orders-products__row">
+														<b>375 руб</b>
+														<span>1 шт</span>
+													</div>
+												</div>
+											</div><!-- col(3) -->
+											<div class="orders-products">
+												<div class="orders-products__wrap">
+													<div class="orders-products__img">
+														<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+													</div>
+													<h3 class="orders-products__name"><a href="#">Каменное масло Капсулы молодости с амарантом и ягодами Годжи</a></h3>
+													<div class="orders-products__row">
+														<b>375 руб</b>
+														<span>1 шт</span>
+													</div>
+												</div>
+											</div><!-- col(4) -->
+											<div class="story-products__num">
+												<p><span>+5</span>товаров</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="story">
+								<div class="story-top">
+									<div class="story-top__wrap">
+										<div class="story-top__left">
+											<div>
+												<p>Заказ <b>№ 123456</b></p>
+												<p>от  1 января 2019</p>
+											</div>
+											<span class="completed">Выполнен</span>
+										</div>
+										<div class="story-top__right">
+											<p>На сумму: <span>5 000 р</span></p>
+											<a href="#" class="story-link"><span>Подробнее</span></a>
+										</div>
+									</div>
+								</div>
+								<div class="story-wrap">
+									<div class="story-wrap__top">
+										<div class="story-line"></div>
+										<div class="story-wrap__row">
+											<p class="color-gray">Получатель</p>
+											<p>Доставка: <span>250 р</span></p>
+										</div>
+										<div class="story-wrap__row">
+											<p><b>Светлана Иванова</b></p>
+											<p>Оплата баллами: <span>250 р</span></p>
+										</div>
+										<div class="story-wrap__row">
+											<p><a href="#">+7 (999) 123-45-67</a></p>
+											<p class="story-wrap__total">Итого:<span> 5 000 р</span></p>
+										</div>
+									</div>
+									<div class="orders-col__table">
+										<div class="orders-col__table-row orders-col__table-top">
+											<div class="orders-col__table-col orders-col__table-col__1">
+												<p>Способ доставки</p>
+											</div>
+											<div class="orders-col__table-col orders-col__table-col__2">
+												<p>Способ оплаты</p>
+											</div>
+											<div class="orders-col__table-col orders-col__table-col__3">
+												<p>Статус доставки</p>
+											</div>
+										</div>
+										<div class="orders-col__table-row">
+											<div class="orders-col__table-col orders-col__table-col__1">
+												<span class="orders-col__table-title">Курьером до пункта выдачи</span>
+												<p><span>Адрес:</span> 101000, Москва<br>ул.Садовое Кольцо 150, д.10</p>
+											</div>
+											<div class="orders-col__table-col orders-col__table-col__2">
+												<span class="orders-col__table-title">Онлайн-оплата банковской картой</span>
+												<img src="{% static 'portfolio/alapantan/img/visa.jpg' %}" alt="">
+												<a href="#" class="link-check"><span class="ico-check"></span><b>Электронный чек</b></a>
+											</div>
+											<div class="orders-col__table-col orders-col__table-col__3">
+												<span class="orders-col__table-title">Дата доставки</span>
+												<p>10 сентября  в 12:45</p>
+												<a href="#" class="orders-btn">Повторить заказ</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="story-products">
+									<div class="orders-col__products">
+										<h3 class="orders-col__title">Товары</h3>
+										<div class="orders-col__products-row">
+											<div class="orders-products">
+												<div class="orders-products__wrap">
+													<div class="orders-products__img">
+														<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+													</div>
+													<h3 class="orders-products__name"><a href="#">Каменное масло Капсулы молодости с амарантом и ягодами Годжи</a></h3>
+													<div class="orders-products__row">
+														<b>375 руб</b>
+														<span>1 шт</span>
+													</div>
+												</div>
+											</div><!-- col(1) -->
+											<div class="orders-products">
+												<div class="orders-products__wrap">
+													<div class="orders-products__img">
+														<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+													</div>
+													<h3 class="orders-products__name"><a href="#">Каменное масло Капсулы молодости с амарантом и ягодами Годжи</a></h3>
+													<div class="orders-products__row">
+														<b>375 руб</b>
+														<span>1 шт</span>
+													</div>
+												</div>
+											</div><!-- col(2) -->
+											<div class="orders-products">
+												<div class="orders-products__wrap">
+													<div class="orders-products__img">
+														<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+													</div>
+													<h3 class="orders-products__name"><a href="#">Каменное масло Капсулы молодости с амарантом и ягодами Годжи</a></h3>
+													<div class="orders-products__row">
+														<b>375 руб</b>
+														<span>1 шт</span>
+													</div>
+												</div>
+											</div><!-- col(3) -->
+											<div class="orders-products">
+												<div class="orders-products__wrap">
+													<div class="orders-products__img">
+														<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+													</div>
+													<h3 class="orders-products__name"><a href="#">Каменное масло Капсулы молодости с амарантом и ягодами Годжи</a></h3>
+													<div class="orders-products__row">
+														<b>375 руб</b>
+														<span>1 шт</span>
+													</div>
+												</div>
+											</div><!-- col(4) -->
+											<div class="story-products__num">
+												<p><span>+5</span>товаров</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="orders-tab" id="order-3">
+							<div class="products-row">
+								<div class="products-col">
+									<div class="products-col__block">
+										<a href="#" class="products-col__tag">хит</a>
+										<div class="products-col__row">
+											<div class="products-col__img">
+												<img id="12" src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+											</div>
+											<div class="products-col__info">
+												<div class="products-col__saving">
+													<b>-15%</b>
+													<span>Экономия 56 р</span>
+												</div>
+												<h3 class="products-col__name"><a href="#">Масло конопляное с добавлением льняного Алтэя 100 мл</a></h3>
+												<div class="products-col__stars">
+													<img src="{% static 'portfolio/alapantan/img/stars-row.png' %}" alt="">
+												</div>
+											</div>
+										</div>
+										<div class="products-col__wrap">
+											<p class="products-col__price">319 р<span>375 р</span></p>
+											<div class="products-col__points">+10<span>баллов</span></div>
+										</div>
+										<div class="products-col__bottom">
+											<a href="#" class="products-col__btn">Купить</a>
+											<a href="#" class="products-col__like"></a>
+										</div>
+									</div>
+								</div><!-- col(1) -->
+								<div class="products-col">
+									<div class="products-col__block">
+										<a href="#" class="products-col__tag products-col__tag-new">новинка</a>
+										<div class="products-col__row">
+											<div class="products-col__img">
+												<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+											</div>
+											<div class="products-col__info">
+												<div class="products-col__saving">
+													<b>-15%</b>
+													<span>Экономия 56 р</span>
+												</div>
+												<h3 class="products-col__name">Масло конопляное с добавлением льняного Алтэя 100 мл</h3>
+												<div class="products-col__stars">
+													<img src="{% static 'portfolio/alapantan/img/stars-row.png' %}" alt="">
+												</div>
+											</div>
+										</div>
+										<div class="products-col__wrap">
+											<p class="products-col__price">319 р<span>375 р</span></p>
+											<div class="products-col__points">+10<span>баллов</span></div>
+										</div>
+										<div class="products-col__bottom">
+											<div class="products-col__quantity">
+												<div class="products-col__quantity-minus">-</div>
+												<input name="text" type="text" value="1">
+												<div class="products-col__quantity-plus">+</div>
+											</div>
+											<a href="#" class="products-col__like"></a>
+										</div>
+									</div>
+								</div><!-- col(2) -->
+								<div class="products-col">
+									<div class="products-col__block">
+										<a href="#" class="products-col__tag">хит</a>
+										<div class="products-col__row">
+											<div class="products-col__img">
+												<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+											</div>
+											<div class="products-col__info">
+												<div class="products-col__saving">
+													<b>-15%</b>
+													<span>Экономия 56 р</span>
+												</div>
+												<h3 class="products-col__name">Масло конопляное с добавлением льняного Алтэя 100 мл</h3>
+												<div class="products-col__stars">
+													<img src="{% static 'portfolio/alapantan/img/stars-row.png' %}" alt="">
+												</div>
+											</div>
+										</div>
+										<div class="products-col__wrap">
+											<p class="products-col__price">319 р<span>375 р</span></p>
+											<div class="products-col__points">+10<span>баллов</span></div>
+										</div>
+										<div class="products-col__bottom">
+											<a href="#" class="products-col__btn">Купить</a>
+											<a href="#" class="products-col__like"></a>
+										</div>
+									</div>
+								</div><!-- col(3) -->
+								<div class="products-col">
+									<div class="products-col__block">
+										<a href="#" class="products-col__tag">хит</a>
+										<div class="products-col__row">
+											<div class="products-col__img">
+												<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+											</div>
+											<div class="products-col__info">
+												<div class="products-col__saving">
+													<b>-15%</b>
+													<span>Экономия 56 р</span>
+												</div>
+												<h3 class="products-col__name">Масло конопляное с добавлением льняного Алтэя 100 мл</h3>
+												<div class="products-col__stars">
+													<img src="{% static 'portfolio/alapantan/img/stars-row.png' %}" alt="">
+												</div>
+											</div>
+										</div>
+										<div class="products-col__wrap">
+											<p class="products-col__price">319 р<span>375 р</span></p>
+											<div class="products-col__points">+10<span>баллов</span></div>
+										</div>
+										<div class="products-col__bottom">
+											<a href="#" class="products-col__btn">Купить</a>
+											<a href="#" class="products-col__like"></a>
+										</div>
+									</div>
+								</div><!-- col(4) -->
+								<div class="products-col">
+									<div class="products-col__block">
+										<a href="#" class="products-col__tag">хит</a>
+										<div class="products-col__row">
+											<div class="products-col__img">
+												<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+											</div>
+											<div class="products-col__info">
+												<div class="products-col__saving">
+													<b>-15%</b>
+													<span>Экономия 56 р</span>
+												</div>
+												<h3 class="products-col__name">Масло конопляное с добавлением льняного Алтэя 100 мл</h3>
+												<div class="products-col__stars">
+													<img src="{% static 'portfolio/alapantan/img/stars-row.png' %}" alt="">
+												</div>
+											</div>
+										</div>
+										<div class="products-col__wrap">
+											<p class="products-col__price">319 р<span>375 р</span></p>
+											<div class="products-col__points">+10<span>баллов</span></div>
+										</div>
+										<div class="products-col__bottom">
+											<a href="#" class="products-col__btn">Купить</a>
+											<a href="#" class="products-col__like"></a>
+										</div>
+									</div>
+								</div><!-- col(5) -->
+								<div class="products-col">
+									<div class="products-col__block">
+										<a href="#" class="products-col__tag">хит</a>
+										<div class="products-col__row">
+											<div class="products-col__img">
+												<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+											</div>
+											<div class="products-col__info">
+												<div class="products-col__saving">
+													<b>-15%</b>
+													<span>Экономия 56 р</span>
+												</div>
+												<h3 class="products-col__name">Масло конопляное с добавлением льняного Алтэя 100 мл</h3>
+												<div class="products-col__stars">
+													<img src="{% static 'portfolio/alapantan/img/stars-row.png' %}" alt="">
+												</div>
+											</div>
+										</div>
+										<div class="products-col__wrap">
+											<p class="products-col__price">319 р<span>375 р</span></p>
+											<div class="products-col__points">+10<span>баллов</span></div>
+										</div>
+										<div class="products-col__bottom">
+											<a href="#" class="products-col__btn">Купить</a>
+											<a href="#" class="products-col__like"></a>
+										</div>
+									</div>
+								</div><!-- col(6) -->
+							</div>
+						</div>
+					</div>
+					<div id="tab-4" class="tab cabinet-tab">
+						<div class="points-list">
+							<div class="cabinet-select">
+								<p class="cabinet-select__text">Детализация операций</p>
+								<ul class="cabinet-select__list">
+									<li><a href="#points-1">Детали счета</a></li>
+									<li><a class="active" href="#points-2">Детализация операций</a></li>
+								</ul>
+							</div>
+						</div>
+						<div id="points-1" class="points-tab">
+							<div class="points-img">
+								<div class="points-img__wrap" style="background-image: url({% static 'portfolio/alapantan/img/points.png' %});">
+									<div class="points-img__wrap-text">
+										<h4 class="points-img__wrap-title">На Вашем счету</h4>
+										<p>Доступно для оплаты<span>*</span></p>
+									</div>
+									<div class="points-img__wrap-num">
+										<p>3000</p>
+										<span>баллов</span>
+									</div>
+								</div>
+								<p class="points-img__p"><span>*</span> 1 балл = 1 рубль РФ</p>
+							</div>
+							<div class="points-info">
+								<h3 class="points-title">Баллы Alapantan</h3>
+								<p>Чтобы списать баллы, при оформлении заказа в разделе <a href="#">“Оплата”</a> выберите <a href="#">“Использовать для оплаты баллы”</a></p>
+								<p>Вы не можете указать количество списываемых баллов. Баллами можно оплатить <b>до 25% от стоимости товаров.</b></p>
+								<p>Баллами Alapantan <b>нельзя оплатить доставку</b></p>
+								<p>Баллы <b>автоматически начисляются на Ваш счёт в день покупки</b> после получения товара клиентом (доставка или самовывоз из магазина)</p>
+							</div>
+						</div>
+						<div id="points-2" class="points-tab tab-active">
+							<div class="points-top">
+								<p>Период</p>
+								<div class="points-date">
+									<p>с</p>
+									<div class="points-date__block">
+										<input type="date">
+										<span class="hb-ico ico-date"></span>
+									</div>
+								</div>
+								<div class="points-date">
+									<p>по</p>
+									<div class="points-date__block">
+										<input type="date">
+										<span class="hb-ico ico-date"></span>
+									</div>
+								</div>
+							</div>
+							<div class="points-table">
+								<div class="points-table__row points-table__row-top">
+									<div class="points-table__col points-table__col-1">
+										<p>Дата</p>
+									</div>
+									<div class="points-table__col points-table__col-2">
+										<p>Заказ</p>
+									</div>
+									<div class="points-table__col points-table__col-3">
+										<p>Баллы</p>
+									</div>
+								</div>
+								<div class="points-table__wrapper">
+									<div class="points-table__row">
+										<div class="points-table__row-wrap">
+											<div class="points-table__col points-table__col-1">
+												<p>09.10.2019</p>
+											</div>
+											<div class="points-table__col points-table__col-2">
+												<p class="points-num">Покупка № 123456</p>
+											</div>
+											<div class="points-table__col points-table__col-3">
+												<p>+30 </p>
+											</div>
+										</div>
+									</div>
+									<div class="points-table__wrap">
+										<div class="points-table__wrap-row">
+											<div class="hb-row">
+												<div class="points-table__wrap-col points-table__wrap-col__1">
+													<p>Пантогематоген жидкий "Белый Марал"<br>500 мл</p>
+												</div>
+												<div class="points-table__wrap-col points-table__wrap-col__2">
+													<p>1 шт</p>
+												</div>
+												<div class="points-table__wrap-col points-table__wrap-col__3">
+													<p>+10</p>
+												</div>
+											</div>
+											<div class="hb-row">
+												<div class="points-table__wrap-col points-table__wrap-col__1">
+													<p>Пантогематоген жидкий "Белый Марал"<br>500 мл</p>
+												</div>
+												<div class="points-table__wrap-col points-table__wrap-col__2">
+													<p>1 шт</p>
+												</div>
+												<div class="points-table__wrap-col points-table__wrap-col__3">
+													<p>+10</p>
+												</div>
+											</div>
+											<div class="hb-row">
+												<div class="points-table__wrap-col points-table__wrap-col__1">
+													<p>Пантогематоген жидкий "Белый Марал"<br>500 мл</p>
+												</div>
+												<div class="points-table__wrap-col points-table__wrap-col__2">
+													<p>1 шт</p>
+												</div>
+												<div class="points-table__wrap-col points-table__wrap-col__3">
+													<p>+10</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="points-table__wrapper">
+									<div class="points-table__row">
+										<div class="points-table__row-wrap">
+											<div class="points-table__col points-table__col-1">
+												<p>09.10.2019</p>
+											</div>
+											<div class="points-table__col points-table__col-2">
+												<p class="points-num">Покупка № 123456</p>
+											</div>
+											<div class="points-table__col points-table__col-3">
+												<p>+30 </p>
+											</div>
+										</div>
+									</div>
+									<div class="points-table__wrap">
+										<div class="points-table__wrap-row">
+											<div class="hb-row">
+												<div class="points-table__wrap-col points-table__wrap-col__1">
+													<p>Пантогематоген жидкий "Белый Марал"<br>500 мл</p>
+												</div>
+												<div class="points-table__wrap-col points-table__wrap-col__2">
+													<p>1 шт</p>
+												</div>
+												<div class="points-table__wrap-col points-table__wrap-col__3">
+													<p>+10</p>
+												</div>
+											</div>
+											<div class="hb-row">
+												<div class="points-table__wrap-col points-table__wrap-col__1">
+													<p>Пантогематоген жидкий "Белый Марал"<br>500 мл</p>
+												</div>
+												<div class="points-table__wrap-col points-table__wrap-col__2">
+													<p>1 шт</p>
+												</div>
+												<div class="points-table__wrap-col points-table__wrap-col__3">
+													<p>+10</p>
+												</div>
+											</div>
+											<div class="hb-row">
+												<div class="points-table__wrap-col points-table__wrap-col__1">
+													<p>Пантогематоген жидкий "Белый Марал"<br>500 мл</p>
+												</div>
+												<div class="points-table__wrap-col points-table__wrap-col__2">
+													<p>1 шт</p>
+												</div>
+												<div class="points-table__wrap-col points-table__wrap-col__3">
+													<p>+10</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="points-table__wrapper">
+									<div class="points-table__row">
+										<div class="points-table__row-wrap">
+											<div class="points-table__col points-table__col-1">
+												<p>09.10.2019</p>
+											</div>
+											<div class="points-table__col points-table__col-2">
+												<p class="points-num">Покупка № 123456</p>
+											</div>
+											<div class="points-table__col points-table__col-3">
+												<p>+30 </p>
+											</div>
+										</div>
+									</div>
+									<div class="points-table__wrap">
+										<div class="points-table__wrap-row">
+											<div class="hb-row">
+												<div class="points-table__wrap-col points-table__wrap-col__1">
+													<p>Пантогематоген жидкий "Белый Марал"<br>500 мл</p>
+												</div>
+												<div class="points-table__wrap-col points-table__wrap-col__2">
+													<p>1 шт</p>
+												</div>
+												<div class="points-table__wrap-col points-table__wrap-col__3">
+													<p>+10</p>
+												</div>
+											</div>
+											<div class="hb-row">
+												<div class="points-table__wrap-col points-table__wrap-col__1">
+													<p>Пантогематоген жидкий "Белый Марал"<br>500 мл</p>
+												</div>
+												<div class="points-table__wrap-col points-table__wrap-col__2">
+													<p>1 шт</p>
+												</div>
+												<div class="points-table__wrap-col points-table__wrap-col__3">
+													<p>+10</p>
+												</div>
+											</div>
+											<div class="hb-row">
+												<div class="points-table__wrap-col points-table__wrap-col__1">
+													<p>Пантогематоген жидкий "Белый Марал"<br>500 мл</p>
+												</div>
+												<div class="points-table__wrap-col points-table__wrap-col__2">
+													<p>1 шт</p>
+												</div>
+												<div class="points-table__wrap-col points-table__wrap-col__3">
+													<p>+10</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="tab-6" class="tab cabinet-tab">
+						<div class="reviews">
+							<div class="reviews-top">
+								<div class="reviews-top__info">
+									<h2 class="reviews-top__title">8 товаров ожидают Вашей оценки</h2>
+									<p>Помогите другим покупателям сделать выбор, оставив отзыв</p>
+								</div>
+								<div class="reviews-top__row">
+									<div class="rating-slide__wrap">
+										<div class="rating-slide__top">
+											<div class="rating-slide__img">
+												<img src="{% static 'portfolio/alapantan/img/product-small.jpg' %}" alt="">
+											</div>
+											<span class="rating-slide__name"><a href="#">Натуральный природный комплекс MaxiVisor, 10 капсул</a></span>
+										</div>
+										<div class="rating-slide__bottom">
+											<a href="#">Не оценивать</a>
+											<div class="rating-slide__row">
+												<a href="#">Оценить</a>
+												<div class="stars">
+											    <input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
+											    <input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
+											    <input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
+											    <input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
+											    <input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="rating-slide__wrap">
+										<div class="rating-slide__top">
+											<div class="rating-slide__img">
+												<img src="{% static 'portfolio/alapantan/img/product-small.jpg' %}" alt="">
+											</div>
+											<span class="rating-slide__name"><a href="#">Натуральный природный комплекс MaxiVisor, 10 капсул</a></span>
+										</div>
+										<div class="rating-slide__bottom">
+											<a href="#">Не оценивать</a>
+											<div class="rating-slide__row">
+												<a href="#">Оценить</a>
+												<div class="stars">
+											    <input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
+											    <input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
+											    <input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
+											    <input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
+											    <input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="rating-slide__wrap">
+										<div class="rating-slide__top">
+											<div class="rating-slide__img">
+												<img src="{% static 'portfolio/alapantan/img/product-small.jpg' %}" alt="">
+											</div>
+											<span class="rating-slide__name"><a href="#">Натуральный природный комплекс MaxiVisor, 10 капсул</a></span>
+										</div>
+										<div class="rating-slide__bottom">
+											<a href="#">Не оценивать</a>
+											<div class="rating-slide__row">
+												<a href="#">Оценить</a>
+												<div class="stars">
+											    <input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
+											    <input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
+											    <input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
+											    <input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
+											    <input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="rating-slide__wrap">
+										<div class="rating-slide__top">
+											<div class="rating-slide__img">
+												<img src="{% static 'portfolio/alapantan/img/product-small.jpg' %}" alt="">
+											</div>
+											<span class="rating-slide__name"><a href="#">Натуральный природный комплекс MaxiVisor, 10 капсул</a></span>
+										</div>
+										<div class="rating-slide__bottom">
+											<a href="#">Не оценивать</a>
+											<div class="rating-slide__row">
+												<a href="#">Оценить</a>
+												<div class="stars">
+											    <input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
+											    <input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
+											    <input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
+											    <input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
+											    <input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="rating-slide__wrap">
+										<div class="rating-slide__top">
+											<div class="rating-slide__img">
+												<img src="{% static 'portfolio/alapantan/img/product-small.jpg' %}" alt="">
+											</div>
+											<span class="rating-slide__name"><a href="#">Натуральный природный комплекс MaxiVisor, 10 капсул</a></span>
+										</div>
+										<div class="rating-slide__bottom">
+											<a href="#">Не оценивать</a>
+											<div class="rating-slide__row">
+												<a href="#">Оценить</a>
+												<div class="stars">
+											    <input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
+											    <input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
+											    <input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
+											    <input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
+											    <input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="rating-slide__wrap">
+										<div class="rating-slide__top">
+											<div class="rating-slide__img">
+												<img src="{% static 'portfolio/alapantan/img/product-small.jpg' %}" alt="">
+											</div>
+											<span class="rating-slide__name"><a href="#">Натуральный природный комплекс MaxiVisor, 10 капсул</a></span>
+										</div>
+										<div class="rating-slide__bottom">
+											<a href="#">Не оценивать</a>
+											<div class="rating-slide__row">
+												<a href="#">Оценить</a>
+												<div class="stars">
+											    <input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
+											    <input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
+											    <input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
+											    <input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
+											    <input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="rating-slide__wrap">
+										<div class="rating-slide__top">
+											<div class="rating-slide__img">
+												<img src="{% static 'portfolio/alapantan/img/product-small.jpg' %}" alt="">
+											</div>
+											<span class="rating-slide__name"><a href="#">Натуральный природный комплекс MaxiVisor, 10 капсул</a></span>
+										</div>
+										<div class="rating-slide__bottom">
+											<a href="#">Не оценивать</a>
+											<div class="rating-slide__row">
+												<a href="#">Оценить</a>
+												<div class="stars">
+											    <input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
+											    <input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
+											    <input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
+											    <input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
+											    <input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="rating-slide__wrap">
+										<div class="rating-slide__top">
+											<div class="rating-slide__img">
+												<img src="{% static 'portfolio/alapantan/img/product-small.jpg' %}" alt="">
+											</div>
+											<span class="rating-slide__name"><a href="#">Натуральный природный комплекс MaxiVisor, 10 капсул</a></span>
+										</div>
+										<div class="rating-slide__bottom">
+											<a href="#">Не оценивать</a>
+											<div class="rating-slide__row">
+												<a href="#">Оценить</a>
+												<div class="stars">
+											    <input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
+											    <input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
+											    <input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
+											    <input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
+											    <input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="reviews-bottom">
+								<h3 class="reviews-bottom__title">Отзывы <span>(5)</span></h3>
+								<div class="reviews-wrap">
+									<div class="description-content">
+										<div class="drop">
+											<p class="drop-text">Сначала новые</p>
+											<ul class="drop-list">
+												<li><a href="#">Сначала полезные</a></li>
+												<li><a href="#">Сначала с высокой оценкой</a></li>
+												<li><a href="#">Сначала с низкой оценкой</a></li>
+											</ul>
+										</div>
+										<div class="testimonials-col">
+											<div class="testimonials-img">
+												<div class="testimonials-img__wrap">
+													<img src="{% static 'portfolio/alapantan/img/prod.png' %}" alt="">
+												</div>
+											</div>
+											<div class="testimonials-info">
+												<a href="#" class="ico-share"></a>
+												<div class="testimonials-info__top">
+													<div class="testimonials-info__top-row">
+														<h3 class="testimonials-info__name">Натуральный природный комплекс MaxiVisor, 10 капсул</h3>
+														<p class="testimonials-info__date"><span class="ico-time"></span>29 июля 2019</p>
+													</div>
+													<div class="testimonials-info__stars">
+														<img src="{% static 'portfolio/alapantan/img/stars-row.png' %}" alt="">
+													</div>
+												</div>
+												<div class="testimonials-info__text">
+													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
+												</div>
+												<div class="reviews-slider">
+													<div class="reviews-slide">
+														<div class="reviews-slide__wrap">
+															<img src="{% static 'portfolio/alapantan/img/prod-2.png' %}" alt="">
+														</div>
+													</div><!-- slide -->
+													<div class="reviews-slide">
+														<div class="reviews-slide__wrap">
+															<img src="{% static 'portfolio/alapantan/img/prod-2.png' %}" alt="">
+														</div>
+													</div><!-- slide -->
+													<div class="reviews-slide">
+														<div class="reviews-slide__wrap">
+															<img src="{% static 'portfolio/alapantan/img/prod-2.png' %}" alt="">
+														</div>
+													</div><!-- slide -->
+													<div class="reviews-slide">
+														<div class="reviews-slide__wrap">
+															<img src="{% static 'portfolio/alapantan/img/prod-2.png' %}" alt="">
+														</div>
+													</div><!-- slide -->
+													<div class="reviews-slide">
+														<div class="reviews-slide__wrap">
+															<img src="{% static 'portfolio/alapantan/img/prod-2.png' %}" alt="">
+														</div>
+													</div><!-- slide -->
+													<div class="reviews-slide">
+														<div class="reviews-slide__wrap">
+															<img src="{% static 'portfolio/alapantan/img/prod-2.png' %}" alt="">
+														</div>
+													</div><!-- slide -->
+													<div class="reviews-slide">
+														<div class="reviews-slide__wrap">
+															<img src="{% static 'portfolio/alapantan/img/prod-2.png' %}" alt="">
+														</div>
+													</div><!-- slide -->
+													<div class="reviews-slide">
+														<div class="reviews-slide__wrap">
+															<img src="{% static 'portfolio/alapantan/img/prod-2.png' %}" alt="">
+														</div>
+													</div><!-- slide -->
+												</div>
+												<div class="testimonials-bottom">
+													<a href="#" class="testimonials-comment"><span class="ico-arrow"></span>Редактировать</a>
+													<a href="#" class="testimonials-comm"><span>0</span> комментарий</a>
+													<a href="#" class="testimonials-del"><span class="ico-hb ico-del"></span>Удалить отзыв</a>
+												</div>
+											</div>
+										</div>
+										<div class="testimonials-col">
+											<div class="testimonials-img">
+												<div class="testimonials-img__wrap">
+													<img src="{% static 'portfolio/alapantan/img/prod.png' %}" alt="">
+												</div>
+											</div>
+											<div class="testimonials-info">
+												<a href="#" class="ico-share"></a>
+												<div class="testimonials-info__top">
+													<div class="testimonials-info__top-row">
+														<h3 class="testimonials-info__name">Натуральный природный комплекс MaxiVisor, 10 капсул</h3>
+														<p class="testimonials-info__date"><span class="ico-time"></span>29 июля 2019</p>
+													</div>
+													<div class="testimonials-info__stars">
+														<img src="{% static 'portfolio/alapantan/img/stars-row.png' %}" alt="">
+													</div>
+												</div>
+												<div class="testimonials-info__text">
+													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
+												</div>
+												<div class="testimonials-bottom">
+													<a href="#" class="testimonials-comment"><span class="ico-arrow"></span>Редактировать</a>
+													<a href="#" class="testimonials-comm"><span>0</span> комментарий</a>
+													<a href="#" class="testimonials-del"><span class="ico-hb ico-del"></span>Удалить отзыв</a>
+												</div>
+												<div class="testimonials-col">
+													<div class="testimonials-img">
+														<img src="{% static 'portfolio/alapantan/img/avatar.png' %}" alt="">
+													</div>
+													<div class="testimonials-info">
+														<a href="#" class="ico-share"></a>
+														<div class="testimonials-info__top">
+															<div class="testimonials-info__top-row">
+																<h3 class="testimonials-info__name">Елена</h3>
+																<p class="testimonials-info__date"><span class="ico-time"></span>29 июля 2019</p>
+															</div>
+														</div>
+														<div class="testimonials-info__text">
+															<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
+														</div>
+														<div class="testimonials-bottom">
+															<a href="#" class="testimonials-comment"><span class="ico-arrow"></span>Ответить</a>
+															<a href="#" class="testimonials-comm"><span>0</span> комментарий</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="catalog-control">
+										<a href="#" class="second-btn"><img src="{% static 'portfolio/alapantan/img/update.png' %}" alt=""><span>Показать еще</span></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</section>
+	<!-- end cabinet -->
+
+{% endblock %}

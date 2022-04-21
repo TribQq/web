@@ -1,0 +1,331 @@
+{% extends "portfolio/alapantan/layout/basic.html" %}
+{% load static %}
+{% block title %} basket {% endblock %}
+
+{% block content %} 
+	<!-- start basket -->
+	<section class="basket">
+		<div class="wrapper">
+			<ul class="bread-crumbs">
+				<li><a href="#">Главная</a></li>
+				<li>Корзина</li>
+			</ul>
+			<h1 class="page-name">Моя корзина</h1>
+		</div>
+		<div class="wrapper basket-wrapper">
+			<div class="basket-table">
+				<div class="basket-row basket-top">
+					<div class="basket-col basket-col__1">
+						<p>Товары </p>
+					</div>
+					<div class="basket-col__row">
+						<div class="basket-col basket-col__2">
+							<p>Количество</p>
+						</div>
+						<div class="basket-col basket-col__3">
+							<p>Цена</p>
+						</div>
+						<div class="basket-col basket-col__4">
+							<p>Удалить</p>
+						</div>
+					</div>
+				</div>
+				<div class="basket-row">
+					<div class="basket-col basket-col__1">
+						<div class="basket-col__img">
+							<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+						</div>
+						<div class="basket-col__info">
+							<h3 class="basket-col__title">Алтэя Масло конопляное с добавлением льняного</h3>
+							<span class="basket-col__size">100 мл</span>
+						</div>
+					</div>
+					<div class="basket-col__row">
+						<div class="basket-col basket-col__2">
+							<div class="basket-col__input">
+								<span class="basket-col__input-minus">-</span>
+								<input type="text" name="text" value="1">
+								<span class="basket-col__input-add">+</span>
+							</div>
+							<p>100 шт в наличии</p>
+						</div>
+						<div class="basket-col basket-col__3">
+							<p class="basket-col__price">345 р</p>
+							<p><span>400 Р</span><b>Скидка 55 р</b></p>
+							<p>379 Р / шт</p>
+						</div>
+						<div class="basket-col basket-col__4">
+							<a href="#" class="basket-del"></a>
+						</div>
+					</div>
+				</div>
+				<div class="basket-row">
+					<div class="basket-col basket-col__1">
+						<div class="basket-col__img">
+							<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+						</div>
+						<div class="basket-col__info">
+							<h3 class="basket-col__title">Алтэя Масло конопляное с добавлением льняного</h3>
+							<span class="basket-col__size">100 мл</span>
+						</div>
+					</div>
+					<div class="basket-col__row">
+						<div class="basket-col basket-col__2">
+							<div class="basket-col__input">
+								<span class="basket-col__input-minus">-</span>
+								<input type="text" name="text" value="1">
+								<span class="basket-col__input-add">+</span>
+							</div>
+							<p>100 шт в наличии</p>
+						</div>
+						<div class="basket-col basket-col__3">
+							<p class="basket-col__price">345 р</p>
+							<p><span>400 Р</span><b>Скидка 55 р</b></p>
+							<p>379 Р / шт</p>
+						</div>
+						<div class="basket-col basket-col__4">
+							<a href="#" class="basket-del"></a>
+						</div>
+					</div>
+				</div>
+				<div class="basket-row">
+					<div class="basket-col basket-col__1">
+						<div class="basket-col__img">
+							<img src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+						</div>
+						<div class="basket-col__info">
+							<h3 class="basket-col__title">Алтэя Масло конопляное с добавлением льняного</h3>
+							<span class="basket-col__size">100 мл</span>
+						</div>
+					</div>
+					<div class="basket-col__row">
+						<div class="basket-col basket-col__2">
+							<div class="basket-col__input">
+								<span class="basket-col__input-minus">-</span>
+								<input type="text" name="text" value="1">
+								<span class="basket-col__input-add">+</span>
+							</div>
+							<p>100 шт в наличии</p>
+						</div>
+						<div class="basket-col basket-col__3">
+							<p class="basket-col__price">345 р</p>
+							<p><span>400 Р</span><b>Скидка 55 р</b></p>
+							<p>379 Р / шт</p>
+						</div>
+						<div class="basket-col basket-col__4">
+							<a href="#" class="basket-del"></a>
+						</div>
+					</div>
+				</div>
+				<div class="basket-bottom">
+					<div class="basket-bottom__row">
+						<div class="basket-bottom__text">
+							<p>Итого:</p>
+						</div>
+						<div class="basket-bottom__info">
+							<p>4 товара на сумму<span>2 000 Р</span></p>
+							<p class="discount">Скидка  5%<span>- 300 Р</span></p>
+							<div class="basket-bottom__info-total">
+								<p>Общая стоимость<span>1 700 Р</span></p>
+							</div>
+						</div>
+					</div>
+					<div class="basket-bottom__btn">
+						<a href="#" class="second-btn">Оформить заказ</a>
+						<a href="#" class="solid-btn">Вернуться к покупкам</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end basket -->
+	<!-- start recommended -->
+	<section class="recommended">
+		<div class="wrapper">
+			<h3 class="recommended-title">Рекомендуем</h3>
+			<div class="recommended-slider">
+				<div class="recommended-slide">
+					<div class="products-col">
+						<div class="products-col__block">
+							<a href="#" class="products-col__tag">хит</a>
+							<div class="products-col__row">
+								<div class="products-col__img">
+									<img id="12" src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+								</div>
+								<div class="products-col__info">
+									<div class="products-col__saving">
+										<b>-15%</b>
+										<span>Экономия 56 р</span>
+									</div>
+									<h3 class="products-col__name"><a href="#">Масло конопляное с добавлением льняного Алтэя 100 мл</a></h3>
+									<div class="products-col__stars">
+										<img src="{% static 'portfolio/alapantan/img/stars-row.png' %}" alt="">
+									</div>
+								</div>
+							</div>
+							<div class="products-col__wrap">
+								<p class="products-col__price">319 р<span>375 р</span></p>
+								<div class="products-col__points">+10<span>баллов</span></div>
+							</div>
+							<div class="products-col__bottom">
+								<a href="#" class="products-col__btn">Купить</a>
+								<a href="#" class="products-col__like"></a>
+							</div>
+						</div>
+					</div>
+				</div><!-- slide(1) -->
+				<div class="recommended-slide">
+					<div class="products-col">
+						<div class="products-col__block">
+							<a href="#" class="products-col__tag">хит</a>
+							<div class="products-col__row">
+								<div class="products-col__img">
+									<img id="12" src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+								</div>
+								<div class="products-col__info">
+									<div class="products-col__saving">
+										<b>-15%</b>
+										<span>Экономия 56 р</span>
+									</div>
+									<h3 class="products-col__name"><a href="#">Масло конопляное с добавлением льняного Алтэя 100 мл</a></h3>
+									<div class="products-col__stars">
+										<img src="{% static 'portfolio/alapantan/img/stars-row.png' %}" alt="">
+									</div>
+								</div>
+							</div>
+							<div class="products-col__wrap">
+								<p class="products-col__price">319 р<span>375 р</span></p>
+								<div class="products-col__points">+10<span>баллов</span></div>
+							</div>
+							<div class="products-col__bottom">
+								<a href="#" class="products-col__btn">Купить</a>
+								<a href="#" class="products-col__like"></a>
+							</div>
+						</div>
+					</div>
+				</div><!-- slide(2) -->
+				<div class="recommended-slide">
+					<div class="products-col">
+						<div class="products-col__block">
+							<a href="#" class="products-col__tag">хит</a>
+							<div class="products-col__row">
+								<div class="products-col__img">
+									<img id="12" src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+								</div>
+								<div class="products-col__info">
+									<div class="products-col__saving">
+										<b>-15%</b>
+										<span>Экономия 56 р</span>
+									</div>
+									<h3 class="products-col__name"><a href="#">Масло конопляное с добавлением льняного Алтэя 100 мл</a></h3>
+									<div class="products-col__stars">
+										<img src="{% static 'portfolio/alapantan/img/stars-row.png' %}" alt="">
+									</div>
+								</div>
+							</div>
+							<div class="products-col__wrap">
+								<p class="products-col__price">319 р<span>375 р</span></p>
+								<div class="products-col__points">+10<span>баллов</span></div>
+							</div>
+							<div class="products-col__bottom">
+								<a href="#" class="products-col__btn">Купить</a>
+								<a href="#" class="products-col__like"></a>
+							</div>
+						</div>
+					</div>
+				</div><!-- slide(3) -->
+				<div class="recommended-slide">
+					<div class="products-col">
+						<div class="products-col__block">
+							<a href="#" class="products-col__tag">хит</a>
+							<div class="products-col__row">
+								<div class="products-col__img">
+									<img id="12" src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+								</div>
+								<div class="products-col__info">
+									<div class="products-col__saving">
+										<b>-15%</b>
+										<span>Экономия 56 р</span>
+									</div>
+									<h3 class="products-col__name"><a href="#">Масло конопляное с добавлением льняного Алтэя 100 мл</a></h3>
+									<div class="products-col__stars">
+										<img src="{% static 'portfolio/alapantan/img/stars-row.png' %}" alt="">
+									</div>
+								</div>
+							</div>
+							<div class="products-col__wrap">
+								<p class="products-col__price">319 р<span>375 р</span></p>
+								<div class="products-col__points">+10<span>баллов</span></div>
+							</div>
+							<div class="products-col__bottom">
+								<a href="#" class="products-col__btn">Купить</a>
+								<a href="#" class="products-col__like"></a>
+							</div>
+						</div>
+					</div>
+				</div><!-- slide(4) -->
+				<div class="recommended-slide">
+					<div class="products-col">
+						<div class="products-col__block">
+							<a href="#" class="products-col__tag">хит</a>
+							<div class="products-col__row">
+								<div class="products-col__img">
+									<img id="12" src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+								</div>
+								<div class="products-col__info">
+									<div class="products-col__saving">
+										<b>-15%</b>
+										<span>Экономия 56 р</span>
+									</div>
+									<h3 class="products-col__name"><a href="#">Масло конопляное с добавлением льняного Алтэя 100 мл</a></h3>
+									<div class="products-col__stars">
+										<img src="{% static 'portfolio/alapantan/img/stars-row.png' %}" alt="">
+									</div>
+								</div>
+							</div>
+							<div class="products-col__wrap">
+								<p class="products-col__price">319 р<span>375 р</span></p>
+								<div class="products-col__points">+10<span>баллов</span></div>
+							</div>
+							<div class="products-col__bottom">
+								<a href="#" class="products-col__btn">Купить</a>
+								<a href="#" class="products-col__like"></a>
+							</div>
+						</div>
+					</div>
+				</div><!-- slide(5) -->
+				<div class="recommended-slide">
+					<div class="products-col">
+						<div class="products-col__block">
+							<a href="#" class="products-col__tag">хит</a>
+							<div class="products-col__row">
+								<div class="products-col__img">
+									<img id="12" src="{% static 'portfolio/alapantan/img/product-big.jpg' %}" alt="">
+								</div>
+								<div class="products-col__info">
+									<div class="products-col__saving">
+										<b>-15%</b>
+										<span>Экономия 56 р</span>
+									</div>
+									<h3 class="products-col__name"><a href="#">Масло конопляное с добавлением льняного Алтэя 100 мл</a></h3>
+									<div class="products-col__stars">
+										<img src="{% static 'portfolio/alapantan/img/stars-row.png' %}" alt="">
+									</div>
+								</div>
+							</div>
+							<div class="products-col__wrap">
+								<p class="products-col__price">319 р<span>375 р</span></p>
+								<div class="products-col__points">+10<span>баллов</span></div>
+							</div>
+							<div class="products-col__bottom">
+								<a href="#" class="products-col__btn">Купить</a>
+								<a href="#" class="products-col__like"></a>
+							</div>
+						</div>
+					</div>
+				</div><!-- slide(6) -->
+			</div>
+		</div>
+	</section>
+	<!-- end recommended -->
+{% endblock %}

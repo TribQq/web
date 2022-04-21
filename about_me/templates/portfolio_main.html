@@ -70,20 +70,26 @@
 				<span></span>
 			</div>
 			<ul class="menu">
-		    <li><a href="#home">Home</a><i></i></li>
+		    <li>
+				<li><a href="#home">Header</a><i></i></li>
 				<li><a href="#about">About</a><i></i></li>
 				<li><a href="#services">Services</a><i></i></li>
 				<li><a href="#works">Portfolio</a><i></i></li>
 				<li><a href="#steps">Steps</a><i></i></li>
 				<li><a href="#skills">Skills</a><i></i></li>
+
 			</ul>
 		</div>
 	</header>
-	<section id="home" class="section-bg" style="background: url(images/home.jpeg);">
+
+	<section id="home" class="section-bg" style="background: url({% static 'portfolio_main/images/home.jpeg' %});">
 		<div class="banner-text">
 			<h1 id="typed" style="white-space:pre;"></h1>
-			<p>Lorem ipsum dolor sit amet, <span>consectetur</span> adipisicing elit. Suscipit quis <span>laboriosam</span> libero dolores iure nihil explicabo deserunt <span>pariatur</span> reprehenderit. Harum reiciendis hic esse, debitis qui fuga ipsa at <span>voluptate</span> aliquid.</p>
-			<a class="banner-a" href="#works">my works</a>
+<!--			<p>Lorem ipsum dolor sit amet, <span>consectetur</span> adipisicing elit. Suscipit quis <span>laboriosam</span> libero dolores iure nihil explicabo deserunt <span>pariatur</span> reprehenderit. Harum reiciendis hic esse, debitis qui fuga ipsa at <span>voluptate</span> aliquid.</p>-->
+			<p> <span> Whimsical </span> specialist.
+				Brings <span> ideas </span>  to life with code. Full Stack  <span> developer </span> and  just good guy <span> ฅʕ•ᴥ•ʔ </span>.</p>
+			<p>Other pages: <a class="boosted_link" href="{% url 'about_me:about_main' %}">about#0</a> , <a class="boosted_link" href="{% url 'about_me:alt_about_me' %}">about#1</a> </p>
+			<a class="button_link banner-a" href="#works">my works</a>
 		</div>
 		<ul class="banner-social">
 			<li><a target="_blank" href="mailto:ivankartasov.trib@gmail.com">
@@ -111,10 +117,14 @@
 			<div class="about-me">
 				<div class="about-photo"></div>
 				<div class="about-text">
-					<h2>About Me</h2>
+					<h2>About</h2>
 					<span class="section-bg-num">01</span>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime repellendus dicta placeat, dolores quaerat quidem unde! Eveniet nobis temporibus recusandae odio laboriosam in ducimus vero, earum necessitatibus nam a excepturi.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi iusto voluptates alias, blanditiis iste enim.</p>
+					<p> Hi! 👋 I'm Ivan. And I make awesome things for awesome people!</p>
+
+<!--					<p>I'm a developer with 3+ years of experience. I can take your project to the next level. I thrive on bringing ideas to life and have a reputation for delivering eye-catching results ahead of schedule.</p>-->
+					<p>Whatever the tools used, I thrive on bringing ideas to life. I take pride in crafting innovative solutions with polished user experiences. This whilst possessing a keen eye for design, accessibility, performance, and well-structured code.</p>
+					<p>Connect with me by <a class="boosted_link" href="https://t.me/Qq_user" > tg </a> or <a class="boosted_link" href="mailto:ivankartasov.trib@gmail.com"> email </a>. Let's work together!
+					 <br />More about me u can read on <a class="boosted_link" href="{%url 'about_me:about_main' %}">about</a> page .</p>
 					<span class="line l1"></span>
 					<span class="line l2"></span>
 					<span class="line l3"></span>
@@ -154,7 +164,7 @@
 			</div>
 		</div>
 	</section>
-	<section class="count-section section" style="background: url(images/count.jpg);">
+	<section class="count-section section" style="background: url({% static 'portfolio_main/images/count.jpg' %});">
 		<div class="wrapper">
 			<div id="counter">
 				<div class="count-column">
@@ -188,28 +198,31 @@
 			</div>
 			<span class="section-bg-num sec-num">03</span>
 			<div class="projects">
+<!--				<div class="portfolio-post">-->
+<!--					<img class="portfolio-img" src="{% static 'portfolio_main/images/portfolio/powerBall.jpg' %}" alt="portfolio">-->
+<!--					<div class="descr">-->
+<!--						<div class="descr-head">-->
+<!--							<img src="{% static 'portfolio_main/images/portfolio/powerBall-logo.png' %}" alt="Логотип">-->
+<!--							<h4>Landing</h4>-->
+<!--						</div>-->
+<!--						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores nisi placeat, nulla odit?</p>-->
+<!--						<a href="">Read More</a>-->
+<!--					</div>-->
+<!--				</div>-->
+				{% for project in projects_cards %}
 				<div class="portfolio-post">
-					<img class="portfolio-img" src="{% static 'portfolio_main/images/portfolio/endo.jpg' %}"  alt="portfolio">
+					<img class="portfolio-img" src="/media/{{project.cover_img}}" alt="portfolio">
 					<div class="descr">
 						<div class="descr-head">
-							<img src="{% static 'portfolio_main/images/portfolio/endo-logo.png' %}" alt="Логотип">
-							<h4>Landing</h4>
+							<img src="/media/{{project.logo_img}}" alt="Логотип">
+							<h4>{{project.project_type}}</h4>
 						</div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores nisi placeat, nulla odit?</p>
-						<a href="">Read More</a>
-					</div>
-				</div><!--1-->
-				<div class="portfolio-post">
-					<img class="portfolio-img" src="{% static 'portfolio_main/images/portfolio/powerBall.jpg' %}" alt="portfolio">
-					<div class="descr">
-						<div class="descr-head">
-							<img src="{% static 'portfolio_main/images/portfolio/powerBall-logo.png' %}" alt="Логотип">
-							<h4>Landing</h4>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores nisi placeat, nulla odit?</p>
-						<a href="">Read More</a>
+						<p class="subtitle">{{project.name}}</p>
+						<p>{{project.description}}.</p>
+						<a href="{{project.web_version_link}}">Read More</a>
 					</div>
 				</div><!--2-->
+				{% endfor %}
 			</div>
 		</div>
 	</section>
@@ -225,32 +238,33 @@
 					<img src="{% static 'portfolio_main/images/steps/step-1.jpg' %}" alt="">
 					<div class="steps-column-text steps-1">
 						<span>01</span>
-						<h4>Project Understanding</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque veniam ipsum maiores, eius consequatur commodi non provident cumque.</p>
+						<h4>Identify the problem</h4>
+						<p>Identifying the problem is the most critical part of the CP process  will need to develop a concrete plan for what completed program will do.</p>
 					</div>
 				</div>
 				<div class="steps-column">
 					<img src="{% static 'portfolio_main/images/steps/step-2.jpg' %}" alt="">
 					<div class="steps-column-text steps-2">
 						<span>02</span>
-						<h4>Project Understanding</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque veniam ipsum maiores, eius consequatur commodi non provident cumque.</p>
+						<h4>Find a solution</h4>
+						<p>Create a flowchart or pseudocode.<br> Write a skeleton of the program, including function prototypes.</p>
 					</div>
 				</div>
 				<div class="steps-column">
 					<img src="{% static 'portfolio_main/images/steps/step-3.jpg' %}" alt="">
 					<div class="steps-column-text steps-3">
 						<span>03</span>
-						<h4>Project Understanding</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque veniam ipsum maiores, eius consequatur commodi non provident cumque.</p>
+						<h4>Code it</h4>
+						<p>Write a summary of variables and refine the skeleton of the program as necessary.<br>
+							Determine interrelations, states, and scopes of variables.</p>
 					</div>
 				</div>
 				<div class="steps-column">
 					<img src="{% static 'portfolio_main/images/steps/step-4.jpeg' %}" alt="">
 					<div class="steps-column-text steps-4">
 						<span>04</span>
-						<h4>Development</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque veniam ipsum maiores, eius consequatur commodi non provident cumque.</p>
+						<h4>Test it</h4>
+						<p>Code, test, and optimize; go back to any previous step as necessary.</p>
 					</div>
 				</div>
 			</div>
@@ -264,21 +278,18 @@
 			</div>
 			<span class="section-bg-num sec-num">05</span>
 			<div class="skills">
+<!--				<div class="skills-column">-->
+<!--					<img src="{% static 'portfolio_main/images/skills/css-3.svg' %}" alt="css">-->
+<!--					<h4>CSS</h4>-->
+<!--					<p>Lorem ipsum dolor sit amet, elit. Maiores modi, vero animi.</p>-->
+<!--				</div>-->
+				{% for card in skills_cards %}
 				<div class="skills-column">
-					<img src="{% static 'portfolio_main/images/skills/css-3.svg' %}" alt="css">
-					<h4>CSS</h4>
-					<p>Lorem ipsum dolor sit amet, elit. Maiores modi, vero animi.</p>
+					<img src="/media/{{card.cover_img}}" alt="{{card.name}}">
+					<h4>{{card.name}}</h4>
+					<p>{{card.description}}</p>
 				</div>
-				<div class="skills-column">
-					<img src="{% static 'portfolio_main/images/skills/javascript.svg' %}" alt="Js">
-					<h4>JavaScript</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-				</div>
-				<div class="skills-column">
-					<img src="{% static 'portfolio_main/images/skills/python.svg' %}" alt="Python">
-					<h4>Python</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores modi.</p>
-				</div>
+				{% endfor %}
 			</div>
 		</div>
 	</section>
