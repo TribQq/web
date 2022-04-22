@@ -34,5 +34,5 @@ urlpatterns = [
    path('portfolio/photo_birds', photo_birds, name='photo_birds'),
 
 
-   path('404/', handler_404, name='handler_404'),
+   # path('404/', handler_404, name='handler_404'), #alternate handler
 ]

@@ -25,7 +25,7 @@ urlpatterns = [
 ] 
 
 
-handler404 = "mysite.views.page_not_found_view"
+# handler404 = "mysite.views.page_not_found_view" # alt hadler path create
 
 if settings.DEBUG:
     from django.contrib.staticfiles.views import serve

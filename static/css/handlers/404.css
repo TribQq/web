@@ -1,0 +1,132 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.error-title {
+  max-width: 529px; 
+  font-family: Roboto;
+  font-size: 38px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #4b4b62;
+  margin-bottom: 16px;
+}
+
+.error-subtitle {
+  max-width: 568px; 
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.31;
+  letter-spacing: normal;
+  text-align: center;
+  color: #4b4b62;
+  margin-bottom: 24px;
+}
+.error-subtitle a {
+   text-decoration:none;
+   color: black;
+}
+.error-subtitle a:hover {
+   font-size: 110%;
+   color: goldenrod;
+   transition: 1s;
+   text-decoration: overline dotted orange 2px;
+}
+.fundo{
+   animation: scales 3s alternate  infinite;
+   transform-origin: center;
+ }
+ .pao-baixo{
+    animation: rotatepao 14s cubic-bezier(.1,.49,.41,.97)  infinite;
+   transform-origin: center;
+ }
+ .pao-cima{
+    animation: rotatepao 7s 1s cubic-bezier(.1,.49,.41,.97)  infinite;
+   transform-origin: center;
+ }
+ .olhos{animation: olhos   2s  alternate  infinite;
+    transform-origin: center;
+ }
+ 
+ .left-sparks{animation: left-sparks   4s  alternate  infinite;
+       transform-origin: 150px 156px;
+ }
+ 
+ .right-sparks{animation: left-sparks   4s  alternate  infinite;
+       transform-origin: 310px 150px;
+ }
+ 
+ .olhos{animation: olhos   2s  alternate  infinite;
+    transform-origin: center;
+ }
+ @keyframes scales{
+   from { transform: scale(0.98)}
+   to{ transform: scale(1)}
+ }
+ 
+ @keyframes rotatepao{
+   0% { transform:  rotate(0deg)}
+   50% , 60%{ transform:  rotate(-20deg)}
+   100%{  transform:  rotate(0deg) }
+  
+ }
+ 
+ @keyframes olhos{
+   0%{
+     transform: rotateX(0deg);
+   }
+    100%{
+     transform: rotateX(30deg);
+   }
+ }
+ 
+ @keyframes left-sparks{
+   0%{
+     opacity: 0; 
+   }
+   
+ }
+ 
+ 
+ .main{
+
+   min-height: 600px;
+   margin: 0px auto;
+   width: auto;
+   max-width: 460px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   
+ }
+ 
+ .path {
+   stroke-dasharray: 300;
+   stroke-dashoffset: 300;
+   animation: dash 4s   alternate infinite;
+ }
+ 
+ @keyframes dash{
+    0%, 30%{
+      fill: 4B4B62;
+     stroke-dashoffset:   0;
+   }
+    80%,100%{
+      fill: transparent;
+     stroke-dashoffset:  -200;
+   }
+    
+   
+ }
+
+
+ #test{
+    font-size: 60px;
+ }
