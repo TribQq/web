@@ -22,6 +22,14 @@ repo in progress ...
 <p>Alternate singlepage styles with track time script + some effects</p>
 <img src="https://raw.githubusercontent.com/TribQq/web/master/description/altAboutMe.jpg">
 
+
+<h3><li>Portfolio</li></h3>
+<p>On this page I add some apps with open source</p>
+
+<img src="https://raw.githubusercontent.com/TribQq/web/master/description/portfolio.jpg">
+
+
+
 <h3><li>BulletinBoardApp</li></h3>
 <p>Bulletin board for ad: registratin/auth, comments, sort, Bootstrap styles, etc...)<p>
 <img src="https://raw.githubusercontent.com/TribQq/web/master/description/bulletin_board.jpg">
@@ -38,6 +46,7 @@ repo in progress ...
 <p>Just notes app.Create by React + synch with DjanoApi.Realized CRUD operations, sort,create/optimize title for note  </p>
 
 <img src="https://raw.githubusercontent.com/TribQq/web/master/description/notesApp.jpg">
+
 
 </ul>
 
