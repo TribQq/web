@@ -54,9 +54,9 @@ class PageLink(models.Model):
     class Meta:
         unique_together = ['from_page', 'to_page']
 
-    def check_key_items(self, inventory_items: list) -> bool:
+    def check_key_items(self, inventory_items) :
         """ checking key-items in inventory """
-        check_result: bool = all(key in inventory_items for key in self.key_items.all())
+        check_result = all(key in inventory_items for key in self.key_items.all())
         return check_result
 
 
@@ -80,9 +80,9 @@ class BookProgress(models.Model): # трабла в автосоздании н�
         progress.save()
         return progress
 
-    def check_items_position(self, checked_i: list, inventory_i: list, dropped_i_p: dict) -> list[bool, ...]:
+    def check_items_position(self, checked_i, inventory_i, dropped_i_p):
         """ check item position(page/inventory(None)) for items in condition(win/lose) """
-        item_on_position: list[bool, ...] = []
+        item_on_position= []
         for i in checked_i:
             if i['page_position'] is None:
                 item_on_position.append((i['item'] in inventory_i))
@@ -92,13 +92,13 @@ class BookProgress(models.Model): # трабла в автосоздании н�
                 item_on_position.append(False)
         return item_on_position
 
-    def try_end_progress(self, book_id: int) -> any:
+    def try_end_progress(self, book_id):
         """collect all win/lose conditions =>  check status if something true => return win page w_page"""
         progress_conditions = Book.objects.get(id=book_id).progress_conditions.all()
         for condition in progress_conditions:
-            condition_items: list[dict[str, str], ...] = list(condition.status_items.all().values('item', 'page_position'))
-            inventory_items: list[str, ...] = list(self.inventory_items.all().values_list('id', flat=True))
-            dropped_items_pages: dict[int, list[int, ...]] = {}
+            condition_items = list(condition.status_items.all().values('item', 'page_position'))
+            inventory_items = list(self.inventory_items.all().values_list('id', flat=True))
+            dropped_items_pages = {}
 
             for di in self.droppeditem_set.all().values('item', 'book_page_id'):
                 try:
@@ -107,7 +107,7 @@ class BookProgress(models.Model): # трабла в автосоздании н�
                     dropped_items_pages[di['book_page_id']] = [di['item']]
 
             # не раб на нескольких условиях
-            item_on_position: list[bool, ...] = self.check_items_position(
+            item_on_position = self.check_items_position(
                 checked_i=condition_items, inventory_i=inventory_items, dropped_i_p=dropped_items_pages)
             if False not in item_on_position:
                 return condition.final_page
