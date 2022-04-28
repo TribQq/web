@@ -12,8 +12,9 @@ DEBUG = False
 
 
 # ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1','djwebapp.herokuapp.com']
-
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1',
+                 'djwebapp.herokuapp.com',
+                 'tribq.com', 'f74708i5.beget.tech']
 
 INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
