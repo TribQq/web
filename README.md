@@ -1,7 +1,16 @@
 # DjWebApp
 repo in progress ...
 
-<h2>Here worked example <a href="https://djwebapp.herokuapp.com/">link</a></h2> (first open can be slowly ~10 sec, server on sleep and activated only on request)
+
+<ul>
+<h2>Here worked example: </h2> 
+<li>
+<h2>heroku<a href="https://djwebapp.herokuapp.com/">link</a></h2> (first open can be slowly ~10 sec, server on sleep and activated only on request)
+</li>
+<li>
+<h2> or hostig <a href="http://f74708i5.beget.tech/">link</a></h2> 
+</li>
+</ul> 
 
 
 <h3>In this app tech used: </h3>

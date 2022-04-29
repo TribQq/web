@@ -1,7 +1,7 @@
 todo
 description.txt
 hosting_info.txt
-env/
+*env
 *.log
 *.pot
 *.pyc
