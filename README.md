@@ -2,23 +2,16 @@
 repo in progress ...
 
 
+<h3>Here worked example: </h3> 
 <ul>
-<h2>Here worked example: </h2> 
 <li>
-<h2>heroku<a href="https://djwebapp.herokuapp.com/">link</a></h2> (first open can be slowly ~10 sec, server on sleep and activated only on request)
+heroku <a href="https://djwebapp.herokuapp.com/">link</a>  (first open can be slowly ~10 sec, server on sleep and activated only on request)
 </li>
 <li>
-<h2> or hostig <a href="http://f74708i5.beget.tech/">link</a></h2> 
+or hostig <a href="http://f74708i5.beget.tech/">link</a>
 </li>
 </ul> 
 
-
-<h3>In this app tech used: </h3>
-<ul>
-   <li>Backend: Python(django,djangoRest), PostgreSQL</li>
-   <li>Frontend: HTML & CSS, Native JS, Jquery,Bootstrap, React
-   </li>
-</ul>
 
 <h2>Navigation:</h2>
 <ul>
