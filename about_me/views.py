@@ -21,6 +21,9 @@ def portfolio_main(request):
     return render(request, 'portfolio_main.html', context=context)
 
 
+def slowly_redirect(request, link):
+    return render(request, 'handlers/redirect.html')    
+
 def aeropack(request):
     """ http://www.aeropackbox.com/ """
     return render(request, 'portfolio/aeropack/aeropack_box.html')

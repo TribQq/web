@@ -14,6 +14,7 @@ class PortfolioProjectCard(models.Model):
     # git_link = models.TextField(null=True, blank=True, max_length=100) # link on github/lab/etc (need fix template for add)
     description = models.TextField(max_length=150)
     sort_index = models.IntegerField(default=1)
+    slowly_redirect = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.sort_index}-{self.name} ({self.project_type})'

@@ -17,7 +17,7 @@ class Book(models.Model):
                                   upload_to=get_timestamp_path, verbose_name='Image on book cover')
 
     inventory_limit = models.IntegerField(default=10)
-    progress_conditions = models.ManyToManyField('ProgressCondition', verbose_name='lose/win conditions', blank=True)
+    progress_conditions = models.ManyToManyField('ProgressCondition', verbose_name='lose/win conditions', blank=True,null=True)
 
     class Meta:
         verbose_name_plural = 'Books'
